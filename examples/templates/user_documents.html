@@ -1,0 +1,158 @@
+{% extends 'layout.html' %} {% block page_body %}
+<div class="col-12">
+	<div class="card">
+		<div class="card-header">
+			<div class="d-flex align-items-center">
+				<a href="/admin/documents" class="btn btn-secondary btn-sm me-3">
+					<i class="ti ti-arrow-left"></i> Back to Documents
+				</a>
+				<h3 class="card-title mb-0">User Documents - {{ username }}</h3>
+			</div>
+		</div>
+		<div class="card-body">
+			{% if error %}
+			<div class="alert alert-danger" role="alert">{{ error }}</div>
+			{% endif %} {% if documents %}
+			<div class="table-responsive">
+				<table class="table table-vcenter card-table">
+					<thead>
+						<tr>
+							<th>Document Name</th>
+							<th>Type</th>
+							<th>Property Name</th>
+							<th>Uploaded At</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for doc in documents %}
+						<tr>
+							<td>
+								{% if doc.name|length > 30 %}
+								<span data-bs-toggle="tooltip" data-bs-placement="top" title="{{ doc.name }}">
+									{{ doc.name[:30] }}...
+								</span>
+								{% else %}
+								{{ doc.name }}
+								{% endif %}
+							</td>
+							<td>
+								<span class="badge bg-blue-lt">{{ doc.type }}</span>
+							</td>
+							<td>{{ doc.state or 'N/A' }}</td>
+							<td>{{ doc.uploaded_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+							<td>
+								<div class="btn-list flex-nowrap">
+									<a
+										href="https://api.airebrokers.com/project-api/media/user_docs/{{ uuid }}/uploaded_docs/{{ doc.name }}"
+										class="btn btn-primary btn-sm"
+										target="_blank"
+										>View</a
+									>
+								</div>
+							</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+
+			<!-- Pagination -->
+			<div class="d-flex align-items-center mt-4">
+				<p class="m-0 text-muted">
+					Showing {{ pagination.start_showing }} to {{
+					pagination.end_showing }} of {{ pagination.total_docs }}
+					entries
+				</p>
+				<ul class="pagination ms-auto">
+					<!-- First Page -->
+					<li class="page-item {% if pagination.current_page == 1 %}disabled{% endif %}">
+						<a class="page-link" href="?page=1" {% if pagination.current_page == 1 %}tabindex="-1"{% endif %}>
+							<i class="fa fa-angle-double-left"></i>                     
+						</a>
+					</li>
+
+					<!-- Previous Page -->
+					<li
+						class="page-item {% if not pagination.has_prev %}disabled{% endif %}"
+					>
+						<a
+							class="page-link"
+							href="?page={{ pagination.prev_page }}"
+							{%
+							if
+							not
+							pagination.has_prev
+							%}tabindex="-1"
+							{%
+							endif
+							%}
+						>
+							<i class="ti ti-chevron-left"></i>
+						</a>
+					</li>
+
+					<!-- Page Numbers -->
+					{% for p in pagination.page_range %}
+					<li
+						class="page-item {% if p == pagination.current_page %}active{% endif %}"
+					>
+						<a class="page-link" href="?page={{ p }}">{{ p }}</a>
+					</li>
+					{% endfor %}
+
+					<!-- Next Page -->
+					<li
+						class="page-item {% if not pagination.has_next %}disabled{% endif %}"
+					>
+						<a
+							class="page-link"
+							href="?page={{ pagination.next_page }}"
+							{%
+							if
+							not
+							pagination.has_next
+							%}tabindex="-1"
+							{%
+							endif
+							%}
+						>
+							<i class="ti ti-chevron-right"></i>
+						</a>
+					</li>
+
+					<!-- Last Page -->
+					<li class="page-item {% if pagination.current_page == pagination.total_pages %}disabled{% endif %}">
+						<a class="page-link" href="?page={{ pagination.total_pages }}" {% if pagination.current_page == pagination.total_pages %}tabindex="-1"{% endif %}>
+							<i class="fa fa-angle-double-right"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+			{% else %}
+			<div class="empty">
+				<div class="empty-icon">
+					<i class="ti ti-files"></i>
+				</div>
+				<p class="empty-title">No documents found</p>
+				<p class="empty-subtitle text-muted">
+					There are no documents uploaded yet.
+				</p>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize all tooltips
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    });
+});
+</script>
+{% endblock %}
+{% endblock %} 

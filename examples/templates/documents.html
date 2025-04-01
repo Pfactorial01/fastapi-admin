@@ -1,0 +1,130 @@
+{% extends 'layout.html' %} {% block page_body %}
+<div class="col-12">
+	<div class="card">
+		<div class="card-header">
+			<h3 class="card-title">User Documents</h3>
+		</div>
+		<div class="card-body">
+			{% if error %}
+			<div class="alert alert-danger" role="alert">{{ error }}</div>
+			{% endif %} {% if documents %}
+			<div class="table-responsive">
+				<table class="table table-vcenter card-table">
+					<thead>
+						<tr>
+							<th>Username</th>
+							<th class="text-center">Number of Documents</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for doc in documents %}
+						<tr>
+							<td>{{ doc.username }}</td>
+							<td class="text-center">
+								<span class="badge bg-primary"
+									>{{ doc.num_documents }}</span
+								>
+							</td>
+							<td>
+								<div class="btn-list flex-nowrap">
+									<a
+										href="/admin/documents/{{ doc._id }}"
+										class="btn btn-primary btn-sm"
+										>View</a
+									>
+								</div>
+							</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+
+			<!-- Pagination -->
+			<div class="d-flex align-items-center mt-4">
+				<p class="m-0 text-muted">
+					Showing {{ pagination.start_showing }} to {{
+					pagination.end_showing }} of {{ pagination.total_docs }}
+					entries
+				</p>
+				<ul class="pagination ms-auto">
+					<!-- First Page -->
+					<li class="page-item {% if pagination.current_page == 1 %}disabled{% endif %}">
+						<a class="page-link" href="?page=1" {% if pagination.current_page == 1 %}tabindex="-1"{% endif %}>
+							<i class="ti ti-chevrons-left"></i>
+						</a>
+					</li>
+
+					<!-- Previous Page -->
+					<li
+						class="page-item {% if not pagination.has_prev %}disabled{% endif %}"
+					>
+						<a
+							class="page-link"
+							href="?page={{ pagination.prev_page }}"
+							{%
+							if
+							not
+							pagination.has_prev
+							%}tabindex="-1"
+							{%
+							endif
+							%}
+						>
+							<i class="ti ti-chevron-left"></i>
+						</a>
+					</li>
+
+					<!-- Page Numbers -->
+					{% for p in pagination.page_range %}
+					<li
+						class="page-item {% if p == pagination.current_page %}active{% endif %}"
+					>
+						<a class="page-link" href="?page={{ p }}">{{ p }}</a>
+					</li>
+					{% endfor %}
+
+					<!-- Next Page -->
+					<li
+						class="page-item {% if not pagination.has_next %}disabled{% endif %}"
+					>
+						<a
+							class="page-link"
+							href="?page={{ pagination.next_page }}"
+							{%
+							if
+							not
+							pagination.has_next
+							%}tabindex="-1"
+							{%
+							endif
+							%}
+						>
+							<i class="ti ti-chevron-right"></i>
+						</a>
+					</li>
+
+					<!-- Last Page -->
+					<li class="page-item {% if pagination.current_page == pagination.total_pages %}disabled{% endif %}">
+						<a class="page-link" href="?page={{ pagination.total_pages }}" {% if pagination.current_page == pagination.total_pages %}tabindex="-1"{% endif %}>
+							<i class="ti ti-chevrons-right"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+			{% else %}
+			<div class="empty">
+				<div class="empty-icon">
+					<i class="ti ti-files"></i>
+				</div>
+				<p class="empty-title">No documents found</p>
+				<p class="empty-subtitle text-muted">
+					There are no documents uploaded yet.
+				</p>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}
