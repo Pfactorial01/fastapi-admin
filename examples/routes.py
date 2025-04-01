@@ -8,7 +8,7 @@ from bson import ObjectId
 
 from examples.models import Config
 from fastapi_admin.app import app
-from fastapi_admin.depends import get_resources
+from fastapi_admin.depends import get_resources, get_current_admin
 from fastapi_admin.template import templates
 
 # Configure logging
@@ -18,6 +18,7 @@ logger = logging.getLogger(__name__)
 async def home(
     request: Request,
     resources=Depends(get_resources),
+    admin=Depends(get_current_admin),
 ):
     return templates.TemplateResponse(
         "dashboard.html",
@@ -34,6 +35,7 @@ async def home(
 async def documents(
     request: Request,
     resources=Depends(get_resources),
+    admin=Depends(get_current_admin),
     page: int = Query(1, ge=1),
     per_page: int = 10,
 ):
@@ -156,6 +158,7 @@ async def user_documents(
     request: Request,
     doc_id: str,
     resources=Depends(get_resources),
+    admin=Depends(get_current_admin),
     page: int = Query(1, ge=1),
     per_page: int = 10,
 ):
@@ -269,7 +272,11 @@ async def user_documents(
         )
 
 @app.put("/config/switch_status/{config_id}")
-async def switch_config_status(request: Request, config_id: int):
+async def switch_config_status(
+    request: Request, 
+    config_id: int,
+    admin=Depends(get_current_admin),
+):
     config = await Config.get_or_none(pk=config_id)
     if not config:
         raise HTTPException(status_code=HTTP_404_NOT_FOUND)
