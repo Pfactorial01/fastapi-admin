@@ -1,0 +1,521 @@
+{% extends "layout.html" %} {% block page_body %}
+<div class="row">
+	<!-- Contacts List Section (1/3 width) -->
+	<div class="col-md-4">
+		<div class="card">
+			<div class="card-header">
+				<h3 class="card-title">Contacts</h3>
+			</div>
+			<div class="card-body p-0">
+				{% if error %}
+				<div class="alert alert-danger m-3">{{ error }}</div>
+				{% else %}
+				<div class="list-group list-group-flush">
+					{% for contact in contacts %}
+					<a
+						href="?page={{ pagination.current_page }}&user_id={{ contact.user_id }}{% if contact.listing_id %}&listing_id={{ contact.listing_id }}{% endif %}"
+						class="list-group-item list-group-item-action d-flex justify-content-between align-items-center {% if request.query_params.get('user_id') == contact.user_id|string and (not contact.listing_id or request.query_params.get('listing_id') == contact.listing_id|string) %}active{% endif %}"
+						data-user-id="{{ contact.user_id }}"
+						data-listing-id="{{ contact.listing_id }}"
+						data-user-name="{{ contact.user_name }}"
+					>
+						<div class="d-flex align-items-center">
+							<div class="avatar avatar-sm me-3">
+								<span class="avatar-initials"
+									>{{ contact.user_name[:2] }}</span
+								>
+							</div>
+							<div>
+								<div class="font-weight-medium">
+									{{ contact.user_name }}
+								</div>
+								{% if contact.last_message %}
+								<div
+									class="text-muted small text-truncate"
+									style="max-width: 200px"
+								>
+									{{ contact.last_message.message }}
+								</div>
+								{% endif %}
+							</div>
+						</div>
+						{% if contact.last_message and not
+						contact.last_message.is_seen and not
+						contact.last_message.is_response %}
+						<span class="badge bg-primary rounded-pill">New</span>
+						{% endif %}
+					</a>
+					{% endfor %}
+				</div>
+				{% endif %}
+			</div>
+			{% if pagination.total_pages > 1 %}
+			<div class="card-footer">
+				<nav aria-label="Page navigation">
+					<ul class="pagination justify-content-center mb-0">
+						{% if pagination.has_prev %}
+						<li class="page-item">
+							<a
+								class="page-link"
+								href="?page={{ pagination.prev_page }}{% if selected_user %}&user_id={{ selected_user.id }}{% if selected_user.listing_id %}&listing_id={{ selected_user.listing_id }}{% endif %}{% endif %}"
+								>Previous</a
+							>
+						</li>
+						{% endif %} {% for page_num in pagination.page_range %}
+						<li
+							class="page-item {% if page_num == pagination.current_page %}active{% endif %}"
+						>
+							<a
+								class="page-link"
+								href="?page={{ page_num }}{% if selected_user %}&user_id={{ selected_user.id }}{% if selected_user.listing_id %}&listing_id={{ selected_user.listing_id }}{% endif %}{% endif %}"
+								>{{ page_num }}</a
+							>
+						</li>
+						{% endfor %} {% if pagination.has_next %}
+						<li class="page-item">
+							<a
+								class="page-link"
+								href="?page={{ pagination.next_page }}{% if selected_user %}&user_id={{ selected_user.id }}{% if selected_user.listing_id %}&listing_id={{ selected_user.listing_id }}{% endif %}{% endif %}"
+								>Next</a
+							>
+						</li>
+						{% endif %}
+					</ul>
+				</nav>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+
+	<!-- Messages View Section (2/3 width) -->
+	<div class="col-md-8">
+		<div class="card">
+			<div class="card-header">
+				<div class="d-flex justify-content-between align-items-start">
+					<div>
+						<h3 class="card-title mb-2">
+							{% if selected_user %}Messages with {{
+							selected_user.name }}{% else %}Messages{% endif %}
+						</h3>
+						{% if selected_user %}
+						<div class="text-muted small">
+							<div class="d-flex align-items-center">
+								<i class="ti ti-mail me-2"></i>
+								<span>{{ selected_user.email }}</span>
+								<span class="mx-2">•</span>
+								<i class="ti ti-phone me-2"></i>
+								<span>{{ selected_user.phone }}</span>
+							</div>
+							{% if selected_user.property %}
+							<div class="mt-2">
+								<div class="d-flex align-items-center">
+									<i class="ti ti-home me-2"></i>
+									<span
+										>{{ selected_user.property.address
+										}}</span
+									>
+								</div>
+								<div class="d-flex align-items-center mt-1">
+									<span class="badge bg-primary me-2"
+										>${{ selected_user.property.price
+										}}</span
+									>
+									<span class="me-2"
+										>{{ selected_user.property.beds }}
+										beds</span
+									>
+									<span class="me-2"
+										>{{ selected_user.property.baths }}
+										baths</span
+									>
+									<span class="me-2"
+										>{{ selected_user.property.size }}
+										sqft</span
+									>
+									<span
+										>Built in {{
+										selected_user.property.built_in }}</span
+									>
+								</div>
+							</div>
+							{% endif %}
+						</div>
+						{% endif %}
+					</div>
+					{% if selected_user %}
+					<div class="dropdown">
+						<button
+							class="btn btn-link"
+							type="button"
+							data-bs-toggle="dropdown"
+						>
+							<i class="ti ti-dots-vertical"></i>
+						</button>
+						<ul class="dropdown-menu dropdown-menu-end">
+							<li>
+								<a
+									class="dropdown-item"
+									href="mailto:{{ selected_user.email }}"
+								>
+									<i class="ti ti-mail me-2"></i>Email
+								</a>
+							</li>
+							<li>
+								<a
+									class="dropdown-item"
+									href="tel:{{ selected_user.phone }}"
+								>
+									<i class="ti ti-phone me-2"></i>Call
+								</a>
+							</li>
+						</ul>
+					</div>
+					{% endif %}
+				</div>
+			</div>
+			<div class="card-body p-0">
+				<div
+					id="messages-container"
+					class="d-flex flex-column"
+					style="height: 500px; overflow-y: auto"
+				>
+					{% if selected_user %}
+					<div class="flex-grow-1 p-3">
+						<div
+							id="load-older-container"
+							class="text-center py-2 sticky-top bg-white"
+							style="display: none"
+						>
+							{% if has_older_messages %}
+							<a
+								href="?page={{ pagination.current_page }}&load_older=true&user_id={{ selected_user.id }}{% if selected_user.listing_id %}&listing_id={{ selected_user.listing_id }}{% endif %}"
+								class="btn btn-sm btn-secondary"
+								>Load Older Messages</a
+							>
+							{% endif %}
+						</div>
+
+						<div class="messages-list">
+							{% for message in messages %}
+							<div
+								class="d-flex {% if message.is_response %}justify-content-end{% else %}justify-content-start{% endif %} mb-3"
+							>
+								<div
+									class="message-bubble {% if message.is_response %}bg-primary text-white{% else %}bg-light{% endif %} rounded p-3"
+									style="max-width: 70%"
+								>
+									<div class="message-content markdown-body">
+										{{ message.message | safe }}
+									</div>
+									<div
+										class="message-timestamp small {% if message.is_response %}text-white-50{% else %}text-muted{% endif %} mt-1"
+									>
+										{{ message.timestamp | datetime }}
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+
+						<!-- Message Input Form -->
+						<form
+							id="message-form"
+							class="mt-3"
+							method="POST"
+							action="/admin/messages/send"
+						>
+							<input
+								type="hidden"
+								name="user_id"
+								value="{{ selected_user.id }}"
+							/>
+							<input
+								type="hidden"
+								name="listing_id"
+								value="{{ selected_user.listing_id }}"
+							/>
+							<div class="input-group">
+								<textarea
+									class="form-control"
+									name="message"
+									rows="1"
+									placeholder="Type your message..."
+									required
+								></textarea>
+								<button type="submit" class="btn btn-primary">
+									<i class="ti ti-send"></i> Send
+								</button>
+							</div>
+						</form>
+					</div>
+					{% else %}
+					<div class="text-center text-muted py-5">
+						<div class="empty">
+							<div class="empty-icon">
+								<i class="ti ti-message"></i>
+							</div>
+							<p class="empty-title">No conversation selected</p>
+							<p class="empty-subtitle text-muted">
+								Select a contact from the list to view messages
+							</p>
+						</div>
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% block extra_js %}
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		const messagesContainer = document.getElementById("messages-container");
+		const loadOlderContainer = document.getElementById(
+			"load-older-container"
+		);
+
+		// Check if we're loading older messages by looking at the URL
+		const urlParams = new URLSearchParams(window.location.search);
+		const isLoadingOlder = urlParams.get("load_older") === "true";
+
+		// Scroll behavior based on whether we're loading older messages
+		if (messagesContainer.scrollHeight > messagesContainer.clientHeight) {
+			if (isLoadingOlder) {
+				// When loading older messages, scroll to top
+				messagesContainer.scrollTop = 0;
+			} else {
+				// When loading new messages or initial load, scroll to bottom
+				messagesContainer.scrollTop = messagesContainer.scrollHeight;
+			}
+		}
+
+		// Show/hide Load Older Messages button based on scroll position
+		messagesContainer.addEventListener("scroll", function () {
+			if (messagesContainer.scrollTop === 0) {
+				loadOlderContainer.style.display = "block";
+			} else {
+				loadOlderContainer.style.display = "none";
+			}
+		});
+
+		// Add syntax highlighting to code blocks
+		document.querySelectorAll("pre code").forEach((block) => {
+			block.classList.add("language-" + (block.className || "plaintext"));
+			hljs.highlightBlock(block);
+		});
+
+		// Function to refresh the contact list
+		async function refreshContactList() {
+			try {
+				// Get current URL parameters
+				const currentParams = new URLSearchParams(
+					window.location.search
+				);
+				const currentPage = currentParams.get("page") || "1";
+				const currentUserId = currentParams.get("user_id");
+				const currentListingId = currentParams.get("listing_id");
+
+				// Construct the URL for fetching contacts
+				const contactsUrl = `/admin/messages?page=${currentPage}`;
+
+				// Fetch the updated contacts list
+				const response = await fetch(contactsUrl);
+				const html = await response.text();
+
+				// Create a temporary container to parse the HTML
+				const tempContainer = document.createElement("div");
+				tempContainer.innerHTML = html;
+
+				// Find the contacts list in the response
+				const newContactsList =
+					tempContainer.querySelector(".list-group");
+				const currentContactsList =
+					document.querySelector(".list-group");
+
+				if (newContactsList && currentContactsList) {
+					// Update the contacts list
+					currentContactsList.innerHTML = newContactsList.innerHTML;
+
+					// Reattach event listeners to new contact items
+					document
+						.querySelectorAll(".list-group-item")
+						.forEach((item) => {
+							item.addEventListener("click", function (e) {
+								e.preventDefault();
+								window.location.href =
+									this.getAttribute("href");
+							});
+						});
+				}
+			} catch (error) {
+				console.error("Error refreshing contact list:", error);
+			}
+		}
+
+		// Function to refresh messages when a contact is selected
+		async function refreshMessages() {
+			try {
+				const currentParams = new URLSearchParams(
+					window.location.search
+				);
+				const currentUserId = currentParams.get("user_id");
+				const currentListingId = currentParams.get("listing_id");
+				const currentPage = currentParams.get("page") || "1";
+
+				// Only refresh if a user is selected
+				if (currentUserId) {
+					// Construct the URL for fetching messages
+					let messagesUrl = `/admin/messages?page=${currentPage}&user_id=${currentUserId}`;
+					if (currentListingId) {
+						messagesUrl += `&listing_id=${currentListingId}`;
+					}
+
+					// Fetch the updated messages
+					const response = await fetch(messagesUrl);
+					const html = await response.text();
+
+					// Create a temporary container to parse the HTML
+					const tempContainer = document.createElement("div");
+					tempContainer.innerHTML = html;
+
+					// Find the messages list in the response
+					const newMessagesList =
+						tempContainer.querySelector(".messages-list");
+					const currentMessagesList =
+						document.querySelector(".messages-list");
+
+					if (newMessagesList && currentMessagesList) {
+						// Store current scroll position
+						const currentScrollTop = messagesContainer.scrollTop;
+						const wasAtBottom =
+							messagesContainer.scrollHeight -
+								messagesContainer.scrollTop ===
+							messagesContainer.clientHeight;
+
+						// Update the messages list
+						currentMessagesList.innerHTML =
+							newMessagesList.innerHTML;
+
+						// Reapply syntax highlighting to any code blocks
+						document
+							.querySelectorAll("pre code")
+							.forEach((block) => {
+								block.classList.add(
+									"language-" +
+										(block.className || "plaintext")
+								);
+								hljs.highlightBlock(block);
+							});
+
+						// Only scroll to bottom if we were already at the bottom
+						if (wasAtBottom && !isLoadingOlder) {
+							messagesContainer.scrollTop =
+								messagesContainer.scrollHeight;
+						} else {
+							// Maintain relative scroll position
+							messagesContainer.scrollTop = currentScrollTop;
+						}
+					}
+				}
+			} catch (error) {
+				console.error("Error refreshing messages:", error);
+			}
+		}
+
+		// Start periodic refresh every 10 seconds for contacts
+		setInterval(refreshContactList, 5000);
+
+		// Start periodic refresh every 5 seconds for messages if a contact is selected
+		const currentParams = new URLSearchParams(window.location.search);
+		if (currentParams.get("user_id")) {
+			setInterval(refreshMessages, 5000);
+		}
+	});
+</script>
+
+<!-- Add highlight.js for code syntax highlighting -->
+<link
+	rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+
+<!-- Add GitHub markdown styles -->
+<style>
+	.markdown-body {
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+			Arial, sans-serif;
+		font-size: 16px;
+		line-height: 1.6;
+		word-wrap: break-word;
+	}
+
+	.markdown-body pre {
+		background-color: #f6f8fa;
+		border-radius: 6px;
+		padding: 16px;
+		overflow: auto;
+	}
+
+	.markdown-body code {
+		background-color: rgba(27, 31, 35, 0.05);
+		border-radius: 3px;
+		font-size: 85%;
+		margin: 0;
+		padding: 0.2em 0.4em;
+	}
+
+	.markdown-body pre code {
+		background-color: transparent;
+		border: 0;
+		display: inline;
+		line-height: inherit;
+		margin: 0;
+		overflow-wrap: normal;
+		padding: 0;
+		white-space: pre;
+		word-break: normal;
+		word-wrap: normal;
+	}
+
+	.markdown-body table {
+		border-spacing: 0;
+		border-collapse: collapse;
+		margin-bottom: 16px;
+		width: 100%;
+	}
+
+	.markdown-body table th,
+	.markdown-body table td {
+		border: 1px solid #dfe2e5;
+		padding: 6px 13px;
+	}
+
+	.markdown-body table tr {
+		background-color: #fff;
+		border-top: 1px solid #c6cbd1;
+	}
+
+	.markdown-body table tr:nth-child(2n) {
+		background-color: #f6f8fa;
+	}
+
+	.markdown-body blockquote {
+		border-left: 4px solid #dfe2e5;
+		color: #6a737d;
+		margin: 0;
+		padding: 0 1em;
+	}
+
+	.markdown-body ul,
+	.markdown-body ol {
+		padding-left: 2em;
+	}
+
+	.markdown-body img {
+		max-width: 100%;
+		box-sizing: content-box;
+	}
+</style>
+{% endblock %} {% endblock %}

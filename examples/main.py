@@ -5,7 +5,7 @@ from motor.motor_asyncio import AsyncIOMotorClient
 
 import redis.asyncio as redis
 import uvicorn
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import RedirectResponse
 from starlette.staticfiles import StaticFiles
@@ -100,8 +100,15 @@ def create_app():
     )
 
     @app.get("/")
-    async def index():
-        return RedirectResponse(url="/admin")
+    async def index(request: Request):
+        try:
+            # Try to get the current admin
+            admin = request.state.admin
+            if not admin:
+                return RedirectResponse(url="/admin/login")
+            return RedirectResponse(url="/admin")
+        except Exception:
+            return RedirectResponse(url="/admin/login")
 
     admin_app.add_exception_handler(HTTP_500_INTERNAL_SERVER_ERROR, server_error_exception)
     admin_app.add_exception_handler(HTTP_404_NOT_FOUND, not_found_error_exception)

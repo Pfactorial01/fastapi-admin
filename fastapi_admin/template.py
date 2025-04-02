@@ -1,5 +1,5 @@
 import os
-from datetime import date
+from datetime import date, datetime
 from typing import Any
 from urllib.parse import urlencode
 
@@ -15,6 +15,17 @@ templates.env.globals["VERSION"] = VERSION
 templates.env.globals["NOW_YEAR"] = date.today().year
 templates.env.add_extension("jinja2.ext.i18n")
 
+def datetime_filter(timestamp):
+    if isinstance(timestamp, str):
+        try:
+            timestamp = datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
+        except ValueError:
+            return timestamp
+    if isinstance(timestamp, datetime):
+        return timestamp.strftime('%Y-%m-%d %H:%M:%S')
+    return timestamp
+
+templates.env.filters['datetime'] = datetime_filter
 
 @pass_context
 def current_page_with_params(context: dict, params: dict):
