@@ -1,4 +1,4 @@
-from fastapi import Depends, HTTPException, Query, Form
+from fastapi import Depends, File, HTTPException, Query, Form, UploadFile
 import httpx
 from starlette.requests import Request
 from starlette.responses import RedirectResponse
@@ -9,6 +9,7 @@ from bson import ObjectId
 import markdown
 from markdown.extensions import fenced_code, tables, nl2br
 from datetime import datetime
+from typing import List
 
 from examples.models import Config
 from fastapi_admin.app import app
@@ -457,7 +458,12 @@ async def messages(
             
             # Process markdown in messages
             for message in messages_array:
-                message["message"] = process_message_markdown(message.get("message", ""))
+                if message.get("message"):
+                    message["message"] = process_message_markdown(message.get("message", ""))
+                # Ensure media path is properly formatted
+                if message.get("media"):
+                    # Remove any leading slash to ensure proper URL construction
+                    message["media"] = message["media"].lstrip("/")
             
             return templates.TemplateResponse(
                 "messages.html",
@@ -560,31 +566,215 @@ async def send_message(
     request: Request,
     user_id: str = Form(...),
     listing_id: str = Form(None),
-    message: str = Form(...),
+    message: str = Form(None),  # Make message optional
+    file: UploadFile = File(None),
     admin=Depends(get_current_admin),
 ):
     try:
-        print("listing_id: ", listing_id)
         # Redirect back to the messages page
         redirect_url = f"/admin/messages?user_id={user_id}{f'&listing_id={listing_id}' if listing_id != 'None' else ''}"
-                # Make the API call to send the message
+        
+        # Handle file upload if present
+        media_url = None
+        if file:
+            # For now, we'll use a dummy API endpoint
+            # In production, replace this with the actual file upload API
+            dummy_upload_url = "https://api.airebrokers.com/project-api/api1/upload"
+            
+            # Create a dummy response with a fake URL
+            # In production, this would be the actual API response
+            media_url = f"/uploads/{file.filename}"
+            
+            # In production, you would make an actual API call here:
+            # async with httpx.AsyncClient() as client:
+            #     files = {"file": (file.filename, file.file, file.content_type)}
+            #     response = await client.post(dummy_upload_url, files=files)
+            #     response.raise_for_status()
+            #     media_url = response.json()["url"]
+        
+        # Prepare the payload for the customer service reply
+        payload = {
+            "user_id": user_id
+        }
+        
+        # Add message if provided
+        if message and message.strip():
+            payload["message"] = message.strip()
+        
+        # Add media URL if available
+        if media_url:
+            payload["media"] = media_url
+        
+        # Make the API call to send the message
         api_url = "https://api.airebrokers.com/project-api/api1/user/customer-service-reply"
         headers = {
             "Authorization": "Bearer 9xplm2q5v4tsd93wykbzfac8no",
             "Content-Type": "application/json"
         }
-        payload = {
-            "message": message,
-            "user_id": user_id
-        }
         
         async with httpx.AsyncClient() as client:
             response = await client.post(api_url, json=payload, headers=headers)
-            response.raise_for_status()  # Raise an exception for bad status codes
-
+            response.raise_for_status()
             
         return RedirectResponse(url=redirect_url, status_code=HTTP_303_SEE_OTHER)
         
     except Exception as e:
         logger.error(f"Error sending message: {str(e)}")
         raise HTTPException(status_code=HTTP_500_INTERNAL_SERVER_ERROR, detail="Failed to send message")
+
+@app.get("/notifications")
+async def notifications(
+    request: Request,
+    resources=Depends(get_resources),
+    admin=Depends(get_current_admin),
+    page: int = Query(1, ge=1),
+    per_page: int = 10,
+):
+    try:            
+        client = app.state.mongodb_client        
+        # Get the database and collection
+        db = client.API
+        notifications_collection = db.notifications
+        users_collection = db.users
+        
+        # Calculate skip and limit for pagination
+        skip = (page - 1) * per_page
+        
+        # Get total count for pagination
+        total_docs = await notifications_collection.count_documents({})
+        total_pages = (total_docs + per_page - 1) // per_page
+        
+        # Calculate pagination range
+        start_page = max(1, page - 2)
+        end_page = min(total_pages, page + 2)
+        page_range = list(range(start_page, end_page + 1))
+        
+        # Calculate showing range
+        start_showing = (page - 1) * per_page + 1
+        end_showing = min(page * per_page, total_docs)
+        
+        # Fetch notifications with pagination
+        cursor = notifications_collection.find({}).sort("created_at", -1).skip(skip).limit(per_page)
+        notifications = []
+        async for doc in cursor:
+            notifications.append({
+                "_id": str(doc["_id"]),
+                "title": doc.get("title", ""),
+                "message": doc.get("message", ""),
+                "target_type": doc.get("target_type", "all"),  # all, individual, radius
+                "target_users": doc.get("target_users", []),
+                "target_radius": doc.get("target_radius", None),
+                "target_location": doc.get("target_location", None),
+                "scheduled_for": doc.get("scheduled_for", None),
+                "created_at": doc.get("created_at", datetime.now()),
+                "status": doc.get("status", "pending"),  # pending, sent, failed
+            })
+        
+
+        return templates.TemplateResponse(
+            "notifications.html",
+            context={
+                "request": request,
+                "resources": resources,
+                "resource_label": "Notifications",
+                "page_pre_title": "System Notifications",
+                "page_title": "Notifications",
+                "notifications": notifications,
+                "pagination": {
+                    "current_page": page,
+                    "total_pages": total_pages,
+                    "total_docs": total_docs,
+                    "per_page": per_page,
+                    "has_prev": page > 1,
+                    "has_next": page < total_pages,
+                    "prev_page": page - 1,
+                    "next_page": page + 1,
+                    "page_range": page_range,
+                    "start_showing": start_showing,
+                    "end_showing": end_showing,
+                }
+            },
+        )
+    except Exception as e:
+        logger.error(f"Error fetching notifications: {str(e)}")
+        return templates.TemplateResponse(
+            "notifications.html",
+            context={
+                "request": request,
+                "resources": resources,
+                "resource_label": "Notifications",
+                "page_pre_title": "System Notifications",
+                "page_title": "Notifications",
+                "error": "Failed to fetch notifications",
+                "notifications": [],
+                "users": [],
+                "pagination": {
+                    "current_page": 1,
+                    "total_pages": 1,
+                    "total_docs": 0,
+                    "per_page": per_page,
+                    "has_prev": False,
+                    "has_next": False,
+                    "prev_page": 1,
+                    "next_page": 1,
+                    "page_range": [1],
+                    "start_showing": 0,
+                    "end_showing": 0,
+                }
+            },
+        )
+
+@app.post("/notifications/send")
+async def send_notification(
+    request: Request,
+    title: str = Form(...),
+    message: str = Form(...),
+    target_type: str = Form(...),  # all, individual, radius
+    target_users: List[str] = Form([]),
+    target_radius: float = Form(None),
+    target_lat: float = Form(None),
+    target_lng: float = Form(None),
+    scheduled_for: str = Form(None),
+    admin=Depends(get_current_admin),
+):
+    try:
+        client = app.state.mongodb_client
+        db = client.API
+        notifications_collection = db.notifications
+        
+        # Create notification document
+        notification = {
+            "title": title,
+            "message": message,
+            "target_type": target_type,
+            "created_at": datetime.now(),
+            "status": "pending",
+        }
+        print(notification)
+        # Add target-specific fields
+        if target_type == "individual" and target_users:
+            notification["target_users"] = target_users
+        elif target_type == "radius" and target_radius and target_lat and target_lng:
+            notification["target_radius"] = float(target_radius)
+            notification["target_location"] = {
+                "type": "Point",
+                "coordinates": [float(target_lng), float(target_lat)]
+            }
+            
+        # Add scheduling if provided
+        if scheduled_for:
+            notification["scheduled_for"] = datetime.fromisoformat(scheduled_for.replace('Z', '+00:00'))
+            
+        # Insert notification
+        await notifications_collection.insert_one(notification)
+        
+        # In a real application, you would trigger the notification sending process here
+        # This could involve a background task, message queue, etc.
+        
+        return RedirectResponse(url="/admin/notifications", status_code=HTTP_303_SEE_OTHER)
+        
+    except Exception as e:
+        logger.error(f"Error creating notification: {str(e)}")
+        raise HTTPException(status_code=HTTP_500_INTERNAL_SERVER_ERROR, detail="Failed to create notification")
+
+

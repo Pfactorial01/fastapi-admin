@@ -23,6 +23,7 @@ from examples import settings
 from examples.constants import BASE_DIR
 from examples.models import Admin, Category, Product, Config
 from examples.providers import LoginProvider
+from examples.scheduler import scheduler  # Import the scheduler
 from fastapi_admin.app import app as admin_app
 from fastapi_admin.exceptions import (
     forbidden_error_exception,
@@ -31,21 +32,22 @@ from fastapi_admin.exceptions import (
     unauthorized_error_exception,
 )
 
-# Configure logging
-logging.basicConfig(level=logging.INFO)
+# Configure logging with more detailed format
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
 logger = logging.getLogger(__name__)
 
 def create_app():
     @asynccontextmanager
     async def lifespan(app: FastAPI):
         # Initialize MongoDB client
-        logger.info("Initializing MongoDB client...")
         mongodb_client = AsyncIOMotorClient(settings.MONGODB_URL)
         
         # Verify MongoDB connection
         try:
             await mongodb_client.admin.command('ping')
-            logger.info("Successfully connected to MongoDB")
         except Exception as e:
             logger.error(f"Failed to connect to MongoDB: {e}")
             raise
@@ -83,16 +85,30 @@ def create_app():
             ],
             redis=r,
         )
+
+        # Initialize scheduler
+        await scheduler.init_app(app)
         
         yield
         
         # Cleanup
+        await scheduler.shutdown()
         await Tortoise.close_connections()
         if hasattr(app.state, 'mongodb_client'):
-            logger.info("Closing MongoDB connection...")
-            app.state.mongodb_client.close()
+            mongodb_client.close()
 
+    # Create the FastAPI app with the lifespan context manager
     app = FastAPI(lifespan=lifespan)
+    
+    @app.on_event("startup")
+    async def startup_event():
+        pass
+        
+    @app.on_event("shutdown")
+    async def shutdown_event():
+        pass
+
+    # Mount static files
     app.mount(
         "/static",
         StaticFiles(directory=os.path.join(BASE_DIR, "static")),

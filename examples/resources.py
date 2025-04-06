@@ -39,6 +39,13 @@ class Messages(Link):
 
 @app.register
 class Requests(Link):
+    label = "Notifications"
+    icon = "fa fa-bell"
+    url = "/admin/notifications"
+    type = "link"
+
+@app.register
+class Requests(Link):
     label = "Requests"
     icon = "fa fa-comment"
     url = "/admin/requests"

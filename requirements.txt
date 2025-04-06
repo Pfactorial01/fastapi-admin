@@ -41,3 +41,6 @@ aiomysql
 motor
 markdown
 httpx
+cryptography
+firebase-admin
+apscheduler>=3.10.1
