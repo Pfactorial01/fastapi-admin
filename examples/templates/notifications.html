@@ -260,6 +260,39 @@
 					</div>
 
 					<div class="mb-3">
+						<label class="form-label required">Schedule Type</label>
+						<div class="form-selectgroup">
+							<label class="form-selectgroup-item">
+								<input
+									type="radio"
+									name="schedule_type"
+									value="immediate"
+									class="form-selectgroup-input"
+									checked
+								/>
+								<span class="form-selectgroup-label"
+									>Send Immediately</span
+								>
+							</label>
+							<label class="form-selectgroup-item">
+								<input
+									type="radio"
+									name="schedule_type"
+									value="scheduled"
+									class="form-selectgroup-input"
+								/>
+								<span class="form-selectgroup-label"
+									>Schedule for Later</span
+								>
+							</label>
+						</div>
+					</div>
+
+					<div
+						id="scheduleSection"
+						class="mb-3"
+						style="display: none"
+					>
 						<label class="form-label required">Schedule For</label>
 						<input
 							type="datetime-local"
@@ -267,7 +300,6 @@
 							name="scheduled_for"
 							id="scheduledFor"
 							step="3600"
-							required
 						/>
 						<small class="form-text text-muted"
 							>Notifications are sent on the hour (e.g. 9:00,
@@ -298,7 +330,20 @@
 		const targetType = document.getElementById("targetType");
 		const userSelection = document.getElementById("userSelection");
 		const radiusSelection = document.getElementById("radiusSelection");
+		const scheduleSection = document.getElementById("scheduleSection");
 		const scheduledFor = document.getElementById("scheduledFor");
+		const scheduleTypeRadios = document.querySelectorAll(
+			'input[name="schedule_type"]'
+		);
+
+		// Handle schedule type changes
+		scheduleTypeRadios.forEach((radio) => {
+			radio.addEventListener("change", function () {
+				scheduleSection.style.display =
+					this.value === "scheduled" ? "block" : "none";
+				scheduledFor.required = this.value === "scheduled";
+			});
+		});
 
 		// Handle target type changes
 		targetType.addEventListener("change", function () {

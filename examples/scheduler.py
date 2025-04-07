@@ -45,7 +45,7 @@ class SchedulerManager:
             # Add scheduled job - note that we pass the async function directly
             self.scheduler.add_job(
                 func=self.process_pending_notifications,  # Pass async function directly
-                trigger=CronTrigger(hour="*"),
+                trigger=CronTrigger(minute="*"),
                 id="process_notifications",
                 name="Process pending notifications",
                 replace_existing=True,

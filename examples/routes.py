@@ -13,6 +13,7 @@ from typing import List
 import os
 
 from examples.models import Config
+from examples.services.fcm_service import FCMService
 from fastapi_admin.app import app
 from fastapi_admin.depends import get_resources, get_current_admin
 from fastapi_admin.template import templates
@@ -752,14 +753,11 @@ async def send_notification(
     target_radius: float = Form(None),
     target_lat: float = Form(None),
     target_lng: float = Form(None),
-    scheduled_for: str = Form(...),  # Make this required
+    schedule_type: str = Form(...),  # immediate or scheduled
+    scheduled_for: str = Form(None),  # Optional now
     admin=Depends(get_current_admin),
 ):
     try:
-        # Validate scheduled_for is a future datetime
-        scheduled_datetime = datetime.fromisoformat(scheduled_for.replace('Z', '+00:00'))
-        now = datetime.now()
-
         client = app.state.mongodb_client
         db = client.API
         notifications_collection = db.notifications
@@ -769,10 +767,31 @@ async def send_notification(
             "title": title,
             "message": message,
             "target_type": target_type,
-            "created_at": now,
+            "created_at": datetime.now(),
             "status": "pending",
-            "scheduled_for": scheduled_datetime,  # Store the validated datetime
         }
+
+        # Handle scheduling
+        if schedule_type == "scheduled":
+            if not scheduled_for:
+                raise HTTPException(
+                    status_code=400,
+                    detail="Scheduled time is required when scheduling for later"
+                )
+            
+            # Validate scheduled_for is a future datetime
+            scheduled_datetime = datetime.fromisoformat(scheduled_for.replace('Z', '+00:00'))
+            now = datetime.now()
+            if scheduled_datetime <= now:
+                raise HTTPException(
+                    status_code=400,
+                    detail="Scheduled time must be in the future"
+                )
+            notification["scheduled_for"] = scheduled_datetime
+        else:  # immediate
+            notification["scheduled_for"] = datetime.now()
+            notification["status"] = "processing"  # Start processing immediately
+
         # Add target-specific fields
         if target_type == "individual" and target_users:
             notification["target_users"] = target_users
@@ -784,7 +803,71 @@ async def send_notification(
             }
             
         # Insert notification
-        await notifications_collection.insert_one(notification)
+        result = await notifications_collection.insert_one(notification)
+        notification_id = str(result.inserted_id)
+
+        # If immediate, process the notification right away
+        if schedule_type == "immediate":
+            try:
+                # Get target users
+                target_users = []
+                if notification["target_type"] == "all":
+                    async for user in db.users.find({"device_token": {"$exists": True}}):
+                        target_users.append(user["uuid"])
+                elif notification["target_type"] == "individual":
+                    target_users = notification["target_users"]
+                elif notification["target_type"] == "radius":
+                    location = notification["target_location"]["coordinates"]
+                    radius_meters = notification["target_radius"] * 1000
+                    async for user in db.users.find({
+                        "location": {
+                            "$nearSphere": {
+                                "$geometry": {
+                                    "type": "Point",
+                                    "coordinates": location
+                                },
+                                "$maxDistance": radius_meters
+                            }
+                        }
+                    }):
+                        target_users.append(user["uuid"])
+
+                # Get device tokens
+                tokens = []
+                async for user in db.users.find({"uuid": {"$in": target_users}}):
+                    if user.get("device_token"):
+                        tokens.append(user["device_token"])
+
+                # Send notification
+                fcm_service = FCMService()
+                await fcm_service.send_notification(
+                    tokens=tokens,
+                    title=notification["title"],
+                    body=notification["message"]
+                )
+
+                # Update notification status
+                await notifications_collection.update_one(
+                    {"_id": result.inserted_id},
+                    {
+                        "$set": {
+                            "status": "processed",
+                            "processed_at": datetime.now()
+                        }
+                    }
+                )
+            except Exception as e:
+                logger.error(f"Error processing immediate notification: {str(e)}")
+                await notifications_collection.update_one(
+                    {"_id": result.inserted_id},
+                    {
+                        "$set": {
+                            "status": "failed",
+                            "error": str(e),
+                            "processed_at": datetime.now()
+                        }
+                    }
+                )
         
         return RedirectResponse(url="/admin/notifications", status_code=HTTP_303_SEE_OTHER)
         
