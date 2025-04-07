@@ -1,0 +1,284 @@
+{
+  "metadata": {
+    "timestamp": "2025-01-22T00:55:58.512361",
+    "filename": "Conveyances_to_Foreign_Buyers_Addendum_CFBA-1.pdf",
+    "document_title": "Conveyances to Foreign Buyers Addendum (CFBA-1).pdf",
+    "number_of_pages": 1,
+    "versions": {
+      "pymupdf": [
+        "1.25.1",
+        "1.25.2",
+        "20241211000001"
+      ]
+    },
+    "summary": "This is a document used in real estate transactions to provide potential buyers with essential information about a property."
+  },
+  "summary": {
+    "total_fields": 17,
+    "fields_by_type": {
+      "checkbox": 5,
+      "text": 12
+    },
+    "fields_by_page": {
+      "1": 17
+    }
+  },
+  "fields": {
+    "checkbox_0": {
+      "question": "0 \u201cAS IS\u201d Residential Contract for Sale and Purchase (\u201cAS IS FR/BAR\u201d)",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 73.8,
+        "y0": 146.16,
+        "x1": 79.92,
+        "y1": 152.64
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_1": {
+      "question": "Residential Contract for Sale and Purchase (\u201cFR/BAR\u2019)",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 73.44,
+        "y0": 169.2,
+        "x1": 79.92,
+        "y1": 175.68
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_2": {
+      "question": "Contract for Residential Sale and Purchase (\u201cCRSP\u201d)",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 73.44,
+        "y0": 191.88,
+        "x1": 79.92,
+        "y1": 198.35999999999999
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_3": {
+      "question": "Commercial Contract",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 73.44,
+        "y0": 214.92,
+        "x1": 79.92,
+        "y1": 221.4
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_4": {
+      "question": "Vacant Land Contract",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 73.44,
+        "y0": 237.95999999999998,
+        "x1": 79.92,
+        "y1": 244.44
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "text_0": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 396.0,
+        "y0": 632.52,
+        "x1": 536.04,
+        "y1": 643.3199999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_1": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 72.0,
+        "y0": 632.52,
+        "x1": 339.84,
+        "y1": 643.3199999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_2": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 396.0,
+        "y0": 597.9599999999999,
+        "x1": 535.68,
+        "y1": 608.76
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_3": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 72.0,
+        "y0": 597.9599999999999,
+        "x1": 339.84,
+        "y1": 608.76
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_4": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 396.0,
+        "y0": 563.4,
+        "x1": 535.68,
+        "y1": 574.1999999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_5": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 72.0,
+        "y0": 563.4,
+        "x1": 339.84,
+        "y1": 574.1999999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_6": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 396.0,
+        "y0": 528.84,
+        "x1": 535.68,
+        "y1": 539.64
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_7": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 72.0,
+        "y0": 528.84,
+        "x1": 339.84,
+        "y1": 539.64
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_8": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 72.0,
+        "y0": 316.44,
+        "x1": 484.2,
+        "y1": 327.24
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_9": {
+      "question": "concerning",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 120.96,
+        "y0": 299.15999999999997,
+        "x1": 538.92,
+        "y1": 309.96
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_10": {
+      "question": "and",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 94.32,
+        "y0": 281.88,
+        "x1": 495.35999999999996,
+        "y1": 292.68
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_11": {
+      "question": "between",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 112.67999999999999,
+        "y0": 264.59999999999997,
+        "x1": 497.15999999999997,
+        "y1": 275.4
+      },
+      "value": null,
+      "possible_answers": null
+    }
+  }
+}

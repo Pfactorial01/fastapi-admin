@@ -1,0 +1,156 @@
+{
+  metadata: {
+    "timestamp": "2025-01-22T00:25:10.197237",
+    "filename": "Sight_Unseen_Property_Disclosure_and_Acknowledgment_SUP-1_hAnl2Ta.pdf",
+    "document_title": "Sight Unseen Property Disclosure and Acknowledgment_SUP-1.pdf",
+    "number_of_pages": 1,
+    "versions": {
+      "pymupdf": [
+        "1.25.1",
+        "1.25.2",
+        "20241211000001"
+      ]
+    },
+    "summary": "This is a document used in real estate transactions to provide potential buyers with essential information about a property."
+  },
+  summary: {
+    "total_fields": 9,
+    "fields_by_type": {
+      "text": 9
+    },
+    "fields_by_page": {
+      "1": 9
+    }
+  },
+  fields: {
+ "text_8": {
+            "question": "Buyer or Tenant:",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 149.04,
+                    "y0": 111.6,
+                        "x1": 528.12,
+                            "y1": 122.39999999999999
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_7": {
+            "question": "Buyer or Tenant:",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 149.04,
+                    "y0": 146.16,
+                        "x1": 528.12,
+                            "y1": 156.96
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_6": {
+            "question": "Property Address:",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 154.79999999999998,
+                    "y0": 186.48,
+                        "x1": 533.88,
+                            "y1": 197.28
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_5": {
+            "question": "Property Address (Line 2)",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 72.0,
+                    "y0": 203.76,
+                        "x1": 478.79999999999995,
+                            "y1": 214.56
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_4": {
+            "question": "Brokerage,",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 123.83999999999999,
+                    "y0": 226.79999999999998,
+                        "x1": 380.15999999999997,
+                            "y1": 237.6
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_3": {
+            "question": "Buyer or Tenant Signature",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 72.0,
+                    "y0": 571.68,
+                        "x1": 339.84,
+                            "y1": 582.48
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_2": {
+            "question": "Date",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 396.0,
+                    "y0": 571.68,
+                        "x1": 535.68,
+                            "y1": 582.48
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_1": {
+            "question": "Buyer or Tenant Signature",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 72.0,
+                    "y0": 606.24,
+                        "x1": 339.84,
+                            "y1": 617.04
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_0": {
+            "question": "Date",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 396.0,
+                    "y0": 606.24,
+                        "x1": 535.68,
+                            "y1": 617.04
+            },
+            "value": null,
+                "possible_answers": null
+        },
+     
+   
+   
+     
+
+
+
+
+
+
+
+
+  }
+}

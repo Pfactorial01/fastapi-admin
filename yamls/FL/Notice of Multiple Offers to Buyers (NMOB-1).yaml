@@ -1,0 +1,328 @@
+{
+  "metadata": {
+    "timestamp": "2025-01-23T10:14:11.902594",
+    "filename": "Notice_of_Multiple_Offers_to_Buyers_NMOB-1.pdf",
+    "document_title": "Notice of Multiple Offers to Buyers_NMOB-1.pdf",
+    "number_of_pages": 1,
+    "versions": {
+      "pymupdf": [
+        "1.25.1",
+        "1.25.2",
+        "20241211000001"
+      ]
+    },
+    "summary": "This is a document used in real estate transactions to provide potential buyers with essential information about a property."
+  },
+  "summary": {
+    "total_fields": 27,
+    "fields_by_type": {
+      "checkbox": 2,
+      "text": 25
+    },
+    "fields_by_page": {
+      "1": 27
+    }
+  },
+  "fields": {
+        "text_24": {
+      "question": "Property Address: (Property).",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 209.88,
+        "y0": 102.24,
+        "x1": 535.68,
+        "y1": 113.03999999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+       "text_23": {
+      "question": "Property Address: (Property) (line 2).",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 77.39999999999999,
+        "y0": 114.83999999999999,
+        "x1": 535.68,
+        "y1": 125.64
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_22": {
+      "question": "MLS#",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 100.8,
+        "y0": 129.96,
+        "x1": 284.76,
+        "y1": 140.76
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_21": {
+      "question": "Seller(s):",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 115.92,
+        "y0": 158.04,
+        "x1": 425.52,
+        "y1": 168.84
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_20": {
+      "question": "Listing Brokerage:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 160.2,
+        "y0": 170.28,
+        "x1": 464.03999999999996,
+        "y1": 181.07999999999998
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_19": {
+      "question": "Listing Agent:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 137.88,
+        "y0": 182.88,
+        "x1": 464.03999999999996,
+        "y1": 193.68
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_18": {
+      "question": "Listing Agents Email:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 171.35999999999999,
+        "y0": 195.12,
+        "x1": 464.03999999999996,
+        "y1": 205.92
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_17": {
+      "question": "Buyer(s):",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 115.92,
+        "y0": 219.95999999999998,
+        "x1": 425.52,
+        "y1": 230.76
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_16": {
+      "question": "Selling Brokerage:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 160.2,
+        "y0": 232.2,
+        "x1": 464.03999999999996,
+        "y1": 243.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_15": {
+      "question": "Selling Agent:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 137.88,
+        "y0": 244.79999999999998,
+        "x1": 464.03999999999996,
+        "y1": 255.6
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_14": {
+      "question": "Selling Agent's Email:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 176.76,
+        "y0": 257.4,
+        "x1": 464.03999999999996,
+        "y1": 268.2
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_13": {
+      "question": "Seller has requested each Buyer to submit his/her “highest and best” offer by",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 72.0,
+        "y0": 319.32,
+        "x1": 155.88,
+        "y1": 330.12
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+
+
+
+
+
+
+
+
+    "checkbox_0": {
+      "question": "a.m. or p.m. ",
+      "type": "singlecheckbox",
+      "page": 1,
+
+      "value": null,
+      "possible_answers": [
+        {
+                "rect": {
+        "x0": 193.68,
+        "y0": 321.47999999999996,
+        "x1": 199.79999999999998,
+        "y1": 327.96
+      },
+          "value": "a.m"
+        },
+        {
+                "rect": {
+        "x0": 159.84,
+        "y0": 321.47999999999996,
+        "x1": 165.96,
+        "y1": 327.96
+      },
+          "value": "p.m"
+        }
+      ]
+    },
+    "text_12": {
+      "question": "on",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 239.76,
+        "y0": 319.32,
+        "x1": 429.47999999999996,
+        "y1": 330.12
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_11": {
+      "question": "Seller(s) Name (Print):",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 176.76,
+        "y0": 604.8,
+        "x1": 536.04,
+        "y1": 615.6
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_9": {
+      "question": "Seller(s) Signature:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 165.6,
+        "y0": 621.0,
+        "x1": 536.04,
+        "y1": 631.8
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_7": {
+      "question": "Date:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 99.36,
+        "y0": 637.56,
+        "x1": 536.04,
+        "y1": 648.36
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_5": {
+      "question": "Buyer(s) Name (Print):",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 176.76,
+        "y0": 666.36,
+        "x1": 536.04,
+        "y1": 677.16
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_3": {
+      "question": "Buyer(s) Signature:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 165.6,
+        "y0": 682.92,
+        "x1": 536.04,
+        "y1": 693.72
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_1": {
+      "question": "Date:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 99.36,
+        "y0": 699.12,
+        "x1": 536.04,
+        "y1": 709.92
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+
+
+
+
+
+
+
+
+
+ 
+
+  }
+}

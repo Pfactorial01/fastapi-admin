@@ -1,0 +1,712 @@
+metadata: 
+timestamp: '2025-01-08T00:35:34.215455'
+filename: 'MNAR - Amendment to Disclosure Statement (MN-ADS) (Rev. 08_2019).pdf'
+document_title: 'AmndDiscl19.pdf'
+number_of_pages: 1
+versions:
+    1.25.1
+    1.25.2
+    20241211000001
+summary: 'This is a document used in real estate transactions to provide potential buyers with essential information about a property.'
+summary:
+total_fields: 33
+fields_by_type:
+  text: 33
+fields_by_page:
+  1: 33
+ 
+fields: {
+  "text_1": {
+    "question": "Date",
+    "type": "text",
+    "page": 1,
+    "answers": [
+      {
+        "rect": {
+          "x0": 378.36,
+          "y0": 95.75999999999999,
+          "x1": 576.36,
+          "y1": 106.56
+        },
+        "possible_answers": [
+          {"answer": "2025-01-01"},
+          {"answer": "2025-01-02"},
+          {"answer": "2025-01-03"}
+        ],
+        "value": "2025-01-02"
+      }
+    ]
+  },
+  "text_2": {
+    "question": "Page",
+    "type": "text",
+    "page": 1,
+    "answers": [
+      {
+        "rect": {
+          "x0": 378.36,
+          "y0": 113.75999999999999,
+          "x1": 422.64,
+          "y1": 124.56
+        },
+        "possible_answers": [
+          {"answer": "1"},
+          {"answer": "2"},
+          {"answer": "3"}
+        ],
+        "value": "1"
+      }
+    ]
+  },
+  "text_3": {
+    "question": "Page of",
+    "type": "text",
+    "page": 1,
+    "answers": [
+      {
+        "rect": {
+          "x0": 436.32,
+          "y0": 113.75999999999999,
+          "x1": 480.59999999999997,
+          "y1": 124.56
+        },
+        "possible_answers": [
+          {"answer": "1"},
+          {"answer": "2"},
+          {"answer": "3"}
+        ],
+        "value": "1"
+      }
+    ]
+  },
+  "text_4": {
+    "question": "Amendment to Disclosure Statement dated",
+    "type": "text",
+    "page": 1,
+    "answers": [
+      {
+        "rect": {
+          "x0": 270.36,
+          "y0": 131.76,
+          "x1": 430.91999999999996,
+          "y1": 142.56
+        },
+        "possible_answers": [
+          {"answer": "2025-01-01"},
+          {"answer": "2025-02-01"},
+          {"answer": "2025-03-01"}
+        ],
+        "value": "2025-02-01"
+      }
+    ]
+  },
+  "text_5": {
+      "question": "pertaining  to  the  Property  at (First Line)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 149.76,
+            "x1": 576.36,
+            "y1": 160.56
+          },
+          "possible_answers": [
+            {"answer": "123 Main St, City, MN"},
+            {"answer": "456 Oak Rd, City, MN"},
+            {"answer": "789 Pine St, City, MN"}
+          ],
+          "value": "123 Main St, City, MN"
+        }
+      ]
+    },
+    "text_6": {
+      "question": "pertaining to the Property at (Second Line)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 167.76,
+            "x1": 570.6,
+            "y1": 178.56
+          },
+          "possible_answers": [
+            {"answer": "2nd Floor"},
+            {"answer": "3rd Floor"},
+            {"answer": "Ground Floor"}
+          ],
+          "value": "2nd Floor"
+        }
+      ]
+    },
+    "text_6": {
+      "question": "Seller discloses the following facts (new or changed) that differ from the facts previously disclosed by Seller.(Line one)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 221.76,
+            "x1": 576.36,
+            "y1": 232.56
+          },
+          "possible_answers": [
+            {"answer": "New Roofing Installed"},
+            {"answer": "Repainted Exterior"},
+            {"answer": "Updated Plumbing"}
+          ],
+          "value": "New Roofing Installed"
+        }
+      ]
+    },
+    "text_7": {
+      "question": "Seller discloses the following facts (new or changed) that differ from the facts previously disclosed by Seller.(Line 2)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 239.76,
+            "x1": 576.36,
+            "y1": 250.56
+          },
+          "possible_answers": [
+            {"answer": "Replaced Water Heater"},
+            {"answer": "Added New Windows"},
+            {"answer": "Rewired Electrical System"}
+          ],
+          "value": "Replaced Water Heater"
+        }
+      ]
+    },
+    "text_8": {
+      "question": "Seller discloses the following facts (new or changed) that differ from the facts previously disclosed by Seller.(Line 3)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 257.76,
+            "x1": 576.36,
+            "y1": 268.56
+          },
+          "possible_answers": [
+            {"answer": "No Foundation Issues"},
+            {"answer": "Minor Cracks in Walls"},
+            {"answer": "Flood Damage Reported"}
+          ],
+          "value": "No Foundation Issues"
+        }
+      ]
+    },
+    "text_9": {
+      "question": "Seller discloses the following facts (new or changed) that differ from the facts previously disclosed by Seller.(Line 4)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 275.76,
+            "x1": 576.36,
+            "y1": 286.56
+          },
+          "possible_answers": [
+            {"answer": "New Flooring Installed"},
+            {"answer": "Replaced Kitchen Cabinets"},
+            {"answer": "Upgraded HVAC System"}
+          ],
+          "value": "New Flooring Installed"
+        }
+      ]
+    },
+    "text_10": {
+      "question": "Seller discloses the following facts (new or changed) that differ from the facts previously disclosed by Seller.(Line 5)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 293.76,
+            "x1": 576.36,
+            "y1": 304.56
+          },
+          "possible_answers": [
+            {"answer": "Replaced Sink Fixtures"},
+            {"answer": "Upgraded Windows"},
+            {"answer": "Repaired Roof"}
+          ],
+          "value": "Replaced Sink Fixtures"
+        }
+      ]
+    },
+    "text_11": {
+      "question": "Seller discloses the following facts (new or changed) that differ from the facts previously disclosed by Seller.(Line 6)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 311.76,
+            "x1": 576.36,
+            "y1": 322.56
+          },
+          "possible_answers": [
+            {"answer": "Replaced Toilet"},
+            {"answer": "Upgraded Garage Doors"},
+            {"answer": "Replaced Driveway"}
+          ],
+          "value": "Replaced Toilet"
+        }
+      ]
+    },
+    "text_12": {
+      "question": "Seller discloses the following facts (new or changed) that differ from the facts previously disclosed by Seller.(Line 7)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 329.76,
+            "x1": 576.36,
+            "y1": 340.56
+          },
+          "possible_answers": [
+            {"answer": "New Insulation Installed"},
+            {"answer": "Replaced Ceiling Fans"},
+            {"answer": "Upgraded Landscaping"}
+          ],
+          "value": "New Insulation Installed"
+        }
+      ]
+    },
+    "text_13": {
+      "question": "Seller discloses the following facts (new or changed) that differ from the facts previously disclosed by Seller.(Line 8)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 347.76,
+            "x1": 576.36,
+            "y1": 358.56
+          },
+          "possible_answers": [
+            {"answer": "No Pest Issues"},
+            {"answer": "Minor Rodent Activity"},
+            {"answer": "Termite Damage"}
+          ],
+          "value": "No Pest Issues"
+        }
+      ]
+    },
+    "text_14": {
+      "question": "Seller discloses the following facts (new or changed) that differ from the facts previously disclosed by Seller.(Line 9)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 365.76,
+            "x1": 576.36,
+            "y1": 376.56
+          },
+          "possible_answers": [
+            {"answer": "No Mold Issues"},
+            {"answer": "Minor Mold in Basement"},
+            {"answer": "Mold Removal Completed"}
+          ],
+          "value": "No Mold Issues"
+        }
+      ]
+    },
+    "text_15": {
+      "question": "Seller discloses the following facts (new or changed) that differ from the facts previously disclosed by Seller.(Line 10)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 383.76,
+            "x1": 576.36,
+            "y1": 394.56
+          },
+          "possible_answers": [
+            {"answer": "Replaced Siding"},
+            {"answer": "Replaced Gutters"},
+            {"answer": "Added Deck"}
+          ],
+          "value": "Replaced Siding"
+        }
+      ]
+    },
+    "text_16": {
+      "question": "Seller discloses the following facts (new or changed) that differ from the facts previously disclosed by Seller.(Line 11)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 401.76,
+            "x1": 576.36,
+            "y1": 412.56
+          },
+          "possible_answers": [
+            {"answer": "New Windows Installed"},
+            {"answer": "Replaced Roof"},
+            {"answer": "Updated Plumbing"}
+          ],
+          "value": "New Windows Installed"
+        }
+      ]
+    },
+    "text_17": {
+      "question": "Seller discloses the following facts (new or changed) that differ from the facts previously disclosed by Seller.(Line 12)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 419.76,
+            "x1": 576.36,
+            "y1": 430.56
+          },
+          "possible_answers": [
+            {"answer": "Minor Electrical Work"},
+            {"answer": "Repainted Walls"},
+            {"answer": "Replaced Fixtures"}
+          ],
+          "value": "Minor Electrical Work"
+        }
+      ]
+    },
+    "text_18": {
+      "question": "Seller discloses the following facts (new or changed) that differ from the facts previously disclosed by Seller.(Line 13)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 437.76,
+            "x1": 576.36,
+            "y1": 448.56
+          },
+          "possible_answers": [
+            {"answer": "No Water Damage"},
+            {"answer": "Minor Water Stains"},
+            {"answer": "Repaired Water Damage"}
+          ],
+          "value": "No Water Damage"
+        }
+      ]
+    },
+    "text_19": {
+      "question": "Seller discloses the following facts (new or changed) that differ from the facts previously disclosed by Seller.(Line 14)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 455.76,
+            "x1": 576.36,
+            "y1": 466.56
+          },
+          "possible_answers": [
+            {"answer": "Replaced Furnace"},
+            {"answer": "Upgraded AC"},
+            {"answer": "Installed New Water Heater"}
+          ],
+          "value": "Replaced Furnace"
+        }
+      ]
+    },
+    "text_20": {
+      "question": "Seller discloses the following facts (new or changed) that differ from the facts previously disclosed by Seller.(Line 15)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 473.76,
+            "x1": 576.0,
+            "y1": 484.56
+          },
+          "possible_answers": [
+            {"answer": "Upgraded Kitchen"},
+            {"answer": "Replaced Bathroom Fixtures"},
+            {"answer": "Renovated Backyard"}
+          ],
+          "value": "Upgraded Kitchen"
+        }
+      ]
+    },
+    "text_21": {
+      "question": "Seller discloses the following facts (new or changed) that differ from the facts previously disclosed by Seller.(Line 16)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 491.76,
+            "x1": 576.0,
+            "y1": 502.56
+          },
+          "possible_answers": [
+            {"answer": "Added Storage Space"},
+            {"answer": "Replaced Staircase"},
+            {"answer": "Updated Garage"}
+          ],
+          "value": "Added Storage Space"
+        }
+      ]
+    },
+    "text_22": {
+      "question": "Seller discloses the following facts (new or changed) that differ from the facts previously disclosed by Seller.(Line 17)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 509.76,
+            "x1": 576.0,
+            "y1": 520.56
+          },
+          "possible_answers": [
+            {"answer": "No Major Repairs Needed"},
+            {"answer": "Need New Carpet"},
+            {"answer": "Replaced Flooring"}
+          ],
+          "value": "No Major Repairs Needed"
+        }
+      ]
+    },
+    "text_23": {
+      "question": "Seller discloses the following facts (new or changed) that differ from the facts previously disclosed by Seller.(Line 18)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 527.76,
+            "x1": 576.0,
+            "y1": 538.56
+          },
+          "possible_answers": [
+            {"answer": "New HVAC System"},
+            {"answer": "Repaired Plumbing"},
+            {"answer": "Installed New Windows"}
+          ],
+          "value": "New HVAC System"
+        }
+      ]
+    },
+    "text_24": {
+      "question": "Seller discloses the following facts (new or changed) that differ from the facts previously disclosed by Seller.(Line 19)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 545.76,
+            "x1": 576.0,
+            "y1": 556.56
+          },
+          "possible_answers": [
+            {"answer": "No Structural Issues"},
+            {"answer": "Minor Cracks in Foundation"},
+            {"answer": "Major Foundation Repair Needed"}
+          ],
+          "value": "No Structural Issues"
+        }
+      ]
+    },
+    "text_25": {
+      "question": "Seller discloses the following facts (new or changed) that differ from the facts previously disclosed by Seller.(Line 20)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 563.76,
+            "x1": 576.0,
+            "y1": 574.56
+          },
+          "possible_answers": [
+            {"answer": "No Previous Repairs"},
+            {"answer": "Repairs Done by Professional"},
+            {"answer": "DIY Repairs Done"}
+          ],
+          "value": "No Previous Repairs"
+        }
+      ]
+    },
+    "text_26": {
+      "question": "Seller discloses the following facts (new or changed) that differ from the facts previously disclosed by Seller.(Line 21)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 581.76,
+            "x1": 576.0,
+            "y1": 592.56
+          },
+          "possible_answers": [
+            {"answer": "No Issues with Plumbing"},
+            {"answer": "Minor Plumbing Leaks"},
+            {"answer": "Major Plumbing Issues"}
+          ],
+          "value": "No Issues with Plumbing"
+        }
+      ]
+    },
+    "text_27": {
+      "question": "Seller discloses the following facts (new or changed) that differ from the facts previously disclosed by Seller.(Line 22)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 599.76,
+            "x1": 576.0,
+            "y1": 610.56
+          },
+          "possible_answers": [
+            {"answer": "No Roof Damage"},
+            {"answer": "Minor Roof Damage"},
+            {"answer": "Replaced Roof"}
+          ],
+          "value": "No Roof Damage"
+        }
+      ]
+    },
+    "text_28": {
+      "question": "Seller discloses the following facts (new or changed) that differ from the facts previously disclosed by Seller.(Line 23)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 617.76,
+            "x1": 576.0,
+            "y1": 628.56
+          },
+          "possible_answers": [
+            {"answer": "No Mold in Property"},
+            {"answer": "Minor Mold Issues"},
+            {"answer": "Mold Remediation Completed"}
+          ],
+          "value": "No Mold in Property"
+        }
+      ]
+    },
+    "text_29": {
+      "question": "Fill Date(For Seller)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 653.76,
+            "x1": 297.36,
+            "y1": 664.56
+          },
+          "possible_answers": [
+            {"answer": "2025-01-01"},
+            {"answer": "2025-01-02"},
+            {"answer": "2025-01-03"}
+          ],
+          "value": "2025-01-02"
+        }
+      ]
+    },
+    "text_30": {
+      "question": "Fill Date(For Buyer)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 333.36,
+            "y0": 653.76,
+            "x1": 576.0,
+            "y1": 664.56
+          },
+          "possible_answers": [
+            {"answer": "2025-01-01"},
+            {"answer": "2025-01-02"},
+            {"answer": "2025-01-03"}
+          ],
+          "value": "2025-01-01"
+        }
+      ]
+    },
+    "text_31": {
+      "question": "Fill Date(For Seller)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 63.36,
+            "y0": 698.04,
+            "x1": 297.36,
+            "y1": 708.8399999999999
+          },
+          "possible_answers": [
+            {"answer": "2025-01-01"},
+            {"answer": "2025-01-02"},
+            {"answer": "2025-01-03"}
+          ],
+          "value": "2025-01-03"
+        }
+      ]
+    },
+    "text_32": {
+      "question": "Fill Date(For Buyer)",
+      "type": "text",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 333.36,
+            "y0": 698.04,
+            "x1": 576.0,
+            "y1": 708.8399999999999
+          },
+          "possible_answers": [
+            {"answer": "2025-01-01"},
+            {"answer": "2025-01-02"},
+            {"answer": "2025-01-03"}
+          ],
+          "value": "2025-01-03"
+        }
+      ]
+    }
+  }

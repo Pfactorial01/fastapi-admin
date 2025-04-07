@@ -1,0 +1,951 @@
+{
+    "metadata": {
+        "timestamp": "2025-01-24T07:39:40.455794",
+            "filename": "Buyers_Disclosure_Statement_BDS-2_jfx8Kf7.pdf",
+                "document_title": "Buyers Disclosure Statement (BDS-2)_old.pdf",
+                    "number_of_pages": 2,
+                        "versions": {
+            "pymupdf": [
+                "1.25.1",
+                "1.25.2",
+                "20241211000001"
+            ]
+        },
+        "summary": "This is a document used in real estate transactions to provide potential buyers with essential information about a property."
+    },
+    "summary": {
+        "total_fields": 64,
+            "fields_by_type": {
+            "checkbox": 45,
+                "text": 19
+        },
+        "fields_by_page": {
+            "1": 53,
+                "2": 11
+        }
+    },
+    "fields": {
+        "text_7": {
+            "question": "BUYER(S) NAME(S):",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 156.23999999999998,
+                    "y0": 93.96,
+                        "x1": 552.96,
+                            "y1": 104.75999999999999
+            },
+            "value": null,
+                "possible_answers": null
+        },
+
+
+        "checkbox_0": {
+            "question": "Is each individual named above a 0 U.S. Citizen a Resident Alien or O a Foreign National?",
+                "type": "singlecheckbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 208.79999999999998,
+                                        "y0": 118.44,
+                                        "x1": 214.92,
+                                        "y1": 124.92
+                                    },
+                                    "value": "U.S. Citizen"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 284.4,
+                                        "y0": 118.44,
+                                        "x1": 290.52,
+                                        "y1": 124.92
+                                    },
+                                    "value": "a Resident Alien"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 391.68,
+                                        "y0": 118.44,
+                                        "x1": 397.8,
+                                        "y1": 124.92
+                                    },
+                                    "value": "a Foreign National?"
+                                },
+                            ]
+        },
+
+
+
+
+        "checkbox_3": {
+            "question": "(a) Do you currently (1 RENT or  OWN your existing residence?",
+                "type": "singlecheckbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 164.88,
+                                        "y0": 273.59999999999997,
+                                        "x1": 171.0,
+                                        "y1": 280.08
+                                    },
+                                    "value": "RENT"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 218.16,
+                                        "y0": 273.59999999999997,
+                                        "x1": 224.28,
+                                        "y1": 280.08
+                                    },
+                                    "value": "OWN residence"
+                                }
+                            ]
+        },
+
+
+        "checkbox_5": {
+            "question": "(b) Have you ever owned a home before?YES or NO",
+                "type": "singlecheckbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 307.08,
+                                        "y0": 286.56,
+                                        "x1": 313.2,
+                                        "y1": 293.03999999999996
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 267.12,
+                                        "y0": 286.56,
+                                        "x1": 273.24,
+                                        "y1": 293.03999999999996
+                                    },
+                                    "value": "No"
+                                }
+                            ]
+        },
+
+
+        "checkbox_7": {
+            "question": "(c) If you own a home, is it currently for sale? YES or NO",
+                "type": "singlecheckbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 276.48,
+                                        "y0": 299.88,
+                                        "x1": 282.59999999999997,
+                                        "y1": 306.36
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 313.56,
+                                        "y0": 299.88,
+                                        "x1": 319.68,
+                                        "y1": 306.36
+                                    },
+                                    "value": "No"
+                                }
+                            ]
+        },
+        "checkbox_9": {
+            "question": "(d) If you own a home, must you sell it to qualify for a new loan? YES Or NO",
+                "type": "singlecheckbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 359.64,
+                                        "y0": 312.84,
+                                        "x1": 365.76,
+                                        "y1": 319.32
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 396.71999999999997,
+                                        "y0": 312.84,
+                                        "x1": 402.84,
+                                        "y1": 319.32
+                                    },
+                                    "value": "No"
+                                }
+                            ]
+        },
+
+
+        "checkbox_11": {
+            "question": "(e) Are you buying this new property as YOUR PRIMARY RESIDENCE or as AN INVESTMENT Property",
+                "type": "checkbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 248.04,
+                                        "y0": 324.36,
+                                        "x1": 254.51999999999998,
+                                        "y1": 330.84
+                                    },
+                                    "value": "PRIMARY RESIDENCE"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 406.44,
+                                        "y0": 324.36,
+                                        "x1": 412.91999999999996,
+                                        "y1": 330.84
+                                    },
+                                    "value": "INVESTMENT Property"
+                                }
+                            ]
+        },
+
+
+        "checkbox_13": {
+            "question": "When purchasing a condominium, town home or single-family home in a PUD (planned Community), are you aware there may be periodic fees payable to the association for common areas, services and/or reserves? YES NO",
+                "type": "singlecheckbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 284.03999999999996,
+                                        "y0": 372.24,
+                                        "x1": 290.15999999999997,
+                                        "y1": 378.71999999999997
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 324.0,
+                                        "y0": 372.24,
+                                        "x1": 330.47999999999996,
+                                        "y1": 378.71999999999997
+                                    },
+                                    "value": "No"
+                                }
+                            ]
+        },
+
+
+        "checkbox_15": {
+            "question": "(a) Have you made application with a lending institution or mortgage company yet? YES NO. If YES,",
+                "type": "singlecheckbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 448.91999999999996,
+                                        "y0": 408.24,
+                                        "x1": 455.03999999999996,
+                                        "y1": 414.71999999999997
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 488.88,
+                                        "y0": 408.24,
+                                        "x1": 495.0,
+                                        "y1": 414.71999999999997
+                                    },
+                                    "value": "No"
+                                }
+                            ]
+        }, "text_6": {
+            "question": "what is the name of the firm?",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 216.35999999999999,
+                    "y0": 419.4,
+                        "x1": 545.4,
+                            "y1": 430.2
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_5": {
+            "question": "Loan Officer",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 142.2,
+                    "y0": 432.71999999999997,
+                        "x1": 326.52,
+                            "y1": 443.52
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_4": {
+            "question": "Loan Officer's Telephone Number",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 414.35999999999996,
+                    "y0": 432.71999999999997,
+                        "x1": 498.59999999999997,
+                            "y1": 443.52
+            },
+            "value": null,
+                "possible_answers": null
+        },
+
+
+
+
+        "checkbox_17": {
+            "question": "Do we have permission to contact the Loan Officer? O YES NO",
+                "type": "singlecheckbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 266.03999999999996,
+                                        "y0": 448.2,
+                                        "x1": 272.52,
+                                        "y1": 454.68
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 306.0,
+                                        "y0": 448.2,
+                                        "x1": 312.47999999999996,
+                                        "y1": 454.68
+                                    },
+                                    "value": "No"
+                                }
+                            ]
+        },
+        "checkbox_24": {
+            "question": "(b) Have you been Pre-Qualified?",
+                "type": "singlecheckbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 226.07999999999998,
+                                        "y0": 460.44,
+                                        "x1": 232.56,
+                                        "y1": 466.91999999999996
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 263.52,
+                                        "y0": 460.44,
+                                        "x1": 269.64,
+                                        "y1": 466.91999999999996
+                                    },
+                                    "value": "No"
+                                }
+                            ]
+        },
+        "checkbox_22": {
+            "question": "Pre-Approved?",
+                "type": "singlecheckbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 371.15999999999997,
+                                        "y0": 460.44,
+                                        "x1": 377.64,
+                                        "y1": 466.91999999999996
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 408.59999999999997,
+                                        "y0": 460.44,
+                                        "x1": 414.71999999999997,
+                                        "y1": 466.91999999999996
+                                    },
+                                    "value": "No"
+                                }
+                            ]
+        },
+        "checkbox_20": {
+            "question": "Approved?",
+                "type": "singlecheckbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 497.52,
+                                        "y0": 460.44,
+                                        "x1": 503.64,
+                                        "y1": 466.91999999999996
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 534.6,
+                                        "y0": 460.44,
+                                        "x1": 541.0799999999999,
+                                        "y1": 466.91999999999996
+                                    },
+                                    "value": "No"
+                                }
+                            ]
+        },
+
+
+
+
+
+
+        "checkbox_25": {
+            "question": "Can you provide documentation for any of the 'YES' answers above? ",
+                "type": "checkbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 401.76,
+                                        "y0": 473.03999999999996,
+                                        "x1": 407.88,
+                                        "y1": 479.52
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 441.71999999999997,
+                                        "y0": 473.03999999999996,
+                                        "x1": 447.84,
+                                        "y1": 479.52
+                                    },
+                                    "value": "No"
+                                }
+                            ]
+        },
+
+
+        "checkbox_27": {
+            "question": "Do you know the difference between the three possibilities above?",
+                "type": "checkbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 388.44,
+                                        "y0": 485.28,
+                                        "x1": 394.56,
+                                        "y1": 491.76
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 428.4,
+                                        "y0": 485.28,
+                                        "x1": 434.52,
+                                        "y1": 491.76
+                                    },
+                                    "value": "No"
+                                }
+                            ]
+        },
+
+
+        "checkbox_29": {
+            "question": "Have you calculated the total amount of funds that will be required for your purchase (i.e., down payment plus closing costs and pre-payments)? ",
+                "type": "checkbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 263.52,
+                                        "y0": 509.4,
+                                        "x1": 269.64,
+                                        "y1": 515.88
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 300.59999999999997,
+                                        "y0": 509.4,
+                                        "x1": 307.08,
+                                        "y1": 515.88
+                                    },
+                                    "value": "No"
+                                }
+                            ]
+        },
+        "checkbox_31": {
+            "question": "Can you provide proof of funds (i.e., an audit trail showing the source of the funds)?",
+                "type": "checkbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 243.0,
+                                        "y0": 520.56,
+                                        "x1": 249.12,
+                                        "y1": 527.04
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 282.96,
+                                        "y0": 520.56,
+                                        "x1": 289.08,
+                                        "y1": 527.04
+                                    },
+                                    "value": "No"
+                                }
+                            ]
+        },
+
+
+        "checkbox_33": {
+            "question": "(d = Have you ever filed for bankruptcy?",
+                "type": "checkbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 249.12,
+                                        "y0": 534.6,
+                                        "x1": 255.6,
+                                        "y1": 541.0799999999999
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 286.56,
+                                        "y0": 534.6,
+                                        "x1": 292.68,
+                                        "y1": 541.0799999999999
+                                    },
+                                    "value": "No"
+                                }
+                            ]
+        },
+        "text_3": {
+            "question": "(d) when?",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 386.64,
+                    "y0": 532.4399999999999,
+                        "x1": 495.71999999999997,
+                            "y1": 543.24
+            },
+            "value": null,
+                "possible_answers": null
+        },
+
+
+        "checkbox_35": {
+            "question": "Have you ever had delinquent payments on loans or credit cards?",
+                "type": "singlecheckbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 316.08,
+                                        "y0": 546.84,
+                                        "x1": 322.56,
+                                        "y1": 553.3199999999999
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 353.52,
+                                        "y0": 546.84,
+                                        "x1": 359.64,
+                                        "y1": 553.3199999999999
+                                    },
+                                    "value": "No"
+                                }
+                            ]
+        },
+
+
+        "checkbox_37": {
+            "question": "(e) Can you provide the credit scores from your credit report?",
+                "type": "singlecheckbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 384.47999999999996,
+                                        "y0": 559.8,
+                                        "x1": 390.59999999999997,
+                                        "y1": 566.28
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 347.03999999999996,
+                                        "y0": 559.8,
+                                        "x1": 353.52,
+                                        "y1": 566.28
+                                    },
+                                    "value": "No"
+                                }
+                            ]
+        },
+
+
+
+
+        "checkbox_39": {
+            "question": "Is there any past, existing or threatened legal action (i.e., divorce, collections, judgments, etc.) against you that would prohibit you from purchasing a home?",
+                "type": "singlecheckbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 308.52,
+                                        "y0": 585.36,
+                                        "x1": 314.64,
+                                        "y1": 591.84
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 345.59999999999997,
+                                        "y0": 585.36,
+                                        "x1": 351.71999999999997,
+                                        "y1": 591.84
+                                    },
+                                    "value": "No"
+                                }
+                            ]
+        },
+
+
+        "checkbox_41": {
+            "question": "Are you aware that the funds you will bring to closing must be in the form of a wire transfer, or official bank check, or other means acceptable to closing agent/title company? YES ONO",
+                "type": "singlecheckbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 384.84,
+                                        "y0": 610.56,
+                                        "x1": 391.32,
+                                        "y1": 617.04
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 422.28,
+                                        "y0": 610.56,
+                                        "x1": 428.4,
+                                        "y1": 617.04
+                                    },
+                                    "value": "No"
+                                }
+                            ]
+        },
+
+
+
+
+        "checkbox_43": {
+            "question": "Is there anything else that you feel should be disclosed to a Seller that may adversely affect your ability to purchase ahome?",
+                "type": "checkbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 186.12,
+                                        "y0": 658.4399999999999,
+                                        "x1": 192.95999999999998,
+                                        "y1": 665.28
+                                    },
+                                    "value": "Yes"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 224.28,
+                                        "y0": 658.4399999999999,
+                                        "x1": 231.12,
+                                        "y1": 665.28
+                                    },
+                                    "value": "No"
+                                }
+                            ]
+        },
+        "text_2": {
+            "question": "If YES, explain:",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 84.96,
+                    "y0": 670.3199999999999,
+                        "x1": 541.8,
+                            "y1": 681.12
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_1": {
+            "question": "If YES, explain: (Line 2)",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 84.96,
+                    "y0": 683.28,
+                        "x1": 541.8,
+                            "y1": 694.0799999999999
+            },
+            "value": null,
+                "possible_answers": null
+        },
+
+
+        "text_0": {
+            "question": "If YES, explain: (Line 3)",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 84.96,
+                    "y0": 696.24,
+                        "x1": 541.8,
+                            "y1": 707.04
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_18": {
+            "question": "The undersigned Buyer represents that the information set forth in the foregoing disclosure statement is accurate and complete. Buyer hereby authorizes.",
+                "type": "text",
+                    "page": 2,
+                        "rect": {
+                "x0": 266.03999999999996,
+                    "y0": 63.36,
+                        "x1": 422.64,
+                            "y1": 74.16
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_17": {
+            "question": "Buyer understands and agrees that Buyer will notify.",
+                "type": "text",
+                    "page": 2,
+                        "rect": {
+                "x0": 250.2,
+                    "y0": 88.92,
+                        "x1": 296.64,
+                            "y1": 99.72
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_16": {
+            "question": "BUYER",
+                "type": "text",
+                    "page": 2,
+                        "rect": {
+                "x0": 91.08,
+                    "y0": 150.84,
+                        "x1": 304.56,
+                            "y1": 161.64
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_15": {
+            "question": "BUYER Date",
+                "type": "text",
+                    "page": 2,
+                        "rect": {
+                "x0": 328.68,
+                    "y0": 150.84,
+                        "x1": 437.4,
+                            "y1": 161.64
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_14": {
+            "question": "BUYER",
+                "type": "text",
+                    "page": 2,
+                        "rect": {
+                "x0": 91.08,
+                    "y0": 209.88,
+                        "x1": 304.56,
+                            "y1": 220.67999999999998
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_13": {
+            "question": "BUYER Date",
+                "type": "text",
+                    "page": 2,
+                        "rect": {
+                "x0": 328.68,
+                    "y0": 209.88,
+                        "x1": 437.4,
+                            "y1": 220.67999999999998
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_12": {
+            "question": "Since these are the facts that have been represented to",
+                "type": "text",
+                    "page": 2,
+                        "rect": {
+                "x0": 56.519999999999996,
+                    "y0": 285.47999999999996,
+                        "x1": 551.88,
+                            "y1": 296.28
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_11": {
+            "question": "SELLER",
+                "type": "text",
+                    "page": 2,
+                        "rect": {
+                "x0": 94.67999999999999,
+                    "y0": 429.12,
+                        "x1": 308.15999999999997,
+                            "y1": 439.91999999999996
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_10": {
+            "question": "SELLER Date",
+                "type": "text",
+                    "page": 2,
+                        "rect": {
+                "x0": 331.92,
+                    "y0": 429.12,
+                        "x1": 440.64,
+                            "y1": 439.91999999999996
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_9": {
+            "question": "SELLER",
+                "type": "text",
+                    "page": 2,
+                        "rect": {
+                "x0": 94.67999999999999,
+                    "y0": 470.15999999999997,
+                        "x1": 308.15999999999997,
+                            "y1": 480.96
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_8": {
+            "question": "SELLER Date",
+                "type": "text",
+                    "page": 2,
+                        "rect": {
+                "x0": 331.92,
+                    "y0": 470.15999999999997,
+                        "x1": 440.64,
+                            "y1": 480.96
+            },
+            "value": null,
+                "possible_answers": null
+        },
+           
+    }
+}
+
+

@@ -1,0 +1,263 @@
+
+{
+    "metadata": {
+        "timestamp": "2025-01-23T12:42:51.221355",
+            "filename": "CRSP-16_AA_-_Short_Sale_Approval_Addendum_1.pdf",
+                "document_title": "CRSP16.AA.short sale approval addendum.pdf",
+                    "number_of_pages": 1,
+                        "versions": {
+            "pymupdf": [
+                "1.25.1",
+                "1.25.2",
+                "20241211000001"
+            ]
+        },
+        "summary": "This is a document used in real estate transactions to provide potential buyers with essential information about a property."
+    },
+    "summary": {
+        "total_fields": 20,
+            "fields_by_type": {
+            "checkbox": 6,
+                "text": 14
+        },
+        "fields_by_page": {
+            "1": 20
+        }
+    },
+    "fields": {
+        "text_13": {
+            "question": "If initialed by all parties, the terms below will be incorporated into the Contract for Residential Sale and Purchase between (Seller Name)",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 95.03999999999999,
+                    "y0": 99.72,
+                        "x1": 533.16,
+                            "y1": 110.52
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_12": {
+            "question": " and (Buyer Name)",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 73.8,
+                    "y0": 115.56,
+                        "x1": 532.0799999999999,
+                            "y1": 126.36
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_11": {
+            "question": "concerning the Property described as",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 222.84,
+                    "y0": 131.76,
+                        "x1": 576.36,
+                            "y1": 142.56
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_10": {
+            "question": "concerning the Property described as (Line 2)",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 54.36,
+                    "y0": 147.6,
+                        "x1": 576.36,
+                            "y1": 158.4
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_5": {
+            "question": "Seller must deliver a copy of the Short Sale Approval to Buyer within 7 days after receipt but no later than",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 186.48,
+                    "y0": 241.56,
+                        "x1": 220.67999999999998,
+                            "y1": 252.35999999999999
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "checkbox_0": {
+            "question": "1. (Check if applicable) Seller's Lender has set the list price and approved this Property for short sale.",
+                "type": "checkbox",
+                    "page": 1,
+
+            "value": null,
+                "possible_answers": [
+                    {
+                                                "rect": {
+                "x0": 173.51999999999998,
+                    "y0": 301.68,
+                        "x1": 180.0,
+                            "y1": 308.15999999999997
+            },
+                        "value": "Yes"
+                    },
+
+
+                ]
+        },
+        "text_4": {
+            "question": "Seller will make application for short sale with Lender within",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 72.0,
+                    "y0": 328.32,
+                        "x1": 105.83999999999999,
+                            "y1": 339.12
+            },
+            "value": null,
+                "possible_answers": null
+        },
+
+
+
+
+
+
+        "checkbox_1": {
+            "question": "Termination Date, and the following items, if checked, will begin as set forth in this Contract: ",
+                "type": "singlecheckbox",
+                    "page": 1,
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 506.88,
+                                        "y0": 382.68,
+                                        "x1": 513.72,
+                                        "y1": 389.15999999999997
+                                    },
+                                    "value": "Initial Deposit"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 73.44,
+                                        "y0": 394.2,
+                                        "x1": 80.28,
+                                        "y1": 400.68
+                                    },
+                                    "value": "any inspection provided for in this Contract that Buyer deems necessary"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 408.59999999999997,
+                                        "y0": 394.2,
+                                        "x1": 415.44,
+                                        "y1": 400.68
+                                    },
+                                    "value": "other"
+                                }
+                            ]
+        },
+
+
+        "text_3": {
+            "question": "other (specify):",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 72.36,
+                    "y0": 409.32,
+                        "x1": 576.36,
+                            "y1": 420.12
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_2": {
+            "question": "Other (specify) (Line 2)",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 72.36,
+                    "y0": 426.59999999999997,
+                        "x1": 576.36,
+                            "y1": 437.4
+            },
+            "value": null,
+                "possible_answers": null
+        },
+
+
+        "checkbox_4": {
+            "question": "If required by Lender, Seller may receive additional offers and submit such offers to Lender, even if such offers are not accepted by Seller. (Check one) Seller Fimay Limay not enter into back-",
+                "type": "singlecheckbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 425.52,
+                                        "y0": 457.91999999999996,
+                                        "x1": 432.0,
+                                        "y1": 464.4
+                                    },
+                                    "value": "may"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 459.71999999999997,
+                                        "y0": 457.91999999999996,
+                                        "x1": 466.2,
+                                        "y1": 464.4
+                                    },
+                                    "value": "may not"
+                                }
+                            ]
+        },
+
+
+        "text_1": {
+            "question": "Closing Date; Termination: Seller and Buyer agree to extend the Closing Date in this Contract",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 517.3199999999999,
+                    "y0": 484.91999999999996,
+                        "x1": 551.88,
+                            "y1": 495.71999999999997
+            },
+            "value": null,
+                "possible_answers": null
+        },
+
+        "text_0": {
+            "question": "Seller has not delivered a copy of the Short Sale Approval to Buyer within",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 308.88,
+                    "y0": 531.0,
+                        "x1": 343.8,
+                            "y1": 541.8
+            },
+            "value": null,
+                "possible_answers": null
+        },
+
+
+
+
+
+
+    }
+}
+
+

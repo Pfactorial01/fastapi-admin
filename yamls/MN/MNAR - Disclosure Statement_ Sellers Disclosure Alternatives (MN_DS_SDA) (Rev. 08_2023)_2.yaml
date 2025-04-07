@@ -1,0 +1,662 @@
+fields: {
+
+      "text_14": {
+      "question": "Date",
+      "type": "date",
+      "page": 1,
+      "rect": {
+        "x0": 378.36,
+        "y0": 95.39999999999999,
+        "x1": 576.36,
+        "y1": 106.2
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_13": {
+      "question": "Page 1 of ",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 388.08,
+        "y0": 113.39999999999999,
+        "x1": 461.15999999999997,
+        "y1": 124.19999999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_12": {
+      "question": "Property located at",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 151.56,
+        "y0": 155.51999999999998,
+        "x1": 571.68,
+        "y1": 166.32
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_11": {
+      "question": "City of",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 95.03999999999999,
+        "y0": 173.51999999999998,
+        "x1": 306.71999999999997,
+        "y1": 184.32
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_10": {
+      "question": "County of",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 361.44,
+        "y0": 173.51999999999998,
+        "x1": 570.9599999999999,
+        "y1": 184.32
+      },
+      "value": null,
+      "possible_answers": null
+    },
+   "text_9": {
+      "question": "State of Minnesota, Zip Code",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 197.28,
+        "y0": 191.51999999999998,
+        "x1": 317.88,
+        "y1": 202.32
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "checkbox_0": {
+      "question": "QUALIFIED THIRD-PARTY INSPECTION: Seller shall provide to prospective Buyer a written report that",
+      "type": "checkbox",
+      "page": 1,
+
+      "value": null,
+      "answer_locations": [
+        {
+                "rect": {
+        "x0": 81.36,
+        "y0": 297.71999999999997,
+        "x1": 92.52,
+        "y1": 308.52
+      },
+          "value": "QUALIFIED THIRD-PARTY INSPECTION: Seller shall provide to prospective Buyer a written report that"
+        }
+      ]
+    },
+
+    "text_8": {
+      "question": "The inspection report was prepared by",
+      "type": "multiline",
+      "page": 1,
+
+      "value": null,
+      "answer_locations": [
+        "rect": {
+          "x0": 273.24,
+          "y0": 411.47999999999996,
+          "x1": 576.36,
+          "y1": 422.28
+        },
+        "rect": {
+          "x0": 99.36,
+          "y0": 429.47999999999996,
+          "x1": 410.03999999999996,
+          "y1": 440.28
+        }
+      ]
+    },
+
+
+    "text_6": {
+      "question": "and dated ",
+      "type": "date",
+      "page": 1,
+      "rect": {
+        "x0": 466.56,
+        "y0": 429.84,
+        "x1": 570.6,
+        "y1": 440.64
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_5": {
+      "question": "Seller discloses to Buyer the following material facts known by Seller that contradict any information included in the above referenced inspection report.",
+      "type": "multiline",
+      "page": 1,
+
+      "value": null,
+      "answer_locations": [
+        "rect": {
+          "x0": 99.36,
+          "y0": 475.56,
+          "x1": 576.36,
+          "y1": 486.35999999999996
+        },
+        "rect": {
+          "x0": 99.36,
+          "y0": 493.56,
+          "x1": 576.36,
+          "y1": 504.35999999999996
+        },
+        "rect": {
+          "x0": 99.36,
+          "y0": 511.56,
+          "x1": 576.36,
+          "y1": 522.36
+        }
+      ]
+    },
+    "text_2": {
+      "question": "Seller discloses to Buyer the following material facts known by Seller that are not included in the above referenced inspection report.",
+      "type": "multiline",
+      "page": 1,
+
+      "value": null,
+      "answer_locations": [
+        "rect": {
+          "x0": 99.36,
+          "y0": 557.64,
+          "x1": 576.36,
+          "y1": 568.4399999999999
+        },
+        "rect": {
+          "x0": 99.36,
+          "y0": 575.64,
+          "x1": 575.28,
+          "y1": 586.4399999999999
+        },
+        "rect": {
+          "x0": 99.36,
+          "y0": 593.64,
+          "x1": 576.36,
+          "y1": 604.4399999999999
+        }
+      ]
+    },
+
+
+
+    "checkbox_1": {
+      "question": "WAIVER: The written disclosure required may be waived if Seller and prospective Buyer agree in writing.",
+      "type": "checkbox",
+      "page": 1,
+
+      "value": null,
+      "answer_locations": [
+        {
+          "rect": {
+            "x0": 81.36,
+            "y0": 613.8,
+            "x1": 92.52,
+            "y1": 624.6
+          },
+          "value": "WAIVER: The written disclosure required may be waived if Seller and prospective Buyer agree in writing."
+        }
+      ]
+    },
+    "text_18": {
+      "question": "Property located at",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 151.56,
+        "y0": 80.64,
+        "x1": 572.4,
+        "y1": 91.44
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+
+    "checkbox_2": {
+      "question": "Seller|_|DOES|_|DOES NOT know of a subsurface sewage treatment system on or serving the above-described",
+      "type": "singlecheckbox",
+      "page": 2,
+
+      "value": null,
+      "answer_locations": [
+        {
+          "rect": {
+            "x0": 108.36,
+            "y0": 214.56,
+            "x1": 119.16,
+            "y1": 225.72
+          },
+          "value": "DOES"
+        },
+        {
+          "rect": {
+            "x0": 151.56,
+            "y0": 214.56,
+            "x1": 162.35999999999999,
+            "y1": 225.72
+          },
+          "value": "DOES NOT"
+        }
+
+      ]
+    },
+
+    "checkbox_4": {
+      "question": "(If answer is DOES, and the system does not require a state permit, see Disclosure Statement: Subsurface Sewage Treatment System.)",
+      "type": "multicheckbox",
+      "page": 2,
+
+      "value": null,
+      "answer_locations": [
+        {
+          "rect": {
+            "x0": 81.36,
+            "y0": 264.96,
+            "x1": 92.52,
+            "y1": 276.12
+          },
+          "value": "There is a subsurface sewage treatment system on or serving the above-described real Property."
+        },
+        {
+          "rect": {
+            "x0": 81.36,
+            "y0": 295.2,
+            "x1": 92.52,
+            "y1": 306.0
+          },
+          "value": "There is an abandoned subsurface sewage treatment system on the above-described real Property"
+        }
+      ]
+    },
+
+    "checkbox_6": {
+      "question": "Private well disclosure",
+      "type": "multicheckbox",
+      "page": 2,
+
+      "value": null,
+      "answer_locations": [
+        {
+          "rect": {
+            "x0": 81.36,
+            "y0": 357.12,
+            "x1": 92.52,
+            "y1": 367.91999999999996
+          },
+          "value": "Seller does not know of any wells on the above-described real Property."
+        },
+        {
+          "rect": {
+            "x0": 81.36,
+            "y0": 371.15999999999997,
+            "x1": 92.52,
+            "y1": 381.96
+          },
+          "value": "There are one or more wells located on the above-described real Property. (See Disclosure Statement: Well.)"
+        },
+        {
+          "rect": {
+            "x0": 81.36,
+            "y0": 385.2,
+            "x1": 92.52,
+            "y1": 396.0
+          },
+          "value": "This Property is in a Special Well Construction Area."
+        },
+        {
+          "rect": {
+            "x0": 81.36,
+            "y0": 399.24,
+            "x1": 92.52,
+            "y1": 410.03999999999996
+          },
+          "value": "There are wells serving the above-described Property that are not located on the Property."
+        }
+      ]
+    },
+
+    "text_17": {
+      "question": "Comments:",
+      "type": "multiline",
+      "page": 2,
+
+      "value": null,
+      "answers": [
+        "rect": {
+          "x0": 135.72,
+          "y0": 419.03999999999996,
+          "x1": 576.36,
+          "y1": 429.84
+        },
+        "rect": {
+          "x0": 81.36,
+          "y0": 433.08,
+          "x1": 576.36,
+          "y1": 443.88
+        },
+        "rect": {
+          "x0": 81.36,
+          "y0": 451.08,
+          "x1": 576.36,
+          "y1": 461.88
+        }
+      ]
+    },
+
+    "checkbox_10": {
+      "question": "Seller represents that Seller|__|IS|_|IS NOT a foreign person (i.e., a non-resident alien individual, foreign corporation,",
+      "type": "singlecheckbox",
+      "page": 2,
+
+      "value": null,
+      "answer_locations": [
+        {
+          "rect": {
+            "x0": 199.79999999999998,
+            "y0": 519.12,
+            "x1": 210.6,
+            "y1": 529.92
+          },
+          "value": "IS"
+        },
+        {
+          "rect": {
+            "x0": 223.92,
+            "y0": 519.12,
+            "x1": 234.72,
+            "y1": 529.92
+          },
+          "value": "IS NOT"
+        }
+      ]
+    },
+
+    "text_25": {
+      "question": "Property located at",
+      "type": "text",
+      "page": 3,
+      "rect": {
+        "x0": 151.56,
+        "y0": 80.64,
+        "x1": 572.4,
+        "y1": 91.44
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "checkbox_12": {
+      "question": "METHAMPHETAMINE PRODUCTION DISCLOSURE:",
+      "type": "singlecheckbox",
+      "page": 3,
+
+      "value": null,
+      "answer_locations": [
+        {
+          "rect": {
+            "x0": 81.36,
+            "y0": 134.64,
+            "x1": 92.52,
+            "y1": 145.79999999999998
+          },
+          "value": "Seller is not aware of any methamphetamine production that has occurred on the Property."
+        },
+        {
+          "rect": {
+            "x0": 81.36,
+            "y0": 150.84,
+            "x1": 92.52,
+            "y1": 161.64
+          },
+          "value": "Seller is aware that methamphetamine production has occurred on the Property."
+        }
+      ]
+    },
+
+
+
+    "checkbox_14": {
+      "question": "Radon test(s) __|HAVE|_|HAVE NOT occurred on the Property.",
+      "type": "singlecheckbox",
+      "page": 3,
+
+      "value": null,
+      "answer_locations": [
+
+        {
+          "rect": {
+            "x0": 179.28,
+            "y0": 472.68,
+            "x1": 190.44,
+            "y1": 483.47999999999996
+          },
+          "value": "HAVE"
+        },
+        {
+          "rect": {
+            "x0": 223.2,
+            "y0": 472.68,
+            "x1": 234.0,
+            "y1": 483.47999999999996
+          },
+          "value": "HAVE NOT"
+        }
+      ]
+    },
+
+    "text_24": {
+      "question": "Describe any known radon concentrations, mitigation, or remediation. NOTE: Seller shall attach the most  current records and reports pertaining to radon concentration within the dwelling:",
+      "type": "multiline",
+      "page": 3,
+
+      "value": null,
+      "answer_locations": [
+        "rect": {
+          "x0": 117.36,
+          "y0": 524.88,
+          "x1": 576.36,
+          "y1": 535.68
+        },
+        "rect": {
+          "x0": 117.36,
+          "y0": 542.88,
+          "x1": 576.36,
+          "y1": 553.68
+        },
+        "rect": {
+          "x0": 117.36,
+          "y0": 560.88,
+          "x1": 576.36,
+          "y1": 571.68
+        },
+      ]
+    },
+
+
+    "checkbox_16": {
+      "question": "There IS |_|IS NOT a radon mitigation system currently installed on the Property.",
+      "type": "singlecheckbox",
+      "page": 3,
+
+      "value": null,
+      "answer_locations": [
+        {
+
+            "rect": {
+        "x0": 148.32,
+        "y0": 579.24,
+        "x1": 159.12,
+        "y1": 590.04
+      },
+          "value": "IS"
+        },
+        {
+                          "rect": {
+        "x0": 174.6,
+        "y0": 579.24,
+        "x1": 185.4,
+        "y1": 590.04
+      },
+          "value": "IS NOT"
+        }
+      ]
+    },
+
+    "text_21": {
+      "question": "If “IS,” Seller shall disclose, if known, information regarding the radon mitigation system, including system  description and documentation.",
+      "type": "multiline",
+      "page": 3,
+
+      "value": null,
+      "answer_locations": [
+      "rect": {
+        "x0": 117.36,
+        "y0": 631.4399999999999,
+        "x1": 576.36,
+        "y1": 642.24
+      },
+            "rect": {
+        "x0": 117.36,
+        "y0": 649.4399999999999,
+        "x1": 576.36,
+        "y1": 660.24
+      },
+            "rect": {
+        "x0": 117.36,
+        "y0": 667.4399999999999,
+        "x1": 576.36,
+        "y1": 678.24
+      }
+      ]
+    },
+
+
+    "checkbox_18": {
+      "question": "Has Chronic Wasting Disease been detected on the Property? YES|_|NO",
+      "type": "singlecheckbox",
+      "page": 3,
+
+      "value": null,
+      "answer_locations": [
+        {
+                "rect": {
+        "x0": 486.35999999999996,
+        "y0": 703.4399999999999,
+        "x1": 497.15999999999997,
+        "y1": 714.6
+      },
+          "value": "Yes"
+        },
+        {
+                "rect": {
+        "x0": 523.0799999999999,
+        "y0": 703.4399999999999,
+        "x1": 534.24,
+        "y1": 714.6
+      },
+          "value": "No"
+        }
+      ]
+    },
+
+
+
+    "text_26": {
+      "question": "Property located at",
+      "type": "text",
+      "page": 4,
+      "rect": {
+        "x0": 151.56,
+        "y0": 81.72,
+        "x1": 572.4,
+        "y1": 92.52
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    
+    "text_31": {
+      "question": "Property located at",
+      "type": "text",
+      "page": 5,
+      "rect": {
+        "x0": 151.56,
+        "y0": 80.64,
+        "x1": 572.4,
+        "y1": 91.44
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+        "text_30": {
+      "question": "Seller signature",
+      "type": "text",
+      "page": 5,
+      "rect": {
+        "x0": 81.36,
+        "y0": 416.52,
+        "x1": 297.36,
+        "y1": 427.32
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_29": {
+      "question": "Seller",
+      "type": "text",
+      "page": 5,
+      "rect": {
+        "x0": 333.36,
+        "y0": 416.52,
+        "x1": 576.36,
+        "y1": 427.32
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_28": {
+      "question": "Buyer signature",
+      "type": "text",
+      "page": 5,
+      "rect": {
+        "x0": 81.36,
+        "y0": 587.16,
+        "x1": 297.36,
+        "y1": 597.9599999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_27": {
+      "question": "Buyer",
+      "type": "text",
+      "page": 5,
+      "rect": {
+        "x0": 333.36,
+        "y0": 587.16,
+        "x1": 576.36,
+        "y1": 597.9599999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+
+
+
+  }

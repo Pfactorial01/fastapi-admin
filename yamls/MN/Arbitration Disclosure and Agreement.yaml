@@ -1,0 +1,243 @@
+metadata: 
+  timestamp: "2025-01-04T10:20:04.207580"
+  filename: "MNAR_-_Disclosure_Statement__Arbitration.pdf"
+  document_title: "Discl_ArbDiscl19.pdf"
+  number_of_pages: 1,
+  versions: 
+    -  1.25.1
+    -  1.25.2
+    -  '20241211000001'
+      
+
+  summary": "This is a document used in real estate transactions to provide potential buyers with essential information about a property."
+
+summary: 
+  total_fields: 17
+  fields_by_type: 
+    text: 17
+
+    
+fields:
+  {
+    "text_16": {
+      "question": "For the property located at",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 510.0,
+        "y0": 426.0,
+        "x1": 1583.0,
+        "y1": 456.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_15": {
+      "question": "City of",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 267.0,
+        "y0": 492.0,
+        "x1": 840.0,
+        "y1": 522.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_14": {
+      "question": "City of County of",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 999.0,
+        "y0": 492.0,
+        "x1": 1583.0,
+        "y1": 522.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_13": {
+      "question": "State of Minnesota, Zip Code",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 543.0,
+        "y0": 559.0,
+        "x1": 891.0,
+        "y1": 589.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_12": {
+      "question": "",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 250.0,
+        "y0": 687.0,
+        "x1": 684.0,
+        "y1": 717.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_11": {
+      "question": "Seller's Signature",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 176.0,
+        "y0": 1054.0,
+        "x1": 826.0,
+        "y1": 1084.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_10": {
+      "question": "Buyer's Signature",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 928.0,
+        "y0": 1054.0,
+        "x1": 1599.0,
+        "y1": 1084.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_9": {
+      "question": "Seller's Printed Name",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 176.0,
+        "y0": 1177.0,
+        "x1": 826.0,
+        "y1": 1207.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_8": {
+      "question": "Buyer's Printed Name",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 926.0,
+        "y0": 1177.0,
+        "x1": 1599.0,
+        "y1": 1207.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_7": {
+      "question": "Seller's Signature",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 176.0,
+        "y0": 1300.0,
+        "x1": 826.0,
+        "y1": 1330.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_6": {
+      "question": "Buyer's Signature",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 926.0,
+        "y0": 1300.0,
+        "x1": 1598.0,
+        "y1": 1330.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_5": {
+      "question": "Seller's Printed Name",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 176.0,
+        "y0": 1424.0,
+        "x1": 826.0,
+        "y1": 1454.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_4": {
+      "question": "Buyer's Printed Name",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 926.0,
+        "y0": 1424.0,
+        "x1": 1601.0,
+        "y1": 1454.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_3": {
+      "question": "Licensee Representing or Assisting Seller",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 176.0,
+        "y0": 1547.0,
+        "x1": 826.0,
+        "y1": 1577.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_2": {
+      "question": "Licensee Representing or Assisting Buyer",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 926.0,
+        "y0": 1547.0,
+        "x1": 1598.0,
+        "y1": 1577.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_1": {
+      "question": "Company Name",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 176.0,
+        "y0": 1670.0,
+        "x1": 826.0,
+        "y1": 1700.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_0": {
+      "question": "Company Name",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 926.0,
+        "y0": 1670.0,
+        "x1": 1598.0,
+        "y1": 1700.0
+      },
+      "value": null,
+      "possible_answers": null
+    }
+  }

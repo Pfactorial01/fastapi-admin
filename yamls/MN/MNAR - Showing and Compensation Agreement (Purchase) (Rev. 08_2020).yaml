@@ -1,0 +1,722 @@
+{
+  metadata: {
+    "timestamp": "2025-01-19T11:56:08.736527",
+    "filename": "MNAR_-_Showing_and_Compensation_Agreement_Purchase_MN_SCA_P_Rev._08_2020_JulSlZN.pdf",
+    "document_title": "ShowingCompPurch20.pdf",
+    "number_of_pages": 5,
+    "summary": "This is a document used in real estate transactions to provide potential buyers with essential information about a property."
+  },
+  fields: {
+        "text_12": {
+      "question": "Date",
+      "type": "date",
+      "page": 1,
+      "rect": {
+        "x0": 378.36,
+        "y0": 95.39999999999999,
+        "x1": 576.36,
+        "y1": 106.2
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_11": {
+      "question": "Page 1 of",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 388.08,
+        "y0": 113.39999999999999,
+        "x1": 428.4,
+        "y1": 124.19999999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_10": {
+      "question": "3. DEFINITIONS: This Agreement involves the property located at",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 348.84,
+        "y0": 137.51999999999998,
+        "x1": 567.36,
+        "y1": 148.32
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_9": {
+      "question": "City of",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 97.2,
+        "y0": 155.51999999999998,
+        "x1": 569.52,
+        "y1": 166.32
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_8": {
+      "question": "County of",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 111.96,
+        "y0": 173.51999999999998,
+        "x1": 303.84,
+        "y1": 184.32
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_7": {
+      "question": "State of Minnesota, Zip Code",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 453.96,
+        "y0": 173.51999999999998,
+        "x1": 569.52,
+        "y1": 184.32
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_6": {
+      "question": "legally described as",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 153.72,
+        "y0": 191.51999999999998,
+        "x1": 519.12,
+        "y1": 202.32
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_5": {
+      "question": "7. Seller is",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 99.72,
+        "y0": 209.51999999999998,
+        "x1": 532.8,
+        "y1": 220.32
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_4": {
+      "question": "8. Broker is",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 103.32,
+        "y0": 235.79999999999998,
+        "x1": 529.56,
+        "y1": 246.6
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_3": {
+      "question": "9. This Agreement starts on",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 176.4,
+        "y0": 262.44,
+        "x1": 420.84,
+        "y1": 273.24
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_2": {
+      "question": "SHOWING AGREEMENT: Seller gives Broker permission to show and sell the Property to the prospective buyer(s) whose name(s) is/are:",
+      "type": "multiline",
+      "page": 1,
+
+      "value": null,
+      "answer_locations": [
+      "rect": {
+        "x0": 63.36,
+        "y0": 315.36,
+        "x1": 576.36,
+        "y1": 326.15999999999997
+      },
+      "rect": {
+        "x0": 63.36,
+        "y0": 332.28,
+        "x1": 576.36,
+        "y1": 343.08
+      },
+            "rect": {
+        "x0": 63.36,
+        "y0": 350.28,
+        "x1": 531.0,
+        "y1": 361.08
+      }
+      ]
+    },
+
+    "text_17": {
+      "question": "41. Property located at",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 151.56,
+        "y0": 80.64,
+        "x1": 572.4,
+        "y1": 91.44
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_16": {
+      "question": "44. BROKER'S COMPENSATION: Seller shall pay Broker, as Broker's compensation,",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 436.68,
+        "y0": 140.76,
+        "x1": 491.4,
+        "y1": 151.56
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_15": {
+      "question": "selling price or$",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 142.2,
+        "y0": 158.76,
+        "x1": 278.28,
+        "y1": 169.56
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+
+
+
+    "checkbox_0": {
+      "question": "
+      Seller’s choice for closing services: ",
+      "type": "singlecheckbox",
+      "page": 2,
+
+      "value": null,
+      "possible_answers": [
+        {
+                "rect": {
+        "x0": 63.36,
+        "y0": 436.68,
+        "x1": 74.52,
+        "y1": 447.47999999999996
+      },
+          "value": "Seller directs Broker to arrange for a qualified closing agent to conduct the closing."
+        },
+        {
+                "rect": {
+        "x0": 63.36,
+        "y0": 452.88,
+        "x1": 74.52,
+        "y1": 463.68
+      },
+          "value": " Seller shall arrange for a qualified closing agent or Seller's attorney to conduct the closing."
+        }
+      ]
+    },
+
+    "text_14": {
+      "question": "Seller's initials",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 63.36,
+        "y0": 474.47999999999996,
+        "x1": 117.36,
+        "y1": 485.28
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_13": {
+      "question": "Seller's initials",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 143.28,
+        "y0": 474.47999999999996,
+        "x1": 197.28,
+        "y1": 485.28
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+
+
+    "checkbox_2": {
+      "question": "Seller represents and warrants that Seller Is IS NOT a foreign person (i.e., a non-resident alien individual,",
+      "type": "singlecheckbox",
+      "page": 2,
+
+      "value": null,
+      "possible_answers": [
+        {
+                "rect": {
+        "x0": 285.84,
+        "y0": 638.28,
+        "x1": 297.0,
+        "y1": 649.0799999999999
+      },
+          "answer": "IS NOT"
+        },
+        {
+                "rect": {
+        "x0": 258.12,
+        "y0": 638.28,
+        "x1": 269.28,
+        "y1": 649.0799999999999
+      },
+          "answer": "IS"
+        }
+      ]
+    },
+
+
+
+
+
+    "text_18": {
+      "question": "Property located at",
+      "type": "text",
+      "page": 3,
+      "rect": {
+        "x0": 151.56,
+        "y0": 84.6,
+        "x1": 572.4,
+        "y1": 95.39999999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+
+    "text_46": {
+      "question": "Property located at",
+      "type": "text",
+      "page": 4,
+      "rect": {
+        "x0": 151.56,
+        "y0": 84.6,
+        "x1": 572.4,
+        "y1": 95.39999999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_45": {
+      "question": "OTHER:",
+      "type": "multiline",
+      "page": 4,
+
+      "value": null,
+      "answers": [
+
+            "rect": {
+        "x0": 63.36,
+        "y0": 120.6,
+        "x1": 576.36,
+        "y1": 131.4
+      },
+            "rect": {
+        "x0": 63.36,
+        "y0": 138.6,
+        "x1": 576.36,
+        "y1": 149.4
+      },
+                  "rect": {
+        "x0": 102.96,
+        "y0": 106.56,
+        "x1": 576.36,
+        "y1": 117.36
+      },
+      ]
+    },
+
+
+
+    "text_42": {
+      "question": "ACCEPTED BY:",
+      "type": "text",
+      "page": 4,
+      "rect": {
+        "x0": 140.4,
+        "y0": 186.48,
+        "x1": 297.36,
+        "y1": 197.28
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_40": {
+      "question": "By: (Licensee’s Signature)",
+      "type": "text",
+      "page": 4,
+      "rect": {
+        "x0": 81.36,
+        "y0": 218.88,
+        "x1": 297.36,
+        "y1": 229.67999999999998
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_38": {
+      "question": "(Licensee’s Printed Name)",
+      "type": "text",
+      "page": 4,
+      "rect": {
+        "x0": 63.36,
+        "y0": 251.64,
+        "x1": 297.36,
+        "y1": 262.44
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_36": {
+      "question": "Date",
+      "type": "date",
+      "page": 4,
+      "rect": {
+        "x0": 63.36,
+        "y0": 284.03999999999996,
+        "x1": 297.36,
+        "y1": 294.84
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_34": {
+      "question": "Address",
+      "type": "text",
+      "page": 4,
+      "rect": {
+        "x0": 63.36,
+        "y0": 316.44,
+        "x1": 297.36,
+        "y1": 327.24
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+
+        "text_32": {
+      "question": "City/State/Zip",
+      "type": "text",
+      "page": 4,
+      "rect": {
+        "x0": 63.36,
+        "y0": 348.84,
+        "x1": 297.36,
+        "y1": 359.64
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_30": {
+      "question": "Phone",
+      "type": "text",
+      "page": 4,
+      "rect": {
+        "x0": 63.36,
+        "y0": 381.24,
+        "x1": 297.36,
+        "y1": 392.03999999999996
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_28": {
+      "question": "E-Mail Address",
+      "type": "text",
+      "page": 4,
+      "rect": {
+        "x0": 63.36,
+        "y0": 413.64,
+        "x1": 297.36,
+        "y1": 424.44
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_41": {
+      "question": "ACCEPTED BY: (Seller’s Signature)",
+      "type": "text",
+      "page": 4,
+      "rect": {
+        "x0": 410.03999999999996,
+        "y0": 186.48,
+        "x1": 576.36,
+        "y1": 197.28
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_39": {
+      "question": "By: Seller’s Printed Name",
+      "type": "text",
+      "page": 4,
+      "rect": {
+        "x0": 333.36,
+        "y0": 219.23999999999998,
+        "x1": 576.36,
+        "y1": 230.04
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_37": {
+      "question": "Date",
+      "type": "date",
+      "page": 4,
+      "rect": {
+        "x0": 333.36,
+        "y0": 251.64,
+        "x1": 576.36,
+        "y1": 262.44
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_35": {
+      "question": "Martial Status",
+      "type": "text",
+      "page": 4,
+      "rect": {
+        "x0": 333.36,
+        "y0": 284.03999999999996,
+        "x1": 576.36,
+        "y1": 294.84
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_33": {
+      "question": "Address",
+      "type": "text",
+      "page": 4,
+      "rect": {
+        "x0": 333.36,
+        "y0": 316.44,
+        "x1": 576.36,
+        "y1": 327.24
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_31": {
+      "question": "City/State/Zip",
+      "type": "text",
+      "page": 4,
+      "rect": {
+        "x0": 333.36,
+        "y0": 348.84,
+        "x1": 576.36,
+        "y1": 359.64
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_29": {
+      "question": "Phone",
+      "type": "text",
+      "page": 4,
+      "rect": {
+        "x0": 333.36,
+        "y0": 381.24,
+        "x1": 578.52,
+        "y1": 392.03999999999996
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_27": {
+      "question": "E-Mail Address",
+      "type": "text",
+      "page": 4,
+      "rect": {
+        "x0": 333.36,
+        "y0": 413.64,
+        "x1": 578.52,
+        "y1": 424.44
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_26": {
+      "question": "ACCEPTED BY (Seller): (Seller’s Signature)",
+      "type": "text",
+      "page": 4,
+      "rect": {
+        "x0": 410.03999999999996,
+        "y0": 469.79999999999995,
+        "x1": 576.0,
+        "y1": 480.59999999999997
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_25": {
+      "question": "Seller's Printed Name",
+      "type": "text",
+      "page": 4,
+      "rect": {
+        "x0": 333.36,
+        "y0": 502.2,
+        "x1": 576.0,
+        "y1": 513.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_24": {
+      "question": "Date",
+      "type": "date",
+      "page": 4,
+      "rect": {
+        "x0": 333.36,
+        "y0": 534.6,
+        "x1": 576.0,
+        "y1": 545.4
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_23": {
+      "question": "Marital Status",
+      "type": "text",
+      "page": 4,
+      "rect": {
+        "x0": 333.36,
+        "y0": 567.0,
+        "x1": 576.0,
+        "y1": 577.8
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_22": {
+      "question": "Address",
+      "type": "text",
+      "page": 4,
+      "rect": {
+        "x0": 333.36,
+        "y0": 599.4,
+        "x1": 576.0,
+        "y1": 610.1999999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_21": {
+      "question": "City/State/Zip",
+      "type": "text",
+      "page": 4,
+      "rect": {
+        "x0": 333.36,
+        "y0": 631.8,
+        "x1": 576.0,
+        "y1": 642.6
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_20": {
+      "question": "Phone",
+      "type": "text",
+      "page": 4,
+      "rect": {
+        "x0": 333.36,
+        "y0": 664.1999999999999,
+        "x1": 576.0,
+        "y1": 675.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+
+    "text_19": {
+      "question": "E-Mail Address",
+      "type": "text",
+      "page": 4,
+      "rect": {
+        "x0": 333.36,
+        "y0": 696.6,
+        "x1": 576.0,
+        "y1": 707.4
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+
+    "text_48": {
+      "question": "Signature",
+      "type": "text",
+      "page": 5,
+      "rect": {
+        "x0": 36.36,
+        "y0": 650.88,
+        "x1": 288.36,
+        "y1": 661.68
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_47": {
+      "question": "Signature",
+      "type": "text",
+      "page": 5,
+      "rect": {
+        "x0": 324.36,
+        "y0": 650.88,
+        "x1": 576.36,
+        "y1": 661.68
+      },
+      "value": null,
+      "possible_answers": null
+    }
+
+  }
+}

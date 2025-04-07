@@ -1,0 +1,175 @@
+metadata: 
+  timestamp: '2025-01-07T23:57:45.212332'
+  filename: 'MNAR - Addendum to Purchase Agreement_ Sale of Buyers Property Contingency (MN_APA_SBPC) (Rev. 08_2021).pdf'
+  document_title: 'AddnPA_SaleBuyerProp21.pdf'
+  number_of_pages: 1
+  versions:
+      1.25.1
+      1.25.2
+      20241211000001
+  summary: 'This is a document used in real estate transactions to provide potential buyers with essential information about a property.'
+summary: 
+  total_fields: 15
+  fields_by_type: 
+    checkbox: 2
+    text: 13
+  fields_by_page:
+    1: 15
+fields: {
+    "checkbox_0": {
+      "question": "Buyer's property Is Currently Listed Will Be Listed Within days with",
+      "type": "multicheckbox",
+      "page": 1,
+      "answers": [
+        {
+          "rect": {
+            "x0": 744.0,
+            "y0": 594.0,
+            "x1": 774.0,
+            "y1": 625.0
+          },
+          "value": "Yes"
+        },
+        {
+          "rect": {
+            "x0": 414.0,
+            "y0": 594.0,
+            "x1": 445.0,
+            "y1": 625.0
+          },
+          "value": "No"
+        }
+      ]
+    },
+    "text_1": {
+      "question": "Date",
+      "type": "text",
+      "page": 1,
+      "rect": { "x0": 1051.0, "y0": 305.0, "x1": 1601.0, "y1": 335.0 },
+      "value": "2025-01-01",
+      "possible_answers": [
+        { "answer": "2025-01-01" },
+        { "answer": "2025-01-02" },
+        { "answer": "2025-01-03" }
+      ]
+    },
+    "text_2": {
+      "question": "Addendum to Purchase Agreement Between Parties, Dated",
+      "type": "text",
+      "page": 1,
+      "rect": { "x0": 945.0, "y0": 388.0, "x1": 1601.0, "y1": 418.0 },
+      "rect": { "x0": 184.0, "y0": 472.0, "x1": 1583.0, "y1": 502.0 },
+      "value": "2025-01-01",
+      "possible_answers": [
+        { "answer": "2025-01-01" },
+        { "answer": "2025-02-01" },
+        { "answer": "2025-03-01" }
+      ]
+    },
+    "text_3": {
+      "question": "Buyer's Property Located at",
+      "type": "text",
+      "page": 1,
+      "rect": { "x0": 519.0, "y0": 538.0, "x1": 1583.0, "y1": 568.0 },
+      "value": "1234 Example St, Minneapolis, MN",
+      "possible_answers": [
+        { "answer": "1234 Example St, Minneapolis, MN" },
+        { "answer": "5678 Another Rd, St. Paul, MN" },
+        { "answer": "4321 Oak Ave, Duluth, MN" }
+      ]
+    },
+    "text_4": {
+      "question": "Buyer's Property Is Currently Listed Will Be Listed Within",
+      "type": "text",
+      "page": 1,
+      "rect": { "x0": 1109.0, "y0": 588.0, "x1": 1452.0, "y1": 618.0 },
+      "value": "Yes",
+      "possible_answers": [
+        { "answer": "Yes" },
+        { "answer": "No" }
+      ]
+    },
+    "text_5": {
+      "question": "Buyer's Property Is Currently Listed Will Be Listed Within With Broker",
+      "type": "text",
+      "page": 1,
+      "rect": { "x0": 176.0, "y0": 662.0, "x1": 1486.0, "y1": 692.0 },
+      "value": "Yes",
+      "possible_answers": [
+        { "answer": "Yes" },
+        { "answer": "No" }
+      ]
+    },
+    "text_6": {
+      "question": "Deliver to Seller, or Licensee Representing or Assisting Seller, at Any Time, But Not Later Than Business",
+      "type": "text",
+      "page": 1,
+      "rect": { "x0": 1314.0, "y0": 924.0, "x1": 1479.0, "y1": 954.0 },
+      "value": "Business Day",
+      "possible_answers": [
+        { "answer": "Business Day" },
+        { "answer": "Next Available Day" },
+        { "answer": "Within 5 Business Days" }
+      ]
+    },
+    "text_7": {
+      "question": "Other:",
+      "type": "text",
+      "page": 1,
+      "rect": { "x0": 289.0, "y0": 1690.0, "x1": 1601.0, "y1": 1720.0 },
+      "rect": { "x0": 176.0, "y0": 1728.0, "x1": 1601.0, "y1": 1758.0 },
+      "value": "Other Information",
+      "possible_answers": [
+        { "answer": "Additional Information" },
+        { "answer": "No Additional Information" }
+      ]
+    },
+    "text_8": {
+      "question": "Fill Seller Date Here",
+      "type": "text",
+      "page": 1,
+      "rect": { "x0": 176.0, "y0": 1812.0, "x1": 826.0, "y1": 1842.0 },
+      "value": "2025-01-01",
+      "possible_answers": [
+        { "answer": "2025-01-01" },
+        { "answer": "2025-02-01" },
+        { "answer": "2025-03-01" }
+      ]
+    },
+    "text_9": {
+      "question": "Fill Buyer Date Here",
+      "type": "text",
+      "page": 1,
+      "rect": { "x0": 926.0, "y0": 1812.0, "x1": 1601.0, "y1": 1842.0 },
+      "value": "2025-01-01",
+      "possible_answers": [
+        { "answer": "2025-01-01" },
+        { "answer": "2025-01-15" },
+        { "answer": "2025-02-11" }
+      ]
+    },
+    "text_10": {
+      "question": "Fill Seller Date Here",
+      "type": "text",
+      "page": 1,
+      "rect": { "x0": 176.0, "y0": 1918.0, "x1": 826.0, "y1": 1948.0 },
+      "value": "2025-01-01",
+      "possible_answers": [
+        { "answer": "2025-01-01" },
+        { "answer": "2025-01-15" },
+        { "answer": "2025-02-11" }
+      ]
+    },
+    "text_11": {
+      "question": "Fill Buyer Date Here",
+      "type": "text",
+      "page": 1,
+      "rect": { "x0": 926.0, "y0": 1918.0, "x1": 1601.0, "y1": 1948.0 },
+      "value": "2025-01-01",
+      "possible_answers": [
+        { "answer": "2025-01-01" },
+        { "answer": "2025-01-02" },
+        { "answer": "2025-01-03" }
+      ]
+    }
+  }

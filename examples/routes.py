@@ -10,6 +10,7 @@ import markdown
 from markdown.extensions import fenced_code, tables, nl2br
 from datetime import datetime
 from typing import List
+import os
 
 from examples.models import Config
 from fastapi_admin.app import app
@@ -434,7 +435,6 @@ async def messages(
             if listing_id:
                 properties_collection = db.properties
                 property_info = await properties_collection.find_one({"ListingId": listing_id})
-                print("property_info: ", property_info)
             
             # Get messages array
             messages_array = user_doc.get("messages", [])
@@ -464,6 +464,41 @@ async def messages(
                 if message.get("media"):
                     # Remove any leading slash to ensure proper URL construction
                     message["media"] = message["media"].lstrip("/")
+            
+            # Mark last message as read if it's not a response and not already seen
+            if messages_array and not messages_array[-1].get("is_response") and not messages_array[-1].get("is_seen"):
+                try:
+                    message_id = messages_array[-1].get("message_id")  # Get the message ID
+                    filter_doc = {
+                        "user_id": user_id,
+                        "messages": {
+                            "$elemMatch": {
+                                "message_id": message_id,
+                                "is_seen": False
+                            }
+                        }
+                    }
+                    if listing_id:
+                        filter_doc["listing_id"] = listing_id
+                        
+                    update_doc = {
+                        "$set": {
+                            "messages.$[elem].is_seen": True
+                        }
+                    }
+                    
+                    array_filters = [{"elem.message_id": message_id}]
+                    
+                    result = await messages_collection.update_one(
+                        filter_doc, 
+                        update_doc,
+                        array_filters=array_filters
+                    )
+                    if result.modified_count > 0:
+                        messages_array[-1]["is_seen"] = True
+                        logger.info(f"Message {message_id} marked as read in database")
+                except Exception as e:
+                    logger.error(f"Error marking message as read: {str(e)}")
             
             return templates.TemplateResponse(
                 "messages.html",
@@ -574,46 +609,29 @@ async def send_message(
         # Redirect back to the messages page
         redirect_url = f"/admin/messages?user_id={user_id}{f'&listing_id={listing_id}' if listing_id != 'None' else ''}"
         
-        # Handle file upload if present
-        media_url = None
-        if file:
-            # For now, we'll use a dummy API endpoint
-            # In production, replace this with the actual file upload API
-            dummy_upload_url = "https://api.airebrokers.com/project-api/api1/upload"
-            
-            # Create a dummy response with a fake URL
-            # In production, this would be the actual API response
-            media_url = f"/uploads/{file.filename}"
-            
-            # In production, you would make an actual API call here:
-            # async with httpx.AsyncClient() as client:
-            #     files = {"file": (file.filename, file.file, file.content_type)}
-            #     response = await client.post(dummy_upload_url, files=files)
-            #     response.raise_for_status()
-            #     media_url = response.json()["url"]
-        
-        # Prepare the payload for the customer service reply
-        payload = {
-            "user_id": user_id
-        }
-        
-        # Add message if provided
+        # Prepare the form data
+        form_data = {}
         if message and message.strip():
-            payload["message"] = message.strip()
-        
-        # Add media URL if available
-        if media_url:
-            payload["media"] = media_url
+            form_data["message"] = message.strip()
+        form_data["user_id"] = user_id
+        if listing_id:
+            form_data["listing_id"] = listing_id
         
         # Make the API call to send the message
-        api_url = "https://api.airebrokers.com/project-api/api1/user/customer-service-reply"
+        api_url = "https://api.airebrokers.com/project-api/api1/user/customerservicereply"
         headers = {
-            "Authorization": "Bearer 9xplm2q5v4tsd93wykbzfac8no",
-            "Content-Type": "application/json"
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0MzkwODQ4NCwianRpIjoiNTk4MDk4NDctZGM2NS00YTRiLTk2NjAtNGZmZWE1Mjc1NDM2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImZlZGlzbGltZW45OEBnbWFpbC5jb20iLCJuYmYiOjE3NDM5MDg0ODQsImNzcmYiOiI3N2FlNWFlMi04ZDBjLTRmN2ItYTk1MC00MjYxNDIyNWEzMjMiLCJleHAiOjE3NDUyMDQ0ODR9.yWdoGWl8bxNLyqXOtA7fCZpzv4dyJc8yossM8qly8zU"
         }
         
         async with httpx.AsyncClient() as client:
-            response = await client.post(api_url, json=payload, headers=headers)
+            if file:
+                # If there's a file, send as multipart form
+                files = {"media_file": (file.filename, file.file, file.content_type)}
+                response = await client.post(api_url, headers=headers, data=form_data, files=files)
+            else:
+                # If no file, send as regular form data
+                response = await client.post(api_url, headers=headers, data=form_data)
+            
             response.raise_for_status()
             
         return RedirectResponse(url=redirect_url, status_code=HTTP_303_SEE_OTHER)
@@ -750,7 +768,6 @@ async def send_notification(
             "created_at": datetime.now(),
             "status": "pending",
         }
-        print(notification)
         # Add target-specific fields
         if target_type == "individual" and target_users:
             notification["target_users"] = target_users
@@ -776,5 +793,107 @@ async def send_notification(
     except Exception as e:
         logger.error(f"Error creating notification: {str(e)}")
         raise HTTPException(status_code=HTTP_500_INTERNAL_SERVER_ERROR, detail="Failed to create notification")
+
+@app.get("/yaml-editor")
+async def yaml_editor(
+    request: Request,
+    resources=Depends(get_resources),
+    admin=Depends(get_current_admin),
+    file_path: str = Query(None),
+):
+    try:
+        # Initialize variables
+        yaml_content = ""
+        yaml_files = {}
+        base_path = "yamls"
+        
+        # Scan the yamls directory for cities and their YAML files
+        try:
+            for city in os.listdir(base_path):
+                city_path = os.path.join(base_path, city)
+                if os.path.isdir(city_path):
+                    yaml_files[city] = []
+                    for file in os.listdir(city_path):
+                        if file.endswith(('.yaml', '.yml')):
+                            yaml_files[city].append(file)
+        except FileNotFoundError:
+            yaml_files = {}
+            
+        # If a specific file is requested, load its content
+        if file_path:
+            try:
+                with open(file_path, "r") as f:
+                    yaml_content = f.read()
+            except FileNotFoundError:
+                raise HTTPException(status_code=404, detail="YAML file not found")
+        
+        return templates.TemplateResponse(
+            "yaml-editor.html",
+            context={
+                "request": request,
+                "resources": resources,
+                "resource_label": "YAML Editor",
+                "page_pre_title": "Contract Template Questions",
+                "page_title": "YAML Editor",
+                "yaml_content": yaml_content,
+                "yaml_files": yaml_files,
+                "selected_file": file_path,
+            },
+        )
+    except Exception as e:
+        logger.error(f"Error accessing YAML editor: {str(e)}")
+        return templates.TemplateResponse(
+            "yaml-editor.html",
+            context={
+                "request": request,
+                "resources": resources,
+                "resource_label": "YAML Editor",
+                "page_pre_title": "Contract Template Questions",
+                "page_title": "YAML Editor",
+                "error": f"Failed to load YAML editor: {str(e)}",
+                "yaml_content": "",
+                "yaml_files": {},
+                "selected_file": None,
+            },
+        )
+
+@app.post("/yaml-editor/save")
+async def save_yaml(
+    request: Request,
+    yaml_content: str = Form(...),
+    file_path: str = Form(...),
+    admin=Depends(get_current_admin),
+):
+    try:
+        # Validate YAML syntax
+        import yaml
+        try:
+            yaml.safe_load(yaml_content)
+        except yaml.YAMLError as e:
+            raise HTTPException(status_code=400, detail=f"Invalid YAML syntax: {str(e)}")
+
+        # Ensure the directory exists
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+
+        # Remove any trailing spaces and normalize line endings
+        cleaned_content = "\n".join(line.rstrip() for line in yaml_content.splitlines())
+        
+        # Save to file with normalized line endings
+        with open(file_path, "w", newline="\n") as f:
+            f.write(cleaned_content)
+
+        return RedirectResponse(
+            url=f"/admin/yaml-editor?file_path={file_path}",
+            status_code=HTTP_303_SEE_OTHER
+        )
+
+    except HTTPException as he:
+        raise he
+    except Exception as e:
+        logger.error(f"Error saving YAML: {str(e)}")
+        raise HTTPException(
+            status_code=HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to save YAML: {str(e)}"
+        )
 
 

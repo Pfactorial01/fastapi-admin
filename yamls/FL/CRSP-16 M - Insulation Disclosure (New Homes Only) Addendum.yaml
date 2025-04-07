@@ -1,0 +1,324 @@
+{
+  "metadata": {
+    "timestamp": "2025-01-22T00:36:04.843729",
+    "filename": "CRSP-16_M_-_Insulation_Disclosure_New_Homes_Only_Addendum.pdf",
+    "document_title": "CRSP16.M. insulation disclosure addendum.pdf",
+    "number_of_pages": 1,
+    "versions": {
+      "pymupdf": [
+        "1.25.1",
+        "1.25.2",
+        "20241211000001"
+      ]
+    },
+    "summary": "This is a document used in real estate transactions to provide potential buyers with essential information about a property."
+  },
+  "summary": {
+    "total_fields": 22,
+    "fields_by_type": {
+      "text": 22
+    },
+    "fields_by_page": {
+      "1": 22
+    }
+  },
+  "fields": {
+        "text_9": {
+      "question": "If initialed by all parties, the terms below will be incorporated into the Contract for Residential Sale and Purchase Contact Person  Contact Person between(Seller)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 95.03999999999999,
+        "y0": 99.72,
+        "x1": 533.16,
+        "y1": 110.52
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_8": {
+      "question": "and (Buyer)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 73.8,
+        "y0": 115.56,
+        "x1": 532.0799999999999,
+        "y1": 126.36
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_7": {
+      "question": "concerning the Property described as (line 1 )",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 222.84,
+        "y0": 131.76,
+        "x1": 576.36,
+        "y1": 142.56
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_6": {
+      "question": "concerning the Property described as (line 2)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 54.36,
+        "y0": 147.6,
+        "x1": 576.36,
+        "y1": 158.4
+      },
+      "value": null,
+      "possible_answers": null
+    },
+       "text_5": {
+      "question": "(_____) () - () () M. Insulation Disclosure (New Homes Only):",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 56.16,
+        "y0": 172.44,
+        "x1": 85.67999999999999,
+        "y1": 183.23999999999998
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_4": {
+      "question": "() (_____) - () () M. Insulation Disclosure (New Homes Only):",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 93.6,
+        "y0": 172.44,
+        "x1": 122.75999999999999,
+        "y1": 183.23999999999998
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_3": {
+      "question": "() () - (_____) () M. Insulation Disclosure (New Homes Only):",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 136.79999999999998,
+        "y0": 172.44,
+        "x1": 166.32,
+        "y1": 183.23999999999998
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_2": {
+      "question": "() () - () (_____) M. Insulation Disclosure (New Homes Only):",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 174.23999999999998,
+        "y0": 172.44,
+        "x1": 203.4,
+        "y1": 183.23999999999998
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_13": {
+      "question": "Interior Walls (type)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 336.24,
+        "y0": 230.76,
+        "x1": 420.47999999999996,
+        "y1": 241.56
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_12": {
+      "question": "Interior Walls (Thickness)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 477.35999999999996,
+        "y0": 230.76,
+        "x1": 576.36,
+        "y1": 241.56
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_11": {
+      "question": "Flat Ceiling Area (type)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 336.24,
+        "y0": 248.39999999999998,
+        "x1": 420.47999999999996,
+        "y1": 259.2
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_10": {
+      "question": "Flat Ceiling Area (Thickness)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 477.35999999999996,
+        "y0": 248.39999999999998,
+        "x1": 576.36,
+        "y1": 259.2
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_9": {
+      "question": "Sloped Ceiling Area (type)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 336.24,
+        "y0": 266.03999999999996,
+        "x1": 420.47999999999996,
+        "y1": 276.84
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_8": {
+      "question": "Sloped Ceiling Area (Thickness)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 477.35999999999996,
+        "y0": 265.68,
+        "x1": 576.36,
+        "y1": 276.48
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_7": {
+      "question": "Common Walls between House & Garage (type)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 336.24,
+        "y0": 283.32,
+        "x1": 420.47999999999996,
+        "y1": 294.12
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+        "text_6": {
+      "question": "Common Walls between House & Garage (Thickness)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 477.35999999999996,
+        "y0": 283.32,
+        "x1": 576.36,
+        "y1": 294.12
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_5": {
+      "question": "Exterior Walls (type)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 336.24,
+        "y0": 300.96,
+        "x1": 420.47999999999996,
+        "y1": 311.76
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_4": {
+      "question": "Exterior Walls (Thickness)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 477.35999999999996,
+        "y0": 300.59999999999997,
+        "x1": 576.36,
+        "y1": 311.4
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_3": {
+      "question": "Other",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 84.6,
+        "y0": 318.59999999999997,
+        "x1": 242.28,
+        "y1": 329.4
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_2": {
+      "question": "Other (Type)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 272.88,
+        "y0": 318.59999999999997,
+        "x1": 303.12,
+        "y1": 329.4
+      },
+      "value": null,
+      "possible_answers": null
+    },
+  "text_1": {
+      "question": "Other (Thickness)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 335.52,
+        "y0": 318.59999999999997,
+        "x1": 420.47999999999996,
+        "y1": 329.4
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_0": {
+      "question": "Other (Manufacturer R-Value)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 477.35999999999996,
+        "y0": 318.24,
+        "x1": 576.36,
+        "y1": 329.03999999999996
+      },
+      "value": null,
+      "possible_answers": null
+    },
+  
+
+
+
+
+
+  }
+}

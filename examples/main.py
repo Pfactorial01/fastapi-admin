@@ -23,7 +23,7 @@ from examples import settings
 from examples.constants import BASE_DIR
 from examples.models import Admin, Category, Product, Config
 from examples.providers import LoginProvider
-from examples.scheduler import scheduler  # Import the scheduler
+from examples.scheduler import scheduler
 from fastapi_admin.app import app as admin_app
 from fastapi_admin.exceptions import (
     forbidden_error_exception,

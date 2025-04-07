@@ -486,12 +486,12 @@
 		}
 
 		// Start periodic refresh every 10 seconds for contacts
-		setInterval(refreshContactList, 50000);
+		setInterval(refreshContactList, 5000);
 
 		// Start periodic refresh every 5 seconds for messages if a contact is selected
 		const currentParams = new URLSearchParams(window.location.search);
 		if (currentParams.get("user_id")) {
-			setInterval(refreshMessages, 50000);
+			setInterval(refreshMessages, 5000);
 		}
 
 		// Handle file upload display and form validation

@@ -1,0 +1,126 @@
+fields: {
+      "text_8": {
+      "question": "Date",
+      "type": "date",
+      "page": 1,
+      "rect": {
+        "x0": 378.36,
+        "y0": 81.36,
+        "x1": 575.64,
+        "y1": 92.16
+      },
+      "value": null,
+      "possible_answers": null
+    },  
+      "text_7": {
+      "question": "Time",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 378.36,
+        "y0": 99.36,
+        "x1": 575.64,
+        "y1": 110.16
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_6": {
+      "question":  "the amount of $",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 139.32,
+        "y0": 147.23999999999998,
+        "x1": 336.24,
+        "y1": 158.04
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_5": {
+      "question": "check number",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 413.64,
+        "y0": 147.23999999999998,
+        "x1": 569.88,
+        "y1": 158.04
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_4": {
+      "question": "related to the Purchase Agreement dated",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 248.39999999999998,
+        "y0": 171.35999999999999,
+        "x1": 454.32,
+        "y1": 182.16
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_3": {
+      "question": "for the property located at street",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 63.36,
+        "y0": 195.48,
+        "x1": 576.36,
+        "y1": 206.28
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_2": {
+      "question": "for the property located at  City/State/Zip",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 63.36,
+        "y0": 227.88,
+        "x1": 576.36,
+        "y1": 238.67999999999998
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_1": {
+      "question": "Buyer's name",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 63.36,
+        "y0": 326.15999999999997,
+        "x1": 351.36,
+        "y1": 336.96
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_0": {
+      "question": "Signature Buyer",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 63.36,
+        "y0": 364.68,
+        "x1": 351.36,
+        "y1": 375.47999999999996
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+
+
+
+
+
+
+  }

@@ -1,0 +1,28 @@
+fields: {
+      "text_1": {
+      "question": "Signature",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 36.36,
+        "y0": 650.88,
+        "x1": 288.36,
+        "y1": 661.68
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_0": {
+      "question": "Date",
+      "type": "date",
+      "page": 1,
+      "rect": {
+        "x0": 324.36,
+        "y0": 650.88,
+        "x1": 576.36,
+        "y1": 661.68
+      },
+      "value": null,
+      "possible_answers": null
+    }
+  }

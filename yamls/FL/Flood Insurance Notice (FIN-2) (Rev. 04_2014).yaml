@@ -1,0 +1,82 @@
+{
+  "metadata": {
+    "timestamp": "2025-01-21T22:50:23.502562",
+    "filename": "Flood_Insurance_Notice_FIN-2_Rev._04_2014.pdf",
+    "document_title": "Flood Insurance Notice_FIN-2.pdf",
+    "number_of_pages": 1,
+    "versions": {
+      "pymupdf": [
+        "1.25.1",
+        "1.25.2",
+        "20241211000001"
+      ]
+    },
+    "summary": "This is a document used in real estate transactions to provide potential buyers with essential information about a property."
+  },
+  "summary": {
+    "total_fields": 4,
+    "fields_by_type": {
+      "text": 4
+    },
+    "fields_by_page": {
+      "1": 4
+    }
+  },
+  "fields": {
+        "text_3": {
+      "question": "Buyer",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 72.0,
+        "y0": 442.44,
+        "x1": 283.68,
+        "y1": 453.24
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_2": {
+      "question": "Date",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 396.0,
+        "y0": 442.44,
+        "x1": 535.68,
+        "y1": 453.24
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_1": {
+      "question": "Buyer",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 72.0,
+        "y0": 500.03999999999996,
+        "x1": 283.68,
+        "y1": 510.84
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_0": {
+      "question": "Date",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 396.0,
+        "y0": 500.03999999999996,
+        "x1": 535.68,
+        "y1": 510.84
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+
+
+  }
+}

@@ -265,7 +265,13 @@
 							type="datetime-local"
 							class="form-control"
 							name="scheduled_for"
+							id="scheduledFor"
+							step="3600"
 						/>
+						<small class="form-text text-muted"
+							>Notifications are sent on the hour (e.g. 9:00,
+							10:00, etc.)</small
+						>
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -277,7 +283,7 @@
 						Cancel
 					</button>
 					<button type="submit" class="btn btn-primary ms-auto">
-						<i class="ti ti-send me-2"></i>Send Notification
+						<i class="ti ti-send me-2"></i>Create Notification
 					</button>
 				</div>
 			</form>
@@ -291,13 +297,43 @@
 		const targetType = document.getElementById("targetType");
 		const userSelection = document.getElementById("userSelection");
 		const radiusSelection = document.getElementById("radiusSelection");
+		const scheduledFor = document.getElementById("scheduledFor");
 
+		// Handle target type changes
 		targetType.addEventListener("change", function () {
 			userSelection.style.display =
 				this.value === "individual" ? "block" : "none";
 			radiusSelection.style.display =
 				this.value === "radius" ? "block" : "none";
 		});
+
+		// Handle scheduled_for input
+		scheduledFor.addEventListener("change", function () {
+			if (this.value) {
+				// Parse the datetime
+				const date = new Date(this.value);
+				// Set minutes and seconds to 0
+				date.setMinutes(0);
+				date.setSeconds(0);
+
+				// Format back to datetime-local format
+				const year = date.getFullYear();
+				const month = String(date.getMonth() + 1).padStart(2, "0");
+				const day = String(date.getDate()).padStart(2, "0");
+				const hours = String(date.getHours()).padStart(2, "0");
+
+				// Update the input value
+				this.value = `${year}-${month}-${day}T${hours}:00`;
+			}
+		});
+
+		// Set min datetime to next hour
+		const now = new Date();
+		now.setHours(now.getHours() + 1);
+		now.setMinutes(0);
+		now.setSeconds(0);
+		now.setMilliseconds(0);
+		scheduledFor.min = now.toISOString().slice(0, 16);
 	});
 </script>
 

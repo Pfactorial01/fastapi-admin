@@ -1,0 +1,102 @@
+{
+    "metadata": {
+      "timestamp": "2025-01-21T07:50:00.317723",
+      "filename": "Buyers_Request_For_Repairs_or_Replacement_BRR-1.pdf",
+      "document_title": "BRR-1.pdf",
+      "number_of_pages": 1,
+      "versions": {
+        "pymupdf": [
+          "1.25.1",
+          "1.25.2",
+          "20241211000001"
+        ]
+      },
+      "summary": "This is a document used in real estate transactions to provide potential buyers with essential information about a property."
+    },
+    "summary": {
+      "total_fields": 5,
+      "fields_by_type": {
+        "text": 5
+      },
+      "fields_by_page": {
+        "1": 5
+      }
+    },
+    fields: {
+       "text_4": {
+            "question": "Property Address:",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 145.07999999999998,
+                    "y0": 122.75999999999999,
+                        "x1": 558.36,
+                            "y1": 133.56
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_3": {
+            "question": "Buyer",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 54.0,
+                    "y0": 636.48,
+                        "x1": 321.84,
+                            "y1": 647.28
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_2": {
+            "question": "Date",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 374.4,
+                    "y0": 636.48,
+                        "x1": 558.36,
+                            "y1": 647.28
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_1": {
+            "question": "Buyer",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 54.0,
+                    "y0": 682.56,
+                        "x1": 321.84,
+                            "y1": 693.36
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_0": {
+            "question": "Date",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 374.4,
+                    "y0": 682.56,
+                        "x1": 558.36,
+                            "y1": 693.36
+            },
+            "value": null,
+                "possible_answers": null
+        },
+
+
+
+
+
+
+
+
+    }
+
+  }
+

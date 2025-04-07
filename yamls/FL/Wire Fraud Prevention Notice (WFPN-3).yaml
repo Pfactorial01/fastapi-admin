@@ -1,0 +1,126 @@
+{
+    metadata: {
+        "timestamp": "2025-01-20T09:17:06.756125",
+            "filename": "Wire_Fraud_Prevention_Notice_WFPN-3.pdf",
+                "document_title": "Wire Fraud Prevention Notice (WFPN-3).pdf",
+                    "number_of_pages": 1,
+                        "versions": {
+            "pymupdf": [
+                "1.25.1",
+                "1.25.2",
+                "20241211000001"
+            ]
+        },
+        "summary": "This is a document used in real estate transactions to provide potential buyers with essential information about a property."
+    },
+    summary: {
+        "total_fields": 7,
+            "fields_by_type": {
+            "text": 7
+        },
+        "fields_by_page": {
+            "1": 7
+        }
+    },
+"fields": {
+        "text_6": {
+            "question": "Brokerage Name:",
+            "type": "text",
+            "page": 1,
+            "rect": {
+              "x0": 117.36,
+              "y0": 113.03999999999999,
+              "x1": 401.4,
+              "y1": 123.83999999999999
+            },
+            "value": null,
+            "possible_answers": null
+          },
+          "text_5": {
+            "question": "Buyer/Seller Name (Print):",
+            "type": "text",
+            "page": 1,
+            "rect": {
+              "x0": 155.51999999999998,
+              "y0": 382.68,
+              "x1": 395.28,
+              "y1": 393.47999999999996
+            },
+            "value": null,
+            "possible_answers": null
+          },
+          "text_4": {
+            "question": "Buyer/Seller Signature:",
+            "type": "text",
+            "page": 1,
+            "rect": {
+              "x0": 141.84,
+              "y0": 408.96,
+              "x1": 398.15999999999997,
+              "y1": 419.76
+            },
+            "value": null,
+            "possible_answers": null
+          },
+          "text_3": {
+            "question": "Date:",
+            "type": "text",
+            "page": 1,
+            "rect": {
+              "x0": 62.64,
+              "y0": 435.59999999999997,
+              "x1": 302.4,
+              "y1": 446.4
+            },
+            "value": null,
+            "possible_answers": null
+          },
+         
+          "text_2": {
+            "question": "Buyer/Seller Name (Print):",
+            "type": "text",
+            "page": 1,
+            "rect": {
+              "x0": 155.51999999999998,
+              "y0": 461.88,
+              "x1": 395.28,
+              "y1": 472.68
+            },
+            "value": null,
+            "possible_answers": null
+          },
+          "text_1": {
+            "question": "Buyer/Seller Signature:",
+            "type": "text",
+            "page": 1,
+            "rect": {
+              "x0": 141.84,
+              "y0": 488.52,
+              "x1": 398.15999999999997,
+              "y1": 499.32
+            },
+            "value": null,
+            "possible_answers": null
+          },
+      "text_0": {
+        "question": "Date:",
+        "type": "text",
+        "page": 1,
+        "rect": {
+          "x0": 62.64,
+          "y0": 514.8,
+          "x1": 302.4,
+          "y1": 525.6
+        },
+        "value": null,
+        "possible_answers": null
+      },
+     
+   
+   
+     
+ 
+    }
+
+}
+

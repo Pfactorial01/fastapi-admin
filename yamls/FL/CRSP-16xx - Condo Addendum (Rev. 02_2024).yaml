@@ -1,0 +1,684 @@
+{
+    "metadata": {
+        "timestamp": "2025-01-24T06:58:03.490201",
+            "filename": "CRSP-16xx_-_Condo_Addendum_Rev._02_2024_1.pdf",
+                "document_title": "CRSP16xx.F.condo addendum.pdf",
+                    "number_of_pages": 3,
+                        "versions": {
+            "pymupdf": [
+                "1.25.1",
+                "1.25.2",
+                "20241211000001"
+            ]
+        },
+        "summary": "This is a document used in real estate transactions to provide potential buyers with essential information about a property."
+    },
+    "summary": {
+        "total_fields": 48,
+            "fields_by_type": {
+            "checkbox": 6,
+                "text": 42
+        },
+        "fields_by_page": {
+            "1": 22,
+                "2": 16,
+                    "3": 10
+        }
+    },
+    "fields": {
+        "text_19": {
+            "question": "If initialed by all parties, the terms below will be incorporated into the Contract for Residential Sale and Purchase Between (Seller Name)",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 96.11999999999999,
+                    "y0": 97.56,
+                        "x1": 533.16,
+                            "y1": 108.36
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_18": {
+            "question": " and (Buyer Name)",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 73.8,
+                    "y0": 115.19999999999999,
+                        "x1": 531.72,
+                            "y1": 126.0
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_17": {
+            "question": "concerning the Property described as",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 222.84,
+                    "y0": 132.84,
+                        "x1": 576.36,
+                            "y1": 143.64
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_16": {
+            "question": "concerning the Property described as (Line 2)",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 54.36,
+                    "y0": 150.12,
+                        "x1": 576.36,
+                            "y1": 160.92
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_15": {
+            "question": "(___)",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 57.599999999999994,
+                    "y0": 173.88,
+                        "x1": 86.39999999999999,
+                            "y1": 184.68
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_14": {
+            "question": "(___)",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 94.32,
+                    "y0": 173.88,
+                        "x1": 124.56,
+                            "y1": 184.68
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_13": {
+            "question": "(___)",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 138.96,
+                    "y0": 173.88,
+                        "x1": 168.84,
+                            "y1": 184.68
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_12": {
+            "question": "(___)",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 176.76,
+                    "y0": 173.88,
+                        "x1": 207.0,
+                            "y1": 184.68
+            },
+            "value": null,
+                "possible_answers": null
+        },
+
+
+        "text_11": {
+            "question": "If Buyer has already received the required documents, indicate receipt by initialing here:",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 314.28,
+                    "y0": 294.84,
+                        "x1": 344.88,
+                            "y1": 305.64
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_9": {
+            "question": "and indicate date of receipt here:",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 72.0,
+                    "y0": 306.36,
+                        "x1": 183.95999999999998,
+                            "y1": 317.15999999999997
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_8": {
+            "question": "Buyer will apply for approval within",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 72.0,
+                    "y0": 347.03999999999996,
+                        "x1": 106.2,
+                            "y1": 357.84
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_7": {
+            "question": "Parking Space; Boat Slip; Storage Unit: Seller will assign to Buyer at Closing parking space(s) #",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 517.68,
+                    "y0": 479.88,
+                        "x1": 573.84,
+                            "y1": 490.68
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_6": {
+            "question": "boat slip(s) #",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 129.24,
+                    "y0": 491.4,
+                        "x1": 185.4,
+                            "y1": 502.2
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_5": {
+            "question": "and storage unit(s) #",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 282.24,
+                    "y0": 491.4,
+                        "x1": 338.4,
+                            "y1": 502.2
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_4": {
+            "question": "Closing. Seller represents that he/she is not aware of any pending special or other assessment that has been levied by the Association, except as follows:",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 240.84,
+                    "y0": 589.3199999999999,
+                        "x1": 576.36,
+                            "y1": 600.12
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_3": {
+            "question": "Closing. Seller represents that he/she is not aware of any pending special or other assessment that has been levied by the Association, except as follows: (Line 2)",
+
+
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 72.36,
+                    "y0": 603.72,
+                        "x1": 576.36,
+                            "y1": 614.52
+            },
+            "value": null,
+                "possible_answers": null
+        },
+
+
+        "checkbox_0": {
+            "question": "36 due on or after Closing. If special assessments may be paid in installments DSeller Buyer (Buyer if left blank)",
+                "type": "checkbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 451.08,
+                                        "y0": 556.92,
+                                        "x1": 457.91999999999996,
+                                        "y1": 563.4
+                                    },
+                                    "value": "Seller"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 408.96,
+                                        "y0": 556.92,
+                                        "x1": 415.8,
+                                        "y1": 563.4
+                                    },
+                                    "value": "Buyer"
+                                }
+                            ]
+        },
+        "text_2": {
+            "question": "Seller represents that he/she is not aware of any special or other assessment that has been an item on the agenda or reported in the minutes of the Association within 12 months before Effective Date (“Pending”), except as follows:",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 72.36,
+                    "y0": 638.28,
+                        "x1": 576.36,
+                            "y1": 649.0799999999999
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_1": {
+            "question": "(Line 2)",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 72.36,
+                    "y0": 652.68,
+                        "x1": 576.36,
+                            "y1": 663.48
+            },
+            "value": null,
+                "possible_answers": null
+        },
+
+
+        "text_0": {
+            "question": "Seller represents that he/she is not aware of pending or anticipated litigation affecting the Property or the common elements, except as follows:",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 197.28,
+                    "y0": 704.88,
+                        "x1": 576.36,
+                            "y1": 715.68
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_32": {
+            "question": "Condominium Association Addendum (Continued)",
+                "type": "text",
+                    "page": 2,
+                        "rect": {
+                "x0": 72.36,
+                    "y0": 54.36,
+                        "x1": 576.36,
+                            "y1": 65.16
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_31": {
+            "question": "Seller represents that the current assessments, maintenance, and/or association fees are: $",
+                "type": "text",
+                    "page": 2,
+                        "rect": {
+                "x0": 77.75999999999999,
+                    "y0": 83.52,
+                        "x1": 162.35999999999999,
+                            "y1": 94.32
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_30": {
+            "question": "$ per",
+                "type": "text",
+                    "page": 2,
+                        "rect": {
+                "x0": 176.76,
+                    "y0": 83.52,
+                        "x1": 270.36,
+                            "y1": 94.32
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_29": {
+            "question": "$ per to",
+                "type": "text",
+                    "page": 2,
+                        "rect": {
+                "x0": 278.64,
+                    "y0": 83.52,
+                        "x1": 576.36,
+                            "y1": 94.32
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_28": {
+            "question": "$",
+                "type": "text",
+                    "page": 2,
+                        "rect": {
+                "x0": 77.75999999999999,
+                    "y0": 97.92,
+                        "x1": 162.35999999999999,
+                            "y1": 108.72
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_27": {
+            "question": "$ per.",
+                "type": "text",
+                    "page": 2,
+                        "rect": {
+                "x0": 176.76,
+                    "y0": 97.92,
+                        "x1": 270.36,
+                            "y1": 108.72
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_26": {
+            "question": "$ per. to",
+                "type": "text",
+                    "page": 2,
+                        "rect": {
+                "x0": 278.64,
+                    "y0": 97.92,
+                        "x1": 576.36,
+                            "y1": 108.72
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_25": {
+            "question": "$",
+                "type": "text",
+                    "page": 2,
+                        "rect": {
+                "x0": 77.75999999999999,
+                    "y0": 112.32,
+                        "x1": 162.35999999999999,
+                            "y1": 123.11999999999999
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_24": {
+            "question": "$ per.",
+                "type": "text",
+                    "page": 2,
+                        "rect": {
+                "x0": 176.76,
+                    "y0": 112.32,
+                        "x1": 270.36,
+                            "y1": 123.11999999999999
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_23": {
+            "question": "$ per. to",
+                "type": "text",
+                    "page": 2,
+                        "rect": {
+                "x0": 278.64,
+                    "y0": 112.32,
+                        "x1": 576.36,
+                            "y1": 123.11999999999999
+            },
+            "value": null,
+                "possible_answers": null
+        },
+
+
+
+
+
+
+
+
+
+
+        "checkbox_2": {
+            "question": "and that there |__|is |__|is not a recreation or land lease with the Property.",
+                "type": "checkbox",
+                    "page": 2,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 161.64,
+                                        "y0": 129.24,
+                                        "x1": 168.48,
+                                        "y1": 135.72
+                                    },
+                                    "value": "Is"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 139.32,
+                                        "y0": 129.24,
+                                        "x1": 145.79999999999998,
+                                        "y1": 135.72
+                                    },
+                                    "value": "Is Not"
+                                }
+                            ]
+        },
+        "text_22": {
+            "question": "If there is a recreation or land lease, the current payment is $",
+                "type": "text",
+                    "page": 2,
+                        "rect": {
+                "x0": 161.64,
+                    "y0": 138.6,
+                        "x1": 250.56,
+                            "y1": 149.4
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_21": {
+            "question": "the assessment determined or imposed by the Association attributable to the Property for damage to the common elements is greater than $ ",
+                "type": "text",
+                    "page": 2,
+                        "rect": {
+                "x0": 314.28,
+                    "y0": 225.0,
+                        "x1": 403.91999999999996,
+                            "y1": 235.79999999999998
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_20": {
+            "question": "or",
+                "type": "text",
+                    "page": 2,
+                        "rect": {
+                "x0": 419.03999999999996,
+                    "y0": 225.0,
+                        "x1": 453.24,
+                            "y1": 235.79999999999998
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "checkbox_4": {
+            "question": "THE BUYER HEREBY ACKNOWLEDGES THAT BUYER HAS BEEN PROVIDED A CURRENT COPY OF",
+                "type": "checkbox",
+                    "page": 2,
+                        "rect": {
+                "x0": 73.8,
+                    "y0": 544.68,
+                        "x1": 79.92,
+                            "y1": 551.16
+            },
+            "value": null,
+                "possible_answers": [
+                    {
+                        "value": "Yes"
+                    },
+
+
+                ]
+        },
+        "checkbox_5": {
+            "question": "THIS AGREEMENT IS VOIDABLE BY BUYER BY DELIVERING WRITTEN NOTICE OF THE BUYER'S",
+                "type": "checkbox",
+                    "page": 3,
+                        "rect": {
+                "x0": 73.8,
+                    "y0": 56.879999999999995,
+                        "x1": 79.92,
+                            "y1": 63.36
+            },
+            "value": null,
+                "possible_answers": [
+                    {
+                        "value": "Yes"
+                    },
+
+
+                ]
+        },
+        "text_41": {
+            "question": "The Association or Management Company to which assessments, special assessments or recreation/land lease fees are due and payable is/are:",
+                "type": "text",
+                    "page": 3,
+                        "rect": {
+                "x0": 54.0,
+                    "y0": 232.56,
+                        "x1": 277.2,
+                            "y1": 243.35999999999999
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_40": {
+            "question": "The Association or Management Company to which assessments, special assessments or recreation/land lease fees are due and payable is/are:",
+                "type": "text",
+                    "page": 3,
+                        "rect": {
+                "x0": 306.0,
+                    "y0": 232.56,
+                        "x1": 556.92,
+                            "y1": 243.35999999999999
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_39": {
+            "question": "Contact Person",
+                "type": "text",
+                    "page": 3,
+                        "rect": {
+                "x0": 128.16,
+                    "y0": 243.35999999999999,
+                        "x1": 278.64,
+                            "y1": 254.16
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_38": {
+            "question": "Contact Person",
+                "type": "text",
+                    "page": 3,
+                        "rect": {
+                "x0": 382.68,
+                    "y0": 243.35999999999999,
+                        "x1": 555.84,
+                            "y1": 254.16
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_37": {
+            "question": "Phone",
+                "type": "text",
+                    "page": 3,
+                        "rect": {
+                "x0": 87.47999999999999,
+                    "y0": 254.51999999999998,
+                        "x1": 232.56,
+                            "y1": 265.32
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_36": {
+            "question": "Phone",
+                "type": "text",
+                    "page": 3,
+                        "rect": {
+                "x0": 339.47999999999996,
+                    "y0": 254.51999999999998,
+                        "x1": 484.56,
+                            "y1": 265.32
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_35": {
+            "question": "Email",
+                "type": "text",
+                    "page": 3,
+                        "rect": {
+                "x0": 80.64,
+                    "y0": 265.32,
+                        "x1": 276.12,
+                            "y1": 276.12
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_34": {
+            "question": "Email",
+                "type": "text",
+                    "page": 3,
+                        "rect": {
+                "x0": 335.52,
+                    "y0": 265.32,
+                        "x1": 558.72,
+                            "y1": 276.12
+            },
+            "value": null,
+                "possible_answers": null
+        },
+  "text_33": {
+            "question": "93 Additional contact information can be found on the Association\u2019s website, www.",
+                "type": "text",
+                    "page": 3,
+                        "rect": {
+                "x0": 435.96,
+                    "y0": 276.48,
+                        "x1": 558.72,
+                            "y1": 287.28
+            },
+            "value": null,
+                "possible_answers": null
+        },
+   
+   
+     
+     
+   
+   
+   
+     
+    }
+}
+

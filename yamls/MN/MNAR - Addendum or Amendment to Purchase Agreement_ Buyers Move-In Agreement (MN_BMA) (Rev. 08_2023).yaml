@@ -1,0 +1,330 @@
+fields: {
+      "text_8": {
+      "question": "Date",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 378.36,
+        "y0": 109.8,
+        "x1": 575.64,
+        "y1": 120.6
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "checkbox_0": {
+      "question": "|_| Addendum |_| Amendment to Purchase Agreement between parties",
+      "type": "singlecheckbox",
+      "page": 1,
+
+      "value": null,
+      "answer_locations": [
+        {
+                "rect": {
+        "x0": 131.76,
+        "y0": 147.96,
+        "x1": 142.92,
+        "y1": 158.76
+      },
+          "value": "Addendum"
+        },
+        {
+                "rect": {
+        "x0": 63.36,
+        "y0": 147.96,
+        "x1": 74.52,
+        "y1": 158.76
+      },
+          "value": "Amendment"
+        }
+      ]
+    },
+    "text_7": {
+      "question": "dated (Date of this Purchase Agreement)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 417.59999999999997,
+        "y0": 145.79999999999998,
+        "x1": 576.36,
+        "y1": 156.6
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_6": {
+      "question": "pertaining to the purchase and sale of the Property at",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 63.36,
+        "y0": 184.32,
+        "x1": 569.88,
+        "y1": 195.12
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_5": {
+      "question": "POSSESSION DATE: Seller agrees to deliver possession of the Property to Buyer at ___  A.M / P.M.",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 449.64,
+        "y0": 244.07999999999998,
+        "x1": 500.4,
+        "y1": 254.88
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "checkbox_2": {
+      "question": "POSSESSION DATE: Seller agrees to deliver possession of the Property to Buyer at______ |_| A.M. |_| P.M.",
+      "type": "singlecheckbox",
+      "page": 1,
+
+      "value": null,
+      "answer_locations": [
+                {
+                "rect": {
+        "x0": 504.0,
+        "y0": 246.23999999999998,
+        "x1": 514.8,
+        "y1": 257.4
+      },
+          "answer": "A.M"
+        },
+        {
+                "rect": {
+        "x0": 542.52,
+        "y0": 246.23999999999998,
+        "x1": 553.68,
+        "y1": 257.4
+      },
+
+          "answer": "P.M"
+        }
+
+      ]
+    },
+    "text_4": {
+      "question": "POSSESSION DATE: Seller agrees to deliver possession of the Property to Buyer on",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 77.39999999999999,
+        "y0": 264.59999999999997,
+        "x1": 243.35999999999999,
+        "y1": 275.4
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_3": {
+      "question": "ADDITIONAL EARNEST MONEY DEPOSIT: When Buyer signs this Agreement, Buyer shall deposit $",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 488.88,
+        "y0": 282.59999999999997,
+        "x1": 576.36,
+        "y1": 293.4
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_2": {
+      "question": "SECURITY AND DAMAGE DEPOSIT: On",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 279.71999999999997,
+        "y0": 348.84,
+        "x1": 462.96,
+        "y1": 359.64
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_1": {
+      "question": "Buyer shall deposit $",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 71.28,
+        "y0": 364.68,
+        "x1": 165.6,
+        "y1": 375.47999999999996
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_0": {
+      "question": "MOVE-IN FEE: Buyer shall pay Seller $ ___ per day",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 251.64,
+        "y0": 454.68,
+        "x1": 353.52,
+        "y1": 465.47999999999996
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_23": {
+      "question": "Property located at",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 151.56,
+        "y0": 110.88,
+        "x1": 572.4,
+        "y1": 121.67999999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_22": {
+      "question": "for Seller's loss of use in the amount of $ __ per day,",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 232.2,
+        "y0": 318.96,
+        "x1": 336.96,
+        "y1": 329.76
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_21": {
+      "question": "OTHER:",
+      "type": "text",
+      "page": 2,
+
+      "value": null,
+      "answer_locations": [
+              "rect": {
+        "x0": 103.67999999999999,
+        "y0": 371.15999999999997,
+        "x1": 576.36,
+        "y1": 381.96
+      },
+            "rect": {
+        "x0": 63.36,
+        "y0": 384.84,
+        "x1": 576.36,
+        "y1": 395.64
+      },
+            "rect": {
+        "x0": 63.36,
+        "y0": 403.2,
+        "x1": 576.36,
+        "y1": 414.0
+      },
+            "rect": {
+        "x0": 63.36,
+        "y0": 421.2,
+        "x1": 576.36,
+        "y1": 432.0
+      },
+            "rect": {
+        "x0": 63.36,
+        "y0": 439.2,
+        "x1": 576.36,
+        "y1": 450.0
+      },
+            "rect": {
+        "x0": 63.36,
+        "y0": 457.2,
+        "x1": 576.36,
+        "y1": 468.0
+      },
+            "rect": {
+        "x0": 63.36,
+        "y0": 475.2,
+        "x1": 576.36,
+        "y1": 486.0
+      },
+            "rect": {
+        "x0": 63.36,
+        "y0": 493.2,
+        "x1": 576.36,
+        "y1": 504.0
+      },
+            "rect": {
+        "x0": 63.36,
+        "y0": 511.2,
+        "x1": 576.36,
+        "y1": 522.0
+      }
+      ]
+    },
+    "text_12": {
+      "question": "Seller Signature",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 63.36,
+        "y0": 547.1999999999999,
+        "x1": 297.36,
+        "y1": 558.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_11": {
+      "question": "Buyer Signature",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 333.36,
+        "y0": 547.1999999999999,
+        "x1": 576.36,
+        "y1": 558.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_10": {
+      "question": "Seller",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 63.36,
+        "y0": 591.48,
+        "x1": 297.36,
+        "y1": 602.28
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_9": {
+      "question": "Buyer",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 333.36,
+        "y0": 591.48,
+        "x1": 576.36,
+        "y1": 602.28
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+
+
+
+
+
+
+
+
+  }

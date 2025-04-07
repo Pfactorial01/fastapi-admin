@@ -1,0 +1,145 @@
+fields: {
+    "text_10": {
+      "question": "Date",
+      "type": "date",
+      "page": 1,
+      "rect": {
+        "x0": 378.36,
+        "y0": 87.47999999999999,
+        "x1": 576.36,
+        "y1": 98.28
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_9": {
+      "question": "Seller:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 94.32,
+        "y0": 111.24,
+        "x1": 576.36,
+        "y1": 122.03999999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_8": {
+      "question": "Property Address:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 145.79999999999998,
+        "y0": 135.35999999999999,
+        "x1": 576.0,
+        "y1": 146.16
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_7": {
+      "question": "City of",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 96.11999999999999,
+        "y0": 159.48,
+        "x1": 294.12,
+        "y1": 170.28
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_6": {
+      "question": "County of",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 351.0,
+        "y0": 159.48,
+        "x1": 569.88,
+        "y1": 170.28
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_5": {
+      "question": "State of Minnesota, Zip Code",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 195.48,
+        "y0": 183.23999999999998,
+        "x1": 353.88,
+        "y1": 194.04
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_4": {
+      "question": "Notice by (Real Estate Broker):",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 109.8,
+        "y0": 207.35999999999999,
+        "x1": 576.36,
+        "y1": 218.16
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_3": {
+      "question": "Seller's Signature",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 63.36,
+        "y0": 641.88,
+        "x1": 297.36,
+        "y1": 652.68
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_2": {
+      "question": "Date",
+      "type": "date",
+      "page": 1,
+      "rect": {
+        "x0": 333.36,
+        "y0": 641.88,
+        "x1": 576.36,
+        "y1": 652.68
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_1": {
+      "question": "Seller's Printed Name",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 63.36,
+        "y0": 686.16,
+        "x1": 297.36,
+        "y1": 696.9599999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_0": {
+      "question": "Seller's Printed Name",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 333.36,
+        "y0": 686.16,
+        "x1": 576.36,
+        "y1": 696.9599999999999
+      },
+      "value": null,
+      "possible_answers": null
+    }
+  }

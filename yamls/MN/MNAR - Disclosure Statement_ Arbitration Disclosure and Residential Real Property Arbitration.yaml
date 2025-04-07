@@ -1,0 +1,234 @@
+fields: {
+      "text_16": {
+      "question": "For the property located at",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 183.6,
+        "y0": 153.35999999999999,
+        "x1": 569.88,
+        "y1": 164.16
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_15": {
+      "question": "City of",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 96.11999999999999,
+        "y0": 177.12,
+        "x1": 302.4,
+        "y1": 187.92
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_14": {
+      "question": "City of County of",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 359.64,
+        "y0": 177.12,
+        "x1": 569.88,
+        "y1": 187.92
+      },
+      "value": null,
+      "possible_answers": null
+    },
+       "text_13": {
+      "question": "State of Minnesota, Zip Code",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 195.48,
+        "y0": 201.23999999999998,
+        "x1": 320.76,
+        "y1": 212.04
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_12": {
+      "question": "Any dispute between the undersigned parties, or any of them, about or relating to material facts affecting the use or enjoyment of the property, excluding disputes related to title issues of the property covered by the Purchase Agreement  dated",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 90.0,
+        "y0": 247.32,
+        "x1": 246.23999999999998,
+        "y1": 258.12
+      },
+      "value": null,
+      "possible_answers": null
+    },
+     "text_11": {
+      "question": "Seller's Signature",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 63.36,
+        "y0": 379.44,
+        "x1": 297.36,
+        "y1": 390.24
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_10": {
+      "question": "Buyer's Signature)",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 334.08,
+        "y0": 379.44,
+        "x1": 575.64,
+        "y1": 390.24
+      },
+      "value": null,
+      "possible_answers": null
+    },
+   "text_9": {
+      "question": "Seller's Printed Name",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 63.36,
+        "y0": 423.71999999999997,
+        "x1": 297.36,
+        "y1": 434.52
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_8": {
+      "question": "Buyer's Printed Name",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 333.36,
+        "y0": 423.71999999999997,
+        "x1": 575.64,
+        "y1": 434.52
+      },
+      "value": null,
+      "possible_answers": null
+    },
+     "text_7": {
+      "question": "Seller's Signature",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 63.36,
+        "y0": 468.0,
+        "x1": 297.36,
+        "y1": 478.79999999999995
+      },
+      "value": null,
+      "possible_answers": null
+    },
+   "text_6": {
+      "question": "Buyer's Signature",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 333.36,
+        "y0": 468.0,
+        "x1": 575.28,
+        "y1": 478.79999999999995
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+
+    
+        "text_5": {
+      "question": "Seller's Printed Name",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 63.36,
+        "y0": 512.64,
+        "x1": 297.36,
+        "y1": 523.4399999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_4": {
+      "question": "Buyer's Printed Name",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 333.36,
+        "y0": 512.64,
+        "x1": 576.36,
+        "y1": 523.4399999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+        "text_3": {
+      "question": "Licensee Representing or Assisting Seller",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 63.36,
+        "y0": 556.92,
+        "x1": 297.36,
+        "y1": 567.72
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_2": {
+      "question": "Licensee Representing or Assisting Buyer",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 333.36,
+        "y0": 556.92,
+        "x1": 575.28,
+        "y1": 567.72
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_1": {
+      "question": "Company Name",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 63.36,
+        "y0": 601.1999999999999,
+        "x1": 297.36,
+        "y1": 612.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_0": {
+      "question": "Company Name",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 333.36,
+        "y0": 601.1999999999999,
+        "x1": 575.28,
+        "y1": 612.0
+      },
+      "value": null,
+      "possible_answers": null
+    }
+
+
+ 
+
+
+
+
+  }

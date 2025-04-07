@@ -46,6 +46,13 @@ class Requests(Link):
 
 @app.register
 class Requests(Link):
+    label = "YAML Editor"
+    icon = "fa fa-file-code"
+    url = "/admin/yaml-editor"
+    type = "link"
+
+@app.register
+class Requests(Link):
     label = "Requests"
     icon = "fa fa-comment"
     url = "/admin/requests"

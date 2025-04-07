@@ -1,0 +1,572 @@
+metadata:
+  timestamp: '2025-01-07T23:21:12.435614'
+  filename: 'MNAR - Addendum to Purchase Agreement_ Counteroffer (MN_APA_C) (Rev. 08_2020).pdf'
+  document_title: 'AddnPA_Countroffer20.pdf'
+  number_of_pages: 1
+  versions: 
+      1.25.1
+      1.25.2
+      20241211000001
+
+  summary: 'This is a document used in real estate transactions to provide potential buyers with essential information about a property.'
+summary:
+  total_fields: 32
+  fields_by_type: 
+    checkbox: 8
+    text: 24
+  fields_by_page: 
+    1: 32
+fields: {
+    "text_1": {
+    "question": "Date",
+    "type": "date",
+    "page": 1,
+    "answers": [
+      {
+        "rect": {
+          "x0": 377.64,
+          "y0": 95.39999999999999,
+          "x1": 575.64,
+          "y1": 106.2
+        },
+        "possible_answers": [
+          {"answer": "2025-01-01"},
+          {"answer": "2025-01-02"},
+          {"answer": "2025-01-03"}
+        ],
+        "value": "2025-01-02"
+      }
+    ]
+  },
+  "text_2": {
+    "question": "Addendum to Purchase Agreement between parties, dated",
+    "type": "text",
+    "page": 1,
+    "answers": [
+      {
+        "rect": {
+          "x0": 339.47999999999996,
+          "y0": 125.28,
+          "x1": 575.64,
+          "y1": 136.07999999999998
+        },
+        "possible_answers": [
+          {"answer": "2025-01-01"},
+          {"answer": "2025-01-02"},
+          {"answer": "2025-01-03"}
+        ],
+        "value": "2025-01-02"
+      }
+    ]
+  },
+  "text_3": {
+    "question": "Purchase price shall be $",
+    "type": "text",
+    "page": 1,
+    "answers": [
+      {
+        "rect": {
+          "x0": 88.92,
+          "y0": 293.4,
+          "x1": 291.59999999999997,
+          "y1": 304.2
+        },
+        "possible_answers": [
+          {"answer": "1000"},
+          {"answer": "2000"},
+          {"answer": "3000"}
+        ],
+        "value": "2000"
+      }
+    ]
+  },
+
+  "checkbox_0": {
+      "question": "Purchase price (and corresponding Fha Escape Clause sale price, if applicable) shall be",
+      "type": "checkbox",
+      "page": 1,
+      "answers": [
+          {
+              "rect": {
+                  "x0": 62.64,
+                  "y0": 277.56,
+                  "x1": 73.44,
+                  "y1": 288.36
+              },
+              "value": "Yes"
+          }
+      ]
+  },
+
+  "checkbox_1": {
+      "question": "Earnest money shall be a total of $",
+      "type": "checkbox",
+      "page": 1,
+      "answers": [
+          {
+              "rect": {
+                  "x0": 62.64,
+                  "y0": 313.56,
+                  "x1": 73.44,
+                  "y1": 324.36
+              },
+              "value": "Yes"
+          }
+      ]
+  },
+
+  "text_4": {
+    "question": "Earnest money shall be a total of $",
+    "type": "text",
+    "page": 1,
+    "answers": [
+      {
+        "rect": {
+          "x0": 237.95999999999998,
+          "y0": 311.4,
+          "x1": 440.64,
+          "y1": 322.2
+        },
+        "possible_answers": [
+          {"answer": "500"},
+          {"answer": "1000"},
+          {"answer": "1500"}
+        ],
+        "value": "1000"
+      }
+    ]
+  },
+
+
+
+
+
+  "checkbox_2": {
+      "question": "Cash of percent (%) of the sale price, which includes the earnest money.",
+      "type": "checkbox",
+      "page": 1,
+      "answers": [
+          {
+              "rect": {
+                  "x0": 62.64,
+                  "y0": 331.56,
+                  "x1": 73.44,
+                  "y1": 342.36
+              },
+              "value": "Yes"
+          }
+      ]
+  },
+
+
+  "text_5": {
+    "question": "Fill Cash of______percentage(%) of sale price.",
+    "type": "text",
+    "page": 1,
+    "answers": [
+      {
+        "rect": {
+          "x0": 118.08,
+          "y0": 329.4,
+          "x1": 186.48,
+          "y1": 340.2
+        },
+        "possible_answers": [
+          {"answer": "10%"},
+          {"answer": "15%"},
+          {"answer": "20%"}
+        ],
+        "value": "15%"
+      }
+    ]
+  },
+
+
+
+  "checkbox_3": {
+      "question": "Mortgage financing of percent (%) of the sale price.",
+      "type": "checkbox",
+      "page": 1,
+      "answers": [
+          {
+              "rect": {
+                  "x0": 62.64,
+                  "y0": 349.56,
+                  "x1": 73.44,
+                  "y1": 360.36
+              },
+              "value": "Yes"
+          }
+      ]
+  },
+
+  "text_6": {
+    "question": "Mortgage financing of________percentage(%) of the sale",
+    "type": "text",
+    "page": 1,
+    "answers": [
+      {
+        "rect": {
+          "x0": 181.07999999999998,
+          "y0": 347.4,
+          "x1": 249.84,
+          "y1": 358.2
+        },
+        "possible_answers": [
+          {"answer": "60%"},
+          {"answer": "70%"},
+          {"answer": "80%"}
+        ],
+        "value": "70%"
+      }
+    ]
+  },
+
+
+
+  "checkbox_4": {
+      "question": "Closing date shall be",
+      "type": "checkbox",
+      "page": 1,
+      "answers": [
+          {
+              "rect": {
+                  "x0": 62.64,
+                  "y0": 367.56,
+                  "x1": 73.44,
+                  "y1": 378.36
+              },
+              "value": "Yes"
+          }
+      ]
+  },
+
+  "text_7": {
+    "question": "Closing date shall be",
+    "type": "text",
+    "page": 1,
+    "answers": [
+      {
+        "rect": {
+          "x0": 176.76,
+          "y0": 365.4,
+          "x1": 390.59999999999997,
+          "y1": 376.2
+        },
+        "possible_answers": [
+          {"answer": "2025-01-01"},
+          {"answer": "2025-01-02"},
+          {"answer": "2025-01-03"}
+        ],
+        "value": "2025-01-03"
+      }
+    ]
+  },
+
+
+  "checkbox_5": {
+      "question": "Seller agrees to complete all Fha/Lender required repairs, not to exceed $",
+      "type": "checkbox",
+      "page": 1,
+      "answers": [
+          {
+              "rect": {
+                  "x0": 62.64,
+                  "y0": 385.56,
+                  "x1": 73.44,
+                  "y1": 396.36
+              },
+              "value": "Yes"
+          }
+      ]
+  },
+  "text_8": {
+    "question": "Seller agrees to complete all Fha/Lender required repairs, not to exceed $",
+    "type": "text",
+    "page": 1,
+    "answers": [
+      {
+        "rect": {
+          "x0": 411.84,
+          "y0": 383.4,
+          "x1": 569.88,
+          "y1": 394.2
+        },
+        "possible_answers": [
+          {"answer": "2000"},
+          {"answer": "5000"},
+          {"answer": "8000"}
+        ],
+        "value": "5000"
+      }
+    ]
+  },
+
+
+  "checkbox_6": {
+      "question": "Seller shall pay Buyer's closing costs, prepaids, insurance and",
+      "type": "checkbox",
+      "page": 1,
+      "answers": [
+          {
+              "rect": {
+                  "x0": 62.64,
+                  "y0": 403.56,
+                  "x1": 73.44,
+                  "y1": 414.35999999999996
+              },
+              "value": "Yes"
+          }
+      ]
+  },
+
+
+
+
+
+"text_9": {
+    "question": "Seller shall pay Buyer's closing costs, prepaids, insurance and",
+    "type": "text",
+    "page": 1,
+    "answers": [
+      {
+        "rect": {
+          "x0": 358.91999999999996,
+          "y0": 401.4,
+          "x1": 575.28,
+          "y1": 412.2
+        },
+        "possible_answers": [
+          {"answer": "500"},
+          {"answer": "1000"},
+          {"answer": "1500"}
+        ],
+        "value": "1000"
+      }
+    ]
+  },
+
+
+  
+  "text_10": {
+    "question": "Not to exceed $",
+    "type": "text",
+    "page": 1,
+    "answers": [
+      {
+        "rect": {
+          "x0": 153.0,
+          "y0": 419.4,
+          "x1": 319.68,
+          "y1": 430.2
+        },
+        "possible_answers": [
+          {"answer": "500"},
+          {"answer": "1000"},
+          {"answer": "1500"}
+        ],
+        "value": "1000"
+      }
+    ]
+  },
+  "text_11": {
+    "question": "Not to exceed $ or percentage(%) of the sale price",
+    "type": "text",
+    "page": 1,
+    "answers": [
+      {
+        "rect": {
+          "x0": 334.08,
+          "y0": 419.4,
+          "x1": 420.47999999999996,
+          "y1": 430.2
+        },
+        "possible_answers": [
+          {"answer": "5%"},
+          {"answer": "10%"},
+          {"answer": "15%"}
+        ],
+        "value": "10%"
+      }
+    ]
+  },
+
+
+  "checkbox_7": {
+      "question": "Other:",
+      "type": "checkbox",
+      "page": 1,
+      "answers": [
+          {
+              "rect": {
+                  "x0": 62.64,
+                  "y0": 439.56,
+                  "x1": 73.44,
+                  "y1": 450.35999999999996
+              },
+              "value": "Yes"
+          }
+      ]
+  },
+
+
+
+  "text_12": {
+    "question": "Explain If need Other",
+    "type": "multiline",
+    "page": 1,
+    "answers": [
+      {
+        "rect": {
+          "x0": 120.6,
+          "y0": 441.35999999999996,
+          "x1": 575.28,
+          "y1": 452.15999999999997
+        },
+       "rect": {
+          "x0": 80.64,
+          "y0": 455.4,
+          "x1": 574.56,
+          "y1": 466.2
+        },
+                "rect": {
+          "x0": 80.64,
+          "y0": 473.4,
+          "x1": 574.56,
+          "y1": 484.2
+        },
+                "rect": {
+          "x0": 80.64,
+          "y0": 491.4,
+          "x1": 574.56,
+          "y1": 502.2
+        },
+                "rect": {
+          "x0": 80.64,
+          "y0": 509.4,
+          "x1": 574.56,
+          "y1": 520.1999999999999
+        },
+                "rect": {
+          "x0": 80.64,
+          "y0": 527.4,
+          "x1": 574.56,
+          "y1": 538.1999999999999
+        },
+                "rect": {
+          "x0": 80.64,
+          "y0": 545.4,
+          "x1": 574.56,
+          "y1": 556.1999999999999
+        },
+
+      }
+    ]
+  },
+
+  "text_19": {
+    "question": "Seller signature",
+    "type": "text",
+    "page": 1,
+    "answers": [
+      {
+        "rect": {
+          "x0": 62.64,
+          "y0": 581.4,
+          "x1": 296.28,
+          "y1": 592.1999999999999
+        },
+        "possible_answers": [
+          {"answer": "2025-01-01"},
+          {"answer": "2025-01-02"},
+          {"answer": "2025-01-03"}
+        ],
+        "value": "2025-01-01"
+      }
+    ]
+  },
+  "text_20": {
+    "question": "Buyer signature",
+    "type": "text",
+    "page": 1,
+    "answers": [
+      {
+        "rect": {
+          "x0": 332.28,
+          "y0": 581.4,
+          "x1": 574.56,
+          "y1": 592.1999999999999
+        },
+        "possible_answers": [
+          {"answer": "2025-01-01"},
+          {"answer": "2025-01-02"},
+          {"answer": "2025-01-03"}
+        ],
+        "value": "2025-01-02"
+      }
+    ]
+  },
+  "text_21": {
+    "question": "Seller",
+    "type": "text",
+    "page": 1,
+    "answers": [
+      {
+        "rect": {
+          "x0": 62.64,
+          "y0": 626.04,
+          "x1": 296.28,
+          "y1": 636.84
+        },
+        "possible_answers": [
+          {"answer": "2025-01-01"},
+          {"answer": "2025-01-02"},
+          {"answer": "2025-01-03"}
+        ],
+        "value": "2025-01-03"
+      }
+    ]
+  },
+  "text_22": {
+    "question": "Buyer",
+    "type": "text",
+    "page": 1,
+    "answers": [
+      {
+        "rect": {
+          "x0": 332.28,
+          "y0": 626.04,
+          "x1": 574.56,
+          "y1": 636.84
+        },
+        "possible_answers": [
+          {"answer": "2025-01-01"},
+          {"answer": "2025-01-02"},
+          {"answer": "2025-01-03"}
+        ],
+        "value": "2025-01-01"
+      }
+    ]
+  },
+  "text_23": {
+    "question": "Final Acceptance Date",
+    "type": "date",
+    "page": 1,
+    "answers": [
+      {
+        "rect": {
+          "x0": 198.35999999999999,
+          "y0": 658.4399999999999,
+          "x1": 450.0,
+          "y1": 669.24
+        },
+        "possible_answers": [
+          {"answer": "2025-01-01"},
+          {"answer": "2025-01-02"},
+          {"answer": "2025-01-03"}
+        ],
+        "value": "2025-01-02"
+      }
+    ]
+  }
+}

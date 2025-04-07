@@ -1,0 +1,517 @@
+
+fields: {
+      "text_11": {
+      "question": "Date",
+      "type": "date",
+      "page": 1,
+      "rect": {
+        "x0": 1051.0,
+        "y0": 322.0,
+        "x1": 1599.0,
+        "y1": 352.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_10": {
+      "question": "This is pertaining to the property at",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 583.0,
+        "y0": 388.0,
+        "x1": 1601.0,
+        "y1": 418.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_9": {
+      "question": "City of",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 264.0,
+        "y0": 455.0,
+        "x1": 864.0,
+        "y1": 485.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_8": {
+      "question": "County of",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 1016.0,
+        "y0": 455.0,
+        "x1": 1586.0,
+        "y1": 485.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_7": {
+      "question": "State of Minnesota, Zip Code",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 548.0,
+        "y0": 522.0,
+        "x1": 872.0,
+        "y1": 552.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_6": {
+      "question": "Unit #",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 976.0,
+        "y0": 522.0,
+        "x1": 1392.0,
+        "y1": 552.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+
+    "checkbox_0": {
+      "question": "Disclosure Statement (for initial sale of property) and all amendments thereto required by MN Statute",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 226.0,
+        "y0": 711.0,
+        "x1": 257.0,
+        "y1": 741.0
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+
+    "checkbox_1": {
+      "question": "Declaration of the |__| Association and Master Association, if any",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 774.0,
+        "y0": 928.0,
+        "x1": 804.0,
+        "y1": 958.0
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+
+
+    "text_5": {
+      "question": "21. Management Company (if applicable):",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 666.0,
+        "y0": 1455.0,
+        "x1": 1600.0,
+        "y1": 1485.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+
+
+
+    "checkbox_2": {
+      "question": "Declaration of the |__| Association and Master Association, if any",
+      "type": "multicheckbox",
+      "page": 1,
+      "rect": {
+        "x0": 529.0,
+        "y0": 928.0,
+        "x1": 559.0,
+        "y1": 958.0
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_3": {
+      "question": " |__| Association and  |__| Master Association, if any",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 226.0,
+        "y0": 928.0,
+        "x1": 257.0,
+        "y1": 958.0
+      },
+      "value": null,
+      "possible_answers": [
+        {
+                "rect": {
+        "x0": 529.0,
+        "y0": 928.0,
+        "x1": 559.0,
+        "y1": 958.0
+      },
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_4": {
+      "question": "Amendments or supplemental declarations for the [_] Association and [_] Master Association, if any",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 1175.0,
+        "y0": 1001.0,
+        "x1": 1205.0,
+        "y1": 1031.0
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_5": {
+      "question": "Amendments or supplemental declarations for the [_] Association and [_] Master Association, if any",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 929.0,
+        "y0": 1001.0,
+        "x1": 960.0,
+        "y1": 1031.0
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_6": {
+      "question": "Amendments or supplemental declarations for the [_] Association and [_] Master Association, if any",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 226.0,
+        "y0": 1001.0,
+        "x1": 257.0,
+        "y1": 1031.0
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_7": {
+      "question": "Articles of Incorporation for the Association and Master Association, if any",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 939.0,
+        "y0": 1074.0,
+        "x1": 970.0,
+        "y1": 1105.0
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_8": {
+      "question": "Articles of Incorporation for the Association and Master Association, if any",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 694.0,
+        "y0": 1074.0,
+        "x1": 725.0,
+        "y1": 1105.0
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_9": {
+      "question": "Articles of Incorporation for the Association and Master Association, if any",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 226.0,
+        "y0": 1074.0,
+        "x1": 257.0,
+        "y1": 1105.0
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_10": {
+      "question": "Bylaws for the Master Association, if any",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 731.0,
+        "y0": 1148.0,
+        "x1": 761.0,
+        "y1": 1178.0
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_11": {
+      "question": "Bylaws for the Master Association, if any",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 486.0,
+        "y0": 1148.0,
+        "x1": 516.0,
+        "y1": 1178.0
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_12": {
+      "question": "Bylaws for the Master Association, if any",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 226.0,
+        "y0": 1148.0,
+        "x1": 257.0,
+        "y1": 1178.0
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_13": {
+      "question": "Association and Master Association, if any",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 920.0,
+        "y0": 1221.0,
+        "x1": 951.0,
+        "y1": 1251.0
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_14": {
+      "question": "Association and Master Association, if any",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 675.0,
+        "y0": 1221.0,
+        "x1": 706.0,
+        "y1": 1251.0
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_15": {
+      "question": "Association and Master Association, if any",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 226.0,
+        "y0": 1221.0,
+        "x1": 257.0,
+        "y1": 1251.0
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_16": {
+      "question": "The projected annual budget of the Association",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 226.0,
+        "y0": 1294.0,
+        "x1": 257.0,
+        "y1": 1325.0
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "text_0": {
+      "question": "25.",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 176.0,
+        "y0": 1812.0,
+        "x1": 1600.0,
+        "y1": 1842.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_1": {
+      "question": "24,",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 176.0,
+        "y0": 1689.0,
+        "x1": 1600.0,
+        "y1": 1719.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_2": {
+      "question": "23. Contact Phone Number: Website:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 936.0,
+        "y0": 1589.0,
+        "x1": 1600.0,
+        "y1": 1619.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_3": {
+      "question": "23. Contact Phone Number:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 485.0,
+        "y0": 1589.0,
+        "x1": 795.0,
+        "y1": 1619.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_4": {
+      "question": "22. Association Contact:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 449.0,
+        "y0": 1522.0,
+        "x1": 1600.0,
+        "y1": 1552.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+
+
+  }

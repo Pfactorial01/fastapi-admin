@@ -1,0 +1,281 @@
+{
+  "metadata": {
+    "timestamp": "2025-01-21T23:09:56.164188",
+    "filename": "CRSP-16_N_-_Insurance_Addendum.pdf",
+    "document_title": "CRSP16.N.insurance addendum.pdf",
+    "number_of_pages": 1,
+    "versions": {
+      "pymupdf": [
+        "1.25.1",
+        "1.25.2",
+        "20241211000001"
+      ]
+    },
+    "summary": "This is a document used in real estate transactions to provide potential buyers with essential information about a property."
+  },
+  "summary": {
+    "total_fields": 18,
+    "fields_by_type": {
+      "checkbox": 4,
+      "text": 14
+    },
+    "fields_by_page": {
+      "1": 18
+    }
+  },
+  "fields": {
+        "text_13": {
+      "question": "If initialed by all parties, the terms below will be incorporated into the Contract for Residential Sale and Purchase between (Seller)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 95.03999999999999,
+        "y0": 97.92,
+        "x1": 533.16,
+        "y1": 108.72
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_12": {
+      "question": "and (Buyer)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 73.8,
+        "y0": 115.19999999999999,
+        "x1": 532.0799999999999,
+        "y1": 126.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_11": {
+      "question": "concerning the Property described as",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 222.84,
+        "y0": 132.12,
+        "x1": 576.36,
+        "y1": 142.92
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_10": {
+      "question": "concerning the Property described as (line 2)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 54.36,
+        "y0": 146.88,
+        "x1": 576.36,
+        "y1": 157.68
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_9": {
+      "question": "(_____)()-()() N.Insurance",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 56.16,
+        "y0": 173.51999999999998,
+        "x1": 85.67999999999999,
+        "y1": 184.32
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_8": {
+      "question": "()(_____)-()() N.Insurance",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 93.6,
+        "y0": 173.51999999999998,
+        "x1": 122.75999999999999,
+        "y1": 184.32
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_7": {
+      "question": "()()-(_____)() N.Insurance",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 136.79999999999998,
+        "y0": 173.51999999999998,
+        "x1": 166.32,
+        "y1": 184.32
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_6": {
+      "question": "()()-()(_____) N.Insurance",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 174.23999999999998,
+        "y0": 173.51999999999998,
+        "x1": 203.4,
+        "y1": 184.32
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+
+    "checkbox_0": {
+      "question": "Insurance Coverage: (Check as applicable)",
+      "type": "multicheckbox",
+      "page": 1,
+
+      "value": null,
+      "possible_answers": [
+        {
+                "rect": {
+        "x0": 91.44,
+        "y0": 210.6,
+        "x1": 97.92,
+        "y1": 217.07999999999998
+      },
+          "value": "Homeowner's Insurance"
+        },
+        {
+                "rect": {
+        "x0": 91.44,
+        "y0": 279.71999999999997,
+        "x1": 97.92,
+        "y1": 286.2
+      },
+          "value": "Flood Insurance"
+        }
+      ]
+    },
+    "text_5": {
+      "question": "If Homeowner's Insurance checked a first year annual premium not to exceed $",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 306.0,
+        "y0": 231.48,
+        "x1": 395.64,
+        "y1": 242.28
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_4": {
+      "question": "or",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 409.68,
+        "y0": 231.48,
+        "x1": 443.52,
+        "y1": 242.28
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_3": {
+      "question": "% of the purchase price by ____________________, (the earlier of 30 days after Effective Date or 10 days before Closing",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 90.0,
+        "y0": 243.0,
+        "x1": 201.6,
+        "y1": 253.79999999999998
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_2": {
+      "question": "If Flood Insurance: checked Program at a first year premium not to exceed $",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 312.47999999999996,
+        "y0": 289.08,
+        "x1": 402.12,
+        "y1": 299.88
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_1": {
+      "question": "Program at a first year premium not to exceed $ or ___",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 418.32,
+        "y0": 289.08,
+        "x1": 452.15999999999997,
+        "y1": 299.88
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_0": {
+
+      "question": "______% of the purchase price by ____________________, (the earlier of 30 days after Effective Date or 10 days before Closing",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 90.0,
+        "y0": 300.59999999999997,
+        "x1": 201.6,
+        "y1": 311.4
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "checkbox_2": {
+      "question": "Flood Insurance Disclosure: (Check",
+      "type": "multicheckbox",
+      "page": 1,
+
+      "value": null,
+      "possible_answers": [
+        {
+                "rect": {
+        "x0": 91.44,
+        "y0": 354.59999999999997,
+        "x1": 98.28,
+        "y1": 361.08
+      },
+          "value": "Buyer is notified that the Property is located in an area that is a defined floodable area and flood insurance is required."
+        },
+        {
+                "rect": {
+        "x0": 91.44,
+        "y0": 377.64,
+        "x1": 97.92,
+        "y1": 384.12
+      },
+          "value": "Buyer is notified that the Property is located in an area that was declared a flood disaster area after
+September 23, 1994, and received federal disaster relief assistance on the condition that flood insurance be
+obtained in accordance with applicable federal law. Buyer is required to obtain such flood insurance if the
+Property is not so insured as of the date of transfer and will be required to maintain flood insurance in
+accordance with applicable federal law with respect to the Property."
+        }
+      ]
+    },
+
+
+
+
+
+
+
+  }
+}

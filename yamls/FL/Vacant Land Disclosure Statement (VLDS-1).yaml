@@ -1,0 +1,2438 @@
+{
+  "metadata": {
+    "timestamp": "2025-01-22T00:27:49.215811",
+    "filename": "Vacant_Land_Disclosure_Statement_VLDS-1.pdf",
+    "document_title": "Vacant Land Disclosure Statement VLDS-1",
+    "number_of_pages": 3,
+    "versions": {
+      "pymupdf": [
+        "1.25.1",
+        "1.25.2",
+        "20241211000001"
+      ]
+    },
+    "summary": "This is a document used in real estate transactions to provide potential buyers with essential information about a property."
+  },
+  "summary": {
+    "total_fields": 140,
+    "fields_by_type": {
+      "checkbox": 84,
+      "text": 56
+    },
+    "fields_by_page": {
+      "1": 43,
+      "2": 44,
+      "3": 53
+    }
+  },
+  "fields": {
+    "checkbox_0": {
+      "question": "taxing or benefit charges or unpaid assessments affecting the property? NO[_] YES [_]If yes, explain:",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 437.4,
+        "y0": 325.8,
+        "x1": 447.12,
+        "y1": 335.52
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_1": {
+      "question": "taxing or benefit charges or unpaid assessments affecting the property? NO[_] YES [_]If yes, explain:",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 399.24,
+        "y0": 325.8,
+        "x1": 408.96,
+        "y1": 335.52
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_2": {
+      "question": "covenant restrictions? NO|_|YES|_lIf yes, explain:",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 222.12,
+        "y0": 376.91999999999996,
+        "x1": 231.84,
+        "y1": 386.64
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_3": {
+      "question": "covenant restrictions? NO|_|YES|_lIf yes, explain:",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 189.72,
+        "y0": 376.91999999999996,
+        "x1": 199.44,
+        "y1": 386.64
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_4": {
+      "question": "c. Are you aware of any eminent domain proceedings involving the property? NO[_]YES [_]If yes, explain:",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 457.91999999999996,
+        "y0": 407.52,
+        "x1": 467.64,
+        "y1": 417.24
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_5": {
+      "question": "c. Are you aware of any eminent domain proceedings involving the property? NO[_]YES [_]If yes, explain:",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 423.0,
+        "y0": 407.52,
+        "x1": 432.71999999999997,
+        "y1": 417.24
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_6": {
+      "question": "a. of any subdivision, municipality or other recorded covenants, conditions or restrictions? NO |_]YES",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 521.28,
+        "y0": 464.76,
+        "x1": 531.0,
+        "y1": 474.47999999999996
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_7": {
+      "question": "a. of any subdivision, municipality or other recorded covenants, conditions or restrictions? NO |_]YES",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 488.52,
+        "y0": 464.76,
+        "x1": 498.24,
+        "y1": 474.47999999999996
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_8": {
+      "question": "b. of any resale restrictions? NO [_|YES",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 254.51999999999998,
+        "y0": 479.52,
+        "x1": 264.24,
+        "y1": 489.24
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_9": {
+      "question": "b. of any resale restrictions? NO [_|YES",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 219.23999999999998,
+        "y0": 479.52,
+        "x1": 228.95999999999998,
+        "y1": 489.24
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_10": {
+      "question": "c. of any restrictions on leasing the property? NO |_]YES",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 327.59999999999997,
+        "y0": 495.0,
+        "x1": 337.32,
+        "y1": 504.71999999999997
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_11": {
+      "question": "c. of any restrictions on leasing the property? NO |_]YES",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 291.59999999999997,
+        "y0": 495.0,
+        "x1": 301.32,
+        "y1": 504.71999999999997
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_12": {
+      "question": "d. of any right of first refusal to purchase the property? NO[_]YES",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 365.76,
+        "y0": 511.56,
+        "x1": 375.47999999999996,
+        "y1": 521.28
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_13": {
+      "question": "d. of any right of first refusal to purchase the property? NO[_]YES",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 331.2,
+        "y0": 511.56,
+        "x1": 340.91999999999996,
+        "y1": 521.28
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_14": {
+      "question": "a. Has the land been surveyed? NO[_|YES|_|If yes, which person or company performed the survey:",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 263.52,
+        "y0": 605.88,
+        "x1": 273.24,
+        "y1": 615.6
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_15": {
+      "question": "a. Has the land been surveyed? NO[_|YES|_|If yes, which person or company performed the survey:",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 231.12,
+        "y0": 605.88,
+        "x1": 240.84,
+        "y1": 615.6
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_16": {
+      "question": "b. Has this land been platted? NO[_]YES|[_|If yes, has a certificate of survey been completed? NO[_]YES",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 540.36,
+        "y0": 639.36,
+        "x1": 550.0799999999999,
+        "y1": 649.0799999999999
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_17": {
+      "question": "b. Has this land been platted? NO[_]YES|[_|If yes, has a certificate of survey been completed? NO[_]YES",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 506.88,
+        "y0": 639.36,
+        "x1": 516.6,
+        "y1": 649.0799999999999
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_18": {
+      "question": "b. Has this land been platted? NO[_]YES|[_|If yes, has a certificate of survey been completed? NO[_]YES",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 255.6,
+        "y0": 639.36,
+        "x1": 265.32,
+        "y1": 649.0799999999999
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_19": {
+      "question": "b. Has this land been platted? NO[_]YES|[_|If yes, has a certificate of survey been completed? NO[_]YES",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 223.56,
+        "y0": 639.36,
+        "x1": 233.28,
+        "y1": 649.0799999999999
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_20": {
+      "question": "c. Are you aware of any encroachments or boundary line disputes? NO [_]YES",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 423.71999999999997,
+        "y0": 654.48,
+        "x1": 433.44,
+        "y1": 664.1999999999999
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_21": {
+      "question": "c. Are you aware of any encroachments or boundary line disputes? NO [_]YES",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 389.15999999999997,
+        "y0": 654.48,
+        "x1": 398.88,
+        "y1": 664.1999999999999
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_22": {
+      "question": "d. Are you aware of any easements other than utility/drainage easements? NOL_}YES",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 454.32,
+        "y0": 669.6,
+        "x1": 464.03999999999996,
+        "y1": 679.3199999999999
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_23": {
+      "question": "d. Are you aware of any easements other than utility/drainage easements? NOL_}YES",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 420.12,
+        "y0": 669.6,
+        "x1": 429.84,
+        "y1": 679.3199999999999
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_24": {
+      "question": "e. Are you aware if the property is in an earthquake zone? NO|_| YES",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 383.76,
+        "y0": 684.0,
+        "x1": 393.47999999999996,
+        "y1": 693.72
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_25": {
+      "question": "e. Are you aware if the property is in an earthquake zone? NO|_| YES",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 348.47999999999996,
+        "y0": 684.0,
+        "x1": 358.2,
+        "y1": 693.72
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_26": {
+      "question": "f. Are you aware if the property contains wetlands area? NO[_|YES",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 374.03999999999996,
+        "y0": 699.8399999999999,
+        "x1": 383.76,
+        "y1": 709.56
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_27": {
+      "question": "f. Are you aware if the property contains wetlands area? NO[_|YES",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 339.84,
+        "y0": 699.8399999999999,
+        "x1": 349.56,
+        "y1": 709.56
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "text_0": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 77.75999999999999,
+        "y0": 622.4399999999999,
+        "x1": 578.88,
+        "y1": 633.24
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_1": {
+      "question": "a. Has the land been surveyed? NO[_|YES|_|If yes, which person or company performed the survey:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 511.91999999999996,
+        "y0": 604.8,
+        "x1": 577.4399999999999,
+        "y1": 615.6
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_2": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 78.48,
+        "y0": 572.04,
+        "x1": 577.0799999999999,
+        "y1": 582.84
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_3": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 78.48,
+        "y0": 556.92,
+        "x1": 576.72,
+        "y1": 567.72
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_4": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 78.84,
+        "y0": 541.0799999999999,
+        "x1": 577.0799999999999,
+        "y1": 551.88
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_5": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 77.75999999999999,
+        "y0": 420.47999999999996,
+        "x1": 576.36,
+        "y1": 431.28
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_6": {
+      "question": "c. Are you aware of any eminent domain proceedings involving the property? NO[_]YES [_]If yes, explain:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 534.24,
+        "y0": 406.44,
+        "x1": 578.16,
+        "y1": 417.24
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_7": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 79.2,
+        "y0": 391.68,
+        "x1": 577.4399999999999,
+        "y1": 402.47999999999996
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_8": {
+      "question": "covenant restrictions? NO|_|YES|_lIf yes, explain:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 292.68,
+        "y0": 376.2,
+        "x1": 577.8,
+        "y1": 387.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_9": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 79.92,
+        "y0": 342.71999999999997,
+        "x1": 578.16,
+        "y1": 353.52
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_10": {
+      "question": "taxing or benefit charges or unpaid assessments affecting the property? NO[_] YES [_]If yes, explain:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 515.16,
+        "y0": 324.36,
+        "x1": 577.0799999999999,
+        "y1": 335.15999999999997
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_11": {
+      "question": "LEGAL DESCRIPTION:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 181.07999999999998,
+        "y0": 140.76,
+        "x1": 574.1999999999999,
+        "y1": 151.56
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_12": {
+      "question": "PROPERTY ADDRESS:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 183.23999999999998,
+        "y0": 126.72,
+        "x1": 572.76,
+        "y1": 137.51999999999998
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_13": {
+      "question": "DATE SELLER PURCHASED PROPERTY:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 270.71999999999997,
+        "y0": 97.56,
+        "x1": 574.1999999999999,
+        "y1": 108.36
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_14": {
+      "question": "NAME:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 107.28,
+        "y0": 83.88,
+        "x1": 574.1999999999999,
+        "y1": 94.67999999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "checkbox_28": {
+      "question": "abandoned), or contaminated soil or water on the property? NO YES |_| If yes, explain:",
+      "type": "checkbox",
+      "page": 2,
+      "rect": {
+        "x0": 394.56,
+        "y0": 86.39999999999999,
+        "x1": 404.28,
+        "y1": 96.11999999999999
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_29": {
+      "question": "abandoned), or contaminated soil or water on the property? NO YES |_| If yes, explain:",
+      "type": "checkbox",
+      "page": 2,
+      "rect": {
+        "x0": 355.68,
+        "y0": 86.39999999999999,
+        "x1": 365.4,
+        "y1": 96.11999999999999
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_30": {
+      "question": "b. of any abandoned wells, buried storage tanks or buried debris or waste on the property? NO[_]YES [_|lf yes,",
+      "type": "checkbox",
+      "page": 2,
+      "rect": {
+        "x0": 524.52,
+        "y0": 117.0,
+        "x1": 534.24,
+        "y1": 126.72
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_31": {
+      "question": "b. of any abandoned wells, buried storage tanks or buried debris or waste on the property? NO[_]YES [_|lf yes,",
+      "type": "checkbox",
+      "page": 2,
+      "rect": {
+        "x0": 489.96,
+        "y0": 117.0,
+        "x1": 499.68,
+        "y1": 126.72
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_32": {
+      "question": "nants? NO[_]YES [_]If yes, explain:",
+      "type": "checkbox",
+      "page": 2,
+      "rect": {
+        "x0": 154.44,
+        "y0": 183.23999999999998,
+        "x1": 164.16,
+        "y1": 192.95999999999998
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_33": {
+      "question": "nants? NO[_]YES [_]If yes, explain:",
+      "type": "checkbox",
+      "page": 2,
+      "rect": {
+        "x0": 120.24,
+        "y0": 183.23999999999998,
+        "x1": 129.96,
+        "y1": 192.95999999999998
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_34": {
+      "question": "nests of endangered or protected species? NO[_]YES",
+      "type": "checkbox",
+      "page": 2,
+      "rect": {
+        "x0": 314.28,
+        "y0": 231.84,
+        "x1": 324.0,
+        "y1": 241.56
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_35": {
+      "question": "nests of endangered or protected species? NO[_]YES",
+      "type": "checkbox",
+      "page": 2,
+      "rect": {
+        "x0": 279.36,
+        "y0": 231.84,
+        "x1": 289.08,
+        "y1": 241.56
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_36": {
+      "question": "e. of any electromagnetic fields located on the property? NO [_]YES",
+      "type": "checkbox",
+      "page": 2,
+      "rect": {
+        "x0": 373.68,
+        "y0": 248.04,
+        "x1": 383.4,
+        "y1": 257.76
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_37": {
+      "question": "e. of any electromagnetic fields located on the property? NO [_]YES",
+      "type": "checkbox",
+      "page": 2,
+      "rect": {
+        "x0": 340.2,
+        "y0": 248.04,
+        "x1": 349.91999999999996,
+        "y1": 257.76
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_38": {
+      "question": "the property, such as, but not limited to, proposed development or proposed roadways? NO |_JYES",
+      "type": "checkbox",
+      "page": 2,
+      "rect": {
+        "x0": 511.56,
+        "y0": 281.52,
+        "x1": 521.28,
+        "y1": 291.24
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_39": {
+      "question": "the property, such as, but not limited to, proposed development or proposed roadways? NO |_JYES",
+      "type": "checkbox",
+      "page": 2,
+      "rect": {
+        "x0": 479.15999999999997,
+        "y0": 281.52,
+        "x1": 488.88,
+        "y1": 291.24
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_40": {
+      "question": "a. if the property is designated in a 100 year flood plain? NO |_|YES",
+      "type": "checkbox",
+      "page": 2,
+      "rect": {
+        "x0": 376.2,
+        "y0": 400.32,
+        "x1": 385.91999999999996,
+        "y1": 410.03999999999996
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_41": {
+      "question": "a. if the property is designated in a 100 year flood plain? NO |_|YES",
+      "type": "checkbox",
+      "page": 2,
+      "rect": {
+        "x0": 340.91999999999996,
+        "y0": 400.32,
+        "x1": 350.64,
+        "y1": 410.03999999999996
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_42": {
+      "question": "b. if the property has been flooded? NO ES",
+      "type": "checkbox",
+      "page": 2,
+      "rect": {
+        "x0": 282.96,
+        "y0": 416.88,
+        "x1": 292.68,
+        "y1": 426.59999999999997
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_43": {
+      "question": "b. if the property has been flooded? NO ES",
+      "type": "checkbox",
+      "page": 2,
+      "rect": {
+        "x0": 250.2,
+        "y0": 416.88,
+        "x1": 259.92,
+        "y1": 426.59999999999997
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_44": {
+      "question": "c. if there has been drainage problems affecting the property or adjacent properties? NOL_JYES",
+      "type": "checkbox",
+      "page": 2,
+      "rect": {
+        "x0": 496.79999999999995,
+        "y0": 432.71999999999997,
+        "x1": 506.52,
+        "y1": 442.44
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_45": {
+      "question": "c. if there has been drainage problems affecting the property or adjacent properties? NOL_JYES",
+      "type": "checkbox",
+      "page": 2,
+      "rect": {
+        "x0": 463.32,
+        "y0": 432.71999999999997,
+        "x1": 473.03999999999996,
+        "y1": 442.44
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_46": {
+      "question": "a. Have any soil tests been performed? NO [_]YES",
+      "type": "checkbox",
+      "page": 2,
+      "rect": {
+        "x0": 302.03999999999996,
+        "y0": 544.68,
+        "x1": 311.76,
+        "y1": 554.4
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_47": {
+      "question": "a. Have any soil tests been performed? NO [_]YES",
+      "type": "checkbox",
+      "page": 2,
+      "rect": {
+        "x0": 267.12,
+        "y0": 544.68,
+        "x1": 276.84,
+        "y1": 554.4
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_48": {
+      "question": "b. Are you aware of any fill or uncompacted soils? NO [|_|] YES",
+      "type": "checkbox",
+      "page": 2,
+      "rect": {
+        "x0": 349.56,
+        "y0": 560.52,
+        "x1": 359.28,
+        "y1": 570.24
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_49": {
+      "question": "b. Are you aware of any fill or uncompacted soils? NO [|_|] YES",
+      "type": "checkbox",
+      "page": 2,
+      "rect": {
+        "x0": 312.84,
+        "y0": 560.52,
+        "x1": 322.56,
+        "y1": 570.24
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_50": {
+      "question": "properties? NO |_| YES",
+      "type": "checkbox",
+      "page": 2,
+      "rect": {
+        "x0": 177.48,
+        "y0": 592.56,
+        "x1": 187.2,
+        "y1": 602.28
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_51": {
+      "question": "properties? NO |_| YES",
+      "type": "checkbox",
+      "page": 2,
+      "rect": {
+        "x0": 142.2,
+        "y0": 592.56,
+        "x1": 151.92,
+        "y1": 602.28
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_52": {
+      "question": "d. Are you aware of any dead or diseased trees on the property? NO |_|YES",
+      "type": "checkbox",
+      "page": 2,
+      "rect": {
+        "x0": 414.35999999999996,
+        "y0": 607.68,
+        "x1": 424.08,
+        "y1": 617.4
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_53": {
+      "question": "d. Are you aware of any dead or diseased trees on the property? NO |_|YES",
+      "type": "checkbox",
+      "page": 2,
+      "rect": {
+        "x0": 378.36,
+        "y0": 607.68,
+        "x1": 388.08,
+        "y1": 617.4
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "text_15": {
+      "question": "",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 76.67999999999999,
+        "y0": 671.04,
+        "x1": 576.36,
+        "y1": 681.8399999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_16": {
+      "question": "",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 77.03999999999999,
+        "y0": 655.56,
+        "x1": 576.36,
+        "y1": 666.36
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_17": {
+      "question": "",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 77.03999999999999,
+        "y0": 639.36,
+        "x1": 576.36,
+        "y1": 650.16
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_18": {
+      "question": "If any answer to questions 6a-6d is yes, please explain:",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 317.52,
+        "y0": 622.4399999999999,
+        "x1": 577.4399999999999,
+        "y1": 633.24
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_19": {
+      "question": "",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 78.11999999999999,
+        "y0": 495.71999999999997,
+        "x1": 577.4399999999999,
+        "y1": 506.52
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_20": {
+      "question": "",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 78.11999999999999,
+        "y0": 480.96,
+        "x1": 577.0799999999999,
+        "y1": 491.76
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_21": {
+      "question": "",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 77.75999999999999,
+        "y0": 465.84,
+        "x1": 577.4399999999999,
+        "y1": 476.64
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_22": {
+      "question": "If any answer to questions 5a-5c is yes, please explain:",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 316.8,
+        "y0": 448.91999999999996,
+        "x1": 577.0799999999999,
+        "y1": 459.71999999999997
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_23": {
+      "question": "",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 76.67999999999999,
+        "y0": 344.15999999999997,
+        "x1": 575.64,
+        "y1": 354.96
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_24": {
+      "question": "",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 76.67999999999999,
+        "y0": 328.32,
+        "x1": 575.64,
+        "y1": 339.12
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_25": {
+      "question": "",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 76.67999999999999,
+        "y0": 312.12,
+        "x1": 575.64,
+        "y1": 322.92
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_26": {
+      "question": "If any answer to questions 4a-4f is yes, please explain:",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 314.28,
+        "y0": 296.64,
+        "x1": 578.52,
+        "y1": 307.44
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_27": {
+      "question": "",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 79.2,
+        "y0": 198.0,
+        "x1": 578.52,
+        "y1": 208.79999999999998
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_28": {
+      "question": "nants? NO[_]YES [_]If yes, explain:",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 232.2,
+        "y0": 181.79999999999998,
+        "x1": 574.56,
+        "y1": 192.6
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_29": {
+      "question": "",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 81.0,
+        "y0": 146.88,
+        "x1": 579.9599999999999,
+        "y1": 157.68
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_30": {
+      "question": "explain:",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 112.67999999999999,
+        "y0": 131.76,
+        "x1": 579.24,
+        "y1": 142.56
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_31": {
+      "question": "",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 79.2,
+        "y0": 99.0,
+        "x1": 579.24,
+        "y1": 109.8
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_32": {
+      "question": "abandoned), or contaminated soil or water on the property? NO YES |_| If yes, explain:",
+      "type": "text",
+      "page": 2,
+      "rect": {
+        "x0": 475.2,
+        "y0": 85.67999999999999,
+        "x1": 575.64,
+        "y1": 96.47999999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "checkbox_54": {
+      "question": "b. Have percolation tests been performed? NO[_]YES [_lyes, when and by which person or company:",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 311.76,
+        "y0": 95.03999999999999,
+        "x1": 321.47999999999996,
+        "y1": 104.75999999999999
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_55": {
+      "question": "b. Have percolation tests been performed? NO[_]YES [_lyes, when and by which person or company:",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 275.76,
+        "y0": 95.03999999999999,
+        "x1": 285.47999999999996,
+        "y1": 104.75999999999999
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_56": {
+      "question": "c. Does the property have connection to the following: public water? NO[|_]YES[_] public sewer? NO [|_| YES",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 545.76,
+        "y0": 125.64,
+        "x1": 555.48,
+        "y1": 135.35999999999999
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_57": {
+      "question": "c. Does the property have connection to the following: public water? NO[|_]YES[_] public sewer? NO [|_| YES",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 511.2,
+        "y0": 125.64,
+        "x1": 520.92,
+        "y1": 135.35999999999999
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_58": {
+      "question": "c. Does the property have connection to the following: public water? NO[|_]YES[_] public sewer? NO [|_| YES",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 417.24,
+        "y0": 125.64,
+        "x1": 426.96,
+        "y1": 135.35999999999999
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_59": {
+      "question": "c. Does the property have connection to the following: public water? NO[|_]YES[_] public sewer? NO [|_| YES",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 385.2,
+        "y0": 125.64,
+        "x1": 394.91999999999996,
+        "y1": 135.35999999999999
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_60": {
+      "question": "private water system off the property? NO[_]YES [_]water well? NO[_] YES[_|septic tank? NO |_JYES",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 520.92,
+        "y0": 141.48,
+        "x1": 530.64,
+        "y1": 151.2
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_61": {
+      "question": "private water system off the property? NO[_]YES [_]water well? NO[_] YES[_|septic tank? NO |_JYES",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 486.35999999999996,
+        "y0": 141.48,
+        "x1": 496.08,
+        "y1": 151.2
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_62": {
+      "question": "private water system off the property? NO[_]YES [_]water well? NO[_] YES[_|septic tank? NO |_JYES",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 401.03999999999996,
+        "y0": 141.48,
+        "x1": 410.76,
+        "y1": 151.2
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_63": {
+      "question": "private water system off the property? NO[_]YES [_]water well? NO[_] YES[_|septic tank? NO |_JYES",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 366.47999999999996,
+        "y0": 141.48,
+        "x1": 376.2,
+        "y1": 151.2
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_64": {
+      "question": "private water system off the property? NO[_]YES [_]water well? NO[_] YES[_|septic tank? NO |_JYES",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 286.92,
+        "y0": 141.48,
+        "x1": 296.64,
+        "y1": 151.2
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_65": {
+      "question": "private water system off the property? NO[_]YES [_]water well? NO[_] YES[_|septic tank? NO |_JYES",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 253.07999999999998,
+        "y0": 141.48,
+        "x1": 262.8,
+        "y1": 151.2
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_66": {
+      "question": "electric utility? NOL_JYES{|_|natural gas service? NO [_]YES",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 180.35999999999999,
+        "y0": 156.6,
+        "x1": 190.07999999999998,
+        "y1": 166.32
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_67": {
+      "question": "electric utility? NOL_JYES{|_|natural gas service? NO [_]YES",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 148.32,
+        "y0": 156.6,
+        "x1": 158.04,
+        "y1": 166.32
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_68": {
+      "question": "electric utility? NOL_JYES{|_|natural gas service? NO [_]YES",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 336.96,
+        "y0": 158.04,
+        "x1": 346.68,
+        "y1": 167.76
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_69": {
+      "question": "electric utility? NOL_JYES{|_|natural gas service? NO [_]YES",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 302.76,
+        "y0": 158.04,
+        "x1": 312.47999999999996,
+        "y1": 167.76
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_70": {
+      "question": "d. Does the boundary of the property have connection to the following: public water system access? NOL_]YES",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 561.24,
+        "y0": 172.44,
+        "x1": 570.9599999999999,
+        "y1": 182.16
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_71": {
+      "question": "d. Does the boundary of the property have connection to the following: public water system access? NOL_]YES",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 526.3199999999999,
+        "y0": 172.44,
+        "x1": 536.04,
+        "y1": 182.16
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_72": {
+      "question": "private water system access? NO|_|YES|_lelectric service access? NO|_|YES|[_|natural gas access? NO|_|YES",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 561.9599999999999,
+        "y0": 188.64,
+        "x1": 571.68,
+        "y1": 198.35999999999999
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_73": {
+      "question": "private water system access? NO|_|YES|_lelectric service access? NO|_|YES|[_|natural gas access? NO|_|YES",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 530.64,
+        "y0": 188.64,
+        "x1": 540.36,
+        "y1": 198.35999999999999
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_74": {
+      "question": "private water system access? NO|_|YES|_lelectric service access? NO|_|YES|[_|natural gas access? NO|_|YES",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 381.59999999999997,
+        "y0": 188.64,
+        "x1": 391.32,
+        "y1": 198.35999999999999
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_75": {
+      "question": "private water system access? NO|_|YES|_lelectric service access? NO|_|YES|[_|natural gas access? NO|_|YES",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 248.04,
+        "y0": 188.64,
+        "x1": 257.76,
+        "y1": 198.35999999999999
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_76": {
+      "question": "private water system access? NO|_|YES|_lelectric service access? NO|_|YES|[_|natural gas access? NO|_|YES",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 215.64,
+        "y0": 188.64,
+        "x1": 225.35999999999999,
+        "y1": 198.35999999999999
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_77": {
+      "question": "private water system access? NO|_|YES|_lelectric service access? NO|_|YES|[_|natural gas access? NO|_|YES",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 414.0,
+        "y0": 189.0,
+        "x1": 423.71999999999997,
+        "y1": 198.72
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_78": {
+      "question": "telephone system access? NO[L_]YES",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 237.95999999999998,
+        "y0": 203.76,
+        "x1": 247.67999999999998,
+        "y1": 213.48
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_79": {
+      "question": "telephone system access? NO[L_]YES",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 203.76,
+        "y0": 203.76,
+        "x1": 213.48,
+        "y1": 213.48
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_80": {
+      "question": "e.Have any utility charges been paid? NO |_|YES[_]If yes, which charges were paid?:",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 254.88,
+        "y0": 219.6,
+        "x1": 264.59999999999997,
+        "y1": 229.32
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_81": {
+      "question": "e.Have any utility charges been paid? NO |_|YES[_]If yes, which charges were paid?:",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 289.08,
+        "y0": 220.67999999999998,
+        "x1": 298.8,
+        "y1": 230.39999999999998
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_82": {
+      "question": "Is there anything else that materially affects the value of the property? NO ES",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 431.28,
+        "y0": 307.44,
+        "x1": 441.0,
+        "y1": 317.15999999999997
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "checkbox_83": {
+      "question": "Is there anything else that materially affects the value of the property? NO ES",
+      "type": "checkbox",
+      "page": 3,
+      "rect": {
+        "x0": 399.96,
+        "y0": 307.44,
+        "x1": 409.68,
+        "y1": 317.15999999999997
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "text_33": {
+      "question": "Buyer: / Date:",
+      "type": "text",
+      "page": 3,
+      "rect": {
+        "x0": 461.15999999999997,
+        "y0": 671.04,
+        "x1": 572.76,
+        "y1": 681.8399999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_34": {
+      "question": "Buyer: /",
+      "type": "text",
+      "page": 3,
+      "rect": {
+        "x0": 256.68,
+        "y0": 671.04,
+        "x1": 418.68,
+        "y1": 681.8399999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_35": {
+      "question": "Buyer:",
+      "type": "text",
+      "page": 3,
+      "rect": {
+        "x0": 64.8,
+        "y0": 671.04,
+        "x1": 248.76,
+        "y1": 681.8399999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_36": {
+      "question": "Buyer: / Date:",
+      "type": "text",
+      "page": 3,
+      "rect": {
+        "x0": 461.15999999999997,
+        "y0": 650.16,
+        "x1": 572.76,
+        "y1": 660.9599999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_37": {
+      "question": "Buyer: /",
+      "type": "text",
+      "page": 3,
+      "rect": {
+        "x0": 256.68,
+        "y0": 650.16,
+        "x1": 418.68,
+        "y1": 660.9599999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_38": {
+      "question": "Buyer:",
+      "type": "text",
+      "page": 3,
+      "rect": {
+        "x0": 64.8,
+        "y0": 650.16,
+        "x1": 248.76,
+        "y1": 660.9599999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_39": {
+      "question": "Seller: / Date:",
+      "type": "text",
+      "page": 3,
+      "rect": {
+        "x0": 461.15999999999997,
+        "y0": 519.48,
+        "x1": 572.76,
+        "y1": 530.28
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_40": {
+      "question": "Seller: /",
+      "type": "text",
+      "page": 3,
+      "rect": {
+        "x0": 255.95999999999998,
+        "y0": 519.48,
+        "x1": 417.96,
+        "y1": 530.28
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_41": {
+      "question": "Seller:",
+      "type": "text",
+      "page": 3,
+      "rect": {
+        "x0": 64.44,
+        "y0": 519.48,
+        "x1": 248.39999999999998,
+        "y1": 530.28
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_42": {
+      "question": "Seller: / Date:",
+      "type": "text",
+      "page": 3,
+      "rect": {
+        "x0": 461.15999999999997,
+        "y0": 498.24,
+        "x1": 572.76,
+        "y1": 509.03999999999996
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_43": {
+      "question": "Seller: /",
+      "type": "text",
+      "page": 3,
+      "rect": {
+        "x0": 255.95999999999998,
+        "y0": 498.24,
+        "x1": 417.96,
+        "y1": 509.03999999999996
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_44": {
+      "question": "Seller:",
+      "type": "text",
+      "page": 3,
+      "rect": {
+        "x0": 64.08,
+        "y0": 498.24,
+        "x1": 248.04,
+        "y1": 509.03999999999996
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_45": {
+      "question": "",
+      "type": "text",
+      "page": 3,
+      "rect": {
+        "x0": 76.67999999999999,
+        "y0": 374.76,
+        "x1": 576.0,
+        "y1": 385.56
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_46": {
+      "question": "",
+      "type": "text",
+      "page": 3,
+      "rect": {
+        "x0": 76.67999999999999,
+        "y0": 359.64,
+        "x1": 575.64,
+        "y1": 370.44
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_47": {
+      "question": "",
+      "type": "text",
+      "page": 3,
+      "rect": {
+        "x0": 76.67999999999999,
+        "y0": 343.44,
+        "x1": 575.64,
+        "y1": 354.24
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_48": {
+      "question": "If yes, explain:",
+      "type": "text",
+      "page": 3,
+      "rect": {
+        "x0": 138.96,
+        "y0": 326.52,
+        "x1": 577.0799999999999,
+        "y1": 337.32
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_49": {
+      "question": "",
+      "type": "text",
+      "page": 3,
+      "rect": {
+        "x0": 74.52,
+        "y0": 251.64,
+        "x1": 573.48,
+        "y1": 262.44
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_50": {
+      "question": "",
+      "type": "text",
+      "page": 3,
+      "rect": {
+        "x0": 74.52,
+        "y0": 235.07999999999998,
+        "x1": 573.84,
+        "y1": 245.88
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_51": {
+      "question": "e.Have any utility charges been paid? NO |_|YES[_]If yes, which charges were paid?:",
+      "type": "text",
+      "page": 3,
+      "rect": {
+        "x0": 449.28,
+        "y0": 218.51999999999998,
+        "x1": 576.72,
+        "y1": 229.32
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_52": {
+      "question": "",
+      "type": "text",
+      "page": 3,
+      "rect": {
+        "x0": 76.32,
+        "y0": 109.44,
+        "x1": 575.64,
+        "y1": 120.24
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_53": {
+      "question": "b. Have percolation tests been performed? NO[_]YES [_lyes, when and by which person or company:",
+      "type": "text",
+      "page": 3,
+      "rect": {
+        "x0": 523.0799999999999,
+        "y0": 93.96,
+        "x1": 568.0799999999999,
+        "y1": 104.75999999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_54": {
+      "question": "",
+      "type": "text",
+      "page": 3,
+      "rect": {
+        "x0": 77.03999999999999,
+        "y0": 78.11999999999999,
+        "x1": 576.0,
+        "y1": 88.92
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_55": {
+      "question": "a. What type of irrigation does the property have?",
+      "type": "text",
+      "page": 3,
+      "rect": {
+        "x0": 287.64,
+        "y0": 63.0,
+        "x1": 570.6,
+        "y1": 73.8
+      },
+      "value": null,
+      "possible_answers": null
+    }
+  }
+}

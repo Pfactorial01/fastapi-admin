@@ -1,0 +1,135 @@
+{
+  "metadata": {
+    "timestamp": "2025-01-21T22:12:18.695317",
+    "filename": "HUD_-_For_Your_Protection__Get_a_Home_Inspection.pdf",
+    "document_title": "For Your Protection Get A Home Inspection 2015.pdf",
+    "number_of_pages": 1,
+    "versions": {
+      "pymupdf": [
+        "1.25.1",
+        "1.25.2",
+        "20241211000001"
+      ]
+    },
+    "summary": "This is a document used in real estate transactions to provide potential buyers with essential information about a property."
+  },
+  "summary": {
+    "total_fields": 8,
+    "fields_by_type": {
+      "text": 8
+    },
+    "fields_by_page": {
+      "1": 8
+    }
+  },
+  "fields": {
+        "text_7": {
+      "question": "Buyer",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 47.16,
+        "y0": 672.12,
+        "x1": 190.79999999999998,
+        "y1": 682.92
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_6": {
+      "question": "Date",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 206.64,
+        "y0": 672.12,
+        "x1": 278.64,
+        "y1": 682.92
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_5": {
+      "question": "Buyer",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 297.36,
+        "y0": 672.12,
+        "x1": 451.8,
+        "y1": 682.92
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_4": {
+      "question": "Date",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 479.15999999999997,
+        "y0": 672.12,
+        "x1": 551.16,
+        "y1": 682.92
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_3": {
+      "question": "Buyer",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 47.16,
+        "y0": 722.52,
+        "x1": 196.2,
+        "y1": 733.3199999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_2": {
+      "question": "Date",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 212.4,
+        "y0": 722.52,
+        "x1": 284.4,
+        "y1": 733.3199999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_1": {
+      "question": "Buyer",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 302.76,
+        "y0": 722.52,
+        "x1": 457.56,
+        "y1": 733.3199999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_0": {
+      "question": "Date",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 479.15999999999997,
+        "y0": 722.52,
+        "x1": 551.16,
+        "y1": 733.3199999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+
+
+  }
+}

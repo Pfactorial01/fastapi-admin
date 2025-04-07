@@ -1,0 +1,192 @@
+{
+    "metadata": {
+        "timestamp": "2025-01-18T06:03:12.395723",
+            "filename": "Septic_Program_Replacement_Addendum_SRPA-2_Rev._03_2024.pdf",
+                "document_title": "Septic Program Replacement Addendum",
+                    "number_of_pages": 1,
+                        "versions": {
+            "pymupdf": [
+                "1.25.1",
+                "1.25.2",
+                "20241211000001"
+            ]
+        },
+        "summary": "This is a document used in real estate transactions to provide potential buyers with essential information about a property."
+    },
+    "summary": {
+        "total_fields": 12,
+            "fields_by_type": {
+            "text": 12
+        },
+        "fields_by_page": {
+            "1": 12
+        }
+    },
+    "fields": {
+        "text_11": {
+            "question": "The following provisions are made part of the Contract for Sale and Purchase or Residential Sale and Purchase Contract between (Seller Name)",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 139.32,
+                    "y0": 100.8,
+                        "x1": 519.48,
+                            "y1": 111.6
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_10": {
+            "question": "and (Buyer Name)",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 75.96,
+                    "y0": 124.92,
+                        "x1": 518.4,
+                            "y1": 135.72
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_9": {
+            "question": "concerning the Property located at",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 214.2,
+                    "y0": 153.35999999999999,
+                        "x1": 554.04,
+                            "y1": 164.16
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_8": {
+            "question": "water management district or any other governmental authority within",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 245.16,
+                    "y0": 230.04,
+                        "x1": 290.52,
+                            "y1": 240.84
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_6": {
+            "question": "Seller:",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 93.96,
+                    "y0": 433.08,
+                        "x1": 380.88,
+                            "y1": 443.88
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_7": {
+            "question": "Seller: Date",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 441.0,
+                    "y0": 432.71999999999997,
+                        "x1": 552.96,
+                            "y1": 443.52
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_4": {
+            "question": "Seller:",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 94.32,
+                    "y0": 462.59999999999997,
+                        "x1": 380.88,
+                            "y1": 473.4
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_5": {
+            "question": "Seller: Date",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 441.0,
+                    "y0": 462.24,
+                        "x1": 552.96,
+                            "y1": 473.03999999999996
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_2": {
+            "question": "Buyer:",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 95.03999999999999,
+                    "y0": 492.12,
+                        "x1": 380.88,
+                            "y1": 502.91999999999996
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_3": {
+            "question": "Buyer: Date",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 441.0,
+                    "y0": 491.76,
+                        "x1": 552.96,
+                            "y1": 502.56
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_0": {
+            "question": "Buyer:",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 95.39999999999999,
+                    "y0": 521.64,
+                        "x1": 380.88,
+                            "y1": 532.4399999999999
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_1": {
+            "question": "Buyer: Date",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 441.0,
+                    "y0": 521.28,
+                        "x1": 552.96,
+                            "y1": 532.0799999999999
+            },
+            "value": null,
+                "possible_answers": null
+        },
+     
+       
+   
+
+
+
+
+    
+    }
+}
+

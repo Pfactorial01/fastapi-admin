@@ -1,0 +1,405 @@
+{
+  metadata: {
+    "timestamp": "2025-01-23T09:37:22.873344",
+    "filename": "Release_and_Cancellation_of_Contract_for_Sale_and_Purchase_RC-4_CgYOvHv.pdf",
+    "document_title": "Microsoft Word - Release and Cancellation of Contract for Sale and Purchase",
+    "number_of_pages": 1,
+    "summary": "This is a document used in real estate transactions to provide potential buyers with essential information about a property."
+  },
+  summary: {
+    "total_fields": 26,
+    "fields_by_type": {
+      "checkbox": 5,
+      "text": 21
+    },
+    "fields_by_page": {
+      "1": 26
+    }
+  },
+  fields: {
+        "text_20": {
+      "question": "Buyer",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 72.0,
+        "y0": 122.03999999999999,
+        "x1": 523.0799999999999,
+        "y1": 132.84
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_19": {
+      "question": "Seller",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 91.44,
+        "y0": 139.32,
+        "x1": 525.96,
+        "y1": 150.12
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "checkbox_0": {
+      "question": "Contract for Residential Sale and Purchase (CRSP)",
+      "type": "checkbox",
+      "page": 1,
+      "value": null,
+      "possible_answers": [
+        {
+                "rect": {
+        "x0": 73.44,
+        "y0": 188.28,
+        "x1": 80.28,
+        "y1": 194.76
+      },
+          "value": "Contract for Residential Sale and Purchase (CRSP)"
+        }
+      ]
+    },
+    "checkbox_1": {
+      "question": "AS IS Residential Contract for Sale and Purchase (ASIS FR/Bar)",
+      "type": "checkbox",
+      "page": 1,
+
+      "value": null,
+      "possible_answers": [
+        {
+                "rect": {
+        "x0": 73.44,
+        "y0": 205.92,
+        "x1": 80.28,
+        "y1": 212.4
+      },
+          "value": "AS IS Residential Contract for Sale and Purchase (ASIS FR/Bar)"
+        }
+      ]
+    },
+    "checkbox_2": {
+      "question": "Residential Contract for Sale and Purchase (FR/Bar)",
+      "type": "checkbox",
+      "page": 1,
+
+      "value": null,
+      "possible_answers": [
+        {
+                "rect": {
+        "x0": 73.44,
+        "y0": 223.2,
+        "x1": 80.28,
+        "y1": 229.67999999999998
+      },
+          "value": "Residential Contract for Sale and Purchase (FR/Bar)"
+        }
+      ]
+    },
+    "checkbox_3": {
+      "question": "Commercial Contract",
+      "type": "checkbox",
+      "page": 1,
+
+      "value": null,
+      "possible_answers": [
+        {
+                "rect": {
+        "x0": 73.44,
+        "y0": 240.84,
+        "x1": 80.28,
+        "y1": 247.32
+      },
+          "value": "Commercial Contract"
+        }
+      ]
+    },
+    "checkbox_4": {
+      "question": "Vacant Land Contract",
+      "type": "checkbox",
+      "page": 1,
+
+      "value": null,
+      "possible_answers": [
+        {
+                "rect": {
+        "x0": 73.44,
+        "y0": 258.48,
+        "x1": 80.28,
+        "y1": 264.96
+      },
+          "value": "Vacant Land Contract"
+        }
+      ]
+    },
+    "text_18": {
+      "question": "with an Effective Date of",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 182.88,
+        "y0": 276.12,
+        "x1": 366.84,
+        "y1": 286.92
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+        "text_17": {
+      "question": "Release from liability name of brokerage",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 72.0,
+        "y0": 376.56,
+        "x1": 439.91999999999996,
+        "y1": 387.36
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_16": {
+      "question": "Release from liability name of brokerage",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 72.0,
+        "y0": 422.64,
+        "x1": 439.91999999999996,
+        "y1": 433.44
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_15": {
+      "question": "Buyer and seller instruct the escrow agent to disburse the deposit as follows $",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 80.28,
+        "y0": 532.8,
+        "x1": 164.16,
+        "y1": 543.6
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_14": {
+      "question": "to",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 191.16,
+        "y0": 532.8,
+        "x1": 575.28,
+        "y1": 543.6
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_13": {
+      "question": " Buyer and seller instruct the escrow agent to disburse the deposit as follows $",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 80.28,
+        "y0": 549.0,
+        "x1": 164.16,
+        "y1": 559.8
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_12": {
+      "question": "to",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 191.16,
+        "y0": 549.0,
+        "x1": 575.28,
+        "y1": 559.8
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_11": {
+      "question": "Buyer and seller instruct the escrow agent to disburse the deposit as follows  $",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 80.28,
+        "y0": 565.1999999999999,
+        "x1": 164.16,
+        "y1": 576.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_10": {
+      "question": "to",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 191.16,
+        "y0": 565.1999999999999,
+        "x1": 575.28,
+        "y1": 576.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_9": {
+      "question": "Buyer and seller instruct the escrow agent to disburse the deposit as follows  $",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 80.28,
+        "y0": 581.4,
+        "x1": 164.16,
+        "y1": 592.1999999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_8": {
+      "question": "to",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 191.16,
+        "y0": 581.4,
+        "x1": 575.28,
+        "y1": 592.1999999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_7": {
+      "question": "Buyer",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 72.72,
+        "y0": 604.8,
+        "x1": 357.47999999999996,
+        "y1": 615.6
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_6": {
+      "question": "Date",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 434.88,
+        "y0": 604.8,
+        "x1": 575.28,
+        "y1": 615.6
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_5": {
+      "question": "Buyer",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 72.72,
+        "y0": 627.84,
+        "x1": 357.47999999999996,
+        "y1": 638.64
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_4": {
+      "question": "Date",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 434.88,
+        "y0": 627.84,
+        "x1": 575.28,
+        "y1": 638.64
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_3": {
+      "question": "Seller",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 72.72,
+        "y0": 650.88,
+        "x1": 357.47999999999996,
+        "y1": 661.68
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_2": {
+      "question": "Date",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 434.88,
+        "y0": 650.88,
+        "x1": 575.28,
+        "y1": 661.68
+      },
+      "value": null,
+      "possible_answers": null
+    },
+  "text_1": {
+      "question": "Seller",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 72.72,
+        "y0": 673.92,
+        "x1": 357.47999999999996,
+        "y1": 684.72
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+
+
+
+
+
+
+
+
+    "text_0": {
+      "question": "Date",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 434.88,
+        "y0": 673.92,
+        "x1": 575.28,
+        "y1": 684.72
+      },
+      "value": null,
+      "possible_answers": null
+    },
+  
+
+
+
+
+  }
+}

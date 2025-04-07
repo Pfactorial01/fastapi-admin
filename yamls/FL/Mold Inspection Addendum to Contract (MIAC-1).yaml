@@ -1,0 +1,293 @@
+{
+  "metadata": {
+    "timestamp": "2025-01-21T22:40:06.640719",
+    "filename": "Mold_Inspection_Addendum_to_Contract_MIAC-1_gdn3XWB.pdf",
+    "document_title": "FARMIAC1.pdf",
+    "number_of_pages": 1,
+    "versions": {
+      "pymupdf": [
+        "1.25.1",
+        "1.25.2",
+        "20241211000001"
+      ]
+    },
+    "summary": "This is a document used in real estate transactions to provide potential buyers with essential information about a property."
+  },
+  "summary": {
+    "total_fields": 17,
+    "fields_by_type": {
+      "text": 17
+    },
+    "fields_by_page": {
+      "1": 17
+    }
+  },
+  fields: {
+        "text_16": {
+      "question": "The following provisions are made a part of the Contract for Sale and Purchase or Residential Sale and Purchase Contract between  (Seller)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 74.52,
+        "y0": 109.44,
+        "x1": 519.48,
+        "y1": 120.24
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_15": {
+      "question": "Buyer",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 42.12,
+        "y0": 127.44,
+        "x1": 542.52,
+        "y1": 138.24
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+        "text_14": {
+      "question": "concerning the Property located at",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 194.4,
+        "y0": 145.44,
+        "x1": 572.76,
+        "y1": 156.23999999999998
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_13": {
+      "question": "Buyer, at Buyers expense, may have a qualified professional conduct an inspection of the Property for mold within ________ days from the Effective Date (Mold Inspection Period).",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 55.08,
+        "y0": 199.44,
+        "x1": 100.08,
+        "y1": 210.23999999999998
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_12": {
+      "question": "In the event the mold inspection reveals a significant presence of mold in the Property, which requires professionals to remove the mold, at a cost which exceeds $___________,",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 263.15999999999997,
+        "y0": 307.44,
+        "x1": 324.71999999999997,
+        "y1": 318.24
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_11": {
+      "question": "Seller Signature",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 65.52,
+        "y0": 491.03999999999996,
+        "x1": 249.12,
+        "y1": 501.84
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_10": {
+      "question": "Seller (Print)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 257.76,
+        "y0": 491.03999999999996,
+        "x1": 419.4,
+        "y1": 501.84
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_9": {
+      "question": "Date ",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 455.03999999999996,
+        "y0": 491.03999999999996,
+        "x1": 572.04,
+        "y1": 501.84
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_8": {
+      "question": "Seller Signature",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 65.52,
+        "y0": 525.24,
+        "x1": 249.12,
+        "y1": 536.04
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_7": {
+      "question": "Seller (Print)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 257.76,
+        "y0": 525.24,
+        "x1": 419.4,
+        "y1": 536.04
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_6": {
+      "question": "Date:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 455.03999999999996,
+        "y0": 525.24,
+        "x1": 572.04,
+        "y1": 536.04
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_5": {
+      "question": "Buyer Signature:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 66.24,
+        "y0": 559.0799999999999,
+        "x1": 244.07999999999998,
+        "y1": 569.88
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_4": {
+      "question": "Buyer (Print)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 252.72,
+        "y0": 559.0799999999999,
+        "x1": 414.35999999999996,
+        "y1": 569.88
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_3": {
+      "question": "Date:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 455.76,
+        "y0": 559.0799999999999,
+        "x1": 572.76,
+        "y1": 569.88
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_2": {
+      "question": "Buyer Signature:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 66.24,
+        "y0": 592.92,
+        "x1": 244.07999999999998,
+        "y1": 603.72
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_1": {
+      "question": "Buyer: (print)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 252.72,
+        "y0": 592.92,
+        "x1": 414.35999999999996,
+        "y1": 603.72
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_50": {
+      "question": "Date:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 455.76,
+        "y0": 592.92,
+        "x1": 572.76,
+        "y1": 603.72
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_62": {
+      "question": "Buyer Signature:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 66.24,
+        "y0": 626.76,
+        "x1": 244.07999999999998,
+        "y1": 603.72
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_198": {
+      "question": "Buyer: (print)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 252.72,
+        "y0": 626.76,
+        "x1": 414.35999999999996,
+        "y1": 603.72
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_089": {
+      "question": "Date:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 455.76,
+        "y0": 626.76,
+        "x1": 572.76,
+        "y1": 603.72
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+  }
+}

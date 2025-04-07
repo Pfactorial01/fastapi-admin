@@ -44,7 +44,7 @@ class SchedulerManager:
             # Add scheduled job - note that we pass the async function directly
             self.scheduler.add_job(
                 func=self.process_pending_notifications,  # Pass async function directly
-                trigger=CronTrigger(minute="*/1"),
+                trigger=CronTrigger(hour="*"),
                 id="process_notifications",
                 name="Process pending notifications",
                 replace_existing=True,
@@ -113,7 +113,6 @@ class SchedulerManager:
         try:
             # Create a new MongoDB client for this job execution
             mongodb_url = os.getenv('MONGODB_URL')
-            print(mongodb_url)
             client = AsyncIOMotorClient(mongodb_url)
             db = client.API
             
@@ -145,8 +144,8 @@ class SchedulerManager:
                     await fcm_service.send_notification(
                         tokens=tokens,
                         title=notification["title"],
-                        body=notification["body"],
-                        data=notification["data"]
+                        body=notification["message"],
+                        # data=notification["data"]
                     )
                     
                     # Mark as processed

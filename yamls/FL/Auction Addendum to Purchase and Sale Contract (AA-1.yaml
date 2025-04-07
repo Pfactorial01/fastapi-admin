@@ -1,0 +1,428 @@
+
+{
+    "metadata": {
+        "timestamp": "2025-01-24T10:07:56.032031",
+            "filename": "Auction_Addendum_to_Purchase_and_Sale_Contract_AA-1_fhQ2vhq.pdf",
+                "document_title": "Microsoft Word - auction addendum.docx",
+                    "number_of_pages": 1,
+                        "versions": {
+            "pymupdf": [
+                "1.25.1",
+                "1.25.2",
+                "20241211000001"
+            ]
+        },
+        "summary": "This is a document used in real estate transactions to provide potential buyers with essential information about a property."
+    },
+    "summary": {
+        "total_fields": 29,
+            "fields_by_type": {
+            "checkbox": 18,
+                "text": 11
+        },
+        "fields_by_page": {
+            "1": 29
+        }
+    },
+    "fields": {
+        "text_10": {
+            "question": "The following provisions are made a part of the Contract for Sale and Purchase or Residential Sale and Purchase Contract between (Seller Name)",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 36.0,
+                    "y0": 102.96,
+                        "x1": 506.88,
+                            "y1": 113.75999999999999
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_9": {
+            "question": "and (Buyer Name)",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 36.0,
+                    "y0": 123.47999999999999,
+                        "x1": 406.8,
+                            "y1": 134.28
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_8": {
+            "question": "Buyer Premium: Buyer shall pay",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 195.48,
+                    "y0": 175.32,
+                        "x1": 236.16,
+                            "y1": 186.12
+            },
+            "value": null,
+                "possible_answers": null
+        },
+
+
+        "checkbox_0": {
+            "question": "Recording fees for the deed Buyer Seller N/A",
+                "type": "singlecheckbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 253.44,
+                                        "y0": 276.48,
+                                        "x1": 261.71999999999997,
+                                        "y1": 284.4
+                                    },
+                                    "value": "Buyer"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 299.15999999999997,
+                                        "y0": 276.48,
+                                        "x1": 307.44,
+                                        "y1": 284.4
+                                    },
+                                    "value": "Seller"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 344.15999999999997,
+                                        "y0": 276.48,
+                                        "x1": 352.08,
+                                        "y1": 284.4
+                                    },
+                                    "value": "N/A"
+                                },
+                            ]
+        },
+
+
+        "checkbox_3": {
+            "question": "Satisfaction of mortgage and recording fees",
+                "type": "singlecheckbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 253.44,
+                                        "y0": 286.92,
+                                        "x1": 261.71999999999997,
+                                        "y1": 294.84
+                                    },
+                                    "value": "Buyer"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 299.15999999999997,
+                                        "y0": 286.92,
+                                        "x1": 307.44,
+                                        "y1": 294.84
+                                    },
+                                    "value": "Seller"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 344.15999999999997,
+                                        "y0": 286.92,
+                                        "x1": 352.08,
+                                        "y1": 294.84
+                                    },
+                                    "value": "N/A"
+                                },
+                            ]
+        },
+
+
+
+
+        "checkbox_6": {
+            "question": "Documentary stamp taxes on the deed",
+                "type": "singlecheckbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 253.44,
+                                        "y0": 297.0,
+                                        "x1": 261.71999999999997,
+                                        "y1": 305.28
+                                    },
+                                    "value": "Buyer"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 299.15999999999997,
+                                        "y0": 297.0,
+                                        "x1": 307.44,
+                                        "y1": 305.28
+                                    },
+                                    "value": "Seller"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 344.15999999999997,
+                                        "y0": 297.0,
+                                        "x1": 352.08,
+                                        "y1": 305.28
+                                    },
+                                    "value": "N/A"
+                                },
+                            ]
+        },
+
+
+        "checkbox_9": {
+            "question": "Owner's title policy",
+                "type": "singlecheckbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 253.44,
+                                        "y0": 307.44,
+                                        "x1": 261.71999999999997,
+                                        "y1": 315.71999999999997
+                                    },
+
+
+                                    "value": "Buer"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 299.15999999999997,
+                                        "y0": 307.44,
+                                        "x1": 307.44,
+                                        "y1": 315.71999999999997
+                                    },
+                                    "value": "Seller "
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 344.15999999999997,
+                                        "y0": 307.44,
+                                        "x1": 352.08,
+                                        "y1": 315.71999999999997
+                                    },
+                                    "value": "N/A"
+                                }
+                            ]
+        },
+
+
+        "checkbox_12": {
+            "question": "Title search",
+                "type": "singlecheckbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 253.44,
+                                        "y0": 317.88,
+                                        "x1": 261.71999999999997,
+                                        "y1": 325.8
+                                    },
+                                    "value": " Buyer"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 299.15999999999997,
+                                        "y0": 317.88,
+                                        "x1": 307.44,
+                                        "y1": 325.8
+                                    },
+                                    "value": "Seller"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 344.15999999999997,
+                                        "y0": 317.88,
+                                        "x1": 352.08,
+                                        "y1": 325.8
+                                    },
+                                    "value": "N/A"
+                                }
+                            ]
+        },
+
+
+        "checkbox_15": {
+            "question": "Tax search fee",
+                "type": "singlecheckbox",
+                    "page": 1,
+
+
+                        "value": null,
+                            "possible_answers": [
+                                {
+                                    "rect": {
+                                        "x0": 253.44,
+                                        "y0": 328.32,
+                                        "x1": 261.71999999999997,
+                                        "y1": 336.24
+                                    },
+                                    "value": "Buyer"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 299.15999999999997,
+                                        "y0": 328.32,
+                                        "x1": 307.44,
+                                        "y1": 336.24
+                                    },
+                                    "value": "Seller"
+                                },
+                                {
+                                    "rect": {
+                                        "x0": 344.15999999999997,
+                                        "y0": 328.32,
+                                        "x1": 352.08,
+                                        "y1": 336.24
+                                    },
+                                    "value": "N/A"
+                                }
+                            ]
+        },
+        "text_7": {
+            "question": "Seller",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 36.0,
+                    "y0": 522.72,
+                        "x1": 206.64,
+                            "y1": 533.52
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_6": {
+            "question": "Date",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 213.84,
+                    "y0": 522.72,
+                        "x1": 274.32,
+                            "y1": 533.52
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_5": {
+            "question": "Seller",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 298.8,
+                    "y0": 522.72,
+                        "x1": 479.52,
+                            "y1": 533.52
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_4": {
+            "question": "Date",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 486.35999999999996,
+                    "y0": 522.72,
+                        "x1": 547.1999999999999,
+                            "y1": 533.52
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_3": {
+            "question": "Buyer",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 36.0,
+                    "y0": 584.64,
+                        "x1": 206.64,
+                            "y1": 595.4399999999999
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_2": {
+            "question": "Date",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 213.84,
+                    "y0": 584.64,
+                        "x1": 274.32,
+                            "y1": 595.4399999999999
+            },
+            "value": null,
+                "possible_answers": null
+        },
+        "text_1": {
+            "question": "Buyer",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 298.8,
+                    "y0": 584.64,
+                        "x1": 479.52,
+                            "y1": 595.4399999999999
+            },
+            "value": null,
+                "possible_answers": null
+        },
+
+
+
+
+        "text_0": {
+            "question": "Date",
+                "type": "text",
+                    "page": 1,
+                        "rect": {
+                "x0": 486.35999999999996,
+                    "y0": 584.64,
+                        "x1": 547.1999999999999,
+                            "y1": 595.4399999999999
+            },
+            "value": null,
+                "possible_answers": null
+        },
+   
+       
+ 
+       
+     
+     
+
+
+
+
+
+
+    }
+}
+
+

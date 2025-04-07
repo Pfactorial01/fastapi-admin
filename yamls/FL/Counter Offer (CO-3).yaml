@@ -1,0 +1,589 @@
+{
+  "metadata": {
+    "timestamp": "2025-01-22T00:57:48.120400",
+    "filename": "Counter_Offer_CO-3.pdf",
+    "document_title": "Counter Offer_CO-3.pdf",
+    "number_of_pages": 1,
+    "versions": {
+      "pymupdf": [
+        "1.25.1",
+        "1.25.2",
+        "20241211000001"
+      ]
+    },
+    "summary": "This is a document used in real estate transactions to provide potential buyers with essential information about a property."
+  },
+  "summary": {
+    "total_fields": 41,
+    "fields_by_type": {
+      "checkbox": 4,
+      "text": 37
+    },
+    "fields_by_page": {
+      "1": 41
+    }
+  },
+  "fields": {
+        "text_36": {
+      "question": "Counter Offer #",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 124.19999999999999,
+        "y0": 63.0,
+        "x1": 191.51999999999998,
+        "y1": 73.8
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_35": {
+      "question": "Seller",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 38.519999999999996,
+        "y0": 86.39999999999999,
+        "x1": 535.68,
+        "y1": 97.2
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_34": {
+      "question": "and (Buyer)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 60.839999999999996,
+        "y0": 107.64,
+        "x1": 535.68,
+        "y1": 118.44
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_33": {
+      "question": "agree that the initial offer, executed by the party making the offer and dated",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 371.88,
+        "y0": 120.96,
+        "x1": 483.47999999999996,
+        "y1": 131.76
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_32": {
+      "question": "Purchase Price is changed to $",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 193.32,
+        "y0": 231.48,
+        "x1": 304.2,
+        "y1": 242.28
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "checkbox_0": {
+      "question": "Purchase Price is changed to $",
+      "type": "checkbox",
+      "page": 1,
+
+      "value": null,
+      "possible_answers": [
+        {
+                "rect": {
+        "x0": 37.8,
+        "y0": 234.0,
+        "x1": 43.559999999999995,
+        "y1": 239.76
+      },
+          "value": "Yes"
+        }
+      ]
+    },
+    "checkbox_1": {
+      "question": "Closing Date is changed to",
+      "type": "checkbox",
+      "page": 1,
+
+      "value": null,
+      "possible_answers": [
+        {
+                "rect": {
+        "x0": 37.8,
+        "y0": 251.64,
+        "x1": 43.559999999999995,
+        "y1": 257.4
+      },
+          "value": "Yes"
+        }
+      ]
+    },
+        "text_31": {
+      "question": "O Closing Date is changed to",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 176.76,
+        "y0": 249.12,
+        "x1": 304.2,
+        "y1": 259.92
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "checkbox_2": {
+      "question": "The following items are included in the purchase:",
+      "type": "checkbox",
+      "page": 1,
+
+      "value": null,
+      "possible_answers": [
+        {
+                "rect": {
+        "x0": 37.8,
+        "y0": 268.92,
+        "x1": 43.559999999999995,
+        "y1": 274.68
+      },
+          "value": "Yes"
+        }
+      ]
+    },
+
+    "checkbox_3": {
+      "question": "O The following items are excluded from the purchase:",
+      "type": "checkbox",
+      "page": 1,
+      "rect": {
+        "x0": 37.8,
+        "y0": 315.71999999999997,
+        "x1": 43.559999999999995,
+        "y1": 321.47999999999996
+      },
+      "value": null,
+      "possible_answers": [
+        {
+          "answer": "Yes"
+        },
+        {
+          "answer": "No"
+        }
+      ]
+    },
+    "text_0": {
+      "question": "Seller: Date:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 430.56,
+        "y0": 721.4399999999999,
+        "x1": 574.56,
+        "y1": 732.24
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_1": {
+      "question": "Seller:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 69.84,
+        "y0": 721.4399999999999,
+        "x1": 359.64,
+        "y1": 732.24
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_2": {
+      "question": "Seller: Date:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 430.56,
+        "y0": 698.4,
+        "x1": 574.56,
+        "y1": 709.1999999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_3": {
+      "question": "Seller:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 69.84,
+        "y0": 698.4,
+        "x1": 359.64,
+        "y1": 709.1999999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_4": {
+      "question": "Buyer: Date:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 430.56,
+        "y0": 675.36,
+        "x1": 574.56,
+        "y1": 686.16
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_5": {
+      "question": "Buyer:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 70.56,
+        "y0": 675.36,
+        "x1": 360.0,
+        "y1": 686.16
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_6": {
+      "question": "Buyer: Date:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 430.56,
+        "y0": 652.3199999999999,
+        "x1": 574.56,
+        "y1": 663.12
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_7": {
+      "question": "Buyer:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 70.56,
+        "y0": 652.3199999999999,
+        "x1": 360.0,
+        "y1": 663.12
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_8": {
+      "question": "If not signed by Buyer and Seller, and an executed copy delivered to all parties on or before",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 443.15999999999997,
+        "y0": 603.0,
+        "x1": 555.12,
+        "y1": 613.8
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_9": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 110.52,
+        "y0": 579.24,
+        "x1": 574.56,
+        "y1": 590.04
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_10": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 38.519999999999996,
+        "y0": 579.24,
+        "x1": 88.92,
+        "y1": 590.04
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_11": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 110.52,
+        "y0": 561.6,
+        "x1": 574.56,
+        "y1": 572.4
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_12": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 38.519999999999996,
+        "y0": 561.6,
+        "x1": 88.92,
+        "y1": 572.4
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_13": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 110.52,
+        "y0": 544.3199999999999,
+        "x1": 574.56,
+        "y1": 555.12
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_14": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 38.519999999999996,
+        "y0": 544.3199999999999,
+        "x1": 88.92,
+        "y1": 555.12
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_15": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 110.52,
+        "y0": 526.68,
+        "x1": 574.56,
+        "y1": 537.48
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_16": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 38.519999999999996,
+        "y0": 526.68,
+        "x1": 88.92,
+        "y1": 537.48
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_17": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 110.52,
+        "y0": 509.4,
+        "x1": 574.56,
+        "y1": 520.1999999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_18": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 38.519999999999996,
+        "y0": 509.4,
+        "x1": 88.92,
+        "y1": 520.1999999999999
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_19": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 110.52,
+        "y0": 491.76,
+        "x1": 574.56,
+        "y1": 502.56
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_20": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 38.519999999999996,
+        "y0": 491.76,
+        "x1": 88.92,
+        "y1": 502.56
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_21": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 110.52,
+        "y0": 474.12,
+        "x1": 574.56,
+        "y1": 484.91999999999996
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_22": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 38.519999999999996,
+        "y0": 474.12,
+        "x1": 88.92,
+        "y1": 484.91999999999996
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_23": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 110.52,
+        "y0": 456.84,
+        "x1": 574.56,
+        "y1": 467.64
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_24": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 38.519999999999996,
+        "y0": 456.84,
+        "x1": 88.92,
+        "y1": 467.64
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_25": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 110.52,
+        "y0": 439.2,
+        "x1": 574.56,
+        "y1": 450.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_26": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 38.519999999999996,
+        "y0": 439.2,
+        "x1": 88.92,
+        "y1": 450.0
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_27": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 110.52,
+        "y0": 421.56,
+        "x1": 574.56,
+        "y1": 432.35999999999996
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_28": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 38.519999999999996,
+        "y0": 421.56,
+        "x1": 88.92,
+        "y1": 432.35999999999996
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_29": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 110.52,
+        "y0": 404.28,
+        "x1": 574.56,
+        "y1": 415.08
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_30": {
+      "question": "",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 38.519999999999996,
+        "y0": 404.28,
+        "x1": 88.92,
+        "y1": 415.08
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+
+
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "metadata": {
+    "timestamp": "2025-01-21T22:44:03.207963",
+    "filename": "CRSP-16_G_-_Defective_Drywall_Addendum.pdf",
+    "document_title": "CRSP16.G.defective drywall addendum.pdf",
+    "number_of_pages": 1,
+    "versions": {
+      "pymupdf": [
+        "1.25.1",
+        "1.25.2",
+        "20241211000001"
+      ]
+    },
+    "summary": "This is a document used in real estate transactions to provide potential buyers with essential information about a property."
+  },
+  "summary": {
+    "total_fields": 10,
+    "fields_by_type": {
+      "text": 10
+    },
+    "fields_by_page": {
+      "1": 10
+    }
+  },
+  "fields": {
+        "text_9": {
+      "question": "If initialed by all parties, the terms below will be incorporated into the Contract for Residential Sale and Purchase
+between (Seller)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 95.03999999999999,
+        "y0": 99.72,
+        "x1": 533.16,
+        "y1": 110.52
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_8": {
+      "question": "and  (Buyer)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 73.8,
+        "y0": 115.56,
+        "x1": 532.0799999999999,
+        "y1": 126.36
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_7": {
+      "question": "concerning the Property described as",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 222.84,
+        "y0": 131.76,
+        "x1": 576.36,
+        "y1": 142.56
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_6": {
+      "question": "concerning the Property described as (line 2)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 54.36,
+        "y0": 147.6,
+        "x1": 576.36,
+        "y1": 158.4
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_5": {
+      "question": "(____)  G. Defective Drywall:",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 57.599999999999994,
+        "y0": 172.44,
+        "x1": 86.75999999999999,
+        "y1": 183.23999999999998
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_4": {
+      "question": "(_____)(_____)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 97.2,
+        "y0": 172.44,
+        "x1": 127.44,
+        "y1": 183.23999999999998
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_3": {
+      "question": "-(___)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 147.96,
+        "y0": 172.44,
+        "x1": 177.12,
+        "y1": 183.23999999999998
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_2": {
+      "question": "-(___)(___)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 187.56,
+        "y0": 172.44,
+        "x1": 217.79999999999998,
+        "y1": 183.23999999999998
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_1": {
+      "question": "Defective Drywall Inspection: Buyer may, at Buyer’s expense, have a home inspector, licensed contractor, or
+other licensed professional (if required by law) conduct an inspection of the Property for the presence of Defective
+Drywall within ______ days (10 days if left blank)",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 138.6,
+        "y0": 264.96,
+        "x1": 172.44,
+        "y1": 275.76
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_0": {
+      "question": "Cancellation: If the inspection reveals the presence of Defective Drywall or reveals damage to the
+Property resulting from Defective Drywall and the cost to remove/replace Defective Drywall or damage resulting
+from Defective Drywall exceeds $________________ ($500 if left blank),",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 227.51999999999998,
+        "y0": 328.32,
+        "x1": 316.8,
+        "y1": 339.12
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+
+
+
+  }
+}

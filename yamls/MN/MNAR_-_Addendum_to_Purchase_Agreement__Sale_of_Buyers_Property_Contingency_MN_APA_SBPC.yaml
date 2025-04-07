@@ -1,0 +1,206 @@
+fields: {
+      "text_12": {
+      "question": "Date",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 378.36,
+        "y0": 109.8,
+        "x1": 576.36,
+        "y1": 120.6
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_11": {
+      "question": "Addendum to Purchase Agreement between parties, dated",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 340.2,
+        "y0": 139.68,
+        "x1": 576.36,
+        "y1": 150.48
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_10": {
+      "question": "pertaining to the purchase and sale of the Property at",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 66.24,
+        "y0": 169.92,
+        "x1": 569.88,
+        "y1": 180.72
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_9": {
+      "question": "Buyer's property located at",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 186.84,
+        "y0": 193.68,
+        "x1": 569.88,
+        "y1": 204.48
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "checkbox_0": {
+      "question": "Buyer's property  Will Be Listed Within days rit",
+      "type": "singlecheckbox",
+      "page": 1,
+
+      "value": null,
+      "possible_answers": [
+        {
+                "rect": {
+        "x0": 149.04,
+        "y0": 213.84,
+        "x1": 160.2,
+        "y1": 225.0
+      },
+
+          "value": "Is Currently Listed"
+        },
+        {
+                          "rect": {
+        "x0": 267.84,
+        "y0": 213.84,
+        "x1": 278.64,
+        "y1": 225.0
+      },
+          "value": "Will Be Listed Within"
+        }
+      ]
+    },
+
+    "text_8": {
+      "question": "If  Will Be Listed Within ___ days",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 399.24,
+        "y0": 211.67999999999998,
+        "x1": 522.72,
+        "y1": 222.48
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_7": {
+      "question": "with",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 63.36,
+        "y0": 238.32,
+        "x1": 534.96,
+        "y1": 249.12
+      },
+      "value": null,
+      "possible_answers": null
+    },
+        "text_6": {
+      "question": "deliver to Seller, or licensee representing or assisting Seller, at any time, but not later than",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 473.03999999999996,
+        "y0": 332.64,
+        "x1": 532.4399999999999,
+        "y1": 343.44
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_5": {
+      "question": "OTHER:",
+      "type": "multline",
+      "page": 1,
+
+      "value": null,
+      "answer_locations": [
+      "rect": {
+        "x0": 104.03999999999999,
+        "y0": 608.4,
+        "x1": 576.36,
+        "y1": 619.1999999999999
+      },
+            "rect": {
+        "x0": 63.36,
+        "y0": 622.0799999999999,
+        "x1": 576.36,
+        "y1": 632.88
+            }
+      ]
+    },
+    "text_3": {
+      "question": "Seller signature",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 63.36,
+        "y0": 652.3199999999999,
+        "x1": 297.36,
+        "y1": 663.12
+      },
+      "value": null,
+      "possible_answers": null
+    },
+    "text_2": {
+      "question": "Buyer signature",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 333.36,
+        "y0": 652.3199999999999,
+        "x1": 576.36,
+        "y1": 663.12
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+    "text_0": {
+      "question": "Seller",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 333.36,
+        "y0": 690.48,
+        "x1": 576.36,
+        "y1": 701.28
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+
+    "text_1": {
+      "question": "Buyer",
+      "type": "text",
+      "page": 1,
+      "rect": {
+        "x0": 333.36,
+        "y0": 690.48,
+        "x1": 576.36,
+        "y1": 701.28
+      },
+      "value": null,
+      "possible_answers": null
+    },
+
+
+
+
+
+
+
+  }

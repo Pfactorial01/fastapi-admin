@@ -1,0 +1,253 @@
+{% extends "layout.html" %} {% block page_body %}
+<div class="container-xl">
+	<!-- Page title -->
+	<div class="page-header d-print-none">
+		<div class="row align-items-center">
+			<div class="col">
+				<h2 class="page-title">Contract Template YAML Editor</h2>
+				<div class="text-muted mt-1">
+					Edit contract template questions and configuration
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Alert for errors -->
+	{% if error %}
+	<div class="alert alert-danger" role="alert">{{ error }}</div>
+	{% endif %}
+
+	<!-- Main content -->
+	<div class="row row-cards">
+		<div class="col-12">
+			<!-- Selection Card -->
+			<div class="card mb-3">
+				<div class="card-body">
+					<div class="row g-3 align-items-center">
+						<div class="col-auto">
+							<label for="citySelect" class="form-label mb-0">City:</label>
+						</div>
+						<div class="col-auto">
+							<select class="form-select" id="citySelect" onchange="updateFileList()">
+								{% for city in yaml_files.keys() %}
+								<option value="{{ loop.index }}">{{ city }}</option>
+								{% endfor %}
+							</select>
+						</div>
+						<div class="col-auto">
+							<label for="fileSelect" class="form-label mb-0">YAML File:</label>
+						</div>
+						<div class="col">
+							<select class="form-select" id="fileSelect" onchange="selectFile()">
+								<option value="">Select a file...</option>
+								{% for city, files in yaml_files.items() %}
+								{% if loop.first %}
+								{% for file in files %}
+								<option value="{{ 'yamls/' + city + '/' + file }}" {% if selected_file == 'yamls/' + city + '/' + file %}selected{% endif %}>{{ file }}</option>
+								{% endfor %}
+								{% endif %}
+								{% endfor %}
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Editor Card -->
+			<div class="card">
+				<div class="card-header">
+					<div class="d-flex justify-content-between align-items-center">
+						<div class="d-flex align-items-center">
+							<h3 class="card-title me-3">
+								{% if selected_file %}
+								<svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+									<path d="M14 3v4a1 1 0 0 0 1 1h4" />
+									<path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+									<path d="M10 13l-1 2l1 2" />
+									<path d="M14 13l1 2l-1 2" />
+								</svg>
+								{{ selected_file.split('/')[-1] }}
+								{% else %}
+								Select a file to edit
+								{% endif %}
+							</h3>
+						</div>
+						<div class="btn-list">
+							<button type="button" class="btn btn-outline-primary" onclick="validateYaml()">
+								<svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+									<path d="M5 12l5 5l10 -10" />
+								</svg>
+								Validate YAML
+							</button>
+							<button type="button" class="btn btn-primary" onclick="saveYaml()" {% if not selected_file %}disabled{% endif %}>
+								<svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+									<path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" />
+									<path d="M12 14v-4" />
+									<path d="M10 12l2 2l2 -2" />
+								</svg>
+								Save Changes
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="card-body">
+					<!-- Editor container -->
+					<div class="mb-3">
+						<div id="editor" style="height: 700px; border: 1px solid #ddd"></div>
+					</div>
+
+					<!-- Hidden form for submission -->
+					<form id="yamlForm" method="POST" action="/admin/yaml-editor/save" style="display: none">
+						<input type="hidden" name="yaml_content" id="yaml_content" />
+						<input type="hidden" name="file_path" id="file_path" value="{{ selected_file }}" />
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Add CodeMirror CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css" />
+
+<!-- Add required scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/yaml/yaml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+
+<script>
+	// Initialize CodeMirror
+	var editor = CodeMirror(document.getElementById("editor"), {
+		mode: "yaml",
+		theme: "monokai",
+		lineNumbers: true,
+		lineWrapping: true,
+		foldGutter: true,
+		gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+		extraKeys: {
+			"Ctrl-Q": function (cm) {
+				cm.foldCode(cm.getCursor());
+			},
+		},
+		foldGutter: true,
+		matchBrackets: true,
+		autoCloseBrackets: true,
+		value: `{{ yaml_content|safe }}`,
+	});
+
+	// Store YAML files data
+	const yamlFiles = {
+		{% for city, files in yaml_files.items() %}
+		"{{ loop.index }}": {
+			city: "{{ city }}",
+			files: [
+				{% for file in files %}
+				{
+					name: "{{ file }}",
+					path: "{{ 'yamls/' + city + '/' + file }}"
+				},
+				{% endfor %}
+			]
+		},
+		{% endfor %}
+	};
+
+	// Function to update file list when city changes
+	function updateFileList() {
+		const citySelect = document.getElementById("citySelect");
+		const fileSelect = document.getElementById("fileSelect");
+		const selectedCity = yamlFiles[citySelect.value];
+		
+		// Clear existing options
+		fileSelect.innerHTML = '<option value="">Select a file...</option>';
+		
+		// Add new options
+		selectedCity.files.forEach(file => {
+			const option = document.createElement("option");
+			option.value = file.path;
+			option.textContent = file.name;
+			fileSelect.appendChild(option);
+		});
+	}
+
+	// Function to handle file selection
+	function selectFile() {
+		const fileSelect = document.getElementById("fileSelect");
+		if (fileSelect.value) {
+			window.location.href = "?file_path=" + fileSelect.value;
+		}
+	}
+
+	// Function to validate YAML
+	function validateYaml() {
+		try {
+			const yamlContent = editor.getValue();
+			jsyaml.load(yamlContent);
+			showAlert("success", "YAML syntax is valid!");
+		} catch (e) {
+			showAlert("danger", `YAML validation error: ${e.message}`);
+		}
+	}
+
+	// Function to save YAML
+	function saveYaml() {
+		try {
+			const yamlContent = editor.getValue();
+			jsyaml.load(yamlContent); // Validate before saving
+			document.getElementById("yaml_content").value = yamlContent;
+			document.getElementById("yamlForm").submit();
+		} catch (e) {
+			showAlert("danger", `Cannot save invalid YAML: ${e.message}`);
+		}
+	}
+
+	// Function to show alerts
+	function showAlert(type, message) {
+		const alertDiv = document.createElement("div");
+		alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+		alertDiv.role = "alert";
+		alertDiv.innerHTML = `
+			${message}
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		`;
+
+		// Insert alert before the card
+		const card = document.querySelector(".card");
+		card.parentNode.insertBefore(alertDiv, card);
+
+		// Auto-dismiss after 5 seconds
+		setTimeout(() => {
+			alertDiv.remove();
+		}, 5000);
+	}
+
+	// Handle Ctrl+S to save
+	document.addEventListener("keydown", function (e) {
+		if (e.ctrlKey && e.key === "s") {
+			e.preventDefault();
+			saveYaml();
+		}
+	});
+</script>
+
+<style>
+	.CodeMirror {
+		height: 700px;
+		font-family: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", monospace;
+		font-size: 14px;
+	}
+
+	.form-select {
+		min-width: 200px;
+	}
+
+	.form-label {
+		font-weight: 500;
+		color: #1e293b;
+	}
+</style>
+{% endblock %}
