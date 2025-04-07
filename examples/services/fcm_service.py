@@ -197,7 +197,7 @@ class FCMService:
                         notification=messaging.Notification(
                             title=title,
                             body=body,
-                            image=image_url
+                            # image=image_url
                         ),
                         data=processed_data,
                         token=token,  # Single token instead of tokens list
@@ -213,9 +213,9 @@ class FCMService:
                 except messaging.UnregisteredError:
                     failure_count += 1
                     invalid_tokens.append(token)
-                except messaging.ApiCallError as e:
-                    logger.error(f"Failed to send to token {token[-6:]}: {str(e)}")
-                    failure_count += 1
+                # except messaging.ApiCallError as e:
+                #     logger.error(f"Failed to send to token {token[-6:]}: {str(e)}")
+                #     failure_count += 1
                 except Exception as e:
                     logger.error(f"Unexpected error for token {token[-6:]}: {str(e)}")
                     failure_count += 1

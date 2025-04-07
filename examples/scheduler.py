@@ -8,6 +8,7 @@ from typing import Optional, List
 import asyncio
 from motor.motor_asyncio import AsyncIOMotorClient
 from examples.services.fcm_service import FCMService
+from datetime import datetime, timezone
 
 # Configure logging
 logging.basicConfig(
@@ -52,8 +53,8 @@ class SchedulerManager:
                 max_instances=1
             )
             
-            # Run initial job
-            asyncio.create_task(self.process_pending_notifications())
+            # # Run initial job
+            # asyncio.create_task(self.process_pending_notifications())
                 
         except Exception as e:
             logger.error(f"Error starting scheduler: {str(e)}", exc_info=True)
@@ -118,11 +119,8 @@ class SchedulerManager:
             
             query = {
                 "status": "pending",
-                "$or": [
-                    {"scheduled_for": {"$lte": datetime.utcnow()}},
-                    {"scheduled_for": None}
-                ]
-            }
+                "scheduled_for": {"$lte": datetime.now(timezone.utc)}
+                }
             
             pending_count = await db.notifications.count_documents(query)
             if pending_count == 0:
