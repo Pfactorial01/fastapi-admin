@@ -85,8 +85,8 @@ class SchedulerManager:
         if notification["target_type"] == "all":
             async for user in db.users.find({"device_token": {"$exists": True}}):
                 target_users.append(user["uuid"])
-        # elif notification["target_type"] == "individual":
-        #     target_users = notification["target_users"]
+        elif notification["target_type"] == "individual":
+            target_users = notification["target_users"]
         # elif notification["target_type"] == "radius":
         #     location = notification["target_location"]["coordinates"]
         #     radius_meters = notification["target_radius"] * 1000

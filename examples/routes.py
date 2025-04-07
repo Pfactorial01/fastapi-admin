@@ -752,10 +752,14 @@ async def send_notification(
     target_radius: float = Form(None),
     target_lat: float = Form(None),
     target_lng: float = Form(None),
-    scheduled_for: str = Form(None),
+    scheduled_for: str = Form(...),  # Make this required
     admin=Depends(get_current_admin),
 ):
     try:
+        # Validate scheduled_for is a future datetime
+        scheduled_datetime = datetime.fromisoformat(scheduled_for.replace('Z', '+00:00'))
+        now = datetime.now()
+
         client = app.state.mongodb_client
         db = client.API
         notifications_collection = db.notifications
@@ -765,8 +769,9 @@ async def send_notification(
             "title": title,
             "message": message,
             "target_type": target_type,
-            "created_at": datetime.now(),
+            "created_at": now,
             "status": "pending",
+            "scheduled_for": scheduled_datetime,  # Store the validated datetime
         }
         # Add target-specific fields
         if target_type == "individual" and target_users:
@@ -778,21 +783,19 @@ async def send_notification(
                 "coordinates": [float(target_lng), float(target_lat)]
             }
             
-        # Add scheduling if provided
-        if scheduled_for:
-            notification["scheduled_for"] = datetime.fromisoformat(scheduled_for.replace('Z', '+00:00'))
-            
         # Insert notification
         await notifications_collection.insert_one(notification)
         
-        # In a real application, you would trigger the notification sending process here
-        # This could involve a background task, message queue, etc.
-        
         return RedirectResponse(url="/admin/notifications", status_code=HTTP_303_SEE_OTHER)
         
+    except ValueError:
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid datetime format for scheduled_for"
+        )
     except Exception as e:
         logger.error(f"Error creating notification: {str(e)}")
-        raise HTTPException(status_code=HTTP_500_INTERNAL_SERVER_ERROR, detail="Failed to create notification")
+        raise HTTPException(status_code=500, detail="Failed to create notification")
 
 @app.get("/yaml-editor")
 async def yaml_editor(
@@ -895,5 +898,41 @@ async def save_yaml(
             status_code=HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Failed to save YAML: {str(e)}"
         )
+
+@app.get("/users/search")
+async def search_users(
+    request: Request,
+    email: str = Query(..., min_length=1),
+    admin=Depends(get_current_admin),
+):
+    try:
+        client = app.state.mongodb_client
+        db = client.API
+        users_collection = db.users
+        
+        # Search for users with matching email (case-insensitive)
+        regex_pattern = f".*{email}.*"
+        query = {
+            "email": {
+                "$regex": regex_pattern,
+                "$options": "i"
+            }
+        }
+        
+        # Limit to 10 results for performance
+        cursor = users_collection.find(query).limit(10)
+        users = []
+        async for doc in cursor:
+            users.append({
+                "id": str(doc["uuid"]),
+                "name": f"{doc.get('first_name', '')} {doc.get('last_name', '')}".strip(),
+                "email": doc.get("email", "")
+            })
+            
+        return {"users": users}
+        
+    except Exception as e:
+        logger.error(f"Error searching users: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to search users")
 
 

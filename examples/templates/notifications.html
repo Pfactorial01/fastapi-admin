@@ -210,15 +210,14 @@
 						<select
 							class="form-select"
 							name="target_users"
+							id="userSelect"
 							multiple
-							data-placeholder="Select users..."
+							data-placeholder="Start typing email to search users..."
+						></select>
+						<small class="form-text text-muted"
+							>Start typing an email address to search for
+							users</small
 						>
-							{% for user in users %}
-							<option value="{{ user.id }}">
-								{{ user.name }} ({{ user.email }})
-							</option>
-							{% endfor %}
-						</select>
 					</div>
 
 					<!-- Radius Selection (shown when target_type is 'radius') -->
@@ -260,13 +259,14 @@
 					</div>
 
 					<div class="mb-3">
-						<label class="form-label">Schedule For</label>
+						<label class="form-label required">Schedule For</label>
 						<input
 							type="datetime-local"
 							class="form-control"
 							name="scheduled_for"
 							id="scheduledFor"
 							step="3600"
+							required
 						/>
 						<small class="form-text text-muted"
 							>Notifications are sent on the hour (e.g. 9:00,
@@ -307,6 +307,37 @@
 				this.value === "radius" ? "block" : "none";
 		});
 
+		// Initialize TomSelect with remote search
+		new TomSelect("#userSelect", {
+			valueField: "id",
+			labelField: "email",
+			searchField: "email",
+			loadThrottle: 300,
+			plugins: ["remove_button"],
+			maxItems: null,
+			load: function (query, callback) {
+				if (!query.length) return callback();
+				fetch(`/admin/users/search?email=${encodeURIComponent(query)}`)
+					.then((response) => response.json())
+					.then((json) => {
+						callback(json.users);
+					})
+					.catch(() => {
+						callback();
+					});
+			},
+			render: {
+				option: function (item) {
+					return `<div>${item.email} (${
+						item.name || "No name"
+					})</div>`;
+				},
+				item: function (item) {
+					return `<div>${item.email}</div>`;
+				},
+			},
+		});
+
 		// Handle scheduled_for input
 		scheduledFor.addEventListener("change", function () {
 			if (this.value) {
@@ -343,13 +374,4 @@
 	rel="stylesheet"
 />
 <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
-<script>
-	document.addEventListener("DOMContentLoaded", function () {
-		// Initialize TomSelect on the user selection dropdown
-		new TomSelect('select[name="target_users"]', {
-			plugins: ["remove_button"],
-			maxItems: null,
-		});
-	});
-</script>
 {% endblock %} {% endblock %}
