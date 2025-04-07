@@ -68,7 +68,8 @@
 								<td>
 									{% if notification.status == "pending" %}
 									<span class="badge bg-yellow">Pending</span>
-									{% elif notification.status == "sent" %}
+									{% elif notification.status == "processed"
+									%}
 									<span class="badge bg-green">Sent</span>
 									{% else %}
 									<span class="badge bg-red">Failed</span>
