@@ -853,6 +853,31 @@ async def send_notification(
                     db_client=client
                 ))
 
+                # Create user notifications in bulk
+                user_notifications = [
+                    {
+                        "user_id": user_id,
+                        "notification_id": result.inserted_id,
+                        "title": notification["title"],
+                        "message": notification["message"],
+                        "link": notification.get("link"),
+                        "created_at": datetime.now(),
+                        "is_read": False,
+                        "type": "system",  # Indicates this is a system notification
+                        "status": "sent",
+                        "metadata": {
+                            "target_type": notification["target_type"],
+                            "admin_id": admin.id,
+                            "admin_username": admin.username
+                        }
+                    }
+                    for user_id in target_users
+                ]
+
+                if user_notifications:
+                    # Use ordered=False for better performance
+                    await db.user_notifications.insert_many(user_notifications, ordered=False)
+
                 # Update notification status to processing
                 await notifications_collection.update_one(
                     {"_id": result.inserted_id},

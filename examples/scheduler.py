@@ -155,6 +155,31 @@ class SchedulerManager:
                         db_client=client
                     ))
                     
+                    # Create user notifications in bulk
+                    user_notifications = [
+                        {
+                            "user_id": user_id,
+                            "notification_id": notification["_id"],
+                            "title": notification["title"],
+                            "message": notification["message"],
+                            "link": notification.get("link"),
+                            "created_at": datetime.utcnow(),
+                            "is_read": False,
+                            "type": "system",  # Indicates this is a system notification
+                            "status": "sent",
+                            "metadata": {
+                                "target_type": notification["target_type"],
+                                "scheduled": True,
+                                "scheduled_for": notification.get("scheduled_for")
+                            }
+                        }
+                        for user_id in target_users
+                    ]
+
+                    if user_notifications:
+                        # Use ordered=False for better performance
+                        await db.user_notifications.insert_many(user_notifications, ordered=False)
+                    
                     # Mark as processing since we're not waiting for the result
                     await db.notifications.update_one(
                         {"_id": notification["_id"]},
