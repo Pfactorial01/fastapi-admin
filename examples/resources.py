@@ -38,24 +38,24 @@ class Messages(Link):
     type = "link"
 
 @app.register
-class Requests(Link):
+class Notifications(Link):
     label = "Notifications"
     icon = "fa fa-bell"
     url = "/admin/notifications"
     type = "link"
 
 @app.register
-class Requests(Link):
+class YAML_Editor(Link):
     label = "YAML Editor"
     icon = "fa fa-file-code"
     url = "/admin/yaml-editor"
     type = "link"
 
 @app.register
-class Requests(Link):
-    label = "Requests"
-    icon = "fa fa-comment"
-    url = "/admin/requests"
+class ID_Verification(Link):
+    label = "ID Verification"
+    icon = "fa fa-id-card"
+    url = "/admin/id-verification"
     type = "link"
 
 

@@ -120,7 +120,7 @@ class SchedulerManager:
             query = {
                 "status": "pending",
                 "scheduled_for": {"$lte": datetime.now(timezone.utc)}
-                }
+            }
             
             pending_count = await db.notifications.count_documents(query)
             if pending_count == 0:
@@ -138,20 +138,29 @@ class SchedulerManager:
                     async for user in db.users.find({"uuid": {"$in": target_users}}):
                         if user.get("device_token"):
                             tokens.append(user["device_token"])
+                    
+                    # Prepare notification data
+                    notification_data = {}
+                    if notification.get("link"):
+                        notification_data["link"] = notification["link"]
+                    
                     fcm_service = FCMService()
-                    await fcm_service.send_notification(
+                    # Create task instead of awaiting
+                    asyncio.create_task(fcm_service.send_notification(
                         tokens=tokens,
                         title=notification["title"],
                         body=notification["message"],
-                        # data=notification["data"]
-                    )
+                        data=notification_data if notification_data else None,
+                        notification_id=str(notification["_id"]),
+                        db_client=client
+                    ))
                     
-                    # Mark as processed
+                    # Mark as processing since we're not waiting for the result
                     await db.notifications.update_one(
                         {"_id": notification["_id"]},
                         {
                             "$set": {
-                                "status": "processed",
+                                "status": "processing",
                                 "processed_at": datetime.utcnow()
                             }
                         }

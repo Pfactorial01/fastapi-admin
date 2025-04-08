@@ -8,6 +8,9 @@ import base64
 import asyncio
 import functools
 import requests
+from motor.motor_asyncio import AsyncIOMotorClient
+from bson import ObjectId
+from datetime import datetime
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -150,7 +153,9 @@ class FCMService:
         title: str,
         body: str,
         data: Optional[Dict[str, str]] = None,
-        image_url: Optional[str] = None
+        image_url: Optional[str] = None,
+        notification_id: Optional[str] = None,
+        db_client: Optional[AsyncIOMotorClient] = None
     ) -> Dict[str, Any]:
         """Send notifications to multiple devices using FCM."""
         if not self._app:
@@ -162,6 +167,20 @@ class FCMService:
 
         # Process data payload
         processed_data = {str(k): str(v) for k, v in (data or {}).items()}
+        
+        # Add navigation data if link is present
+        if processed_data.get('link'):
+            link = processed_data['link']
+            if link.startswith('http'):
+                processed_data.update({
+                    'type': 'external_link',
+                    'url': link,
+                })
+            else:
+                processed_data.update({
+                    'type': 'internal_link',
+                    'route': link,
+                })
 
         success_count = 0
         failure_count = 0
@@ -174,7 +193,8 @@ class FCMService:
                 notification=messaging.AndroidNotification(
                     icon='notification_icon',
                     color='#4CAF50',
-                    sound='default'
+                    sound='default',
+                    channel_id='default'  # Make sure this matches your Android channel ID
                 )
             )
             
@@ -182,7 +202,9 @@ class FCMService:
                 payload=messaging.APNSPayload(
                     aps=messaging.Aps(
                         sound='default',
-                        badge=1
+                        badge=1,
+                        content_available=True,  # Enable background data processing
+                        mutable_content=True  # Allow notification modification
                     )
                 )
             )
@@ -213,12 +235,31 @@ class FCMService:
                 except messaging.UnregisteredError:
                     failure_count += 1
                     invalid_tokens.append(token)
-                # except messaging.ApiCallError as e:
-                #     logger.error(f"Failed to send to token {token[-6:]}: {str(e)}")
-                #     failure_count += 1
                 except Exception as e:
                     logger.error(f"Unexpected error for token {token[-6:]}: {str(e)}")
                     failure_count += 1
+
+            # Update notification status in database if ID is provided
+            if notification_id and db_client:
+                try:
+                    db = db_client.API
+                    status = "processed" if success_count > 0 else "failed"
+                    error = None if success_count > 0 else f"Failed to send to any recipients"
+                    
+                    await db.notifications.update_one(
+                        {"_id": ObjectId(notification_id)},
+                        {
+                            "$set": {
+                                "status": status,
+                                "error": error,
+                                "processed_at": datetime.now(),
+                                "success_count": success_count,
+                                "failure_count": failure_count
+                            }
+                        }
+                    )
+                except Exception as e:
+                    logger.error(f"Error updating notification status: {str(e)}")
 
             return {
                 "success": success_count,
@@ -228,6 +269,23 @@ class FCMService:
 
         except Exception as e:
             logger.error(f"Error in send_notification: {str(e)}")
+            # Update notification status on error if ID is provided
+            if notification_id and db_client:
+                try:
+                    db = db_client.API
+                    await db.notifications.update_one(
+                        {"_id": ObjectId(notification_id)},
+                        {
+                            "$set": {
+                                "status": "failed",
+                                "error": str(e),
+                                "processed_at": datetime.now()
+                            }
+                        }
+                    )
+                except Exception as update_error:
+                    logger.error(f"Error updating notification status: {str(update_error)}")
+                    
             return {
                 "success": 0,
                 "failure": len(tokens),
