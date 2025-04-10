@@ -1,0 +1,371 @@
+{% extends "layout.html" %} {% block page_body %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-header">
+					<div class="card-options">
+						<div class="btn-group">
+							<a
+								href="?type=new_listing"
+								class="btn btn-outline-primary {% if current_type == 'new_listing' %}active{% endif %}"
+							>
+								New Submissions
+							</a>
+							<a
+								href="?type=edit"
+								class="btn btn-outline-primary {% if current_type == 'edit' %}active{% endif %}"
+							>
+								Pending Changes
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="card-body">
+					{% if error %}
+					<div class="alert alert-danger" role="alert">
+						{{ error }}
+					</div>
+					{% endif %} {% if verifications %}
+					<div class="table-responsive">
+						<table
+							class="table table-hover table-outline table-vcenter text-nowrap card-table"
+						>
+							<thead>
+								<tr>
+									<th>Property</th>
+									<th>Submitted By</th>
+									<th>Submitted At</th>
+									<th>Type</th>
+									<th>Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for verification in verifications %}
+								<tr>
+									<td>
+										<div>
+											<strong
+												>{{
+												verification.property.ListingId
+												}}</strong
+											>
+											<div class="small text-muted">
+												{{ verification.property.address
+												}}
+											</div>
+										</div>
+									</td>
+									<td>
+										<div>
+											{{
+											verification.submitted_by.first_name
+											}} {{
+											verification.submitted_by.last_name
+											}}
+											<div class="small text-muted">
+												{{
+												verification.submitted_by.email
+												}}
+											</div>
+										</div>
+									</td>
+									<td>
+										<div>
+											{{
+											verification.version.created_at.strftime('%Y-%m-%d
+											%H:%M:%S') }}
+										</div>
+									</td>
+									<td>
+										<span
+											class="badge {% if verification.type == 'new_listing' %}bg-success{% else %}bg-info{% endif %}"
+										>
+											{{ verification.type|replace('_', '
+											')|title }}
+										</span>
+									</td>
+									<td>
+										<a
+											type="button"
+											class="btn btn-sm btn-primary"
+											href="/admin/property-verification/{{ verification._id }}"
+										>
+											Review
+										</a>
+									</td>
+								</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+
+					{% if pagination.total_pages > 1 %}
+					<div class="d-flex justify-content-center mt-4">
+						<nav aria-label="Page navigation">
+							<ul class="pagination">
+								{% if pagination.has_prev %}
+								<li class="page-item">
+									<a
+										class="page-link"
+										href="?page={{ pagination.prev_page }}&type={{ current_type }}"
+										aria-label="Previous"
+									>
+										<span aria-hidden="true">&laquo;</span>
+									</a>
+								</li>
+								{% endif %} {% for page_num in
+								pagination.page_range %}
+								<li
+									class="page-item {% if page_num == pagination.current_page %}active{% endif %}"
+								>
+									<a
+										class="page-link"
+										href="?page={{ page_num }}&type={{ current_type }}"
+										>{{ page_num }}</a
+									>
+								</li>
+								{% endfor %} {% if pagination.has_next %}
+								<li class="page-item">
+									<a
+										class="page-link"
+										href="?page={{ pagination.next_page }}&type={{ current_type }}"
+										aria-label="Next"
+									>
+										<span aria-hidden="true">&raquo;</span>
+									</a>
+								</li>
+								{% endif %}
+							</ul>
+						</nav>
+					</div>
+					{% endif %} {% else %}
+					<div class="text-center py-5">
+						<h3 class="text-muted">No pending verifications</h3>
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Verification Modal -->
+<div
+	class="modal fade"
+	id="verificationModal"
+	tabindex="-1"
+	role="dialog"
+	aria-labelledby="verificationModalLabel"
+	aria-hidden="true"
+>
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="verificationModalLabel">
+					Review Property
+				</h5>
+				<button
+					type="button"
+					class="btn-close"
+					data-bs-dismiss="modal"
+					aria-label="Close"
+				></button>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-6">
+						<h6>Current Version</h6>
+						<div id="currentVersion" class="property-details">
+							<!-- Current version details will be loaded here -->
+						</div>
+					</div>
+					<div class="col-md-6">
+						<h6>Proposed Changes</h6>
+						<div id="proposedVersion" class="property-details">
+							<!-- Proposed version details will be loaded here -->
+						</div>
+					</div>
+				</div>
+				<div class="row mt-3">
+					<div class="col-12">
+						<div class="form-group">
+							<label for="rejectionReason"
+								>Rejection Reason (if rejecting)</label
+							>
+							<textarea
+								class="form-control"
+								id="rejectionReason"
+								rows="3"
+							></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button
+					type="button"
+					class="btn btn-secondary"
+					data-bs-dismiss="modal"
+				>
+					Close
+				</button>
+				<button
+					type="button"
+					class="btn btn-danger"
+					onclick="rejectVerification()"
+				>
+					Reject
+				</button>
+				<button
+					type="button"
+					class="btn btn-success"
+					onclick="approveVerification()"
+				>
+					Approve
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	let currentVerificationId = null;
+	let currentPropertyId = null;
+	let currentVersionId = null;
+	let currentType = null;
+
+	function showVerificationModal(
+		verificationId,
+		propertyId,
+		versionId,
+		type
+	) {
+		currentVerificationId = verificationId;
+		currentPropertyId = propertyId;
+		currentVersionId = versionId;
+		currentType = type;
+
+		// Load property details
+		fetch(`/property-verification/${verificationId}`)
+			.then((response) => response.json())
+			.then((data) => {
+				// Display current version
+				const currentVersion =
+					document.getElementById("currentVersion");
+				currentVersion.innerHTML = formatPropertyDetails(
+					data.current_version
+				);
+
+				// Display proposed version
+				const proposedVersion =
+					document.getElementById("proposedVersion");
+				proposedVersion.innerHTML = formatPropertyDetails(
+					data.proposed_version
+				);
+
+				// Show modal
+				const modal = new bootstrap.Modal(
+					document.getElementById("verificationModal")
+				);
+				modal.show();
+			})
+			.catch((error) => {
+				console.error("Error loading verification details:", error);
+				alert("Failed to load verification details");
+			});
+	}
+
+	function formatPropertyDetails(property) {
+		return `
+        <div class="property-detail">
+            <strong>Listing ID:</strong> ${property.ListingId || "N/A"}<br>
+            <strong>Address:</strong> ${property.address || "N/A"}<br>
+            <strong>Beds:</strong> ${property.beds || "N/A"}<br>
+            <strong>Baths:</strong> ${property.baths || "N/A"}<br>
+            <strong>Price:</strong> ${
+				property.price ? "$" + property.price.toLocaleString() : "N/A"
+			}<br>
+            <strong>Status:</strong> ${property.status || "N/A"}<br>
+            <strong>Description:</strong> ${property.description || "N/A"}<br>
+            <strong>Features:</strong> ${
+				property.features ? property.features.join(", ") : "N/A"
+			}<br>
+            <strong>Year Built:</strong> ${property.year_built || "N/A"}<br>
+            <strong>Square Feet:</strong> ${
+				property.square_feet
+					? property.square_feet.toLocaleString()
+					: "N/A"
+			}<br>
+            <strong>Lot Size:</strong> ${property.lot_size || "N/A"}<br>
+        </div>
+    `;
+	}
+
+	function approveVerification() {
+		const rejectionReason =
+			document.getElementById("rejectionReason").value;
+
+		fetch("/property_verification", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				verification_id: currentVerificationId,
+				property_id: currentPropertyId,
+				version_id: currentVersionId,
+				action: "approve",
+				rejection_reason: rejectionReason,
+			}),
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				if (data.success) {
+					location.reload();
+				} else {
+					alert("Failed to approve verification: " + data.error);
+				}
+			})
+			.catch((error) => {
+				console.error("Error approving verification:", error);
+				alert("Failed to approve verification");
+			});
+	}
+
+	function rejectVerification() {
+		const rejectionReason =
+			document.getElementById("rejectionReason").value;
+		if (!rejectionReason) {
+			alert("Please provide a reason for rejection");
+			return;
+		}
+
+		fetch("/property_verification", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				verification_id: currentVerificationId,
+				property_id: currentPropertyId,
+				version_id: currentVersionId,
+				action: "reject",
+				rejection_reason: rejectionReason,
+			}),
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				if (data.success) {
+					location.reload();
+				} else {
+					alert("Failed to reject verification: " + data.error);
+				}
+			})
+			.catch((error) => {
+				console.error("Error rejecting verification:", error);
+				alert("Failed to reject verification");
+			});
+	}
+</script>
+{% endblock %}

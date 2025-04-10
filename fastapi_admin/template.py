@@ -25,7 +25,38 @@ def datetime_filter(timestamp):
         return timestamp.strftime('%Y-%m-%d %H:%M:%S')
     return timestamp
 
+def format_currency(value, currency='USD'):
+    try:
+        # Convert to float if it's a string
+        if isinstance(value, str):
+            value = float(value)
+        
+        # Format with 2 decimal places and currency symbol
+        if currency == 'USD':
+            return f"${value:,.2f}"
+        elif currency == 'EUR':
+            return f"€{value:,.2f}"
+        elif currency == 'GBP':
+            return f"£{value:,.2f}"
+        else:
+            return f"{currency} {value:,.2f}"
+    except (ValueError, TypeError):
+        return value
+
+def format_number(value, decimals=0):
+    try:
+        # Convert to float if it's a string
+        if isinstance(value, str):
+            value = float(value)
+        
+        # Format with specified decimal places and thousands separator
+        return f"{value:,.{decimals}f}"
+    except (ValueError, TypeError):
+        return value
+
 templates.env.filters['datetime'] = datetime_filter
+templates.env.filters['format_currency'] = format_currency
+templates.env.filters['format_number'] = format_number
 
 @pass_context
 def current_page_with_params(context: dict, params: dict):

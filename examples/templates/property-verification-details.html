@@ -1,0 +1,589 @@
+{% extends "layout.html" %} {% block page_body %}
+<style>
+	.changed-value {
+		background-color: #fff3cd;
+		padding: 2px 4px;
+		border-radius: 3px;
+		font-weight: bold;
+	}
+	.changed-section {
+		border-left: 3px solid #ffc107;
+		padding-left: 10px;
+	}
+</style>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-header">
+					<h3 class="card-title">Property Verification Details</h3>
+					<div class="card-options">
+						<a
+							href="/admin/property-verification"
+							class="btn btn-secondary"
+						>
+							<i class="fas fa-arrow-left me-2"></i> Back to List
+						</a>
+					</div>
+				</div>
+				<div class="card-body">
+					{% if error %}
+					<div class="alert alert-danger" role="alert">
+						{{ error }}
+					</div>
+					{% else %}
+					<div class="row">
+						<div
+							class="col-md-{% if verification_type == 'new_listing' %}12{% else %}6{% endif %}"
+						>
+							<div class="card">
+								<div class="card-header">
+									<h4 class="card-title">
+										{% if verification_type == 'new_listing'
+										%}Property Details{% else %}Current
+										Version{% endif %}
+									</h4>
+								</div>
+								<div class="card-body">
+									<div class="property-details">
+										<div class="row">
+											<!-- Basic Information -->
+											<div class="col-md-6">
+												<div class="property-section mb-4">
+													<h5 class="section-title">Basic Information</h5>
+													<div class="property-detail">
+														<strong>Listing ID:</strong> {{ current_version['"ListingId"']|replace('"', '') }}<br />
+														<strong>Parcel Number:</strong> {{ current_version['"ParcelNumber"']|replace('"', '') }}<br />
+														<strong>Status:</strong> {{ current_version['"StandardStatus"']|replace('"', '') }}<br />
+														<strong>Property Type:</strong> {{ current_version['"PropertySubType"']|replace('"', '') }}<br />
+														<strong>Price:</strong> {{ current_version['"price"']|format_currency }}<br />
+														<strong>Description:</strong> {{ current_version['"description"']|replace('"', '') }}<br />
+													</div>
+												</div>
+
+												<!-- Location Information -->
+												<div class="property-section mb-4">
+													<h5 class="section-title">Location</h5>
+													<div class="property-detail">
+														<strong>Address:</strong> {{ current_version['"address"']|replace('"', '') }}<br />
+														<strong>City:</strong> {{ current_version['"City"']|replace('"', '') }}<br />
+														<strong>State:</strong> {{ current_version['"StateOrProvince"']|replace('"', '') }}<br />
+														<strong>County:</strong> {{ current_version['"CountyOrParish"']|replace('"', '') }}<br />
+														<strong>Zip Code:</strong> {{ current_version['"PostalCode"']|replace('"', '') }}<br />
+														<strong>Subdivision:</strong> {{ current_version['"SubdivisionName"']|replace('"', '') }}<br />
+													</div>
+												</div>
+
+												<!-- Property Features -->
+												<div class="property-section mb-4">
+													<h5 class="section-title">Features</h5>
+													<div class="property-detail">
+														<strong>Beds:</strong> {{ current_version['"beds"'] }}<br />
+														<strong>Baths:</strong> {{ current_version['"baths"'] }}<br />
+														<strong>Full Bathrooms:</strong> {{ current_version['"full_bathrooms"'] }}<br />
+														<strong>Half Bathrooms:</strong> {{ current_version['"half_bathrooms"'] }}<br />
+														<strong>Living Area:</strong> {{ current_version['"LivingArea"']|format_number }} sq ft<br />
+														<strong>Lot Size:</strong> {{ current_version['"LotSizeAcres"'] }} acres<br />
+														<strong>Year Built:</strong> {{ current_version['"YearBuilt"'] }}<br />
+														<strong>Construction:</strong> {{ current_version['"construction"']|replace('"', '') }}<br />
+													</div>
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<!-- Systems & Utilities -->
+												<div class="property-section mb-4">
+													<h5 class="section-title">Systems & Utilities</h5>
+													<div class="property-detail">
+														<strong>Heating:</strong> {{ current_version['"Heating"']|replace('"', '') }}<br />
+														<strong>Cooling:</strong> {{ current_version['"Cooling"']|replace('"', '') }}<br />
+														<strong>Water Source:</strong> {{ current_version['"WaterSource"']|replace('"', '') }}<br />
+														<strong>Sewer:</strong> {{ current_version['"Sewer"']|replace('"', '') }}<br />
+														<strong>Utilities:</strong> {{ current_version['"Utilities"']|replace('"', '') }}<br />
+													</div>
+												</div>
+
+												<!-- Parking & Additional Features -->
+												<div class="property-section mb-4">
+													<h5 class="section-title">Additional Features</h5>
+													<div class="property-detail">
+														<strong>Parking:</strong> {{ current_version['"ParkingFeatures"']|replace('"', '') }}<br />
+														<strong>Attached Garage:</strong> {{ current_version['"attached_garage"']|replace('"', '') }}<br />
+														<strong>Waterfront:</strong> {{ current_version['"WaterfrontYN"']|replace('"', '') }}<br />
+														<strong>Virtual Tour:</strong> 
+														{% if current_version['"VirtualTourURLUnbranded"'] %}
+														<a href="{{ current_version['"VirtualTourURLUnbranded"']|replace('"', '') }}" target="_blank">View Tour</a>
+														{% else %}N/A{% endif %}<br />
+													</div>
+												</div>
+
+												<!-- Media Gallery -->
+												<div class="property-section mb-4">
+													<h5 class="section-title">Media Gallery</h5>
+													<div class="property-detail">
+														{% if current_version['"images"'] %}					
+														<button type="button" class="btn btn-primary mb-3" onclick='openImageModal({{ current_version['"images"']|tojson|safe }}, 0, "current")'>
+															<i class="fas fa-images me-2"></i> View All Photos ({{ current_version['"images"']|length }})
+														</button>
+														{% else %}
+														<p>No media available</p>
+														{% endif %}
+
+														{% if current_version['"Videos"'] %}
+														<h6 class="mt-3">Videos</h6>
+														<div class="row">
+															{% for video in current_version['"Videos"'] %}
+															<div class="col-12 mb-3">
+																<a href="{{ video['"url"']|replace('"', '') }}" target="_blank" class="btn btn-sm btn-outline-primary">
+																	<i class="fas fa-video me-2"></i> View Video {{ loop.index }}
+																</a>
+															</div>
+															{% endfor %}
+														</div>
+														{% endif %}
+
+														{% if current_version['"Documents"'] %}
+														<h6 class="mt-3">Documents</h6>
+														<div class="row">
+															{% for doc in current_version['"Documents"'] %}
+															<div class="col-12 mb-2">
+																<a href="{{ doc['"url"']|replace('"', '') }}" target="_blank" class="btn btn-sm btn-outline-secondary">
+																	<i class="fas fa-file me-2"></i> {{ doc['"name"']|replace('"', '') }}
+																</a>
+															</div>
+															{% endfor %}
+														</div>
+														{% endif %}
+													</div>
+												</div>
+
+												<!-- Financial Information -->
+												<div class="property-section mb-4">
+													<h5 class="section-title">Financial Information</h5>
+													<div class="property-detail">
+														<strong>Association Fee:</strong> {{ current_version['"AssociationFee"']|format_currency }}<br />
+														<strong>Annual Taxes:</strong> {{ current_version['"TaxAnnualAmount"']|format_currency }}<br />
+														<strong>Tax Legal Description:</strong> {{ current_version['"TaxLegalDescription"']|replace('"', '') }}<br />
+														<strong>Zoning:</strong> {{ current_version['"ZoningDescription"']|replace('"', '') }}<br />
+													</div>
+												</div>
+
+												<!-- Listing Information -->
+												<div class="property-section mb-4">
+													<h5 class="section-title">Listing Information</h5>
+													<div class="property-detail">
+														<strong>Listing Date:</strong> {{ current_version['"ListingContractDate"']|replace('"', '') }}<br />
+														<strong>MLS System:</strong> {{ current_version['"OriginatingSystemName"']|replace('"', '') }}<br />
+														<strong>Internet Display:</strong> {{ current_version['"InternetAddressDisplayYN"']|replace('"', '') }}<br />
+														<strong>Status:</strong> {{ current_version['"status"']|replace('"', '') }}<br />
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						{% if verification_type != 'new_listing' %}
+						<div class="col-md-6">
+							<div class="card">
+								<div class="card-header">
+									<h4 class="card-title">Proposed Changes</h4>
+								</div>
+								<div class="card-body">
+									<div class="property-details">
+										<div class="row">
+											<!-- Basic Information -->
+											<div class="col-md-6">
+												<div class="property-section mb-4">
+													<h5 class="section-title">Basic Information</h5>
+													<div class="property-detail">
+														<strong>Listing ID:</strong> {{ proposed_version['"ListingId"']|replace('"', '') }}<br />
+														<strong>Parcel Number:</strong> {{ proposed_version['"ParcelNumber"']|replace('"', '') }}<br />
+														<strong>Status:</strong> {{ proposed_version['"StandardStatus"']|replace('"', '') }}<br />
+														<strong>Property Type:</strong> {{ proposed_version['"PropertySubType"']|replace('"', '') }}<br />
+														<strong>Price:</strong> {{ proposed_version['"price"']|format_currency }}<br />
+														<strong>Description:</strong> {{ proposed_version['"description"']|replace('"', '') }}<br />
+													</div>
+												</div>
+
+												<!-- Location Information -->
+												<div class="property-section mb-4">
+													<h5 class="section-title">Location</h5>
+													<div class="property-detail">
+														<strong>Address:</strong> {{ proposed_version['"address"']|replace('"', '') }}<br />
+														<strong>City:</strong> {{ proposed_version['"City"']|replace('"', '') }}<br />
+														<strong>State:</strong> {{ proposed_version['"StateOrProvince"']|replace('"', '') }}<br />
+														<strong>County:</strong> {{ proposed_version['"CountyOrParish"']|replace('"', '') }}<br />
+														<strong>Zip Code:</strong> {{ proposed_version['"PostalCode"']|replace('"', '') }}<br />
+														<strong>Subdivision:</strong> {{ proposed_version['"SubdivisionName"']|replace('"', '') }}<br />
+													</div>
+												</div>
+
+												<!-- Property Features -->
+												<div class="property-section mb-4">
+													<h5 class="section-title">Features</h5>
+													<div class="property-detail">
+														<strong>Beds:</strong> {{ proposed_version['"beds"'] }}<br />
+														<strong>Baths:</strong> {{ proposed_version['"baths"'] }}<br />
+														<strong>Full Bathrooms:</strong> {{ proposed_version['"full_bathrooms"'] }}<br />
+														<strong>Half Bathrooms:</strong> {{ proposed_version['"half_bathrooms"'] }}<br />
+														<strong>Living Area:</strong> {{ proposed_version['"LivingArea"']|format_number }} sq ft<br />
+														<strong>Lot Size:</strong> {{ proposed_version['"LotSizeAcres"'] }} acres<br />
+														<strong>Year Built:</strong> {{ proposed_version['"YearBuilt"'] }}<br />
+														<strong>Construction:</strong> {{ proposed_version['"construction"']|replace('"', '') }}<br />
+													</div>
+												</div>
+											</div>
+
+											<div class="col-md-6">
+												<!-- Systems & Utilities -->
+												<div class="property-section mb-4">
+													<h5 class="section-title">Systems & Utilities</h5>
+													<div class="property-detail">
+														<strong>Heating:</strong> {{ proposed_version['"Heating"']|replace('"', '') }}<br />
+														<strong>Cooling:</strong> {{ proposed_version['"Cooling"']|replace('"', '') }}<br />
+														<strong>Water Source:</strong> {{ proposed_version['"WaterSource"']|replace('"', '') }}<br />
+														<strong>Sewer:</strong> {{ proposed_version['"Sewer"']|replace('"', '') }}<br />
+														<strong>Utilities:</strong> {{ proposed_version['"Utilities"']|replace('"', '') }}<br />
+													</div>
+												</div>
+
+												<!-- Parking & Additional Features -->
+												<div class="property-section mb-4">
+													<h5 class="section-title">Additional Features</h5>
+													<div class="property-detail">
+														<strong>Parking:</strong> {{ proposed_version['"ParkingFeatures"']|replace('"', '') }}<br />
+														<strong>Attached Garage:</strong> {{ proposed_version['"attached_garage"']|replace('"', '') }}<br />
+														<strong>Waterfront:</strong> {{ proposed_version['"WaterfrontYN"']|replace('"', '') }}<br />
+														<strong>Virtual Tour:</strong> 
+														{% if proposed_version['"VirtualTourURLUnbranded"'] %}
+														<a href="{{ proposed_version['"VirtualTourURLUnbranded"']|replace('"', '') }}" target="_blank">View Tour</a>
+														{% else %}N/A{% endif %}<br />
+													</div>
+												</div>
+
+												<!-- Media Gallery -->
+												<div class="property-section mb-4">
+													<h5 class="section-title">Media Gallery</h5>
+													<div class="property-detail">
+														{% if proposed_version['"images"'] %}					
+														<button type="button" class="btn btn-primary mb-3" onclick='openImageModal({{ proposed_version['"images"']|tojson|safe }}, 0, "proposed")'>
+															<i class="fas fa-images me-2"></i> View All Photos ({{ proposed_version['"images"']|length }})
+														</button>
+														{% else %}
+														<p>No media available</p>
+														{% endif %}
+
+														{% if proposed_version['"Videos"'] %}
+														<h6 class="mt-3">Videos</h6>
+														<div class="row">
+															{% for video in proposed_version['"Videos"'] %}
+															<div class="col-12 mb-3">
+																<a href="{{ video['"url"']|replace('"', '') }}" target="_blank" class="btn btn-sm btn-outline-primary">
+																	<i class="fas fa-video me-2"></i> View Video {{ loop.index }}
+																</a>
+															</div>
+															{% endfor %}
+														</div>
+														{% endif %}
+
+														{% if proposed_version['"Documents"'] %}
+														<h6 class="mt-3">Documents</h6>
+														<div class="row">
+															{% for doc in proposed_version['"Documents"'] %}
+															<div class="col-12 mb-2">
+																<a href="{{ doc['"url"']|replace('"', '') }}" target="_blank" class="btn btn-sm btn-outline-secondary">
+																	<i class="fas fa-file me-2"></i> {{ doc['"name"']|replace('"', '') }}
+																</a>
+															</div>
+															{% endfor %}
+														</div>
+														{% endif %}
+													</div>
+												</div>
+
+												<!-- Financial Information -->
+												<div class="property-section mb-4">
+													<h5 class="section-title">Financial Information</h5>
+													<div class="property-detail">
+														<strong>Association Fee:</strong> {{ proposed_version['"AssociationFee"']|format_currency }}<br />
+														<strong>Annual Taxes:</strong> {{ proposed_version['"TaxAnnualAmount"']|format_currency }}<br />
+														<strong>Tax Legal Description:</strong> {{ proposed_version['"TaxLegalDescription"']|replace('"', '') }}<br />
+														<strong>Zoning:</strong> {{ proposed_version['"ZoningDescription"']|replace('"', '') }}<br />
+													</div>
+												</div>
+
+												<!-- Listing Information -->
+												<div class="property-section mb-4">
+													<h5 class="section-title">Listing Information</h5>
+													<div class="property-detail">
+														<strong>Listing Date:</strong> {{ proposed_version['"ListingContractDate"']|replace('"', '') }}<br />
+														<strong>MLS System:</strong> {{ proposed_version['"OriginatingSystemName"']|replace('"', '') }}<br />
+														<strong>Internet Display:</strong> {{ proposed_version['"InternetAddressDisplayYN"']|replace('"', '') }}<br />
+														<strong>Status:</strong> {{ proposed_version['"status"']|replace('"', '') }}<br />
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						{% endif %}
+					</div>
+
+					<div class="row mt-4">
+						<div class="col-12">
+							<div class="card">
+								<div class="card-header">
+									<h4 class="card-title">
+										Verification Actions
+									</h4>
+								</div>
+								<div class="card-body">
+									<form
+										id="verificationForm"
+										method="POST"
+										action="/admin/property_verification"
+									>
+										<input
+											type="hidden"
+											name="verification_id"
+											value="{{ verification_id }}"
+										/>
+										<input
+											type="hidden"
+											name="property_id"
+											value="{{ property_id }}"
+										/>
+										<input
+											type="hidden"
+											name="version_id"
+											value="{{ version_id }}"
+										/>
+
+										<div class="form-group">
+											<label for="rejectionReason"
+												>Rejection Reason (if
+												rejecting)</label
+											>
+											<textarea
+												class="form-control"
+												id="rejectionReason"
+												name="rejection_reason"
+												rows="3"
+											></textarea>
+										</div>
+
+										<div class="mt-3">
+											<button
+												type="button"
+												class="btn btn-danger"
+												onclick="submitVerification('reject')"
+											>
+												Reject
+											</button>
+											<button
+												type="button"
+												class="btn btn-success"
+												onclick="submitVerification('approve')"
+											>
+												Approve
+											</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Image Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="imageModalLabel">Property Images</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body text-center">
+				<img id="modalImage" src="" class="img-fluid" alt="Property Image" style="max-height: 70vh;">
+			</div>
+			<div class="modal-footer justify-content-between">
+				<button type="button" class="btn btn-primary" id="prevImage">
+					<i class="fas fa-chevron-left me-2"></i> Previous
+				</button>
+				<span id="imageCounter">Image 1 of 1</span>
+				<button type="button" class="btn btn-primary" id="nextImage">
+					Next <i class="fas fa-chevron-right ms-2"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	let currentImages = [];
+	let currentImageIndex = 0;
+	const baseUrl = 'https://api.airebrokers.com/project-api';
+	let imageModal;
+
+	// Function to compare values and highlight differences
+	function compareAndHighlight() {
+		const currentElements = document.querySelectorAll('.property-details');
+		const proposedElements = document.querySelectorAll('.property-details');
+
+		// Only proceed if we have both current and proposed versions
+		if (currentElements.length > 1) {
+			const currentDetail = currentElements[0];
+			const proposedDetail = currentElements[1];
+
+			// Compare each property section
+			const sections = currentDetail.querySelectorAll('.property-section');
+			console.log({sections})
+			sections.forEach(section => {
+				const sectionTitle = section.querySelector('.section-title').textContent.trim();
+				// Find matching section in proposed version
+				const proposedSections = proposedDetail.querySelectorAll('.property-section');
+				const proposedSection = Array.from(proposedSections).find(section => 
+					section.querySelector('.section-title').textContent.trim() === sectionTitle
+				);
+				console.log({proposedSection})
+				if (proposedSection) {
+					const currentItems = section.querySelectorAll('strong');
+					const proposedItems = proposedSection.querySelectorAll('strong');
+					
+					let hasChanges = false;
+					
+					currentItems.forEach((currentItem, index) => {
+						const proposedItem = proposedItems[index];
+						if (proposedItem) {
+							const currentValue = currentItem.nextSibling.textContent.trim();
+							const proposedValue = proposedItem.nextSibling.textContent.trim();
+							
+							if (currentValue !== proposedValue) {
+								hasChanges = true;
+								// Create a new text node for the value
+								const currentValueSpan = document.createElement('span');
+								currentValueSpan.className = 'changed-value';
+								currentValueSpan.textContent = currentValue;
+								
+								// Replace the text node with our span
+								const currentParent = currentItem.parentNode;
+								const currentTextNode = currentItem.nextSibling;
+								currentParent.replaceChild(currentValueSpan, currentTextNode);
+								
+								// Do the same for proposed value
+								const proposedValueSpan = document.createElement('span');
+								proposedValueSpan.className = 'changed-value';
+								proposedValueSpan.textContent = proposedValue;
+								
+								const proposedParent = proposedItem.parentNode;
+								const proposedTextNode = proposedItem.nextSibling;
+								proposedParent.replaceChild(proposedValueSpan, proposedTextNode);
+							}
+						}
+					});
+					
+					if (hasChanges) {
+						section.classList.add('changed-section');
+						proposedSection.classList.add('changed-section');
+					}
+				}
+			});
+		}
+	}
+
+	function updateModalImage() {
+		const modalImage = document.getElementById('modalImage');
+		const counter = document.getElementById('imageCounter');
+		const prevButton = document.getElementById('prevImage');
+		const nextButton = document.getElementById('nextImage');
+		
+		if (currentImages && currentImages.length > 0) {
+			const imageUrl = currentImages[currentImageIndex];
+			// Handle both quoted and unquoted key formats
+			const url = imageUrl['"image_url"'] || imageUrl.image_url;
+			modalImage.src = baseUrl + url.replace(/"/g, '');
+			counter.textContent = `Image ${currentImageIndex + 1} of ${currentImages.length}`;
+			
+			prevButton.disabled = currentImageIndex === 0;
+			nextButton.disabled = currentImageIndex === currentImages.length - 1;
+		}
+	}
+
+	function openImageModal(images, startIndex, version) {
+		currentImages = images;
+		currentImageIndex = startIndex;
+		document.getElementById('imageModalLabel').textContent = `Property Images (${version === 'current' ? 'Current Version' : 'Proposed Version'})`;
+		updateModalImage();
+		imageModal.show();
+	}
+
+	document.addEventListener('DOMContentLoaded', function() {
+		imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+
+		document.getElementById('prevImage').addEventListener('click', function() {
+			if (currentImageIndex > 0) {
+				currentImageIndex--;
+				updateModalImage();
+			}
+		});
+
+		document.getElementById('nextImage').addEventListener('click', function() {
+			if (currentImageIndex < currentImages.length - 1) {
+				currentImageIndex++;
+				updateModalImage();
+			}
+		});
+
+		document.getElementById('imageModal').addEventListener('hidden.bs.modal', function() {
+			document.getElementById('modalImage').src = '';
+		});
+
+		// Run comparison after page load
+		compareAndHighlight();
+	});
+
+	function submitVerification(action) {
+		if (
+			action === "reject" &&
+			!document.getElementById("rejectionReason").value
+		) {
+			alert("Please provide a reason for rejection");
+			return;
+		}
+
+		const form = document.getElementById("verificationForm");
+		const formData = new FormData(form);
+		formData.append("action", action);
+
+		fetch(form.action, {
+			method: "POST",
+			body: formData,
+		})
+			.then((response) => {
+				if (response.redirected) {
+					window.location.href = response.url;
+				} else {
+					return response.json();
+				}
+			})
+			.then((data) => {
+				if (data && !data.success) {
+					alert("Failed to process verification: " + data.error);
+				}
+			})
+			.catch((error) => {
+				console.error("Error processing verification:", error);
+				alert("Failed to process verification");
+			});
+	}
+</script>
+{% endblock %}

@@ -58,6 +58,13 @@ class ID_Verification(Link):
     url = "/admin/id-verification"
     type = "link"
 
+@app.register
+class Property_Verification(Link):
+    label = "Property Verification"
+    icon = "fa fa-id-card"
+    url = "/admin/property-verification"
+    type = "link"
+
 
 @app.register
 class AdminResource(Model):
