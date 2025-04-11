@@ -8,7 +8,9 @@
 						<h3 class="card-title">ID Verification Requests</h3>
 						<div class="status-filter">
 							<select class="form-select" id="statusFilter" onchange="filterByStatus(this.value)">
+								<option value="all" {% if current_status == 'all' %}selected{% endif %}>All</option>
 								<option value="pending" {% if current_status == 'pending' %}selected{% endif %}>Pending</option>
+								<option value="approved" {% if current_status == 'approved' %}selected{% endif %}>Approved</option>
 								<option value="rejected" {% if current_status == 'rejected' %}selected{% endif %}>Rejected</option>
 							</select>
 						</div>
@@ -134,14 +136,15 @@
 										<div class="d-flex flex-column h-100">
 											<div class="mb-3">
 												<h6 class="mb-2">Status</h6>
-												<span
-													class="badge badge-{{ 'warning' if verification.verification_status == 'pending' else 'danger' }}"
-												>
-													{{
-													verification.verification_status|title
-													}}
+												{% if verification.is_verified %}
+												<span class="badge bg-success">
+													Approved
 												</span>
-												{% if verification.verification_status == 'rejected' and verification.rejection_reason %}
+												{% elif verification.verification_status == 'rejected' %}
+												<span class="badge bg-danger">
+													Rejected
+												</span>
+												{% if verification.rejection_reason %}
 												<div class="mt-2">
 													<small class="text-danger">
 														<i class="fas fa-info-circle"></i>
@@ -149,9 +152,36 @@
 													</small>
 												</div>
 												{% endif %}
+												{% else %}
+												<span class="badge bg-warning text-dark">
+													Pending
+												</span>
+												{% endif %}
 											</div>
 
-											{% if verification.verification_status == 'pending' or verification.verification_status == 'rejected' %}
+											{% if verification.is_verified %}
+											<div class="mt-auto">
+												<button
+													type="button"
+													class="btn btn-danger btn-sm"
+													onclick="showRejectionModal('{{ verification.user_id }}')"
+												>
+													<i class="fas fa-times me-2"></i>
+													Reject
+												</button>
+											</div>
+											{% elif verification.verification_status == 'rejected' %}
+											<div class="mt-auto">
+												<button
+													type="button"
+													class="btn btn-success btn-sm"
+													onclick="showApprovalModal('{{ verification.user_id }}')"
+												>
+													<i class="fas fa-check me-2"></i>
+													Approve
+												</button>
+											</div>
+											{% else %}
 											<div class="mt-auto">
 												<div class="btn-group">
 													<button
@@ -159,23 +189,17 @@
 														class="btn btn-success btn-sm"
 														onclick="showApprovalModal('{{ verification.user_id }}')"
 													>
-														<i
-															class="fas fa-check"
-														></i>
+														<i class="fas fa-check me-2"></i>
 														Approve
 													</button>
-													{% if verification.verification_status == 'pending' %}
 													<button
 														type="button"
 														class="btn btn-danger btn-sm"
 														onclick="showRejectionModal('{{ verification.user_id }}')"
 													>
-														<i
-															class="fas fa-times"
-														></i>
+														<i class="fas fa-times me-2"></i>
 														Reject
 													</button>
-													{% endif %}
 												</div>
 											</div>
 											{% endif %}

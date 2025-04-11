@@ -1057,7 +1057,7 @@ async def id_verification(
     admin=Depends(get_current_admin),
     page: int = Query(1, ge=1),
     per_page: int = 10,
-    status: str = Query("pending", regex="^(pending|rejected)$"),
+    status: str = Query("pending", regex="^(all|pending|approved|rejected)$"),
 ):
     try:
         client = app.state.mongodb_client
@@ -1067,17 +1067,28 @@ async def id_verification(
         skip = (page - 1) * per_page
         
         # Define match condition based on status
-        match_condition = {
-            "$and": [
-                {"user.is_verified": False},  # Only show unverified users
-                {"user.verification_status": "rejected"} if status == "rejected" else {
-                    "$or": [
-                        {"user.verification_status": {"$exists": False}},
-                        {"user.verification_status": "pending"}
-                    ]
-                }
-            ]
-        }
+        if status == "all":
+            match_condition = {}  # No conditions for 'all' status
+        elif status == "approved":
+            match_condition = {
+                "user.is_verified": True
+            }
+        elif status == "rejected":
+            match_condition = {
+                "user.verification_status": "rejected"
+            }
+        else:  # pending
+            match_condition = {
+                "$and": [
+                    {"user.is_verified": False},
+                    {
+                        "$or": [
+                            {"user.verification_status": {"$exists": False}},
+                            {"user.verification_status": "pending"}
+                        ]
+                    }
+                ]
+            }
         
         # Create aggregation pipeline
         pipeline = [
