@@ -136,7 +136,7 @@
 										<div class="d-flex flex-column h-100">
 											<div class="mb-3">
 												<h6 class="mb-2">Status</h6>
-												{% if verification.is_verified %}
+												{% if verification.is_id_verified %}
 												<span class="badge bg-success">
 													Approved
 												</span>
@@ -159,7 +159,7 @@
 												{% endif %}
 											</div>
 
-											{% if verification.is_verified %}
+											{% if verification.is_id_verified %}
 											<div class="mt-auto">
 												<button
 													type="button"

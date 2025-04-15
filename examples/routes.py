@@ -1071,7 +1071,7 @@ async def id_verification(
             match_condition = {}  # No conditions for 'all' status
         elif status == "approved":
             match_condition = {
-                "user.is_verified": True
+                "user.is_id_verified": True
             }
         elif status == "rejected":
             match_condition = {
@@ -1080,7 +1080,7 @@ async def id_verification(
         else:  # pending
             match_condition = {
                 "$and": [
-                    {"user.is_verified": False},
+                    {"$or": [{"user.is_id_verified": False}, {"user.is_id_verified": None}]},
                     {
                         "$or": [
                             {"user.verification_status": {"$exists": False}},
@@ -1130,7 +1130,7 @@ async def id_verification(
                     "user_email": "$user.email",
                     "user_phone": "$user.phone",
                     "profile_pic": "$user.profile_pic",
-                    "is_verified": "$user.is_verified",
+                    "is_id_verified": "$user.is_id_verified",
                     "verification_status": {
                         "$ifNull": ["$user.verification_status", "pending"]
                     },
@@ -1242,7 +1242,7 @@ async def update_verification(
         
         # Update user verification status
         update_data = {
-            "is_verified": status == "approved",
+            "is_id_verified": status == "approved",
             "verification_status": status,
             "verified_at": datetime.now() if status == "approved" else None
         }
@@ -1275,7 +1275,7 @@ async def update_verification(
             "status_from": user_before.get("verification_status", "pending") if user_before else None,
             "status_to": status,
             "details": {
-                "is_verified": status == "approved",
+                "is_id_verified": status == "approved",
                 "verified_at": update_data.get("verified_at"),
                 "verified_as": verified_as if status == "approved" else None,
                 "verified_name": verified_name if status == "approved" else None,
