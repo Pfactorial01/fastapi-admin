@@ -1,0 +1,323 @@
+{% extends "layout.html" %}
+
+{% block page_body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h3 class="card-title">User Management</h3>
+                        <div class="d-flex gap-2 ms-2">
+                            <div class="search-box">
+                                <form method="get" class="d-flex">
+                                    <input type="text" name="search" class="form-control" placeholder="Search users..." value="{{ search or '' }}">
+                                    <button type="submit" class="btn btn-primary ms-2">
+                                        <i class="fas fa-search"></i> Search
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    {% if error %}
+                    <div class="alert alert-danger">{{ error }}</div>
+                    {% endif %}
+
+                    <!-- Filters -->
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <select class="form-select" onchange="updateFilter('user_type', this.value)">
+                                <option value="">All User Types</option>
+                                <option value="buyer" {% if user_type == 'buyer' %}selected{% endif %}>Buyers</option>
+                                <option value="seller" {% if user_type == 'seller' %}selected{% endif %}>Sellers</option>
+                                <option value="agent" {% if user_type == 'agent' %}selected{% endif %}>Agents</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-select" onchange="updateFilter('verification_status', this.value)">
+                                <option value="">All Verification Status</option>
+                                <option value="verified" {% if verification_status == 'verified' %}selected{% endif %}>Verified</option>
+                                <option value="rejected" {% if verification_status == 'rejected' %}selected{% endif %}>Rejected</option>
+                                <option value="pending" {% if verification_status == 'pending' %}selected{% endif %}>Pending</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-select" onchange="updateFilter('sort_by', this.value)">
+                                <option value="created_at" {% if sort_by == 'created_at' %}selected{% endif %}>Sort by Registration Date</option>
+                                <option value="last_active" {% if sort_by == 'last_active' %}selected{% endif %}>Sort by Last Active</option>
+                                <option value="name" {% if sort_by == 'name' %}selected{% endif %}>Sort by Name</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-select" onchange="updateFilter('sort_order', this.value)">
+                                <option value="desc" {% if sort_order == 'desc' %}selected{% endif %}>Descending</option>
+                                <option value="asc" {% if sort_order == 'asc' %}selected{% endif %}>Ascending</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Users Table -->
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Contact</th>
+                                    <th>Status</th>
+                                    <th>Properties</th>
+                                    <th>Registered</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for user in users %}
+                                <tr style="cursor: pointer;" onclick="window.location.href='/admin/user-management/{{ user.uuid }}'">
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar me-3">
+                                                {% if user.profile_pic %}
+                                                <img src="https://api.airebrokers.com/project-api{{ user.profile_pic }}" alt="{{ user.full_name }}" class="avatar-img rounded-circle">
+                                                {% else %}
+                                                <span class="avatar-title rounded-circle bg-primary">
+                                                    {{ user.full_name|first|upper }}
+                                                </span>
+                                                {% endif %}
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0">{{ user.full_name }}</h6>
+                                                <small class="text-muted">ID: {{ user.uuid }}</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <i class="fas fa-envelope me-2"></i>{{ user.email }}
+                                        </div>
+                                        {% if user.phone %}
+                                        <div>
+                                            <i class="fas fa-phone me-2"></i>{{ user.phone }}
+                                        </div>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if user.is_id_verified %}
+                                        <span class="badge bg-success">Verified</span>
+                                        {% elif not user.is_id_verified and not user.verification_status %}
+                                        <span class="badge bg-warning text-dark">Pending</span>
+                                        {% elif not user.is_id_verified and user.verification_status == 'rejected' %}
+                                        <span class="badge bg-danger">Rejected</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-primary">{{ user.property_count }}</span>
+                                    </td>
+                                    <td>
+                                        {{ user.created_at|datetime }}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    {% if total_pages > 1 %}
+                    <nav aria-label="Page navigation" class="mt-4">
+                        <ul class="pagination justify-content-center">
+                            {% if has_prev %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ prev_page }}{% if search %}&search={{ search }}{% endif %}{% if user_type %}&user_type={{ user_type }}{% endif %}{% if verification_status %}&verification_status={{ verification_status }}{% endif %}{% if sort_by != 'created_at' %}&sort_by={{ sort_by }}{% endif %}{% if sort_order != 'desc' %}&sort_order={{ sort_order }}{% endif %}">Previous</a>
+                            </li>
+                            {% endif %}
+
+                            {# Always show first page #}
+                            <li class="page-item {% if current_page == 1 %}active{% endif %}">
+                                <a class="page-link" href="?page=1{% if search %}&search={{ search }}{% endif %}{% if user_type %}&user_type={{ user_type }}{% endif %}{% if verification_status %}&verification_status={{ verification_status }}{% endif %}{% if sort_by != 'created_at' %}&sort_by={{ sort_by }}{% endif %}{% if sort_order != 'desc' %}&sort_order={{ sort_order }}{% endif %}">1</a>
+                            </li>
+
+                            {# Calculate page range #}
+                            {% set start_page = [2, current_page - 2]|max %}
+                            {% set end_page = [total_pages - 1, current_page + 2]|min %}
+
+                            {# Show ellipsis after first page if needed #}
+                            {% if start_page > 2 %}
+                            <li class="page-item disabled">
+                                <span class="page-link">...</span>
+                            </li>
+                            {% endif %}
+
+                            {# Show pages around current page #}
+                            {% for page_num in range(start_page, end_page + 1) %}
+                            <li class="page-item {% if page_num == current_page %}active{% endif %}">
+                                <a class="page-link" href="?page={{ page_num }}{% if search %}&search={{ search }}{% endif %}{% if user_type %}&user_type={{ user_type }}{% endif %}{% if verification_status %}&verification_status={{ verification_status }}{% endif %}{% if sort_by != 'created_at' %}&sort_by={{ sort_by }}{% endif %}{% if sort_order != 'desc' %}&sort_order={{ sort_order }}{% endif %}">{{ page_num }}</a>
+                            </li>
+                            {% endfor %}
+
+                            {# Show ellipsis before last page if needed #}
+                            {% if end_page < total_pages - 1 %}
+                            <li class="page-item disabled">
+                                <span class="page-link">...</span>
+                            </li>
+                            {% endif %}
+
+                            {# Always show last page if there is more than one page #}
+                            {% if total_pages > 1 %}
+                            <li class="page-item {% if current_page == total_pages %}active{% endif %}">
+                                <a class="page-link" href="?page={{ total_pages }}{% if search %}&search={{ search }}{% endif %}{% if user_type %}&user_type={{ user_type }}{% endif %}{% if verification_status %}&verification_status={{ verification_status }}{% endif %}{% if sort_by != 'created_at' %}&sort_by={{ sort_by }}{% endif %}{% if sort_order != 'desc' %}&sort_order={{ sort_order }}{% endif %}">{{ total_pages }}</a>
+                            </li>
+                            {% endif %}
+
+                            {% if has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ next_page }}{% if search %}&search={{ search }}{% endif %}{% if user_type %}&user_type={{ user_type }}{% endif %}{% if verification_status %}&verification_status={{ verification_status }}{% endif %}{% if sort_by != 'created_at' %}&sort_by={{ sort_by }}{% endif %}{% if sort_order != 'desc' %}&sort_order={{ sort_order }}{% endif %}">Next</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Reset Password Modal -->
+<div class="modal fade" id="resetPasswordModal" tabindex="-1" role="dialog" aria-labelledby="resetPasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resetPasswordModalLabel">Reset Password</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="resetPasswordForm" method="post" action="/admin/user-management/reset-password">
+                <div class="modal-body">
+                    <input type="hidden" name="user_id" id="resetPasswordUserId">
+                    <div class="form-group">
+                        <label for="resetPasswordType">Reset Type</label>
+                        <select class="form-select" id="resetPasswordType" name="reset_type" required>
+                            <option value="temporary">Set Temporary Password</option>
+                            <option value="link">Send Reset Link</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Reset Password</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Verify User Modal -->
+<div class="modal fade" id="verifyUserModal" tabindex="-1" role="dialog" aria-labelledby="verifyUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="verifyUserModalLabel">Verify User</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="verifyUserForm" method="post" action="/admin/user-management/verify">
+                <div class="modal-body">
+                    <input type="hidden" name="user_id" id="verifyUserId">
+                    <div class="form-group mb-3">
+                        <label for="entityType">Entity Type</label>
+                        <select class="form-select" id="entityType" name="verified_as" required>
+                            <option value="">Select entity type...</option>
+                            <option value="human">Human</option>
+                            <option value="company">Company</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="verifiedName">Verified Name</label>
+                        <input type="text" class="form-control" id="verifiedName" name="verified_name" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-success">Verify User</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .avatar {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        color: white;
+        overflow: hidden;
+    }
+
+    .avatar-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .avatar-title {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .search-box {
+        width: 300px;
+    }
+
+    .table td {
+        vertical-align: middle;
+    }
+
+    .table tbody tr:hover {
+        background-color: rgba(0, 0, 0, 0.075);
+    }
+</style>
+
+<script>
+    function updateFilter(filter, value) {
+        if (value === "") {
+            const url = new URL(window.location.href);
+            url.searchParams.delete(filter);
+            window.location.href = url.toString();
+        } else {
+            const url = new URL(window.location.href);
+            url.searchParams.delete('page');
+            url.searchParams.set(filter, value);
+            window.location.href = url.toString();
+        }
+    }
+
+    function resetPassword(userId) {
+        document.getElementById('resetPasswordUserId').value = userId;
+        const modal = new bootstrap.Modal(document.getElementById('resetPasswordModal'));
+        modal.show();
+    }
+
+    function verifyUser(userId) {
+        document.getElementById('verifyUserId').value = userId;
+        const modal = new bootstrap.Modal(document.getElementById('verifyUserModal'));
+        modal.show();
+    }
+
+    // Initialize Bootstrap modals
+    document.addEventListener("DOMContentLoaded", function () {
+        const modals = document.querySelectorAll(".modal");
+        modals.forEach((modal) => {
+            new bootstrap.Modal(modal);
+        });
+    });
+</script>
+{% endblock %} 

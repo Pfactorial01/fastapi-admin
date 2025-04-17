@@ -1,0 +1,302 @@
+{% extends "layout.html" %}
+
+{% block page_body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h3 class="card-title mb-0">App Version Management</h3>
+                        <button class="btn btn-primary ms-2" data-bs-toggle="modal" data-bs-target="#addVersionModal">
+                            <i class="fas fa-plus me-2"></i>Add New Version
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    {% if error %}
+                    <div class="alert alert-danger">{{ error }}</div>
+                    {% endif %}
+
+                    <!-- Filters -->
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-filter"></i>
+                                </span>
+                                <select class="form-select" id="platformFilter">
+                                    <option value="None">All Platforms</option>
+                                    <option value="android" {% if current_platform == 'android' %}selected{% endif %}>Android</option>
+                                    <option value="ios" {% if current_platform == 'ios' %}selected{% endif %}>iOS</option>
+                                </select>
+                                <select class="form-select" id="statusFilter">
+                                    <option value="None">All Statuses</option>
+                                    <option value="latest" {% if current_status == 'latest' %}selected{% endif %}>Latest</option>
+                                    <option value="prompted" {% if current_status == 'prompted' %}selected{% endif %}>Prompted</option>
+                                    <option value="deprecated" {% if current_status == 'deprecated' %}selected{% endif %}>Deprecated</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Versions Table -->
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Version</th>
+                                    <th>Platform</th>
+                                    <th>Status</th>
+                                    <th>Release Notes</th>
+                                    <th>Created At</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for version in versions %}
+                                <tr>
+                                    <td>{{ version.version }}</td>
+                                    <td>
+                                        {% if version.platform == 'android' %}
+                                        <i class="fab fa-android text-success me-2"></i>Android
+                                        {% else %}
+                                        <i class="fab fa-apple text-dark me-2"></i>iOS
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if version.status == 'latest' %}
+                                        <span class="badge bg-success">Latest</span>
+                                        {% elif version.status == 'prompted' %}
+                                        <span class="badge bg-warning text-dark">Prompted</span>
+                                        {% else %}
+                                        <span class="badge bg-danger">Deprecated</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ version.release_notes }}</td>
+                                    <td>{{ version.created_at|datetime }}</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button class="btn btn-sm btn-outline-primary" 
+                                                    onclick="editVersion('{{ version._id }}', '{{ version.version }}', '{{ version.status }}', '{{ version.release_notes }}')">
+                                                <i class="fas fa-edit"></i>Edit
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger" 
+                                                    onclick="deleteVersion('{{ version._id }}', '{{ version.version }}')">
+                                                <i class="fas fa-trash"></i>Delete
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    {% if pagination.total_pages > 1 %}
+                    <nav aria-label="Page navigation" class="mt-4">
+                        <ul class="pagination justify-content-center">
+                            {% if pagination.has_prev %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ pagination.prev_page }}{% if current_platform %}&platform={{ current_platform }}{% endif %}{% if current_status %}&status={{ current_status }}{% endif %}">
+                                    <i class="fas fa-chevron-left"></i>
+                                </a>
+                            </li>
+                            {% endif %}
+                            
+                            {% for page_num in pagination.page_range %}
+                            <li class="page-item {% if page_num == pagination.current_page %}active{% endif %}">
+                                <a class="page-link" href="?page={{ page_num }}{% if current_platform %}&platform={{ current_platform }}{% endif %}{% if current_status %}&status={{ current_status }}{% endif %}">
+                                    {{ page_num }}
+                                </a>
+                            </li>
+                            {% endfor %}
+                            
+                            {% if pagination.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ pagination.next_page }}{% if current_platform %}&platform={{ current_platform }}{% endif %}{% if current_status %}&status={{ current_status }}{% endif %}">
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Version Modal -->
+<div class="modal fade" id="addVersionModal" tabindex="-1" aria-labelledby="addVersionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addVersionModalLabel">Add New Version</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" action="/admin/app-version-management/add">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="version" class="form-label">Version Number</label>
+                        <input type="text" class="form-control" id="version" name="version" required 
+                               pattern="^\d+\.\d+\.\d+$" title="Use format: X.Y.Z">
+                        <div class="form-text">Format: X.Y.Z (e.g., 1.2.0)</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="platform" class="form-label">Platform</label>
+                        <select class="form-select" id="platform" name="platform" required>
+                            <option value="">Select platform...</option>
+                            <option value="android">Android</option>
+                            <option value="ios">iOS</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Status</label>
+                        <select class="form-select" id="status" name="status" required>
+                            <option value="">Select status...</option>
+                            <option value="latest">Latest</option>
+                            <option value="prompted">Prompted</option>
+                            <option value="deprecated">Deprecated</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="release_notes" class="form-label">Release Notes</label>
+                        <textarea class="form-control" id="release_notes" name="release_notes" rows="3" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add Version</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Version Modal -->
+<div class="modal fade" id="editVersionModal" tabindex="-1" aria-labelledby="editVersionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editVersionModalLabel">Edit Version</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="editVersionForm" method="post">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Version Number</label>
+                        <input type="text" class="form-control" id="editVersion" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editStatus" class="form-label">Status</label>
+                        <select class="form-select" id="editStatus" name="status" required>
+                            <option value="latest">Latest</option>
+                            <option value="prompted">Prompted</option>
+                            <option value="deprecated">Deprecated</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editReleaseNotes" class="form-label">Release Notes</label>
+                        <textarea class="form-control" id="editReleaseNotes" name="release_notes" rows="3" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Version Modal -->
+<div class="modal fade" id="deleteVersionModal" tabindex="-1" aria-labelledby="deleteVersionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteVersionModalLabel">Delete Version</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="deleteVersionForm" method="post">
+                <div class="modal-body">
+                    <p>Are you sure you want to delete version <span id="deleteVersionText" class="fw-bold"></span>?</p>
+                    <p class="text-danger">This action cannot be undone.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .table td {
+        vertical-align: middle;
+    }
+    
+    .badge {
+        font-size: 0.9em;
+        padding: 0.5em 0.8em;
+    }
+    
+    .btn-group .btn {
+        padding: 0.25rem 0.5rem;
+    }
+</style>
+
+<script>
+    // Filter handling
+    document.getElementById('platformFilter').addEventListener('change', function() {
+        updateFilters();
+    });
+    
+    document.getElementById('statusFilter').addEventListener('change', function() {
+        updateFilters();
+    });
+    
+    function updateFilters() {
+        const platform = document.getElementById('platformFilter').value;
+        const status = document.getElementById('statusFilter').value;
+        let url = '/admin/app-version-management?';
+        
+        if (platform !== 'None') {
+            url += `platform=${platform}`;
+        }
+        
+        if (status !== 'None') {
+            url += `${platform !== 'None' ? '&' : ''}status=${status}`;
+        }
+        
+        window.location.href = url;
+    }
+    
+    // Edit version
+    function editVersion(id, version, status, releaseNotes) {
+        const form = document.getElementById('editVersionForm');
+        form.action = `/admin/app-version-management/${id}/update`;
+        
+        document.getElementById('editVersion').value = version;
+        document.getElementById('editStatus').value = status;
+        document.getElementById('editReleaseNotes').value = releaseNotes;
+        
+        const modal = new bootstrap.Modal(document.getElementById('editVersionModal'));
+        modal.show();
+    }
+    
+    // Delete version
+    function deleteVersion(id, version) {
+        const form = document.getElementById('deleteVersionForm');
+        form.action = `/admin/app-version-management/${id}/delete`;
+        
+        document.getElementById('deleteVersionText').textContent = version;
+        
+        const modal = new bootstrap.Modal(document.getElementById('deleteVersionModal'));
+        modal.show();
+    }
+</script>
+{% endblock %} 

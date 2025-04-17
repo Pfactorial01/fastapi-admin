@@ -22,6 +22,19 @@ class Home(Link):
     url = "/"
     type = "link"
 
+@app.register
+class UserManagement(Link):
+    label = "User Management"
+    icon = "fa fa-user"
+    url = "/admin/user-management"
+    type = "link"
+
+@app.register
+class AppVersionManagement(Link):
+    label = "App Version Management"
+    icon = "fa fa-user"
+    url = "/admin/app-version-management"
+    type = "link"
 
 @app.register
 class Documents(Link):
