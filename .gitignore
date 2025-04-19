@@ -134,3 +134,4 @@ dmypy.json
 .vscode
 
 env1
+script.py

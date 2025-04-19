@@ -17,6 +17,7 @@ from fastapi_admin.models import AbstractAdmin
 from fastapi_admin.providers import Provider
 from fastapi_admin.template import templates
 from fastapi_admin.utils import check_password, hash_password
+from examples.models import Groups
 
 if typing.TYPE_CHECKING:
     from fastapi_admin.app import FastAPIAdmin
@@ -161,7 +162,27 @@ class UsernamePasswordProvider(Provider):
                 context={"request": request, "error": _("confirm_password_different")},
             )
 
-        await self.create_user(username, password)
+        # Create super_user group with all permissions
+        super_group = await Groups.create(
+            name="super_user",
+            description="Super user group with all permissions",
+            can_view_users=True,
+            can_manage_users=True,
+            can_chat_users=True,
+            can_view_properties=True,
+            can_manage_properties=True,
+            can_manage_showing_requests=True,
+            can_manage_groups=True,
+            can_view_audit_logs=True,
+            can_manage_notifications=True,
+            is_active=True
+        )
+
+        # Create first admin user and assign super_user group
+        admin = await self.create_user(username, password)
+        admin.group = super_group
+        await admin.save()
+
         return self.redirect_login(request)
 
     def redirect_login(self, request: Request):

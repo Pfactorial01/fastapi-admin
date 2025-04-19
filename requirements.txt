@@ -44,3 +44,4 @@ httpx
 cryptography
 firebase-admin
 apscheduler>=3.10.1
+pandas
