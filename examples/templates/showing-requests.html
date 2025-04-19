@@ -187,7 +187,7 @@
                 // Hide all action-specific fields
                 const allFields = modal.querySelectorAll('.deny-fields, .reschedule-fields');
                 allFields.forEach(fields => {
-                    fields.style.display = none;
+                    fields.style.display = 'none';
                 });
                 
                 // Show selected action fields and set required attributes
@@ -213,7 +213,7 @@
         
         if (dateRangeSelect && customDateRange) {
             dateRangeSelect.addEventListener('change', function() {
-                customDateRange.style.display = this.value === 'custom' ? 'block' : none;
+                customDateRange.style.display = this.value === 'custom' ? 'block' : 'none';
             });
         }
 
@@ -229,7 +229,7 @@
                 // Hide all action-specific fields
                 const fields = this.querySelectorAll('.deny-fields, .reschedule-fields');
                 fields.forEach(fields => {
-                    fields.style.display = none;
+                    fields.style.display = 'none';
                 });
             });
         });
