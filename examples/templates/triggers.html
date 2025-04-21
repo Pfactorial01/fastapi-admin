@@ -1,0 +1,648 @@
+{% extends "layout.html" %}
+
+{% block page_body %}
+<div class="container-xl">
+    <!-- Page title -->
+    <div class="page-header d-print-none">
+        <div class="row align-items-center">
+            <div class="col">
+                <h2 class="page-title">
+                    Triggers
+                </h2>
+                <div class="text-muted mt-1">Manage automated actions for platform events</div>
+            </div>
+            <div class="col-auto ms-auto d-print-none">
+                <div class="btn-list">
+                    <a href="#" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#add-trigger-modal">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                        Add Trigger
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sub tabs -->
+    <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a href="?{% if page > 1 %}page={{ page }}{% endif %}" class="nav-link {% if not show_logs %}active{% endif %}">Manage Triggers</a>
+                </li>
+                <li class="nav-item">
+                    <a href="?show_logs=1{% if page > 1 %}&page={{ page }}{% endif %}" class="nav-link {% if show_logs %}active{% endif %}">Execution Logs</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content">
+                <!-- Triggers tab -->
+                <div class="tab-pane {% if not show_logs %}active show{% endif %}" id="triggers">
+                    <div class="table-responsive">
+                        <table class="table table-vcenter card-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Event</th>
+                                    <th>Action</th>
+                                    <th>Status</th>
+                                    <th>Created</th>
+                                    <th class="w-1"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for trigger in triggers %}
+                                <tr>
+                                    <td>
+                                        {{ trigger.name }}
+                                        {% if trigger.description %}
+                                        <div class="text-muted">{{ trigger.description }}</div>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% for event in event_types %}
+                                            {% if event.id == trigger.event_type %}
+                                                {{ event.name }}
+                                            {% endif %}
+                                        {% endfor %}
+                                    </td>
+                                    <td>
+                                        {% for action in action_types %}
+                                            {% if action.id == trigger.action_type %}
+                                                {{ action.name }}
+                                            {% endif %}
+                                        {% endfor %}
+                                    </td>
+                                    <td>
+                                        {% if trigger.is_active %}
+                                        <span class="badge bg-success">Active</span>
+                                        {% else %}
+                                        <span class="badge bg-secondary">Inactive</span>
+                                        {% endif %}
+                                    </td>
+                                    <td class="text-muted">
+                                        {{ trigger.created_at.strftime('%Y-%m-%d %H:%M') }}
+                                    </td>
+                                    <td>
+                                        <div class="btn-list flex-nowrap">
+                                            <button class="btn btn-white btn-sm" onclick="testTrigger('{{ trigger._id }}')" id="test-trigger-{{ trigger._id }}">
+                                                <span class="d-inline-block">Test</span>
+                                                <span class="spinner-border spinner-border-sm ms-1 d-none" role="status"></span>
+                                            </button>
+                                            <a href="#" class="btn btn-white btn-sm" data-bs-toggle="modal" data-bs-target="#edit-trigger-modal-{{ trigger._id }}">
+                                                Edit
+                                            </a>
+                                            <form action="/admin/triggers/{{ trigger._id }}/delete" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this trigger?');">
+                                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Triggers Pagination -->
+                    <div class="card-footer d-flex align-items-center">
+                        <p class="m-0 text-muted">Showing <span>{{ triggers|length }}</span> of <span>{{ total_triggers }}</span> entries</p>
+                        <ul class="pagination m-0 ms-auto">
+                            {% if has_prev %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page-1 }}{% if show_logs %}&show_logs=1{% endif %}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="15 6 9 12 15 18" /></svg>
+                                    prev
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page+1 }}{% if show_logs %}&show_logs=1{% endif %}">
+                                    next
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="9 6 15 12 9 18" /></svg>
+                                </a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Logs tab -->
+                <div class="tab-pane {% if show_logs %}active show{% endif %}" id="logs">
+                    <div class="table-responsive">
+                        <table class="table table-vcenter card-table">
+                            <thead>
+                                <tr>
+                                    <th>Trigger</th>
+                                    <th>Timestamp</th>
+                                    <th>Status</th>
+                                    <th>Type</th>
+                                    <th>Response</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for log in trigger_logs %}
+                                <tr>
+                                    <td>
+                                        {% for trigger in triggers %}
+                                            {% if trigger._id == log.trigger_id %}
+                                                {{ trigger.name }}
+                                            {% endif %}
+                                        {% endfor %}
+                                        <div class="text-muted">ID: {{ log.trigger_id }}</div>
+                                    </td>
+                                    <td>{{ log.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                                    <td>
+                                        {% if log.success %}
+                                        <span class="badge bg-success">Success</span>
+                                        {% else %}
+                                        <span class="badge bg-danger">Failed</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if log.is_test %}
+                                        <span class="badge bg-blue">Test</span>
+                                        {% else %}
+                                        <span class="badge bg-green">Production</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary" onclick="showLogDetails('{{ log._id }}')">
+                                            View Details
+                                        </button>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Logs Pagination -->
+                    <div class="card-footer d-flex align-items-center">
+                        <p class="m-0 text-muted">Showing <span>{{ trigger_logs|length }}</span> of <span>{{ total_logs }}</span> entries</p>
+                        <ul class="pagination m-0 ms-auto">
+                            {% if logs_has_prev %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ logs_page-1 }}&show_logs=1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="15 6 9 12 15 18" /></svg>
+                                    prev
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if logs_has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ logs_page+1 }}&show_logs=1">
+                                    next
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="9 6 15 12 9 18" /></svg>
+                                </a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Log Details Modal -->
+<div class="modal modal-blur fade" id="log-details-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Log Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <h4>Event Data</h4>
+                    <pre id="log-event-data" class="bg-light p-3 rounded text-dark" style="white-space: pre-wrap; word-break: break-word; max-height: 300px; overflow-y: auto; color: #1e293b !important; background-color: #f8fafc !important;"></pre>
+                </div>
+                <div class="mb-3">
+                    <h4>Response</h4>
+                    <pre id="log-response" class="bg-light p-3 rounded text-dark" style="white-space: pre-wrap; word-break: break-word; max-height: 300px; overflow-y: auto; color: #1e293b !important; background-color: #f8fafc !important;"></pre>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Trigger Modal -->
+<div class="modal modal-blur fade" id="add-trigger-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Trigger</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/admin/triggers/add" method="POST">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label required">Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="Enter trigger name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control" name="description" rows="3" placeholder="Enter trigger description"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label required">Event Type</label>
+                                <select class="form-select" name="event_type" required>
+                                    <option value="">Select event type</option>
+                                    {% for event in event_types %}
+                                    <option value="{{ event.id }}">{{ event.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label required">Action Type</label>
+                                <select class="form-select" name="action_type" onchange="showActionConfig(this.value, 'add')" required>
+                                    <option value="">Select action type</option>
+                                    {% for action in action_types %}
+                                    <option value="{{ action.id }}">{{ action.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Dynamic action configuration sections -->
+                    <div id="add-email-config" class="action-config" style="display: none;">
+                        <h4>Email Configuration</h4>
+                        <div class="mb-3">
+                            <label class="form-label required">Subject Template</label>
+                            <input type="text" class="form-control" name="email_subject" placeholder="Enter email subject">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label required">Body Template</label>
+                            <textarea class="form-control" name="email_body" rows="5" placeholder="Enter email body"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label required">Recipients</label>
+                            <input type="text" class="form-control" name="email_recipients" placeholder="Enter comma-separated email addresses or template variables">
+                        </div>
+                    </div>
+
+                    <div id="add-api-config" class="action-config" style="display: none;">
+                        <h4>API Call Configuration</h4>
+                        <div class="mb-3">
+                            <label class="form-label required">Endpoint URL</label>
+                            <input type="text" class="form-control" name="api_url" placeholder="Enter API endpoint URL">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label required">Method</label>
+                            <select class="form-select" name="api_method">
+                                <option value="GET">GET</option>
+                                <option value="POST">POST</option>
+                                <option value="PUT">PUT</option>
+                                <option value="DELETE">DELETE</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Headers</label>
+                            <textarea class="form-control" name="api_headers" rows="3" placeholder="Enter headers in JSON format"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Body Template</label>
+                            <textarea class="form-control" name="api_body" rows="5" placeholder="Enter request body template in JSON format"></textarea>
+                        </div>
+                    </div>
+
+                    <div id="add-script-config" class="action-config" style="display: none;">
+                        <h4>Python Script Configuration</h4>
+                        <div class="mb-3">
+                            <label class="form-label required">Script Content</label>
+                            <textarea class="form-control" name="script_content" rows="10" placeholder="Enter Python script content"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" name="is_active" checked>
+                            <span class="form-check-label">Active</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-link link-secondary" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary ms-auto">
+                        Create Trigger
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Trigger Modals -->
+{% for trigger in triggers %}
+<div class="modal modal-blur fade" id="edit-trigger-modal-{{ trigger._id }}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Trigger</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/admin/triggers/{{ trigger._id }}/edit" method="POST">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label required">Name</label>
+                        <input type="text" class="form-control" name="name" value="{{ trigger.name }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control" name="description" rows="3">{{ trigger.description }}</textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label required">Event Type</label>
+                                <select class="form-select" name="event_type" required>
+                                    {% for event in event_types %}
+                                    <option value="{{ event.id }}" {% if event.id == trigger.event_type %}selected{% endif %}>
+                                        {{ event.name }}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label required">Action Type</label>
+                                <select class="form-select" name="action_type" onchange="showActionConfig(this.value, '{{ trigger._id }}')" required>
+                                    {% for action in action_types %}
+                                    <option value="{{ action.id }}" {% if action.id == trigger.action_type %}selected{% endif %}>
+                                        {{ action.name }}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic action configuration sections -->
+                    <div id="edit-email-config-{{ trigger._id }}" class="action-config" style="display: none;">
+                        <h4>Email Configuration</h4>
+                        <div class="mb-3">
+                            <label class="form-label required">Subject Template</label>
+                            <input type="text" class="form-control" name="email_subject" value="{{ trigger.config.subject if trigger.action_type == 'send_email' else '' }}">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label required">Body Template</label>
+                            <textarea class="form-control" name="email_body" rows="5">{{ trigger.config.body if trigger.action_type == 'send_email' else '' }}</textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label required">Recipients</label>
+                            <input type="text" class="form-control" name="email_recipients" value="{{ trigger.config.recipients if trigger.action_type == 'send_email' else '' }}">
+                        </div>
+                    </div>
+
+                    <div id="edit-api-config-{{ trigger._id }}" class="action-config" style="display: none;">
+                        <h4>API Call Configuration</h4>
+                        <div class="mb-3">
+                            <label class="form-label required">Endpoint URL</label>
+                            <input type="text" class="form-control" name="api_url" value="{{ trigger.config.url if trigger.action_type == 'api_call' else '' }}">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label required">Method</label>
+                            <select class="form-select" name="api_method">
+                                {% for method in ['GET', 'POST', 'PUT', 'DELETE'] %}
+                                <option value="{{ method }}" {% if trigger.action_type == 'api_call' and trigger.config.method == method %}selected{% endif %}>
+                                    {{ method }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Headers</label>
+                            <textarea class="form-control" name="api_headers" rows="3">{{ trigger.config.headers|tojson if trigger.action_type == 'api_call' and trigger.config.headers else '' }}</textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Body Template</label>
+                            <textarea class="form-control" name="api_body" rows="5">{{ trigger.config.body|tojson if trigger.action_type == 'api_call' and trigger.config.body else '' }}</textarea>
+                        </div>
+                    </div>
+
+                    <div id="edit-script-config-{{ trigger._id }}" class="action-config" style="display: none;">
+                        <h4>Python Script Configuration</h4>
+                        <div class="mb-3">
+                            <label class="form-label required">Script Content</label>
+                            <textarea class="form-control" name="script_content" rows="10">{{ trigger.config.script if trigger.action_type == 'python_script' else '' }}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" name="is_active" {% if trigger.is_active %}checked{% endif %}>
+                            <span class="form-check-label">Active</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-link link-secondary" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary ms-auto">
+                        Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+<script>
+    function showActionConfig(actionType, triggerId) {
+        // Hide all config sections for this specific modal/form context
+        const prefix = triggerId === 'add' ? 'add' : 'edit';
+        const modalContext = triggerId === 'add' ? '' : '-' + triggerId;
+        const configSections = document.querySelectorAll(`#${prefix}-trigger-modal${modalContext} .action-config`);
+        configSections.forEach(el => el.style.display = 'none');
+        
+        // Show the selected config section
+        if (actionType === 'send_email') {
+            document.getElementById(`${prefix}-email-config${modalContext}`).style.display = 'block';
+        } else if (actionType === 'api_call') {
+            document.getElementById(`${prefix}-api-config${modalContext}`).style.display = 'block';
+        } else if (actionType === 'python_script') {
+            document.getElementById(`${prefix}-script-config${modalContext}`).style.display = 'block';
+        }
+    }
+    
+    // Initialize action config visibility
+    document.addEventListener('DOMContentLoaded', function() {
+        // For add modal
+        const addActionSelect = document.querySelector('#add-trigger-modal select[name="action_type"]');
+        if (addActionSelect.value) {
+            showActionConfig(addActionSelect.value, 'add');
+        }
+    
+        // For edit modals
+        document.querySelectorAll('[id^="edit-trigger-modal-"]').forEach(modal => {
+            const triggerId = modal.id.replace('edit-trigger-modal-', '');
+            const actionSelect = modal.querySelector('select[name="action_type"]');
+            if (actionSelect.value) {
+                showActionConfig(actionSelect.value, triggerId);
+            }
+        });
+    });
+
+    // Show correct config when modal opens
+    document.querySelectorAll('[id^="edit-trigger-modal-"]').forEach(modal => {
+        modal.addEventListener('show.bs.modal', function() {
+            const triggerId = this.id.replace('edit-trigger-modal-', '');
+            const actionSelect = this.querySelector('select[name="action_type"]');
+            if (actionSelect.value) {
+                showActionConfig(actionSelect.value, triggerId);
+            }
+        });
+    });
+    
+    async function testTrigger(triggerId) {
+        const button = document.getElementById(`test-trigger-${triggerId}`);
+        const buttonText = button.querySelector('.d-inline-block');
+        const spinner = button.querySelector('.spinner-border');
+        
+        try {
+            // Disable button and show spinner
+            button.disabled = true;
+            buttonText.textContent = 'Testing';
+            spinner.classList.remove('d-none');
+            
+            const response = await fetch(`/admin/triggers/${triggerId}/test`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            
+            const result = await response.json();
+            
+            if (response.ok) {
+                alert('Trigger test successful!\n\n' + JSON.stringify(result.result, null, 2));
+            } else {
+                alert('Trigger test failed: ' + result.detail);
+            }
+        } catch (error) {
+            alert('Error testing trigger: ' + error.message);
+        } finally {
+            // Re-enable button and hide spinner
+            button.disabled = false;
+            buttonText.textContent = 'Test';
+            spinner.classList.add('d-none');
+        }
+    }
+    
+    // Form submission handler to prepare config JSON
+    document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const actionType = this.querySelector('select[name="action_type"]').value;
+            let config = {};
+            
+            if (actionType === 'send_email') {
+                config = {
+                    subject: this.querySelector('input[name="email_subject"]').value,
+                    body: this.querySelector('textarea[name="email_body"]').value,
+                    recipients: this.querySelector('input[name="email_recipients"]').value.split(',').map(r => r.trim())
+                };
+            } else if (actionType === 'api_call') {
+                config = {
+                    url: this.querySelector('input[name="api_url"]').value,
+                    method: this.querySelector('select[name="api_method"]').value,
+                    headers: JSON.parse(this.querySelector('textarea[name="api_headers"]').value || '{}'),
+                    body: JSON.parse(this.querySelector('textarea[name="api_body"]').value || '{}')
+                };
+            } else if (actionType === 'python_script') {
+                config = {
+                    script: this.querySelector('textarea[name="script_content"]').value
+                };
+            }
+            
+            // Add hidden input for config
+            const configInput = document.createElement('input');
+            configInput.type = 'hidden';
+            configInput.name = 'config';
+            configInput.value = JSON.stringify(config);
+            this.appendChild(configInput);
+            
+            this.submit();
+        });
+    });
+
+    // Initialize modal once when the page loads
+    let logDetailsModal;
+    document.addEventListener('DOMContentLoaded', function() {
+        logDetailsModal = new bootstrap.Modal(document.getElementById('log-details-modal'));
+    });
+
+    async function showLogDetails(logId) {
+        try {
+            const response = await fetch(`/admin/triggers/logs/${logId}`);
+            const data = await response.json();
+            
+            if (response.ok) {
+                const eventDataElem = document.getElementById('log-event-data');
+                const responseElem = document.getElementById('log-response');
+                
+                // Clear previous content
+                eventDataElem.innerHTML = '';
+                responseElem.innerHTML = '';
+                
+                // Format and display event data
+                if (data.event_data && Object.keys(data.event_data).length > 0) {
+                    const eventDataStr = JSON.stringify(data.event_data, null, 2);
+                    eventDataElem.textContent = eventDataStr;
+                    // Force style update
+                    eventDataElem.style.color = '#1e293b';
+                    eventDataElem.style.backgroundColor = '#f8fafc';
+                } else {
+                    eventDataElem.textContent = 'No event data';
+                }
+                
+                // Format and display response
+                if (data.response) {
+                    const responseStr = typeof data.response === 'object' ? 
+                        JSON.stringify(data.response, null, 2) : 
+                        data.response.toString();
+                    responseElem.textContent = responseStr;
+                    // Force style update
+                    responseElem.style.color = '#1e293b';
+                    responseElem.style.backgroundColor = '#f8fafc';
+                } else {
+                    responseElem.textContent = 'No response data';
+                }
+                
+                // Show the modal
+                if (logDetailsModal) {
+                    logDetailsModal.show();
+                } else {
+                    logDetailsModal = new bootstrap.Modal(document.getElementById('log-details-modal'));
+                    logDetailsModal.show();
+                }
+            } else {
+                alert('Error fetching log details: ' + (data.detail || 'Unknown error'));
+            }
+        } catch (error) {
+            console.error('Error in showLogDetails:', error);
+            alert('Error fetching log details: ' + error.message);
+        }
+    }
+</script>
+
+{% endblock %}

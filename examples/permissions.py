@@ -15,7 +15,6 @@ class PermissionDependency:
     async def __call__(self, request: Request, admin=Depends(get_current_admin)):
         # Fetch the group relationship
         await admin.fetch_related('group')
-        print(admin.group)
         
         if not admin.group:
             raise HTTPException(

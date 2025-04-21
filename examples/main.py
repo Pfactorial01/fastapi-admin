@@ -24,6 +24,7 @@ from examples.constants import BASE_DIR
 from examples.models import Admin, Category, Product, Config
 from examples.providers import LoginProvider
 from examples.scheduler import scheduler
+from examples.webhook.webhooks import router as webhook_router
 from fastapi_admin.app import app as admin_app
 from fastapi_admin.exceptions import (
     forbidden_error_exception,
@@ -99,6 +100,9 @@ def create_app():
 
     # Create the FastAPI app with the lifespan context manager
     app = FastAPI(lifespan=lifespan)
+    
+    # Include webhook routes
+    app.include_router(webhook_router)
     
     @app.on_event("startup")
     async def startup_event():

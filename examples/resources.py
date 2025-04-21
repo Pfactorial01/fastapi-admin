@@ -65,6 +65,13 @@ class Notifications(Link):
     type = "link"
 
 @app.register
+class Triggers(Link):
+    label = "Triggers"
+    icon = "fa fa-bell"
+    url = "/admin/triggers"
+    type = "link"
+
+@app.register
 class YAML_Editor(Link):
     label = "YAML Editor"
     icon = "fa fa-file-code"
