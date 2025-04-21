@@ -72,6 +72,13 @@ class Triggers(Link):
     type = "link"
 
 @app.register
+class ServiceLeads(Link):
+    label = "Service Leads"
+    icon = "fa fa-bell"
+    url = "/admin/service-leads"
+    type = "link"
+
+@app.register
 class YAML_Editor(Link):
     label = "YAML Editor"
     icon = "fa fa-file-code"

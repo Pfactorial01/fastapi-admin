@@ -1,0 +1,351 @@
+{% extends "layout.html" %}
+
+{% block page_body %}
+<div class="container-fluid">
+    <!-- Page title -->
+    <div class="page-header">
+        <div class="row align-items-center mb-3">
+            <div class="col">
+                <div class="text-muted mt-1">Manage and track service requests from users</div>
+            </div>
+            <div class="col-auto ms-auto d-print-none">
+                <div class="btn-list">
+                    <form action="/admin/service-leads/export" method="POST" class="d-inline">
+                        <input type="hidden" name="service_type" value="{{ service_type }}">
+                        <input type="hidden" name="status" value="{{ status }}">
+                        <input type="hidden" name="date_from" value="{{ date_from }}">
+                        <input type="hidden" name="date_to" value="{{ date_to }}">
+                        <button type="submit" class="btn btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4" /><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" /><line x1="8" y1="11" x2="16" y2="11" /><line x1="8" y1="15" x2="16" y2="15" /><line x1="8" y1="19" x2="16" y2="19" /></svg>
+                            Export to CSV
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="card mb-3">
+        <div class="card-body">
+            <form method="GET" action="/admin/service-leads">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <label class="form-label">Service Type</label>
+                        <select class="form-select" name="service_type">
+                            <option value="">All Services</option>
+                            <option value="Financing" {% if service_type == 'Financing' %}selected{% endif %}>Financing</option>
+                            <option value="TitleServices" {% if service_type == 'TitleServices' %}selected{% endif %}>Title Services</option>
+                            <option value="HomeInspection" {% if service_type == 'HomeInspection' %}selected{% endif %}>Home Inspection</option>
+                            <option value="InsuranceQuote" {% if service_type == 'InsuranceQuote' %}selected{% endif %}>Insurance Quote</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">Status</label>
+                        <select class="form-select" name="status">
+                            <option value="">All Status</option>
+                            <option value="pending" {% if status == 'pending' %}selected{% endif %}>New</option>
+                            <option value="contacted" {% if status == 'contacted' %}selected{% endif %}>Contacted</option>
+                            <option value="in_progress" {% if status == 'in_progress' %}selected{% endif %}>In Progress</option>
+                            <option value="converted" {% if status == 'converted' %}selected{% endif %}>Converted</option>
+                            <option value="closed" {% if status == 'closed' %}selected{% endif %}>Closed</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">Date From</label>
+                        <input type="date" class="form-control" name="date_from" value="{{ date_from }}">
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">Date To</label>
+                        <input type="date" class="form-control" name="date_to" value="{{ date_to }}">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">User Email</label>
+                        <input type="text" class="form-control" name="user_email" value="{{ user_email }}" placeholder="Search by email or name">
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Apply Filters</button>
+                        <a href="/admin/service-leads" class="btn btn-link">Clear Filters</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Leads Table -->
+    <div class="card">
+        <div class="table-responsive">
+            <table class="table table-vcenter card-table">
+                <thead>
+                    <tr>
+                        <th>Date Submitted</th>
+                        <th>Service Type</th>
+                        <th>User</th>
+                        <th>Status</th>
+                        <th>Assigned To</th>
+                        <th class="w-1"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for lead in leads %}
+                    <tr>
+                        <td>{{ lead.created_at.strftime('%Y-%m-%d %H:%M') if lead.created_at else 'N/A' }}</td>
+                        <td>
+                            {% if lead.Service == 'Financing' %}
+                            <span class="badge bg-blue">Financing</span>
+                            {% elif lead.Service == 'TitleServices' %}
+                            <span class="badge bg-purple">Title Services</span>
+                            {% elif lead.Service == 'HomeInspection' %}
+                            <span class="badge bg-green">Home Inspection</span>
+                            {% elif lead.Service == 'InsuranceQuote' %}
+                            <span class="badge bg-orange">Insurance Quote</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if lead.user %}
+                            {{ lead.user.name }}
+                            <div class="text-muted">{{ lead.user.email }}</div>
+                            {% else %}
+                            {% if lead.data.stepOne %}
+                            {{ lead.data.stepOne.firstName }} {{ lead.data.stepOne.lastName }}
+                            <div class="text-muted">{{ lead.data.stepOne.email }}</div>
+                            {% elif lead.data.generalInfo %}
+                            {{ lead.data.generalInfo.firstName }} {{ lead.data.generalInfo.lastName }}
+                            <div class="text-muted">{{ lead.data.generalInfo.email }}</div>
+                            {% endif %}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if lead.status == 'pending' %}
+                            <span class="badge bg-blue">New</span>
+                            {% elif lead.status == 'contacted' %}
+                            <span class="badge bg-yellow">Contacted</span>
+                            {% elif lead.status == 'in_progress' %}
+                            <span class="badge bg-orange">In Progress</span>
+                            {% elif lead.status == 'converted' %}
+                            <span class="badge bg-green">Converted</span>
+                            {% elif lead.status == 'closed' %}
+                            <span class="badge bg-secondary">Closed</span>
+                            {% else %}
+                            <span class="badge bg-secondary">{{ lead.status }}</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {{ lead.assigned_to if lead.assigned_to else 'Unassigned' }}
+                        </td>
+                        <td>
+                            <button class="btn btn-primary btn-sm" onclick="showLeadDetails('{{ lead._id }}')">
+                                View Details
+                            </button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer d-flex align-items-center">
+            <p class="m-0 text-muted">Showing <span>{{ leads|length }}</span> of <span>{{ total_leads }}</span> entries</p>
+            <ul class="pagination m-0 ms-auto">
+                {% if has_prev %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page-1 }}{% if service_type %}&service_type={{ service_type }}{% endif %}{% if status %}&status={{ status }}{% endif %}{% if date_from %}&date_from={{ date_from }}{% endif %}{% if date_to %}&date_to={{ date_to }}{% endif %}{% if user_email %}&user_email={{ user_email }}{% endif %}">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="15 6 9 12 15 18" /></svg>
+                        prev
+                    </a>
+                </li>
+                {% endif %}
+                {% if has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page+1 }}{% if service_type %}&service_type={{ service_type }}{% endif %}{% if status %}&status={{ status }}{% endif %}{% if date_from %}&date_from={{ date_from }}{% endif %}{% if date_to %}&date_to={{ date_to }}{% endif %}{% if user_email %}&user_email={{ user_email }}{% endif %}">
+                        next
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="9 6 15 12 9 18" /></svg>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Lead Details Modal -->
+<div class="modal modal-blur fade" id="lead-details-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Lead Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h4>Service Information</h4>
+                        <div id="service-info"></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4>User Information</h4>
+                        <div id="user-info"></div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <h4>Form Data</h4>
+                        <div id="form-data"></div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <h4>Notes</h4>
+                        <div id="notes-list" class="mb-3"></div>
+                        <form id="notes-form" onsubmit="return false;">
+                            <input type="hidden" id="lead-id">
+                            <div class="mb-3">
+                                <label class="form-label">Add Note</label>
+                                <textarea class="form-control" id="note-content" rows="3"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Status</label>
+                                <select class="form-select" id="lead-status">
+                                    <option value="pending">New</option>
+                                    <option value="contacted">Contacted</option>
+                                    <option value="in_progress">In Progress</option>
+                                    <option value="converted">Converted</option>
+                                    <option value="closed">Closed</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Assign To</label>
+                                <input type="text" class="form-control" id="assigned-to">
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="updateLead()">
+                                Save Changes
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let leadDetailsModal;
+
+document.addEventListener('DOMContentLoaded', function() {
+    leadDetailsModal = new bootstrap.Modal(document.getElementById('lead-details-modal'));
+});
+
+async function showLeadDetails(leadId) {
+    try {
+        const response = await fetch(`/admin/service-leads/${leadId}`);
+        const lead = await response.json();
+        
+        if (response.ok) {
+            // Update modal content
+            document.getElementById('lead-id').value = lead._id;
+            document.getElementById('lead-status').value = lead.status || 'pending';
+            document.getElementById('assigned-to').value = lead.assigned_to || '';
+            
+            // Service Info
+            const serviceInfo = document.getElementById('service-info');
+            serviceInfo.innerHTML = `
+                <dl class="row">
+                    <dt class="col-5">Service Type:</dt>
+                    <dd class="col-7">${lead.Service}</dd>
+                    <dt class="col-5">Status:</dt>
+                    <dd class="col-7">${lead.status === 'pending' ? 'New' : (lead.status || 'New')}</dd>
+                    <dt class="col-5">Submitted:</dt>
+                    <dd class="col-7">${new Date(lead.created_at).toLocaleString()}</dd>
+                </dl>
+            `;
+            
+            // User Info
+            const userInfo = document.getElementById('user-info');
+            const userData = lead.user || (lead.data.stepOne || lead.data.generalInfo);
+            userInfo.innerHTML = `
+                <dl class="row">
+                    <dt class="col-5">Name:</dt>
+                    <dd class="col-7">${userData.firstName} ${userData.lastName}</dd>
+                    <dt class="col-5">Email:</dt>
+                    <dd class="col-7">${userData.email}</dd>
+                    <dt class="col-5">Phone:</dt>
+                    <dd class="col-7">${userData.phone || 'N/A'}</dd>
+                </dl>
+                ${lead.user_id ? `
+                <div class="mt-3">
+                    <a href="/admin/messages?user_id=${lead.user_id}" class="btn btn-primary btn-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10"></path>
+                            <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2"></path>
+                        </svg>
+                        Chat with User
+                    </a>
+                </div>
+                ` : ''}
+            `;
+            
+            // Form Data
+            const formData = document.getElementById('form-data');
+            formData.innerHTML = `<pre class="bg-light p-3 rounded text-dark">${JSON.stringify(lead.data, null, 2)}</pre>`;
+            
+            // Notes
+            const notesList = document.getElementById('notes-list');
+            if (lead.notes && lead.notes.length > 0) {
+                notesList.innerHTML = lead.notes.map(note => `
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            <p>${note.content}</p>
+                            <small class="text-muted">Added on ${new Date(note.created_at).toLocaleString()}</small>
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                notesList.innerHTML = '<p class="text-muted">No notes yet</p>';
+            }
+            
+            // Show modal
+            leadDetailsModal.show();
+        } else {
+            alert('Error loading lead details: ' + lead.detail);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error loading lead details');
+    }
+}
+
+async function updateLead() {
+    const leadId = document.getElementById('lead-id').value;
+    const status = document.getElementById('lead-status').value;
+    const notes = document.getElementById('note-content').value;
+    const assignedTo = document.getElementById('assigned-to').value;
+    
+    try {
+        const formData = new FormData();
+        formData.append('status', status);
+        if (notes) formData.append('notes', notes);
+        if (assignedTo) formData.append('assigned_to', assignedTo);
+        
+        const response = await fetch(`/admin/service-leads/${leadId}/update`, {
+            method: 'POST',
+            body: formData
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+            // Refresh the page to show updated data
+            window.location.reload();
+        } else {
+            alert('Error updating lead: ' + result.detail);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error updating lead');
+    }
+}
+</script>
+
+{% endblock %} 
