@@ -131,7 +131,7 @@
                             {% endif %}
                         </td>
                         <td>
-                            {{ lead.assigned_to if lead.assigned_to else 'Unassigned' }}
+                            {{ lead.assigned_to }}
                         </td>
                         <td>
                             <button class="btn btn-primary btn-sm" onclick="showLeadDetails('{{ lead._id }}')">
@@ -216,7 +216,9 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Assign To</label>
-                                <input type="text" class="form-control" id="assigned-to">
+                                <select class="form-select" id="assigned-to">
+                                    <option value="">Select Admin</option>
+                                </select>
                             </div>
                             <button type="button" class="btn btn-primary" onclick="updateLead()">
                                 Save Changes
@@ -245,7 +247,21 @@ async function showLeadDetails(leadId) {
             // Update modal content
             document.getElementById('lead-id').value = lead._id;
             document.getElementById('lead-status').value = lead.status || 'pending';
-            document.getElementById('assigned-to').value = lead.assigned_to || '';
+            
+            // Populate admin dropdown
+            const assignedToSelect = document.getElementById('assigned-to');
+            assignedToSelect.innerHTML = '<option value="">Select Admin</option>';
+            if (lead.available_admins) {
+                lead.available_admins.forEach(admin => {
+                    const option = document.createElement('option');
+                    option.value = admin.id;
+                    option.textContent = admin.name;
+                    if (lead.assigned_to === admin.id) {
+                        option.selected = true;
+                    }
+                    assignedToSelect.appendChild(option);
+                });
+            }
             
             // Service Info
             const serviceInfo = document.getElementById('service-info');
@@ -320,7 +336,7 @@ async function updateLead() {
     const leadId = document.getElementById('lead-id').value;
     const status = document.getElementById('lead-status').value;
     const notes = document.getElementById('note-content').value;
-    const assignedTo = document.getElementById('assigned-to').value;
+    const assignedTo = parseInt(document.getElementById('assigned-to').value);
     
     try {
         const formData = new FormData();

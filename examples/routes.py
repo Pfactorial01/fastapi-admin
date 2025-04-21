@@ -4005,6 +4005,9 @@ async def service_leads(
         
         # Apply sorting and pagination
         leads_cursor = leads_cursor.sort(sort_field, sort_direction).skip(skip).limit(per_page)
+
+        admins = await Admin.all()
+        admin_list = [{"id": admin.id, "name": admin.username} for admin in admins]
         
         # Convert MongoDB documents to Python dictionaries and handle ObjectId serialization
         leads = []
@@ -4027,6 +4030,11 @@ async def service_leads(
             # Set default status to pending if not present
             if 'status' not in lead:
                 lead['status'] = 'pending'
+
+            if lead.get('assigned_to') != None:
+                for admin in admin_list:
+                    if admin['id'] == lead['assigned_to']:
+                        lead['assigned_to'] = admin['name']
             
             leads.append(lead)
 
@@ -4087,6 +4095,13 @@ async def get_lead_details(
                 if 'created_at' in note:
                     note['created_at'] = note['created_at'].isoformat()
 
+        # Fetch available admins
+        admins = await Admin.all()
+        admin_list = [{"id": admin.id, "name": admin.username} for admin in admins]
+
+        # Add admins to the response
+        lead['available_admins'] = admin_list
+
         return lead
 
     except Exception as e:
@@ -4100,7 +4115,7 @@ async def update_lead_status(
     authorized=Depends(Permissions.MANAGE_USERS),
     status: str = Form(..., regex="^(pending|contacted|in_progress|converted|closed)$"),
     notes: Optional[str] = Form(None),
-    assigned_to: Optional[str] = Form(None),
+    assigned_to: Optional[int] = Form(None),
     admin=Depends(get_current_admin),
 ):
     """Update the status and details of a service lead"""
