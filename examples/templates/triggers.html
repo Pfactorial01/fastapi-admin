@@ -322,8 +322,12 @@
                     <div id="add-script-config" class="action-config" style="display: none;">
                         <h4>Python Script Configuration</h4>
                         <div class="mb-3">
-                            <label class="form-label required">Script Content</label>
-                            <textarea class="form-control" name="script_content" rows="10" placeholder="Enter Python script content"></textarea>
+                            <label class="form-label required">Python Script File</label>
+                            <input type="file" class="form-control" name="script_file" accept=".py" required>
+                            <div class="form-text">
+                                Upload a Python script file (.py) that contains a run(data) function. 
+                                The function will receive the event data as its parameter.
+                            </div>
                         </div>
                     </div>
 
@@ -439,8 +443,19 @@
                     <div id="edit-script-config-{{ trigger._id }}" class="action-config" style="display: none;">
                         <h4>Python Script Configuration</h4>
                         <div class="mb-3">
-                            <label class="form-label required">Script Content</label>
-                            <textarea class="form-control" name="script_content" rows="10">{{ trigger.config.script if trigger.action_type == 'python_script' else '' }}</textarea>
+                            <label class="form-label required">Python Script File</label>
+                            <input type="file" class="form-control" name="script_file" accept=".py">
+                            <div class="form-text">
+                                Upload a Python script file (.py) that contains a run(data) function. 
+                                The function will receive the event data as its parameter.
+                                Leave empty to keep the existing script.
+                            </div>
+                            {% if trigger.action_type == 'python_script' and trigger.config.script %}
+                            <div class="mt-2">
+                                <label class="form-label">Current Script:</label>
+                                <pre class="bg-light p-2 rounded text-dark">{{ trigger.config.script }}</pre>
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
 
@@ -549,39 +564,66 @@
     
     // Form submission handler to prepare config JSON
     document.querySelectorAll('form').forEach(form => {
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const actionType = this.querySelector('select[name="action_type"]').value;
             let config = {};
             
-            if (actionType === 'send_email') {
-                config = {
-                    subject: this.querySelector('input[name="email_subject"]').value,
-                    body: this.querySelector('textarea[name="email_body"]').value,
-                    recipients: this.querySelector('input[name="email_recipients"]').value.split(',').map(r => r.trim())
-                };
-            } else if (actionType === 'api_call') {
-                config = {
-                    url: this.querySelector('input[name="api_url"]').value,
-                    method: this.querySelector('select[name="api_method"]').value,
-                    headers: JSON.parse(this.querySelector('textarea[name="api_headers"]').value || '{}'),
-                    body: JSON.parse(this.querySelector('textarea[name="api_body"]').value || '{}')
-                };
-            } else if (actionType === 'python_script') {
-                config = {
-                    script: this.querySelector('textarea[name="script_content"]').value
-                };
+            try {
+                if (actionType === 'send_email') {
+                    config = {
+                        subject: this.querySelector('input[name="email_subject"]').value,
+                        body: this.querySelector('textarea[name="email_body"]').value,
+                        recipients: this.querySelector('input[name="email_recipients"]').value.split(',').map(r => r.trim())
+                    };
+                } else if (actionType === 'api_call') {
+                    config = {
+                        url: this.querySelector('input[name="api_url"]').value,
+                        method: this.querySelector('select[name="api_method"]').value,
+                        headers: JSON.parse(this.querySelector('textarea[name="api_headers"]').value || '{}'),
+                        body: JSON.parse(this.querySelector('textarea[name="api_body"]').value || '{}')
+                    };
+                } else if (actionType === 'python_script') {
+                    const scriptFile = this.querySelector('input[name="script_file"]').files[0];
+                    if (scriptFile) {
+                        const scriptContent = await scriptFile.text();
+                        if (!scriptContent.includes('def run(data):')) {
+                            alert('The Python script must contain a run(data) function definition.');
+                            return;
+                        }
+                        config = {
+                            script: scriptContent
+                        };
+                    } else if (this.id.startsWith('edit-trigger-modal')) {
+                        // For edit form, if no new file is selected, don't change the script
+                        const currentScript = this.querySelector('pre')?.textContent;
+                        if (currentScript) {
+                            config = {
+                                script: currentScript
+                            };
+                        } else {
+                            alert('Please upload a Python script file.');
+                            return;
+                        }
+                    } else {
+                        alert('Please upload a Python script file.');
+                        return;
+                    }
+                }
+                
+                // Add hidden input for config
+                const configInput = document.createElement('input');
+                configInput.type = 'hidden';
+                configInput.name = 'config';
+                configInput.value = JSON.stringify(config);
+                this.appendChild(configInput);
+                
+                this.submit();
+            } catch (error) {
+                console.error('Error preparing form submission:', error);
+                alert('Error preparing form submission: ' + error.message);
             }
-            
-            // Add hidden input for config
-            const configInput = document.createElement('input');
-            configInput.type = 'hidden';
-            configInput.name = 'config';
-            configInput.value = JSON.stringify(config);
-            this.appendChild(configInput);
-            
-            this.submit();
         });
     });
 

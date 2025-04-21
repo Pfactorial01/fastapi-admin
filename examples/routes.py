@@ -18,6 +18,7 @@ import pandas as pd
 from urllib.parse import urlparse, parse_qs
 import json
 import yaml
+import ast
 
 from examples.models import Admin, Config, Groups
 from examples.services.fcm_service import FCMService
@@ -3660,6 +3661,40 @@ async def get_log_details(
         logger.error(f"Error fetching log details: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
+def validate_python_script(script_content: str) -> bool:
+    """
+    Validate that the Python script contains a properly defined run(data) function.
+    Returns True if valid, raises ValueError with description if invalid.
+    """
+    try:
+        # Parse the script into an AST
+        tree = ast.parse(script_content)
+        
+        # Look for the run function
+        run_func = None
+        for node in ast.walk(tree):
+            if isinstance(node, ast.FunctionDef) and node.name == 'run':
+                run_func = node
+                break
+        
+        if not run_func:
+            raise ValueError("Script must contain a 'run' function")
+        
+        # Check function arguments
+        args = run_func.args
+        if len(args.args) != 1:
+            raise ValueError("run function must accept exactly one parameter")
+        
+        if args.args[0].arg != 'data':
+            raise ValueError("run function parameter must be named 'data'")
+        
+        return True
+        
+    except SyntaxError as e:
+        raise ValueError(f"Script contains syntax errors: {str(e)}")
+    except Exception as e:
+        raise ValueError(f"Error validating script: {str(e)}")
+
 @app.post("/triggers/add")
 async def add_trigger(
     request: Request,
@@ -3669,47 +3704,45 @@ async def add_trigger(
     event_type: str = Form(...),
     action_type: str = Form(...),
     is_active: bool = Form(True),
-    config: str = Form(...),  # JSON string containing action-specific configuration
+    config: str = Form(...),
     admin=Depends(get_current_admin),
 ):
+    """Add a new trigger"""
     try:
-        # Get MongoDB client and collection
-        client = app.state.mongodb_client
-        db = client.API
-        triggers_collection = db.triggers
-
-        # Parse config JSON
-        try:
-            config_dict = json.loads(config)
-        except json.JSONDecodeError:
-            raise HTTPException(status_code=400, detail="Invalid configuration JSON")
-
-        # Create trigger document
+        config_data = json.loads(config)
+        
+        # Validate script if action type is python_script
+        if action_type == 'python_script':
+            script_content = config_data.get('script')
+            if not script_content:
+                raise ValueError("Script content is required for python_script action type")
+            
+            # Validate the script
+            validate_python_script(script_content)
+        
         trigger = {
             "name": name,
             "description": description,
             "event_type": event_type,
             "action_type": action_type,
             "is_active": is_active,
-            "config": config_dict,
+            "config": config_data,
             "created_at": datetime.utcnow(),
-            "created_by": admin.pk,
-            "updated_at": datetime.utcnow(),
-            "updated_by": admin.pk
+            "created_by": admin.id
         }
-
-        # Insert trigger
-        result = await triggers_collection.insert_one(trigger)
         
-        if not result.inserted_id:
-            raise HTTPException(status_code=500, detail="Failed to create trigger")
-
-        return RedirectResponse(url="/admin/triggers", status_code=HTTP_303_SEE_OTHER)
-    except HTTPException as he:
-        raise he
+        result = await request.app.state.mongodb_client.API.triggers.insert_one(trigger)
+        
+        return RedirectResponse(
+            url="/admin/triggers",
+            status_code=HTTP_303_SEE_OTHER
+        )
+        
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
-        logger.error(f"Error creating trigger: {str(e)}")
-        raise HTTPException(status_code=500, detail="Failed to create trigger")
+        logger.error(f"Error adding trigger: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/triggers/{trigger_id}/edit")
 async def edit_trigger(
@@ -3724,44 +3757,48 @@ async def edit_trigger(
     config: str = Form(...),
     admin=Depends(get_current_admin),
 ):
+    """Edit an existing trigger"""
     try:
-        # Get MongoDB client and collection
-        client = app.state.mongodb_client
-        db = client.API
-        triggers_collection = db.triggers
-
-        # Parse config JSON
-        try:
-            config_dict = json.loads(config)
-        except json.JSONDecodeError:
-            raise HTTPException(status_code=400, detail="Invalid configuration JSON")
-
-        # Update trigger
-        result = await triggers_collection.update_one(
+        config_data = json.loads(config)
+        
+        # Validate script if action type is python_script
+        if action_type == 'python_script':
+            script_content = config_data.get('script')
+            if not script_content:
+                raise ValueError("Script content is required for python_script action type")
+            
+            # Validate the script
+            validate_python_script(script_content)
+        
+        update_data = {
+            "name": name,
+            "description": description,
+            "event_type": event_type,
+            "action_type": action_type,
+            "is_active": is_active,
+            "config": config_data,
+            "updated_at": datetime.utcnow(),
+            "updated_by": admin.id
+        }
+        
+        result = await request.app.state.mongodb_client.API.triggers.update_one(
             {"_id": ObjectId(trigger_id)},
-            {
-                "$set": {
-                    "name": name,
-                    "description": description,
-                    "event_type": event_type,
-                    "action_type": action_type,
-                    "is_active": is_active,
-                    "config": config_dict,
-                    "updated_at": datetime.utcnow(),
-                    "updated_by": admin.pk
-                }
-            }
+            {"$set": update_data}
         )
-
+        
         if result.modified_count == 0:
             raise HTTPException(status_code=404, detail="Trigger not found")
-
-        return RedirectResponse(url="/admin/triggers", status_code=HTTP_303_SEE_OTHER)
-    except HTTPException as he:
-        raise he
+        
+        return RedirectResponse(
+            url="/admin/triggers",
+            status_code=HTTP_303_SEE_OTHER
+        )
+        
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         logger.error(f"Error updating trigger: {str(e)}")
-        raise HTTPException(status_code=500, detail="Failed to update trigger")
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/triggers/{trigger_id}/delete")
 async def delete_trigger(
