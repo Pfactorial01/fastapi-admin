@@ -4271,12 +4271,11 @@ async def document_editor(
         
         # If question_id is provided, find documents that have this question
         if question_id:
-            doc_ids = await db.doc_questions_answers.distinct(
-                "document_id",
-                {"_id": question_id}
+            doc_ids = await db.doc_questions_answers.find_one(
+                {"_id": ObjectId(question_id)},
             )
             if doc_ids:
-                query["_id"] = {"$in": doc_ids}
+                query["_id"] = ObjectId(doc_ids.get('document_id'))
             else:
                 # If no documents found with this question, return empty
                 query["_id"] = None
@@ -4393,6 +4392,7 @@ async def update_document_question(
                     "original_question_text": question_data['original_question_text'],
                     "placeholder": question_data.get('placeholder', ''),
                     "link": question_data.get('link', ''),
+                    "video_link": question_data.get('video_link', ''),
                     "tooltip": question_data.get('tooltip', ''),
                     "answer_locations": question_data.get('answer_locations', [])
                 }

@@ -146,6 +146,11 @@
 										<input type="text" class="form-control" name="link"
 											   value="{{ question.link }}">
 									</div>
+									<div class="col-md-6">
+										<label class="form-label">Video Link</label>
+										<input type="text" class="form-control" name="video_link"
+											   value="{{ question.video_link }}">
+									</div>
 									<div class="col-12">
 										<label class="form-label">Tooltip</label>
 										<textarea class="form-control" name="tooltip"
@@ -305,6 +310,7 @@ function collectQuestionData(questionItem) {
 		original_question_text: form.original_question_text.value,
 		placeholder: form.placeholder.value,
 		link: form.link.value,
+		video_link: form.video_link.value,
 		tooltip: form.tooltip.value,
 		answer_locations: locations
 	};
