@@ -1,0 +1,441 @@
+{% extends "layout.html" %} {% block page_body %}
+<div class="container-fluid">
+	<!-- Page title -->
+	<div class="page-header">
+		<div class="row align-items-center">
+			<div class="col">
+				<div class="mb-1">
+					<a href="/admin/document-editor" class="btn btn-link px-0">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="icon icon-tabler icon-tabler-arrow-left"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							stroke-width="2"
+							stroke="currentColor"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<path
+								stroke="none"
+								d="M0 0h24v24H0z"
+								fill="none"
+							></path>
+							<line x1="5" y1="12" x2="19" y2="12"></line>
+							<line x1="5" y1="12" x2="11" y2="18"></line>
+							<line x1="5" y1="12" x2="11" y2="6"></line>
+						</svg>
+						Back to Documents
+					</a>
+				</div>
+				<h2 class="page-title">{{ document.name }}</h2>
+				<div class="text-muted mt-1">Manage document questions</div>
+			</div>
+			<div class="col-auto">
+				<button type="button" class="btn btn-primary" onclick="saveAllQuestions(this)" id="saveButton">
+					<span class="d-flex align-items-center">
+						<span class="spinner-border spinner-border-sm me-2 d-none" role="status"></span>
+						<span class="button-text">Save All Changes</span>
+					</span>
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- Document Info -->
+	<div class="card mb-3">
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-8">
+					<dl class="row">
+						<dt class="col-3">Document ID:</dt>
+						<dd class="col-9">{{ document._id }}</dd>
+						<dt class="col-3">Type:</dt>
+						<dd class="col-9">{{ document.type }}</dd>
+						<dt class="col-3">State:</dt>
+						<dd class="col-9">{{ document.state }}</dd>
+						<dt class="col-3">Folder:</dt>
+						<dd class="col-9">{{ document.folder }}</dd>
+						<dt class="col-3">Property Types:</dt>
+						<dd class="col-9">
+							{% for type in document.property_type %}
+							<span class="badge bg-blue me-1">{{ type }}</span>
+							{% endfor %}
+						</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Questions List -->
+	<div class="card">
+		<div class="card-body">
+			<div class="accordion" id="questionsAccordion">
+				{% for question in questions %}
+				<div class="accordion-item" data-question-id="{{ question._id }}">
+					<h2 class="accordion-header" id="heading{{ loop.index }}">
+						<button
+							class="accordion-button collapsed"
+							type="button"
+							data-bs-toggle="collapse"
+							data-bs-target="#collapse{{ loop.index }}"
+							aria-expanded="false"
+							aria-controls="collapse{{ loop.index }}"
+						>
+							<div class="row w-100">
+								<div class="col">
+									<strong>Question {{ loop.index }}:</strong>
+									{{ question.question }}
+								</div>
+								<div class="col-auto">
+									<span class="badge bg-blue"
+										>{{ question.type }}</span
+									>
+									<span class="badge bg-purple"
+										>Page {{ question.page }}</span
+									>
+									<span class="badge bg-azure"
+										>ID: {{ question._id }}</span
+									>
+								</div>
+							</div>
+						</button>
+					</h2>
+					<div
+						id="collapse{{ loop.index }}"
+						class="accordion-collapse collapse"
+						aria-labelledby="heading{{ loop.index }}"
+						data-bs-parent="#questionsAccordion"
+					>
+						<div class="accordion-body">
+							<form class="question-form" onsubmit="event.preventDefault();">
+								<div class="row g-3">
+									<div class="col-md-6">
+										<label class="form-label">Question Text</label>
+										<input type="text" class="form-control" name="question"
+											   value="{{ question.question }}" required>
+									</div>
+									<div class="col-md-3">
+										<label class="form-label">Type</label>
+										<select class="form-select" name="type" required>
+											<option value="text" {% if question.type == 'text' %}selected{% endif %}>Text</option>
+											<option value="date" {% if question.type == 'date' %}selected{% endif %}>Date</option>
+											<option value="number" {% if question.type == 'number' %}selected{% endif %}>Number</option>
+										</select>
+									</div>
+									<div class="col-md-3">
+										<label class="form-label">Page</label>
+										<input type="number" class="form-control" name="page"
+											   value="{{ question.page }}" required min="1">
+									</div>
+									<div class="col-12">
+										<label class="form-label">Original Question Text</label>
+										<textarea class="form-control" name="original_question_text"
+												  rows="2" required>{{ question.original_question_text }}</textarea>
+									</div>
+									<div class="col-md-6">
+										<label class="form-label">Placeholder</label>
+										<input type="text" class="form-control" name="placeholder"
+											   value="{{ question.placeholder }}">
+									</div>
+									<div class="col-md-6">
+										<label class="form-label">Link</label>
+										<input type="text" class="form-control" name="link"
+											   value="{{ question.link }}">
+									</div>
+									<div class="col-12">
+										<label class="form-label">Tooltip</label>
+										<textarea class="form-control" name="tooltip"
+												  rows="3">{{ question.tooltip }}</textarea>
+									</div>
+									<div class="col-12">
+										<label class="form-label">Answer Locations</label>
+										<div class="table-responsive">
+											<table class="table table-vcenter table-bordered" id="locations-table-{{ question._id }}">
+												<thead>
+													<tr>
+														<th>X0</th>
+														<th>Y0</th>
+														<th>X1</th>
+														<th>Y1</th>
+														<th></th>
+													</tr>
+												</thead>
+												<tbody>
+													{% for location in question.answer_locations %}
+													<tr>
+														<td><input type="number" class="form-control form-control-sm" value="{{ location.rect.x0 }}" step="0.01"></td>
+														<td><input type="number" class="form-control form-control-sm" value="{{ location.rect.y0 }}" step="0.01"></td>
+														<td><input type="number" class="form-control form-control-sm" value="{{ location.rect.x1 }}" step="0.01"></td>
+														<td><input type="number" class="form-control form-control-sm" value="{{ location.rect.y1 }}" step="0.01"></td>
+														<td>
+															<button type="button" class="btn btn-danger btn-sm" onclick="removeLocation(this)">
+																<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+																	<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+																	<line x1="4" y1="7" x2="20" y2="7"></line>
+																	<line x1="10" y1="11" x2="10" y2="17"></line>
+																	<line x1="14" y1="11" x2="14" y2="17"></line>
+																	<path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+																	<path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+																</svg>
+															</button>
+														</td>
+													</tr>
+													{% endfor %}
+												</tbody>
+											</table>
+										</div>
+										<button type="button" class="btn btn-outline-primary btn-sm"
+												onclick="addLocation('{{ question._id }}')">
+											Add Location
+										</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+const originalData = new Map();
+
+document.addEventListener('DOMContentLoaded', () => {
+	document.querySelectorAll('.accordion-item').forEach(item => {
+		const questionId = item.dataset.questionId;
+		originalData.set(questionId, collectQuestionData(item));
+	});
+
+	document.querySelectorAll('.question-form').forEach(form => {
+		form.querySelectorAll('input, select, textarea').forEach(input => {
+			input.addEventListener('change', () => {
+				const accordionItem = input.closest('.accordion-item');
+				checkQuestionModified(accordionItem);
+			});
+		});
+	});
+});
+
+function checkQuestionModified(questionItem) {
+	const questionId = questionItem.dataset.questionId;
+	const currentData = collectQuestionData(questionItem);
+	const originalQuestionData = originalData.get(questionId);
+	
+	const isModified = JSON.stringify(currentData) !== JSON.stringify(originalQuestionData);
+	
+	const header = questionItem.querySelector('.accordion-header');
+	if (isModified) {
+		if (!header.classList.contains('modified')) {
+			header.classList.add('modified');
+			header.querySelector('.accordion-button').insertAdjacentHTML('beforeend', 
+				'<span class="badge bg-yellow ms-2">Modified</span>');
+		}
+	} else {
+		header.classList.remove('modified');
+		const modifiedBadge = header.querySelector('.badge.bg-yellow');
+		if (modifiedBadge) {
+			modifiedBadge.remove();
+		}
+	}
+}
+
+function addLocation(questionId) {
+	const tbody = document.querySelector(`#locations-table-${questionId} tbody`);
+	const tr = document.createElement('tr');
+	tr.innerHTML = `
+		<td><input type="number" class="form-control form-control-sm" value="0" step="0.01"></td>
+		<td><input type="number" class="form-control form-control-sm" value="0" step="0.01"></td>
+		<td><input type="number" class="form-control form-control-sm" value="0" step="0.01"></td>
+		<td><input type="number" class="form-control form-control-sm" value="0" step="0.01"></td>
+		<td>
+			<button type="button" class="btn btn-danger btn-sm" onclick="removeLocation(this)">
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+					<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+					<line x1="4" y1="7" x2="20" y2="7"></line>
+					<line x1="10" y1="11" x2="10" y2="17"></line>
+					<line x1="14" y1="11" x2="14" y2="17"></line>
+					<path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+					<path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+				</svg>
+			</button>
+		</td>
+	`;
+	tbody.appendChild(tr);
+	
+	const accordionItem = tbody.closest('.accordion-item');
+	checkQuestionModified(accordionItem);
+}
+
+function removeLocation(button) {
+	const accordionItem = button.closest('.accordion-item');
+	button.closest('tr').remove();
+	checkQuestionModified(accordionItem);
+}
+
+function collectQuestionData(questionItem) {
+	const form = questionItem.querySelector('.question-form');
+	const questionId = questionItem.dataset.questionId;
+	const locationsTable = document.querySelector(`#locations-table-${questionId} tbody`);
+	
+	const locations = [];
+	locationsTable.querySelectorAll('tr').forEach(row => {
+		const inputs = row.querySelectorAll('input');
+		locations.push({
+			rect: {
+				x0: parseFloat(inputs[0].value),
+				y0: parseFloat(inputs[1].value),
+				x1: parseFloat(inputs[2].value),
+				y1: parseFloat(inputs[3].value)
+			}
+		});
+	});
+
+	return {
+		question_id: questionId,
+		question: form.question.value,
+		type: form.type.value,
+		page: parseInt(form.page.value),
+		original_question_text: form.original_question_text.value,
+		placeholder: form.placeholder.value,
+		link: form.link.value,
+		tooltip: form.tooltip.value,
+		answer_locations: locations
+	};
+}
+
+async function saveAllQuestions(button) {
+	// Set loading state
+	const spinner = button.querySelector('.spinner-border');
+	const buttonText = button.querySelector('.button-text');
+	button.disabled = true;
+	spinner.classList.remove('d-none');
+	buttonText.textContent = 'Saving...';
+
+	const modifiedQuestions = [];
+	document.querySelectorAll('.accordion-item').forEach(item => {
+		const questionId = item.dataset.questionId;
+		const currentData = collectQuestionData(item);
+		const originalQuestionData = originalData.get(questionId);
+		
+		if (JSON.stringify(currentData) !== JSON.stringify(originalQuestionData)) {
+			modifiedQuestions.push(currentData);
+		}
+	});
+
+	if (modifiedQuestions.length === 0) {
+		// Reset button state
+		button.disabled = false;
+		spinner.classList.add('d-none');
+		buttonText.textContent = 'Save All Changes';
+
+		const toast = document.createElement('div');
+		toast.className = 'toast position-fixed bottom-0 end-0 m-3';
+		toast.setAttribute('role', 'alert');
+		toast.setAttribute('aria-live', 'assertive');
+		toast.setAttribute('aria-atomic', 'true');
+		toast.innerHTML = `
+			<div class="toast-header bg-info text-white">
+				<strong class="me-auto">No Changes</strong>
+				<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+			</div>
+			<div class="toast-body">
+				No questions have been modified.
+			</div>
+		`;
+		document.body.appendChild(toast);
+		const bsToast = new bootstrap.Toast(toast);
+		bsToast.show();
+		toast.addEventListener('hidden.bs.toast', () => {
+			toast.remove();
+		});
+		return;
+	}
+
+	try {
+		const response = await fetch(`/admin/document-editor/{{ document._id }}/update-question`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ questions: modifiedQuestions })
+		});
+
+		const result = await response.json();
+		
+		if (response.ok) {
+			// Update original data for successfully updated questions
+			result.results.success.forEach(questionId => {
+				const item = document.querySelector(`.accordion-item[data-question-id="${questionId}"]`);
+				if (item) {
+					const newData = collectQuestionData(item);
+					originalData.set(questionId, newData);
+					const header = item.querySelector('.accordion-header');
+					header.classList.remove('modified');
+					const modifiedBadge = header.querySelector('.badge.bg-yellow');
+					if (modifiedBadge) {
+						modifiedBadge.remove();
+					}
+				}
+			});
+
+			const toast = document.createElement('div');
+			toast.className = 'toast position-fixed bottom-0 end-0 m-3';
+			toast.setAttribute('role', 'alert');
+			toast.setAttribute('aria-live', 'assertive');
+			toast.setAttribute('aria-atomic', 'true');
+			
+			let message = `Successfully updated ${result.results.success.length} questions.`;
+			if (result.results.failed.length > 0) {
+				message += ` Failed to update ${result.results.failed.length} questions.`;
+			}
+			
+			toast.innerHTML = `
+				<div class="toast-header ${result.results.failed.length === 0 ? 'bg-success' : 'bg-warning'} text-white">
+					<strong class="me-auto">Update Complete</strong>
+					<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+				</div>
+				<div class="toast-body">
+					${message}
+					${result.results.failed.length > 0 ? '<br><small>Check console for details.</small>' : ''}
+				</div>
+			`;
+			
+			if (result.results.failed.length > 0) {
+				console.error('Failed updates:', result.results.failed);
+			}
+			
+			document.body.appendChild(toast);
+			const bsToast = new bootstrap.Toast(toast);
+			bsToast.show();
+
+			toast.addEventListener('hidden.bs.toast', () => {
+				toast.remove();
+			});
+		} else {
+			throw new Error(result.detail || 'Update failed');
+		}
+	} catch (error) {
+		console.error('Error:', error);
+		alert('Error updating questions: ' + error.message);
+	} finally {
+		// Reset button state
+		button.disabled = false;
+		spinner.classList.add('d-none');
+		buttonText.textContent = 'Save All Changes';
+	}
+}
+</script>
+
+<style>
+.modified .accordion-button {
+	background-color: rgba(255, 193, 7, 0.1);
+}
+</style>
+{% endblock %}

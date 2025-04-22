@@ -48,20 +48,6 @@
 				</div>
 			</div>
 		</header>
-		<div class="container-fluid">
-			<div class="page-header d-print-none">
-				{% block page_header %}
-				<div class="row align-items-center">
-					<div class="col">
-						<div class="page-pretitle">
-							{{ page_pre_title or '' }}
-						</div>
-						<h2 class="page-title">{{ page_title or '' }}</h2>
-					</div>
-				</div>
-				{% block page_title_actions %} {% endblock %} {% endblock %}
-			</div>
-		</div>
 		<div class="page-body flex-grow-1">
 			<div class="container-fluid">
 				<div class="row row-deck row-cards">

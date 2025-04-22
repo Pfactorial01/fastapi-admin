@@ -79,6 +79,13 @@ class ServiceLeads(Link):
     type = "link"
 
 @app.register
+class DocumentEditor(Link):
+    label = "Document Editor"
+    icon = "fa fa-file-code"
+    url = "/admin/document-editor"
+    type = "link"
+
+@app.register
 class YAML_Editor(Link):
     label = "YAML Editor"
     icon = "fa fa-file-code"

@@ -1,0 +1,165 @@
+{% extends "layout.html" %} {% block page_body %}
+<div class="container-fluid">
+	<!-- Page title -->
+	<div class="page-header">
+		<div class="row align-items-center">
+			<div class="col">
+				<h2 class="page-title">Document Editor</h2>
+				<div class="text-muted mt-1">
+					Manage and edit document questions
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Filters -->
+	<div class="card mb-3">
+		<div class="card-body">
+			<form method="GET" action="/admin/document-editor">
+				<div class="row g-3">
+					<div class="col-md-5">
+						<label class="form-label">Search</label>
+						<input
+							type="text"
+							class="form-control"
+							name="search"
+							value="{{ search }}"
+							placeholder="Search by document name or ID"
+						/>
+					</div>
+					<div class="col-md-5">
+						<label class="form-label">Question ID</label>
+						<input
+							type="text"
+							class="form-control"
+							name="question_id"
+							value="{{ question_id }}"
+							placeholder="Filter by question ID"
+						/>
+					</div>
+					<div class="col-12">
+						<button type="submit" class="btn btn-primary">
+							Apply Filters
+						</button>
+						<a href="/admin/document-editor" class="btn btn-link"
+							>Clear Filters</a
+						>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- Documents List -->
+	<div class="card">
+		<div class="table-responsive">
+			<table class="table table-vcenter card-table">
+				<thead>
+					<tr>
+						<th>Document Name</th>
+						<th>Type</th>
+						<th>State</th>
+						<th>Added Date</th>
+						<th>Property Types</th>
+						<th class="w-1"></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for doc in documents %}
+					<tr>
+						<td>
+							<div class="d-flex align-items-center">
+								<div>
+									<div class="font-weight-medium">
+										{{ doc.name }}
+									</div>
+									<div class="text-muted">{{ doc._id }}</div>
+								</div>
+							</div>
+						</td>
+						<td>{{ doc.type }}</td>
+						<td>{{ doc.state }}</td>
+						<td>
+							{{ doc.added_at.strftime('%Y-%m-%d %H:%M') if
+							doc.added_at else 'N/A' }}
+						</td>
+						<td>
+							{% for type in doc.property_type %}
+							<span class="badge bg-blue me-1 mt-1"
+								>{{ type }}</span
+							>
+							{% endfor %}
+						</td>
+						<td>
+							<a
+								href="/admin/document-editor/{{ doc._id }}"
+								class="btn btn-primary btn-sm"
+							>
+								View Questions
+							</a>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		<div class="card-footer d-flex align-items-center">
+			<p class="m-0 text-muted">
+				Showing <span>{{ documents|length }}</span> of
+				<span>{{ total_documents }}</span> entries
+			</p>
+			<ul class="pagination m-0 ms-auto">
+				{% if has_prev %}
+				<li class="page-item">
+					<a
+						class="page-link"
+						href="?page={{ page-1 }}{% if search %}&search={{ search }}{% endif %}{% if question_id %}&question_id={{ question_id }}{% endif %}"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="icon"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							stroke-width="2"
+							stroke="currentColor"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+							<polyline points="15 6 9 12 15 18" />
+						</svg>
+						prev
+					</a>
+				</li>
+				{% endif %} {% if has_next %}
+				<li class="page-item">
+					<a
+						class="page-link"
+						href="?page={{ page+1 }}{% if search %}&search={{ search }}{% endif %}{% if question_id %}&question_id={{ question_id }}{% endif %}"
+					>
+						next
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="icon"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							stroke-width="2"
+							stroke="currentColor"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+							<polyline points="9 6 15 12 9 18" />
+						</svg>
+					</a>
+				</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock %}
