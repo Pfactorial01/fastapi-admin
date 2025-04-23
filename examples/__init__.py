@@ -1,1 +1,1 @@
-from . import resources, routes  # noqa
+from . import resources, routers  # noqa

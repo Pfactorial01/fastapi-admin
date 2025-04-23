@@ -4,33 +4,66 @@ from tortoise import Model, fields
 
 from examples.enums import ProductType, Status
 from fastapi_admin.models import AbstractAdmin
+from enum import Enum
+
+class PermissionType(str, Enum):
+    VIEW = "view"
+    MANAGE = "manage"
+
+
+class Permission(Model):
+    name = fields.CharField(max_length=100, unique=True, description="Permission name")
+    code = fields.CharField(max_length=100, unique=True, description="Permission code")
+    route = fields.CharField(max_length=100, description="Permission route")
+    description = fields.TextField(null=True, description="Permission description")
+    category = fields.CharField(max_length=50, description="Permission category")
+    type = fields.CharEnumField(PermissionType, description="Permission type")
+    created_at = fields.DatetimeField(auto_now_add=True)
+    updated_at = fields.DatetimeField(auto_now=True)
+    is_active = fields.BooleanField(default=True, description="Whether this permission is active")
+
+    class Meta:
+        table = "permissions"
+
+    def __str__(self):
+        return self.name
+
+
+class GroupPermission(Model):
+    groups = fields.ForeignKeyField('models.Groups', related_name='group_permissions')
+    permission = fields.ForeignKeyField('models.Permission', related_name='group_permissions')
+    created_at = fields.DatetimeField(auto_now_add=True)
+
+    class Meta:
+        table = "group_permissions"
+        unique_together = (("groups", "permission"),)
 
 
 class Groups(Model):
     name = fields.CharField(max_length=50, unique=True, description="Group name")
     description = fields.TextField(null=True, description="Group description")
-    
-    # Permissions
-    can_view_users = fields.BooleanField(default=False, description="Can view users")
-    can_manage_users = fields.BooleanField(default=False, description="Can manage users")
-    can_chat_users = fields.BooleanField(default=False, description="Can chat with users")
-    can_view_properties = fields.BooleanField(default=False, description="Can view properties")
-    can_manage_properties = fields.BooleanField(default=False, description="Can manage properties")
-    can_manage_showing_requests = fields.BooleanField(default=False, description="Can manage showing requests")
-    can_manage_groups = fields.BooleanField(default=False, description="Can manage groups")
-    can_view_audit_logs = fields.BooleanField(default=False, description="Can view audit logs")
-    can_manage_notifications = fields.BooleanField(default=False, description="Can manage notifications")
-    
-    # System fields
     created_at = fields.DatetimeField(auto_now_add=True)
     updated_at = fields.DatetimeField(auto_now=True)
     is_active = fields.BooleanField(default=True, description="Whether this group is active")
-    
+    permissions = fields.ManyToManyField(
+        'models.Permission', 
+        through='group_permissions', 
+        related_name='groups',
+        description="Group permissions"
+    )
+
     class Meta:
         table = "groups"
-    
+
     def __str__(self):
         return self.name
+
+    async def has_permission(self, permission_code: str) -> bool:
+        """Check if group has a specific permission"""
+        return await self.permissions.filter(
+            code=permission_code,
+            is_active=True
+        ).exists()
 
 
 class Admin(AbstractAdmin):
@@ -43,6 +76,12 @@ class Admin(AbstractAdmin):
 
     def __str__(self):
         return f"{self.pk}#{self.username}"
+
+    async def has_permission(self, permission_code: str) -> bool:
+        """Check if admin has a specific permission through their group"""
+        if not self.group:
+            return False
+        return await self.group.has_permission(permission_code)
 
 
 class Category(Model):
@@ -61,7 +100,6 @@ class Product(Model):
     image = fields.CharField(max_length=200)
     body = fields.TextField()
     created_at = fields.DatetimeField(auto_now_add=True)
-
 
 class Config(Model):
     label = fields.CharField(max_length=200)
