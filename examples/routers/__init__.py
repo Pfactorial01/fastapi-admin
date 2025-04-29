@@ -10,5 +10,6 @@ from . import notifications
 from . import messages
 from . import property_verification
 from . import documents
+from . import revenue_management
 
 

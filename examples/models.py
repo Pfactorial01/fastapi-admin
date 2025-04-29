@@ -106,3 +106,30 @@ class Config(Model):
     key = fields.CharField(max_length=20, unique=True, description="Unique key for config")
     value = fields.JSONField()
     status: Status = fields.IntEnumField(Status, default=Status.on)
+
+class Subscription(Model):
+    # Basic subscription info
+    charge_id = fields.CharField(max_length=200, unique=True, description="Charge ID")
+    transaction_id = fields.CharField(max_length=200, unique=True, description="Transaction ID")
+    status = fields.CharField(max_length=50, description="active, expired, canceled, past_due, refunded")
+    package_type = fields.CharField(max_length=100, description="Human readable tier name")
+    
+    # Billing details
+    amount = fields.IntField(description="Subscription amount in cents")
+    currency = fields.CharField(max_length=3, default="USD")
+    billing_cycle = fields.CharField(max_length=20, description="monthly, yearly, etc", null=True)
+    next_billing_date = fields.DatetimeField(description="When the next charge should occur", null=True)
+    last_billing_date = fields.DatetimeField(description="When the last charge occurred", null=True)
+    
+    # Relationships
+    user_id = fields.CharField(max_length=200, null=True)  
+    property_id = fields.CharField(max_length=200, null=True)  
+    
+    created_at = fields.DatetimeField(auto_now_add=True)
+    updated_at = fields.DatetimeField(auto_now=True)
+
+    class Meta:
+        table = "subscriptions"
+
+    def __str__(self):
+        return f"Subscription {self.id} - {self.package_type}"

@@ -85,12 +85,12 @@ class DocumentEditor(Link):
     url = "/admin/document-editor"
     type = "link"
 
-# @app.register
-# class YAML_Editor(Link):
-#     label = "YAML Editor"
-#     icon = "fa fa-file-code"
-#     url = "/admin/yaml-editor"
-#     type = "link"
+@app.register
+class Revenue_Management(Link):
+    label = "Revenue Management"
+    icon = "fa fa-file-code"
+    url = "/admin/revenue-management"
+    type = "link"
 
 @app.register
 class ID_Verification(Link):

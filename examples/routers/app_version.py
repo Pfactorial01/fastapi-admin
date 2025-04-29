@@ -27,7 +27,7 @@ from examples.triggers.executor import execute_trigger_action
 from fastapi_admin.app import app
 from fastapi_admin.depends import get_resources, get_current_admin
 from fastapi_admin.template import templates
-from examples.permissions import Permissions
+from examples.permissions import PermissionDependency
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -36,7 +36,7 @@ logger = logging.getLogger(__name__)
 async def app_version_management(
     request: Request,
     resources=Depends(get_resources),
-    authorize=Depends(Permissions.VIEW_APP_VERSIONS),
+    authorize=Depends(PermissionDependency(["view_app_versions"])),
     admin=Depends(get_current_admin),
     platform: str = Query(None, regex="^(android|ios|None)$"),
     status: str = Query(None, regex="^(latest|prompted|deprecated|None)$"),
@@ -148,7 +148,7 @@ async def add_app_version(
     platform: str = Form(...),
     status: str = Form(...),
     release_notes: str = Form(...),
-    authorize=Depends(Permissions.MANAGE_APP_VERSIONS),
+    authorize=Depends(PermissionDependency(["manage_app_versions"])),
     admin=Depends(get_current_admin),
 ):
     try:
@@ -205,7 +205,7 @@ async def update_app_version(
     version_id: str,
     status: str = Form(...),
     release_notes: str = Form(...),
-    authorize=Depends(Permissions.MANAGE_APP_VERSIONS),
+    authorize=Depends(PermissionDependency(["manage_app_versions"])),
     admin=Depends(get_current_admin),
 ):
     try:
@@ -255,7 +255,7 @@ async def update_app_version(
 async def delete_app_version(
     request: Request,
     version_id: str,
-    authorize=Depends(Permissions.MANAGE_APP_VERSIONS),
+    authorize=Depends(PermissionDependency(["manage_app_versions"])),
     admin=Depends(get_current_admin),
 ):
     try:

@@ -5,6 +5,7 @@ import os
 import logging
 from dotenv import load_dotenv
 from fastapi import Depends
+from examples import settings
 
 logger = logging.getLogger(__name__)
 
@@ -14,14 +15,12 @@ WEBHOOK_API_KEY_HEADER = "X-Webhook-API-Key"
 # Create the API key header security scheme
 api_key_header = APIKeyHeader(name=WEBHOOK_API_KEY_HEADER, auto_error=False)
 
-load_dotenv()
-
 async def verify_webhook_api_key(request: Request, api_key: Optional[str] = Depends(api_key_header)) -> None:
     """
     Verify the webhook API key from the request header.
     Raises HTTPException if the API key is invalid or missing.
     """
-    expected_api_key = os.getenv("WEBHOOK_API_KEY")
+    expected_api_key = settings.WEBHOOK_API_KEY
     
     if not expected_api_key:
         logger.error("WEBHOOK_API_KEY environment variable is not set")

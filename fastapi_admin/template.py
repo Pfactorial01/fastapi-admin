@@ -25,6 +25,19 @@ def datetime_filter(timestamp):
         return timestamp.strftime('%Y-%m-%d %H:%M:%S')
     return timestamp
 
+def format_date(value):
+    """Format a date or datetime object to a string."""
+    if isinstance(value, str):
+        try:
+            value = datetime.fromisoformat(value.replace('Z', '+00:00'))
+        except ValueError:
+            return value
+    if isinstance(value, datetime):
+        return value.strftime('%Y-%m-%d')
+    if isinstance(value, date):
+        return value.strftime('%Y-%m-%d')
+    return value
+
 def format_currency(value, currency='USD'):
     try:
         # Convert to float if it's a string
@@ -55,6 +68,7 @@ def format_number(value, decimals=0):
         return value
 
 templates.env.filters['datetime'] = datetime_filter
+templates.env.filters['format_date'] = format_date
 templates.env.filters['format_currency'] = format_currency
 templates.env.filters['format_number'] = format_number
 

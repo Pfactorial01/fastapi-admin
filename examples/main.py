@@ -25,6 +25,7 @@ from examples.models import Admin, Category, Product, Config
 from examples.providers import LoginProvider
 from examples.scheduler import scheduler
 from examples.webhook.webhooks import router as webhook_router
+from examples.webhook.stripe_webhook import router as stripe_webhook_router
 from fastapi_admin.app import app as admin_app
 from fastapi_admin.exceptions import (
     forbidden_error_exception,
@@ -103,6 +104,7 @@ def create_app():
     
     # Include webhook routes
     app.include_router(webhook_router)
+    app.include_router(stripe_webhook_router)
     
     @app.on_event("startup")
     async def startup_event():
