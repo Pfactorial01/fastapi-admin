@@ -1,38 +1,20 @@
-from fastapi import Depends, File, HTTPException, Query, Form, UploadFile
-import httpx
+from fastapi import Depends, HTTPException, Query, Form
 from starlette.requests import Request
-from starlette.responses import RedirectResponse, StreamingResponse, JSONResponse
-from starlette.status import HTTP_303_SEE_OTHER, HTTP_404_NOT_FOUND, HTTP_400_BAD_REQUEST, HTTP_500_INTERNAL_SERVER_ERROR, HTTP_401_UNAUTHORIZED, HTTP_403_FORBIDDEN
+from starlette.responses import RedirectResponse
+from starlette.status import HTTP_303_SEE_OTHER
 import logging
-from examples import settings
-from bson import ObjectId
-import markdown
-from markdown.extensions import fenced_code, tables, nl2br
-from datetime import datetime, timedelta
-from typing import List, Optional
-import os
-import asyncio
-import csv
-import io
-import pandas as pd
-from urllib.parse import urlparse, parse_qs
-import json
-import yaml
-import ast
-from io import StringIO
+from typing import List
 
-from examples.models import Admin, Config, Groups, Permission
-from examples.services.fcm_service import FCMService
-from examples.triggers.executor import execute_trigger_action
+from examples.models import Admin, Groups, Permission
 from fastapi_admin.app import app
 from fastapi_admin.depends import get_resources, get_current_admin
 from fastapi_admin.template import templates
-from examples.permissions import Permissions
+from examples.permissions import PermissionDependency
 
 # Configure logging
 logger = logging.getLogger(__name__)
 
-@app.get("/settings", dependencies=[Depends(Permissions.VIEW_SETTINGS)])
+@app.get("/settings", dependencies=[Depends(PermissionDependency(["view_settings"]))])
 async def settings(
     request: Request,
     resources=Depends(get_resources),
@@ -197,7 +179,7 @@ async def settings(
             }
         )
 
-@app.post("/settings/users/add", dependencies=[Depends(Permissions.MANAGE_USERS_SETTINGS)])
+@app.post("/settings/users/add", dependencies=[Depends(PermissionDependency(["manage_users_settings"]))])
 async def add_user(
     request: Request,
     username: str = Form(...),
@@ -230,7 +212,7 @@ async def add_user(
         logger.error(f"Error adding user: {str(e)}")
         raise HTTPException(status_code=500, detail="Failed to add user")
 
-@app.post("/settings/users/{user_id}/edit", dependencies=[Depends(Permissions.MANAGE_USERS_SETTINGS)])
+@app.post("/settings/users/{user_id}/edit", dependencies=[Depends(PermissionDependency(["manage_users_settings"]))])
 async def edit_user(
     request: Request,
     user_id: int,
@@ -263,7 +245,7 @@ async def edit_user(
         logger.error(f"Error editing user: {str(e)}")
         raise HTTPException(status_code=500, detail="Failed to edit user")
 
-@app.post("/settings/users/{user_id}/delete", dependencies=[Depends(Permissions.MANAGE_USERS_SETTINGS)])
+@app.post("/settings/users/{user_id}/delete", dependencies=[Depends(PermissionDependency(["manage_users_settings"]))])
 async def delete_user(
     request: Request,
     user_id: int,
@@ -287,7 +269,7 @@ async def delete_user(
         logger.error(f"Error deleting user: {str(e)}")
         raise HTTPException(status_code=500, detail="Failed to delete user")
 
-@app.post("/settings/groups/add", dependencies=[Depends(Permissions.MANAGE_GROUPS_SETTINGS)])
+@app.post("/settings/groups/add", dependencies=[Depends(PermissionDependency(["manage_groups_settings"]))])
 async def add_group(
     request: Request,
     name: str = Form(...),
@@ -319,7 +301,7 @@ async def add_group(
         logger.error(f"Error adding group: {str(e)}")
         raise HTTPException(status_code=500, detail="Failed to add group")
 
-@app.post("/settings/groups/{group_id}/edit", dependencies=[Depends(Permissions.MANAGE_GROUPS_SETTINGS)])
+@app.post("/settings/groups/{group_id}/edit", dependencies=[Depends(PermissionDependency(["manage_groups_settings"]))])
 async def edit_group(
     request: Request,
     group_id: int,
@@ -359,7 +341,7 @@ async def edit_group(
         logger.error(f"Error editing group: {str(e)}")
         raise HTTPException(status_code=500, detail="Failed to edit group")
 
-@app.post("/settings/groups/{group_id}/delete", dependencies=[Depends(Permissions.MANAGE_GROUPS_SETTINGS)])
+@app.post("/settings/groups/{group_id}/delete", dependencies=[Depends(PermissionDependency(["manage_groups_settings"]))])
 async def delete_group(
     request: Request,
     group_id: int,
@@ -383,7 +365,7 @@ async def delete_group(
         logger.error(f"Error deleting group: {str(e)}")
         raise HTTPException(status_code=500, detail="Failed to delete group")
 
-@app.post("/settings/permissions/add", dependencies=[Depends(Permissions.MANAGE_PERMISSIONS_SETTINGS)])
+@app.post("/settings/permissions/add", dependencies=[Depends(PermissionDependency(["manage_permissions_settings"]))])
 async def add_permission(
     request: Request,
     name: str = Form(...),
@@ -421,7 +403,7 @@ async def add_permission(
         logger.error(f"Error adding permission: {str(e)}")
         raise HTTPException(status_code=500, detail="Failed to add permission")
 
-@app.post("/settings/permissions/{permission_id}/edit", dependencies=[Depends(Permissions.MANAGE_PERMISSIONS_SETTINGS)])
+@app.post("/settings/permissions/{permission_id}/edit", dependencies=[Depends(PermissionDependency(["manage_permissions_settings"]))])
 async def edit_permission(
     request: Request,
     permission_id: int,
@@ -465,7 +447,7 @@ async def edit_permission(
         logger.error(f"Error editing permission: {str(e)}")
         raise HTTPException(status_code=500, detail="Failed to edit permission")
 
-@app.post("/settings/permissions/{permission_id}/delete", dependencies=[Depends(Permissions.MANAGE_PERMISSIONS_SETTINGS)])
+@app.post("/settings/permissions/{permission_id}/delete", dependencies=[Depends(PermissionDependency(["manage_permissions_settings"]))])
 async def delete_permission(
     request: Request,
     permission_id: int,

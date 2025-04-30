@@ -1,36 +1,20 @@
-from fastapi import Depends, File, HTTPException, Query, Form, UploadFile
-import httpx
+from fastapi import Depends, HTTPException, Query, Form
 from starlette.requests import Request
-from starlette.responses import RedirectResponse, StreamingResponse, JSONResponse
-from starlette.status import HTTP_303_SEE_OTHER, HTTP_404_NOT_FOUND, HTTP_400_BAD_REQUEST, HTTP_500_INTERNAL_SERVER_ERROR, HTTP_401_UNAUTHORIZED, HTTP_403_FORBIDDEN
-import logging
-from examples import settings
+from starlette.responses import StreamingResponse
 from bson import ObjectId
-import markdown
-from markdown.extensions import fenced_code, tables, nl2br
 from datetime import datetime, timedelta
-from typing import List, Optional
-import os
-import asyncio
+from typing import Optional
 import csv
-import io
-import pandas as pd
-from urllib.parse import urlparse, parse_qs
-import json
-import yaml
-import ast
 from io import StringIO
 
-from examples.models import Admin, Config, Groups
-from examples.services.fcm_service import FCMService
-from examples.triggers.executor import execute_trigger_action
+from examples.models import Admin
 from fastapi_admin.app import app
 from fastapi_admin.depends import get_resources, get_current_admin
 from fastapi_admin.template import templates
-from examples.permissions import Permissions
+from examples.permissions import PermissionDependency
 
 
-@app.get("/service-leads", dependencies=[Depends(Permissions.VIEW_SERVICE_LEADS)])
+@app.get("/service-leads", dependencies=[Depends(PermissionDependency(["view_service_leads"]))])
 async def service_leads(
     request: Request,
     resources=Depends(get_resources),
@@ -166,7 +150,7 @@ async def service_leads(
         print(f"Error in service_leads: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/service-leads/{lead_id}", dependencies=[Depends(Permissions.VIEW_SERVICE_LEADS)])
+@app.get("/service-leads/{lead_id}", dependencies=[Depends(PermissionDependency(["view_service_leads"]))])
 async def get_lead_details(
     request: Request,
     lead_id: str,
@@ -206,7 +190,7 @@ async def get_lead_details(
         print(f"Error in get_lead_details: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.post("/service-leads/{lead_id}/update", dependencies=[Depends(Permissions.MANAGE_SERVICE_LEADS)])
+@app.post("/service-leads/{lead_id}/update", dependencies=[Depends(PermissionDependency(["manage_service_leads"]))])
 async def update_lead_status(
     request: Request,
     lead_id: str,
@@ -251,7 +235,7 @@ async def update_lead_status(
         print(f"Error in update_lead_status: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.post("/service-leads/export", dependencies=[Depends(Permissions.MANAGE_SERVICE_LEADS)])
+@app.post("/service-leads/export", dependencies=[Depends(PermissionDependency(["manage_service_leads"]))])
 async def export_leads(
     request: Request,
     service_type: Optional[str] = Form(None),

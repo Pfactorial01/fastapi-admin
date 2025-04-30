@@ -1,39 +1,23 @@
-from fastapi import Depends, File, HTTPException, Query, Form, UploadFile
-import httpx
+from fastapi import Depends, HTTPException, Query, Form
 from starlette.requests import Request
-from starlette.responses import RedirectResponse, StreamingResponse, JSONResponse
-from starlette.status import HTTP_303_SEE_OTHER, HTTP_404_NOT_FOUND, HTTP_400_BAD_REQUEST, HTTP_500_INTERNAL_SERVER_ERROR, HTTP_401_UNAUTHORIZED, HTTP_403_FORBIDDEN
+from starlette.responses import RedirectResponse
+from starlette.status import HTTP_303_SEE_OTHER
 import logging
-from examples import settings
-from bson import ObjectId
-import markdown
-from markdown.extensions import fenced_code, tables, nl2br
-from datetime import datetime, timedelta
-from typing import List, Optional
-import os
+from datetime import datetime
+from typing import List
 import asyncio
-import csv
-import io
-import pandas as pd
-from urllib.parse import urlparse, parse_qs
-import json
-import yaml
-import ast
-from io import StringIO
 
-from examples.models import Admin, Config, Groups
 from examples.services.fcm_service import FCMService
-from examples.triggers.executor import execute_trigger_action
 from fastapi_admin.app import app
 from fastapi_admin.depends import get_resources, get_current_admin
 from fastapi_admin.template import templates
-from examples.permissions import Permissions
+from examples.permissions import PermissionDependency
 
 
 # Configure logging
 logger = logging.getLogger(__name__)
 
-@app.get("/notifications", dependencies=[Depends(Permissions.VIEW_NOTIFICATIONS)])
+@app.get("/notifications", dependencies=[Depends(PermissionDependency(["view_notifications"]))])
 async def notifications(
     request: Request,
     resources=Depends(get_resources),
@@ -135,7 +119,7 @@ async def notifications(
             },
         )
 
-@app.post("/notifications/send", dependencies=[Depends(Permissions.MANAGE_NOTIFICATIONS)])
+@app.post("/notifications/send", dependencies=[Depends(PermissionDependency(["manage_notifications"]))])
 async def send_notification(
     request: Request,
     title: str = Form(...),
@@ -303,7 +287,7 @@ async def send_notification(
         logger.error(f"Error creating notification: {str(e)}")
         raise HTTPException(status_code=500, detail="Failed to create notification")
 
-@app.get("/users/search")
+@app.get("/users/search", dependencies=[Depends(PermissionDependency(["view_notifications"]))])
 async def search_users(
     request: Request,
     email: str = Query(..., min_length=1),

@@ -193,16 +193,19 @@
 					</div>
 					<div class="mb-3">
 						<label class="form-label">Link (Optional)</label>
-						<input
-							type="text"
-							class="form-control"
-							name="link"
-							placeholder="e.g., /properties/123 or https://example.com"
-						/>
+						<select class="form-select" name="link">
+							<option value="">No Link</option>
+							<option value="verifyaccount">
+								Verify Account (verifyaccount)
+							</option>
+							<option value="propertylist">
+								Property List (propertylist)
+							</option>
+							<option value="chats">Chats (chats)</option>
+						</select>
 						<small class="form-text text-muted"
-							>Enter an internal app route or external URL that
-							will be opened when the notification is
-							tapped.</small
+							>Select a route that will be opened when the
+							notification is tapped.</small
 						>
 					</div>
 					<div class="mb-3">

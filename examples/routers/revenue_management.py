@@ -1,36 +1,20 @@
-from fastapi import Depends, File, HTTPException, Query, Form, UploadFile
-import httpx
+from fastapi import Depends, HTTPException, Query, Form
 from starlette.requests import Request
-from starlette.responses import RedirectResponse, StreamingResponse, JSONResponse
-from starlette.status import HTTP_303_SEE_OTHER, HTTP_404_NOT_FOUND, HTTP_400_BAD_REQUEST, HTTP_500_INTERNAL_SERVER_ERROR, HTTP_401_UNAUTHORIZED, HTTP_403_FORBIDDEN
+from starlette.responses import RedirectResponse, JSONResponse
+from starlette.status import HTTP_303_SEE_OTHER
 import logging
 from examples import settings
 from bson import ObjectId
-import markdown
-from markdown.extensions import fenced_code, tables, nl2br
 from datetime import datetime, timedelta
 from typing import List, Optional
-import os
-import asyncio
-import csv
-import io
-import pandas as pd
-from urllib.parse import urlparse, parse_qs
-import json
-import yaml
-import ast
-from io import StringIO
 import stripe
-from motor.motor_asyncio import AsyncIOMotorClient
 from tortoise.expressions import Q
 
-from examples.models import Admin, Config, Groups, Permission, Subscription
-from examples.services.fcm_service import FCMService
-from examples.triggers.executor import execute_trigger_action
+from examples.models import Subscription
 from fastapi_admin.app import app
 from fastapi_admin.depends import get_resources, get_current_admin
 from fastapi_admin.template import templates
-from examples.permissions import Permissions
+from examples.permissions import PermissionDependency
 
 # Configure Stripe
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -38,7 +22,7 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 # Configure logging
 logger = logging.getLogger(__name__)
 
-@app.get("/revenue-management")
+@app.get("/revenue-management", dependencies=[Depends(PermissionDependency(["view_revenue"]))])
 async def revenue_management(
     request: Request,
     resources=Depends(get_resources),
@@ -197,7 +181,7 @@ async def revenue_management(
             }
         )
 
-@app.post("/revenue-management/add-package")
+@app.post("/revenue-management/add-package", dependencies=[Depends(PermissionDependency(["manage_revenue"]))])
 async def add_package(
     request: Request,
     package_name: str = Form(...),
@@ -249,7 +233,7 @@ async def add_package(
         logger.error(f"Error adding package: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.post("/revenue-management/update-package/{package_name}")
+@app.post("/revenue-management/update-package/{package_name}", dependencies=[Depends(PermissionDependency(["manage_revenue"]))])
 async def update_package(
     request: Request,
     package_name: str,
@@ -313,7 +297,7 @@ async def update_package(
         logger.error(f"Error updating package: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/revenue-management/delete-package/{package_name}")
+@app.get("/revenue-management/delete-package/{package_name}", dependencies=[Depends(PermissionDependency(["manage_revenue"]))])
 async def delete_package(
     request: Request,
     package_name: str,
@@ -363,7 +347,7 @@ async def delete_package(
         logger.error(f"Error deleting package: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.post("/revenue-management/refund")
+@app.post("/revenue-management/refund", dependencies=[Depends(PermissionDependency(["manage_revenue"]))])
 async def process_refund(
     request: Request,
     charge_id: str = Form(...),
@@ -450,7 +434,7 @@ async def process_refund(
             detail=f"Failed to process refund: {str(e)}"
         )
 
-@app.post("/revenue-management/cancel/{subscription_id}")
+@app.post("/revenue-management/cancel/{subscription_id}", dependencies=[Depends(PermissionDependency(["manage_revenue"]))])
 async def cancel_subscription(
     request: Request,
     subscription_id: str,
