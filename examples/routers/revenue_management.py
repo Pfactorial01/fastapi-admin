@@ -32,7 +32,7 @@ async def revenue_management(
     status: Optional[str] = None,
     package_type: Optional[str] = None,
     search: Optional[str] = None,
-    date_range: Optional[str] = None,
+    date_range: Optional[str] = Query(f"{(datetime.now() - timedelta(days=6)).strftime('%m/%d/%Y')} - {datetime.now().strftime('%m/%d/%Y')}"),
 ):
     """Render the revenue management dashboard"""
     try:
@@ -45,6 +45,12 @@ async def revenue_management(
         async for package in packages_cursor:
             # Convert ObjectId to string
             package['_id'] = str(package['_id'])
+            if package['package_name'] == "Essential Listing":
+                package['package_name'] = "basic"
+            elif package['package_name'] == "MarketBlast":
+                package['package_name'] = "premium"
+            elif package['package_name'] == "MarketBlast Pro":
+                package['package_name'] = "deluxe"
             packages.append(package)
         
         # Build Tortoise ORM query
