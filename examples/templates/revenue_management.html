@@ -1,108 +1,128 @@
 {% extends "layout.html" %} {% block page_body %}
 <div class="container-fluid mt-2">
-	<!-- Revenue Overview Cards -->
-	<div class="row mb-4">
-		<div class="col-xl-3 col-md-6">
-			<div class="card border-left-primary shadow h-100 py-2">
-				<div class="card-body">
-					<div class="row no-gutters align-items-center">
-						<div class="col mr-2">
-							<div
-								class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-							>
-								Monthly Revenue
-							</div>
-							<div
-								class="h5 mb-0 font-weight-bold text-gray-800"
-							>
-								${{ monthly_revenue|default(0)|round(2) }}
-							</div>
+	<!-- Revenue Overview Card -->
+	<div class="card shadow mb-4">
+		<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+			<h6 class="m-0 font-weight-bold text-primary">Revenue Overview</h6>
+		</div>
+		<div class="card-body">
+			<!-- Revenue Filters -->
+			<div class="row mb-4">
+				<div class="col-12">
+					<form id="revenue-filter-form" method="get" action="{{ request.url }}" class="row align-items-end">
+						<div class="col-md-3">
+							<label class="form-label">Time Period</label>
+							<select class="form-control" name="revenue_period" onchange="this.form.submit()">
+								<option value="all" {% if request.query_params.get('revenue_period') == 'all' or not request.query_params.get('revenue_period') %}selected{% endif %}>All Time</option>
+								<option value="week" {% if request.query_params.get('revenue_period') == 'week' %}selected{% endif %}>Last Week</option>
+								<option value="month" {% if request.query_params.get('revenue_period') == 'month' %}selected{% endif %}>Last Month</option>
+							</select>
 						</div>
-						<div class="col-auto">
-							<i class="fas fa-calendar fa-2x text-gray-300"></i>
+						<div class="col-md-3">
+							<label class="form-label">Plan Type</label>
+							<select class="form-control" name="revenue_plan" onchange="this.form.submit()">
+								<option value="">All Plans</option>
+								{% for package in packages %}
+								<option value="{{ package.package_name }}" {% if request.query_params.get('revenue_plan') == package.package_name %}selected{% endif %}>
+									{{ package.package_name }}
+								</option>
+								{% endfor %}
+							</select>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<!-- Revenue Cards -->
+			<div class="row">
+				<div class="col-xl-3 col-md-6">
+					<div class="card border-left-primary h-100 py-2">
+						<div class="card-body">
+							<div class="row no-gutters align-items-center">
+								<div class="col mr-2">
+									<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+										{% if request.query_params.get('revenue_period') == 'week' %}
+											Weekly Revenue
+										{% elif request.query_params.get('revenue_period') == 'month' %}
+											Monthly Revenue
+										{% else %}
+											Total Revenue
+										{% endif %}
+									</div>
+									<div class="h5 mb-0 font-weight-bold text-gray-800">
+										${{ monthly_revenue|default(0)|round(2) }}
+									</div>
+								</div>
+								<div class="col-auto">
+									<i class="fas fa-calendar fa-2x text-gray-300"></i>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
 
-		<div class="col-xl-3 col-md-6">
-			<div class="card border-left-success shadow h-100 py-2">
-				<div class="card-body">
-					<div class="row no-gutters align-items-center">
-						<div class="col mr-2">
-							<div
-								class="text-xs font-weight-bold text-success text-uppercase mb-1"
-							>
-								Active Subscriptions
+				<div class="col-xl-3 col-md-6">
+					<div class="card border-left-success h-100 py-2">
+						<div class="card-body">
+							<div class="row no-gutters align-items-center">
+								<div class="col mr-2">
+									<div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+										Active Subscriptions
+									</div>
+									<div class="h5 mb-0 font-weight-bold text-gray-800">
+										{{ active_subscriptions|default(0) }}
+									</div>
+								</div>
+								<div class="col-auto">
+									<i class="fas fa-users fa-2x text-gray-300"></i>
+								</div>
 							</div>
-							<div
-								class="h5 mb-0 font-weight-bold text-gray-800"
-							>
-								{{ active_subscriptions|default(0) }}
-							</div>
-						</div>
-						<div class="col-auto">
-							<i class="fas fa-users fa-2x text-gray-300"></i>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
 
-		<div class="col-xl-3 col-md-6">
-			<div class="card border-left-warning shadow h-100 py-2">
-				<div class="card-body">
-					<div class="row no-gutters align-items-center">
-						<div class="col mr-2">
-							<div
-								class="text-xs font-weight-bold text-warning text-uppercase mb-1"
-							>
-								Failed Payments
+				<div class="col-xl-3 col-md-6">
+					<div class="card border-left-warning h-100 py-2">
+						<div class="card-body">
+							<div class="row no-gutters align-items-center">
+								<div class="col mr-2">
+									<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+										Failed Payments
+									</div>
+									<div class="h5 mb-0 font-weight-bold text-gray-800">
+										{{ failed_payments|default(0) }}
+									</div>
+								</div>
+								<div class="col-auto">
+									<i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
+								</div>
 							</div>
-							<div
-								class="h5 mb-0 font-weight-bold text-gray-800"
-							>
-								{{ failed_payments|default(0) }}
-							</div>
-						</div>
-						<div class="col-auto">
-							<i
-								class="fas fa-exclamation-triangle fa-2x text-gray-300"
-							></i>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
 
-		<div class="col-xl-3 col-md-6">
-			<div class="card border-left-info shadow h-100 py-2">
-				<div class="card-body">
-					<div class="row no-gutters align-items-center">
-						<div class="col mr-2">
-							<div
-								class="text-xs font-weight-bold text-info text-uppercase mb-1"
-							>
-								Total Revenue
+				<div class="col-xl-3 col-md-6">
+					<div class="card border-left-info h-100 py-2">
+						<div class="card-body">
+							<div class="row no-gutters align-items-center">
+								<div class="col mr-2">
+									<div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+										Average Revenue
+									</div>
+									<div class="h5 mb-0 font-weight-bold text-gray-800">
+										${{ (monthly_revenue / active_subscriptions if active_subscriptions > 0 else 0)|round(2) }}
+									</div>
+								</div>
+								<div class="col-auto">
+									<i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+								</div>
 							</div>
-							<div
-								class="h5 mb-0 font-weight-bold text-gray-800"
-							>
-								${{ total_revenue|default(0)|round(2) }}
-							</div>
-						</div>
-						<div class="col-auto">
-							<i
-								class="fas fa-dollar-sign fa-2x text-gray-300"
-							></i>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
 
 	<!-- Main Content Area -->
 	<div class="row">
@@ -196,11 +216,11 @@
 									<td>{{ sub.next_billing_date|format_date if sub.next_billing_date else 'N/A' }}</td>
 									<td>
 										<div class="btn-group">
-											{% if sub.status not in ['refunded', 'canceled'] %}
+											<!-- {% if sub.status not in ['refunded', 'canceled'] %}
 											<button class="btn btn-sm btn-info" onclick="openUpdateModal('{{ sub.id }}')">
 												Update
 											</button>
-											{% endif %}
+											{% endif %} -->
 											{% if sub.status not in ['refunded'] %}
 											<button class="btn btn-sm btn-warning" onclick="openRefundModal('{{ sub.charge_id }}', {{ sub.amount }}, '{{ sub.property_id }}')">
 												Refund
@@ -300,306 +320,437 @@
 			</div>
 		</div>
 	</div>
-    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/daterangepicker@3.1.0/daterangepicker.min.js"></script>
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/daterangepicker@3.1.0/daterangepicker.css"
-    />
 
-    <script>
-        $(document).ready(function () {
-            // Initialize date range picker
-            $("input[name='date_range']").daterangepicker({
-                ranges: {
-                    'Today': [moment(), moment()],
-                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                    'This Month': [moment().startOf('month'), moment().endOf('month')],
-                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-                },
-                startDate: moment().subtract(6, 'days'),
-                endDate: moment(),
-                alwaysShowCalendars: true
-            });
+	<!-- Webhook Logs Section -->
+	<div class="row mt-4">
+		<div class="col-12">
+			<div class="card shadow mb-4">
+				<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+					<h6 class="m-0 font-weight-bold text-primary">Stripe Webhook Logs</h6>
+				</div>
+				<div class="card-body">
+					<!-- Search and Filter -->
+					<div class="row mb-3">
+						<form id="log-filter-form" method="get" action="{{ request.url }}" class="row w-100">
+							<div class="col-md-3">
+								<select class="form-control" name="event_type" onchange="this.form.submit()">
+									<option value="">All Event Types</option>
+									<option value="charge.failed" {% if request.query_params.get('event_type') == 'charge.failed' %}selected{% endif %}>
+										charge.failed
+									</option>
+									{% for type in event_types %}
+									<option value="{{ type }}" {% if request.query_params.get('event_type') == type %}selected{% endif %}>
+										{{ type }}
+									</option>
+									{% endfor %}
+								</select>
+							</div>
+							<div class="col-md-3">
+								<select class="form-control" name="log_per_page" onchange="this.form.submit()">
+									<option value="10" {% if request.query_params.get('log_per_page', '10') == '10' %}selected{% endif %}>10 per page</option>
+									<option value="25" {% if request.query_params.get('log_per_page') == '25' %}selected{% endif %}>25 per page</option>
+									<option value="50" {% if request.query_params.get('log_per_page') == '50' %}selected{% endif %}>50 per page</option>
+								</select>
+							</div>
+						</form>
+					</div>
 
-            // Initialize Bootstrap modals
-            $('.modal').modal({
-                show: false
-            });
-            // Handle subscription update
-            $(document).on('click', '#update-subscription', function() {
-                $("#subscription-update-form").submit();
-            });
+					<!-- Webhook Logs Table -->
+					<div class="table-responsive">
+						<table class="table table-bordered" id="webhook-logs-table">
+							<thead>
+								<tr>
+									<th>Time</th>
+									<th>Event Type</th>
+									<th>Status</th>
+									<th>Request ID</th>
+									<th>Mode</th>
+									<th>Details</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for log in webhook_logs %}
+								<tr>
+									<td>{{ log.created.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+									<td>
+										<span class="badge {% if 'succeeded' in log.event_type %}bg-success{% elif 'failed' in log.event_type %}bg-danger{% elif 'refunded' in log.event_type %}bg-warning{% else %}bg-info{% endif %}">
+											{{ log.event_type }}
+										</span>
+									</td>
+									<td>
+										<span class="badge {% if log.processed %}bg-success{% else %}bg-warning{% endif %}">
+											{{ "Processed" if log.processed else "Pending" }}
+										</span>
+										{% if log.processing_errors %}
+										<br>
+										<small class="text-danger">{{ log.processing_errors }}</small>
+										{% endif %}
+									</td>
+									<td>
+										<small>{{ log.request_id or 'N/A' }}</small>
+										{% if log.idempotency_key %}
+										<br>
+										<small class="text-muted">Key: {{ log.idempotency_key }}</small>
+										{% endif %}
+									</td>
+									<td>
+										<span class="badge {% if log.livemode %}bg-success{% else %}bg-warning{% endif %}">
+											{{ 'Live' if log.livemode else 'Test' }}
+										</span>
+									</td>
+									<td>
+										<button class="btn btn-sm btn-outline-primary" onclick="showWebhookDetails(this)" data-event-id="{{ log.event_id }}" data-event-data='{{ log.data|tojson|safe }}'>
+											View Details
+										</button>
+									</td>
+								</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
 
-            // Handle refund process
-            $(document).on('click', '#process-refund', function(e) {
-                e.preventDefault();
-                
-                const formData = new FormData();
-                formData.append('charge_id', $('#refund-charge-id').val());
-                formData.append('property_id', $('#refund-property-id').val());
-                formData.append('amount', $('#refund-amount').val());
-                formData.append('reason', $('#refund-reason').val());
-                
-                fetch('/admin/revenue-management/refund', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        $('#refundModal').modal('hide');                        
-                        location.reload();
-                    } else {
-                        console.error('Error:', data.detail || 'Error processing refund');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-            });
+					<!-- Webhook Logs Pagination -->
+					{% if log_pagination.total_pages > 1 %}
+					<nav aria-label="Webhook logs navigation" class="mt-4">
+						<ul class="pagination justify-content-center">
+							{% if log_pagination.has_prev %}
+							<li class="page-item">
+								<a class="page-link" href="?log_page={{ log_pagination.prev_page }}&{{ request.query_params }}">&laquo;</a>
+							</li>
+							{% endif %}
 
-            // Handle modal close buttons
-            $(document).on('click', '[data-dismiss="modal"]', function() {
-                $(this).closest('.modal').modal('hide');
-            });
+							{% for page_num in log_pagination.page_range %}
+							<li class="page-item {% if page_num == log_pagination.current_page %}active{% endif %}">
+								<a class="page-link" href="?log_page={{ page_num }}&{{ request.query_params }}">{{ page_num }}</a>
+							</li>
+							{% endfor %}
 
-            // Handle delete confirmation
-            $('#confirm-delete-btn').click(function() {
-                const packageName = $(this).data('package-name');
-                window.location.href = `/revenue-management/delete-package/${packageName}`;
-            });
-        });
+							{% if log_pagination.has_next %}
+							<li class="page-item">
+								<a class="page-link" href="?log_page={{ log_pagination.next_page }}&{{ request.query_params }}">&raquo;</a>
+							</li>
+							{% endif %}
+						</ul>
+					</nav>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
 
-        function openUpdateModal(subscriptionId) {
-            $("#subscription-id").val(subscriptionId);
-            $("#updateSubscriptionModal").modal('show');
-        }
+	<!-- Webhook Details Modal -->
+	<div class="modal fade" id="webhookDetailsModal" tabindex="-1">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Webhook Event Details</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				</div>
+				<div class="modal-body">
+					<pre id="webhookEventDetails" class="bg-light text-dark p-3 rounded" style="max-height: 500px; overflow-y: auto;"></pre>
+				</div>
+			</div>
+		</div>
+	</div>
 
-        function openRefundModal(chargeId, amount, propertyId) {
-            $("#refund-charge-id").val(chargeId);
-            $("#refund-property-id").val(propertyId);
-            $("#refund-amount").val(amount);
-            $("#refundModal").modal('show');
-        }
+	<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/daterangepicker@3.1.0/daterangepicker.min.js"></script>
+	<link
+		rel="stylesheet"
+		href="https://cdn.jsdelivr.net/npm/daterangepicker@3.1.0/daterangepicker.css"
+	/>
 
-        function cancelSubscription(subscriptionId) {
-            $("#cancel-subscription-id").val(subscriptionId);
-            $("#cancelSubscriptionModal").modal('show');
-        }
+	<script>
+	$(document).ready(function() {
+		// Initialize date range picker
+		$("input[name='date_range']").daterangepicker({
+			ranges: {
+				'Today': [moment(), moment()],
+				'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+				'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+				'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+				'This Month': [moment().startOf('month'), moment().endOf('month')],
+				'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+			},
+			startDate: moment().subtract(6, 'days'),
+			endDate: moment(),
+			alwaysShowCalendars: true
+		});
 
-        // Handle subscription cancellation
-        $(document).on('click', '#confirm-cancel-subscription', function() {
-            const subscriptionId = $("#cancel-subscription-id").val();
-            
-            fetch(`/admin/revenue-management/cancel/${subscriptionId}`, {
-                method: 'POST'
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    $("#cancelSubscriptionModal").modal('hide');
-                    location.reload();
-                } else {
-                    console.error('Error:', data.detail || 'Error canceling subscription');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        });
+		// Initialize all modals
+		document.querySelectorAll('.modal').forEach(modalElement => {
+			new bootstrap.Modal(modalElement, {
+				keyboard: true,
+				backdrop: true
+			});
+		});
 
-        function addFeature() {
-            const container = document.getElementById('features-container');
-            const featureDiv = document.createElement('div');
-            featureDiv.className = 'input-group mb-2';
-            featureDiv.innerHTML = `
-                <div class="input-group-prepend">
-                    <input type="text" class="form-control" name="information_keys" placeholder="Key" required style="width: 120px;">
-                </div>
-                <input type="text" class="form-control" name="information_values" placeholder="Value" required>
-                <div class="input-group-append">
-                    <button type="button" class="btn btn-outline-danger" onclick="removeFeature(this)">
-                        <i class="fas fa-minus"></i> Delete
-                    </button>
-                </div>
-            `;
-            container.appendChild(featureDiv);
-        }
+		// Handle subscription update
+		$(document).on('click', '#update-subscription', function() {
+			$("#subscription-update-form").submit();
+		});
 
-        function removeFeature(button) {
-            const container = button.closest('.input-group');
-            container.remove();
-        }
+		// Handle refund process
+		$(document).on('click', '#process-refund', function(e) {
+			e.preventDefault();
+			
+			const formData = new FormData();
+			formData.append('charge_id', $('#refund-charge-id').val());
+			formData.append('property_id', $('#refund-property-id').val());
+			formData.append('amount', $('#refund-amount').val());
+			formData.append('reason', $('#refund-reason').val());
+			
+			fetch('/admin/revenue-management/refund', {
+				method: 'POST',
+				body: formData
+			})
+			.then(response => response.json())
+			.then(data => {
+				if (data.success) {
+					$('#refundModal').modal('hide');                        
+					location.reload();
+				} else {
+					console.error('Error:', data.detail || 'Error processing refund');
+				}
+			})
+			.catch(error => {
+				console.error('Error:', error);
+			});
+		});
 
-        function addEditFeature() {
-            const container = document.getElementById('edit-features-container');
-            const featureDiv = document.createElement('div');
-            featureDiv.className = 'input-group mb-2';
-            featureDiv.innerHTML = `
-                <div class="input-group-prepend">
-                    <input type="text" class="form-control" name="information_keys" placeholder="Key" required style="width: 120px;">
-                </div>
-                <input type="text" class="form-control" name="information_values" placeholder="Value" required>
-                <div class="input-group-append">
-                    <button type="button" class="btn btn-outline-danger" onclick="removeFeature(this)">
-                        <i class="fas fa-minus"></i> Delete
-                    </button>
-                </div>
-            `;
-            container.appendChild(featureDiv);
-        }
+		// Handle modal close buttons
+		$(document).on('click', '[data-dismiss="modal"]', function() {
+			$(this).closest('.modal').modal('hide');
+		});
 
-        function openEditPackageModal(button) {
-            try {
-                const packageData = JSON.parse(button.dataset.package);
-                const form = document.getElementById('editPackageForm');
-                form.action = `/revenue-management/update-package/${packageData.package_name}`;
-                
-                form.querySelector('[name="new_package_name"]').value = packageData.package_name;
-                form.querySelector('[name="price"]').value = packageData.price;
-                form.querySelector('[name="description"]').value = packageData.description;
-                
-                const container = document.getElementById('edit-features-container');
-                container.innerHTML = '';
-                
-                // Handle information as a key-value object
-                const information = packageData.information || {};
-                
-                // Convert object entries to input fields
-                Object.entries(information).forEach(([key, value]) => {
-                    const featureDiv = document.createElement('div');
-                    featureDiv.className = 'input-group mb-2';
-                    featureDiv.innerHTML = `
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">${key}</span>
-                        </div>
-                        <input type="text" class="form-control" name="information_values" value="${value}" required>
-                        <input type="hidden" name="information_keys" value="${key}">
-                        <div class="input-group-append">
-                            <button type="button" class="btn btn-outline-danger" onclick="removeFeature(this)">
-                                <i class="fas fa-minus"></i> Delete
-                            </button>
-                        </div>
-                    `;
-                    container.appendChild(featureDiv);
-                });
-                
-                $('#editPackageModal').modal('show');
-            } catch (error) {
-                console.error('Error opening edit modal:', error);
-                console.error('Package data:', button.dataset.package);
-            }
-        }
+		// Handle delete confirmation
+		$('#confirm-delete-btn').click(function() {
+			const packageName = $(this).data('package-name');
+			window.location.href = `/revenue-management/delete-package/${packageName}`;
+		});
 
-        function deletePackage(packageName) {
-            $('#delete-package-name').text(packageName);
-            $('#confirm-delete-btn').data('package-name', packageName);
-            $('#deletePackageModal').modal('show');
-        }
+		// Add Package form submission
+		document.getElementById('addPackageForm').addEventListener('submit', function(e) {
+			e.preventDefault();
+			
+			const formData = new FormData(this);
+			const keys = formData.getAll('information_keys');
+			const values = formData.getAll('information_values');
+			
+			// Create information object from key-value pairs
+			const information = {};
+			keys.forEach((key, index) => {
+				if (key && values[index]) {
+					information[key] = values[index];
+				}
+			});
+			
+			// Add information object to form data
+			formData.delete('information_keys');
+			formData.delete('information_values');
+			formData.append('information', JSON.stringify(information));
+			
+			// Submit the form using fetch
+			fetch(this.action, {
+				method: 'POST',
+				body: formData
+			})
+			.then(response => response.json())
+			.then(data => {
+				if (data.success) {
+					location.reload();
+				} else {
+					console.error('Error:', data.message || 'Error adding package');
+				}
+			})
+			.catch(error => {
+				console.error('Error:', error);
+			});
+		});
 
-        // Add clear filters function
-        function clearFilters() {
-            $('input[name="search"]').val('');
-            $('select[name="status"]').val('');
-            $('select[name="package_type"]').val('');
-            $('input[name="date_range"]').val('');
-            $('#filter-form').submit();
-        }
+		// Edit Package form submission
+		document.getElementById('editPackageForm').addEventListener('submit', function(e) {
+			e.preventDefault();
+			
+			const formData = new FormData(this);
+			const keys = formData.getAll('information_keys');
+			const values = formData.getAll('information_values');
+			
+			// Create information object from key-value pairs
+			const information = {};
+			keys.forEach((key, index) => {
+				if (key && values[index]) {
+					information[key] = values[index];
+				}
+			});
+			
+			// Add information object to form data
+			formData.delete('information_keys');
+			formData.delete('information_values');
+			formData.append('information', JSON.stringify(information));
+			
+			// Submit the form using fetch
+			fetch(this.action, {
+				method: 'POST',
+				body: formData
+			})
+			.then(response => response.json())
+			.then(data => {
+				if (data.success) {
+					location.reload();
+				} else {
+					console.error('Error:', data.message || 'Error updating package');
+				}
+			})
+			.catch(error => {
+				console.error('Error:', error);
+			});
+		});
+	});
 
-        // Update the form submission to handle key-value pairs
-        document.getElementById('editPackageForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const keys = formData.getAll('information_keys');
-            const values = formData.getAll('information_values');
-            
-            // Create information object from key-value pairs
-            const information = {};
-            keys.forEach((key, index) => {
-                if (key && values[index]) {
-                    information[key] = values[index];
-                }
-            });
-            
-            // Add information object to form data
-            formData.delete('information_keys');
-            formData.delete('information_values');
-            formData.append('information', JSON.stringify(information));
-            
-            // Submit the form using fetch
-            fetch(this.action, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    location.reload();
-                } else {
-                    console.error('Error:', data.message || 'Error updating package');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        });
+	function openUpdateModal(subscriptionId) {
+		$("#subscription-id").val(subscriptionId);
+		$("#updateSubscriptionModal").modal('show');
+	}
 
-        // Update the Add Package form submission
-        document.getElementById('addPackageForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const keys = formData.getAll('information_keys');
-            const values = formData.getAll('information_values');
-            
-            // Create information object from key-value pairs
-            const information = {};
-            keys.forEach((key, index) => {
-                if (key && values[index]) {
-                    information[key] = values[index];
-                }
-            });
-            
-            // Add information object to form data
-            formData.delete('information_keys');
-            formData.delete('information_values');
-            formData.append('information', JSON.stringify(information));
-            
-            // Submit the form using fetch
-            fetch(this.action, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    location.reload();
-                } else {
-                    console.error('Error:', data.message || 'Error adding package');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        });
+	function openRefundModal(chargeId, amount, propertyId) {
+		$("#refund-charge-id").val(chargeId);
+		$("#refund-property-id").val(propertyId);
+		$("#refund-amount").val(amount);
+		$("#refundModal").modal('show');
+	}
 
-        // Initialize modals when document is ready
-        $(document).ready(function() {
-            // Initialize all modals
-            $('.modal').modal({
-                show: false
-            });
+	function cancelSubscription(subscriptionId) {
+		$("#cancel-subscription-id").val(subscriptionId);
+		$("#cancelSubscriptionModal").modal('show');
+	}
 
-            // Ensure Add Package modal can be opened
-            $('#addPackageButton').on('click', function() {
-                $('#addPackageModal').modal('show');
-            });
-        });
-    </script>
+	// Handle subscription cancellation
+	$(document).on('click', '#confirm-cancel-subscription', function() {
+		const subscriptionId = $("#cancel-subscription-id").val();
+		
+		fetch(`/admin/revenue-management/cancel/${subscriptionId}`, {
+			method: 'POST'
+		})
+		.then(response => response.json())
+		.then(data => {
+			if (data.success) {
+				$("#cancelSubscriptionModal").modal('hide');
+				location.reload();
+			} else {
+				console.error('Error:', data.detail || 'Error canceling subscription');
+			}
+		})
+		.catch(error => {
+			console.error('Error:', error);
+		});
+	});
+
+	function addFeature() {
+		const container = document.getElementById('features-container');
+		const featureDiv = document.createElement('div');
+		featureDiv.className = 'input-group mb-2';
+		featureDiv.innerHTML = `
+			<div class="input-group-prepend">
+				<input type="text" class="form-control" name="information_keys" placeholder="Key" required style="width: 120px;">
+			</div>
+			<input type="text" class="form-control" name="information_values" placeholder="Value" required>
+			<div class="input-group-append">
+				<button type="button" class="btn btn-outline-danger" onclick="removeFeature(this)">
+					<i class="fas fa-minus"></i> Delete
+				</button>
+			</div>
+		`;
+		container.appendChild(featureDiv);
+	}
+
+	function removeFeature(button) {
+		const container = button.closest('.input-group');
+		container.remove();
+	}
+
+	function addEditFeature() {
+		const container = document.getElementById('edit-features-container');
+		const featureDiv = document.createElement('div');
+		featureDiv.className = 'input-group mb-2';
+		featureDiv.innerHTML = `
+			<div class="input-group-prepend">
+				<input type="text" class="form-control" name="information_keys" placeholder="Key" required style="width: 120px;">
+			</div>
+			<input type="text" class="form-control" name="information_values" placeholder="Value" required>
+			<div class="input-group-append">
+				<button type="button" class="btn btn-outline-danger" onclick="removeFeature(this)">
+					<i class="fas fa-minus"></i> Delete
+				</button>
+			</div>
+		`;
+		container.appendChild(featureDiv);
+	}
+
+	function openEditPackageModal(button) {
+		try {
+			const packageData = JSON.parse(button.dataset.package);
+			const form = document.getElementById('editPackageForm');
+			form.action = `/revenue-management/update-package/${packageData.package_name}`;
+			
+			form.querySelector('[name="new_package_name"]').value = packageData.package_name;
+			form.querySelector('[name="price"]').value = packageData.price;
+			form.querySelector('[name="description"]').value = packageData.description;
+			
+			const container = document.getElementById('edit-features-container');
+			container.innerHTML = '';
+			
+			// Handle information as a key-value object
+			const information = packageData.information || {};
+			
+			// Convert object entries to input fields
+			Object.entries(information).forEach(([key, value]) => {
+				const featureDiv = document.createElement('div');
+				featureDiv.className = 'input-group mb-2';
+				featureDiv.innerHTML = `
+					<div class="input-group-prepend">
+						<span class="input-group-text">${key}</span>
+					</div>
+					<input type="text" class="form-control" name="information_values" value="${value}" required>
+					<input type="hidden" name="information_keys" value="${key}">
+					<div class="input-group-append">
+						<button type="button" class="btn btn-outline-danger" onclick="removeFeature(this)">
+							<i class="fas fa-minus"></i> Delete
+						</button>
+					</div>
+				`;
+				container.appendChild(featureDiv);
+			});
+			
+			$('#editPackageModal').modal('show');
+		} catch (error) {
+			console.error('Error opening edit modal:', error);
+			console.error('Package data:', button.dataset.package);
+		}
+	}
+
+	function deletePackage(packageName) {
+		$('#delete-package-name').text(packageName);
+		$('#confirm-delete-btn').data('package-name', packageName);
+		$('#deletePackageModal').modal('show');
+	}
+
+	function clearFilters() {
+		$('input[name="search"]').val('');
+		$('select[name="status"]').val('');
+		$('select[name="package_type"]').val('');
+		$('input[name="date_range"]').val('');
+		$('#filter-form').submit();
+	}
+
+	function showWebhookDetails(button) {
+		const eventId = button.getAttribute('data-event-id');
+		const eventData = JSON.parse(button.getAttribute('data-event-data'));
+		document.getElementById('webhookEventDetails').textContent = JSON.stringify(eventData, null, 2);
+		const modal = new bootstrap.Modal(document.getElementById('webhookDetailsModal'));
+		modal.show();
+	}
+	</script>
 </div>
 
 <!-- Modals -->
@@ -616,7 +767,7 @@
 			<div class="modal-body">
 				<form id="refund-form">
 					<input type="hidden" id="refund-charge-id" />
-                    <input type="hidden" id="refund-property-id" />
+					<input type="hidden" id="refund-property-id" />
 					<div class="form-group">
 						<label>Refund Amount</label>
 						<input
@@ -904,35 +1055,35 @@
 
 <!-- Add Cancel Subscription Modal -->
 <div class="modal fade" id="cancelSubscriptionModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Cancel Subscription</h5>
-                <button type="button" class="close" data-dismiss="modal">
-                    <span>&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Are you sure you want to cancel this subscription?</p>
-                <div class="alert alert-warning">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    This will:
-                    <ul class="mb-0">
-                        <li>Turn off auto-renewal for the property</li>
-                        <li>Change subscription status to canceled</li>
-                        <li>Property will revert to basic package at the end of current billing period</li>
-                    </ul>
-                </div>
-                <input type="hidden" id="cancel-subscription-id">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Keep Active</button>
-                <button type="button" class="btn btn-danger" id="confirm-cancel-subscription">
-                    Yes, Cancel Subscription
-                </button>
-            </div>
-        </div>
-    </div>
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Cancel Subscription</h5>
+				<button type="button" class="close" data-dismiss="modal">
+					<span>&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>Are you sure you want to cancel this subscription?</p>
+				<div class="alert alert-warning">
+					<i class="fas fa-exclamation-triangle"></i>
+					This will:
+					<ul class="mb-0">
+						<li>Turn off auto-renewal for the property</li>
+						<li>Change subscription status to canceled</li>
+						<li>Property will revert to basic package at the end of current billing period</li>
+					</ul>
+				</div>
+				<input type="hidden" id="cancel-subscription-id">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">No, Keep Active</button>
+				<button type="button" class="btn btn-danger" id="confirm-cancel-subscription">
+					Yes, Cancel Subscription
+				</button>
+			</div>
+		</div>
+	</div>
 </div>
 
 {% endblock %}

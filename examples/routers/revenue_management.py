@@ -10,7 +10,7 @@ from typing import List, Optional
 import stripe
 from tortoise.expressions import Q
 
-from examples.models import Subscription
+from examples.models import Subscription, StripeWebhookLog
 from fastapi_admin.app import app
 from fastapi_admin.depends import get_resources, get_current_admin
 from fastapi_admin.template import templates
@@ -33,6 +33,11 @@ async def revenue_management(
     package_type: Optional[str] = None,
     search: Optional[str] = None,
     date_range: Optional[str] = Query(f"{(datetime.now() - timedelta(days=6)).strftime('%m/%d/%Y')} - {datetime.now().strftime('%m/%d/%Y')}"),
+    log_page: int = Query(1, ge=1),
+    log_per_page: int = Query(10),
+    event_type: Optional[str] = None,
+    revenue_period: Optional[str] = Query('all'),
+    revenue_plan: Optional[str] = None,
 ):
     """Render the revenue management dashboard"""
     try:
@@ -53,7 +58,7 @@ async def revenue_management(
                 package['package_name'] = "deluxe"
             packages.append(package)
         
-        # Build Tortoise ORM query
+        # Build Tortoise ORM query for subscriptions
         query = Q()
         if status:
             query &= Q(status=status)
@@ -65,25 +70,54 @@ async def revenue_management(
             try:
                 start_date, end_date = date_range.split(" - ")
                 start_dt = datetime.strptime(start_date.strip(), "%m/%d/%Y")
-                # For same-day queries, we want to include all entries on that day
-                # So start from midnight of start date
                 start_dt = start_dt.replace(hour=0, minute=0, second=0, microsecond=0)
                 
-                # If dates are the same, end_dt should be end of the day
                 if start_date.strip() == end_date.strip():
                     end_dt = start_dt + timedelta(days=1)
                 else:
                     end_dt = datetime.strptime(end_date.strip(), "%m/%d/%Y")
-                    # For different dates, also ensure we include the full end date
                     end_dt = (end_dt + timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
                 
                 query &= Q(created_at__gte=start_dt) & Q(created_at__lt=end_dt)
-                logger.info(f"Date range query: from {start_dt} to {end_dt}")
             except ValueError as e:
-                logger.error(f"Error parsing date range '{date_range}': {str(e)}")
-                # Continue without date filtering if format is invalid
                 pass
+
+        # Build revenue query based on filters
+        revenue_query = Q(status="active")
+        
+        # Apply time period filter
+        now = datetime.now()
+        if revenue_period == 'week':
+            week_start = now - timedelta(days=7)
+            revenue_query &= Q(created_at__gte=week_start)
+        elif revenue_period == 'month':
+            month_start = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+            revenue_query &= Q(created_at__gte=month_start)
             
+        # Apply plan filter
+        if revenue_plan:
+            revenue_query &= Q(package_type=revenue_plan)
+            
+        # Calculate filtered revenue
+        revenue_subs = await Subscription.filter(revenue_query).all()
+        filtered_revenue = sum(sub.amount for sub in revenue_subs)
+        
+        # Calculate active subscriptions with filters
+        active_subs_query = Q(status="active")
+        if revenue_plan:
+            active_subs_query &= Q(package_type=revenue_plan)
+        active_subs = await Subscription.filter(active_subs_query).count()
+        
+        # Calculate failed payments with filters
+        failed_query = Q(status="failed")
+        if revenue_plan:
+            failed_query &= Q(package_type=revenue_plan)
+        if revenue_period == 'week':
+            failed_query &= Q(created_at__gte=week_start)
+        elif revenue_period == 'month':
+            failed_query &= Q(created_at__gte=month_start)
+        failed_payments = await Subscription.filter(failed_query).count()
+        
         # Get total count for pagination
         total_docs = await Subscription.filter(query).count()
         total_pages = (total_docs + per_page - 1) // per_page
@@ -102,20 +136,6 @@ async def revenue_management(
         now = datetime.now()
         month_start = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
         
-        active_subs = await Subscription.filter(status="active").count()
-        failed_payments = await Subscription.filter(status="failed").count()
-        
-        # Calculate monthly revenue (from active subscriptions created this month)
-        monthly_revenue = await Subscription.filter(
-            status="active",
-            created_at__gte=month_start
-        ).all()
-        monthly_revenue_amount = sum(sub.amount for sub in monthly_revenue)
-        
-        # Calculate total revenue from all active subscriptions
-        total_revenue = await Subscription.filter(status="active").all()
-        total_revenue_amount = sum(sub.amount for sub in total_revenue)
-        
         # Calculate revenue by package
         active_subs_by_package = await Subscription.filter(status="active").all()
         revenue_by_package = {}
@@ -124,6 +144,43 @@ async def revenue_management(
                 revenue_by_package[sub.package_type] = 0
             revenue_by_package[sub.package_type] += sub.amount
         
+        # Build webhook logs query
+        logs_query = Q()
+        if event_type:
+            logs_query &= Q(event_type=event_type)
+        if date_range:
+            try:
+                start_date, end_date = date_range.split(" - ")
+                start_dt = datetime.strptime(start_date.strip(), "%m/%d/%Y")
+                start_dt = start_dt.replace(hour=0, minute=0, second=0, microsecond=0)
+                
+                if start_date.strip() == end_date.strip():
+                    end_dt = start_dt + timedelta(days=1)
+                else:
+                    end_dt = datetime.strptime(end_date.strip(), "%m/%d/%Y")
+                    end_dt = (end_dt + timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
+                
+                logs_query &= Q(created__gte=start_dt) & Q(created__lt=end_dt)
+            except ValueError as e:
+                logger.error(f"Error parsing date range for logs '{date_range}': {str(e)}")
+                pass
+
+        # Get webhook logs with pagination
+        total_logs = await StripeWebhookLog.filter(logs_query).count()
+        total_log_pages = (total_logs + log_per_page - 1) // log_per_page
+        
+        webhook_logs = await StripeWebhookLog.filter(logs_query).order_by('-created').offset((log_page - 1) * log_per_page).limit(log_per_page).all()
+        
+        # Get unique event types for filter
+        all_event_types = await StripeWebhookLog.filter().distinct().values_list('event_type', flat=True)
+        
+        # Calculate log pagination values
+        log_start_page = max(1, log_page - 2)
+        log_end_page = min(total_log_pages, log_page + 2)
+        log_page_range = list(range(log_start_page, log_end_page + 1))
+        log_start_showing = (log_page - 1) * log_per_page + 1
+        log_end_showing = min(log_page * log_per_page, total_logs)
+
         context = {
             "request": request,
             "resources": resources,
@@ -131,10 +188,26 @@ async def revenue_management(
             "packages": packages,
             "subscriptions": subscriptions,
             "revenue_by_package": revenue_by_package,
-            "monthly_revenue": monthly_revenue_amount,
-            "total_revenue": total_revenue_amount,
+            "monthly_revenue": filtered_revenue,
+            "total_revenue": filtered_revenue,
             "active_subscriptions": active_subs,
             "failed_payments": failed_payments,
+            # Add webhook logs data
+            "webhook_logs": webhook_logs,
+            "event_types": all_event_types,
+            "log_pagination": {
+                "current_page": log_page,
+                "total_pages": total_log_pages,
+                "total_logs": total_logs,
+                "per_page": log_per_page,
+                "has_prev": log_page > 1,
+                "has_next": log_page < total_log_pages,
+                "prev_page": log_page - 1,
+                "next_page": log_page + 1,
+                "page_range": log_page_range,
+                "start_showing": log_start_showing,
+                "end_showing": log_end_showing,
+            },
             "pagination": {
                 "current_page": page,
                 "total_pages": total_pages,
@@ -171,6 +244,21 @@ async def revenue_management(
                 "total_revenue": 0,
                 "active_subscriptions": 0,
                 "failed_payments": 0,
+                "webhook_logs": [],
+                "event_types": [],
+                "log_pagination": {
+                    "current_page": 1,
+                    "total_pages": 1,
+                    "total_logs": 0,
+                    "per_page": log_per_page,
+                    "has_prev": False,
+                    "has_next": False,
+                    "prev_page": 1,
+                    "next_page": 1,
+                    "page_range": [1],
+                    "start_showing": 0,
+                    "end_showing": 0,
+                },
                 "pagination": {
                     "current_page": 1,
                     "total_pages": 1,

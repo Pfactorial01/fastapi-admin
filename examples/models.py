@@ -133,3 +133,25 @@ class Subscription(Model):
 
     def __str__(self):
         return f"Subscription {self.id} - {self.package_type}"
+
+class StripeWebhookLog(Model):
+    event_id = fields.CharField(max_length=200, unique=True, description="Stripe Event ID")
+    event_type = fields.CharField(max_length=100, description="Type of Stripe event")
+    api_version = fields.CharField(max_length=50, description="Stripe API version")
+    created = fields.DatetimeField(description="When the event was created")
+    livemode = fields.BooleanField(description="Whether this was a live mode event")
+    request_id = fields.CharField(max_length=200, null=True, description="Stripe request ID")
+    idempotency_key = fields.CharField(max_length=200, null=True, description="Idempotency key if provided")
+    data = fields.JSONField(description="Full event data")
+    processed = fields.BooleanField(default=False, description="Whether this webhook was processed")
+    processing_errors = fields.TextField(null=True, description="Any errors during processing")
+    created_at = fields.DatetimeField(auto_now_add=True)
+    updated_at = fields.DatetimeField(auto_now=True)
+
+    class Meta:
+        table = "stripe_webhook_logs"
+
+    def __str__(self):
+        return f"{self.event_type} - {self.event_id}"
+
+
