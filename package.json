@@ -1,0 +1,14 @@
+{
+	"name": "fastapi-admin-tailwind",
+	"version": "1.0.0",
+	"description": "Tailwind CSS integration for FastAPI Admin",
+	"scripts": {
+		"build:css": "tailwindcss -i ./examples/static/css/tailwind.css -o ./examples/static/css/styles.css --watch",
+		"build:css:prod": "tailwindcss -i ./examples/static/css/tailwind.css -o ./examples/static/css/styles.css --minify"
+	},
+	"devDependencies": {
+		"autoprefixer": "^10.4.16",
+		"postcss": "^8.4.31",
+		"tailwindcss": "^3.3.5"
+	}
+}

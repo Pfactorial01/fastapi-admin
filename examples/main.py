@@ -73,11 +73,18 @@ def create_app():
             decode_responses=True,
             encoding="utf8",
         )
+
+        # Get the fastapi-admin package directory for its templates
+        import fastapi_admin
+        fastapi_admin_dir = os.path.dirname(fastapi_admin.__file__)
         
-        # Configure admin app
+        # Configure admin app with both template directories
         await admin_app.configure(
             logo_url="https://preview.tabler.io/static/logo-white.svg",
-            template_folders=[os.path.join(BASE_DIR, "templates")],
+            template_folders=[
+                os.path.join(BASE_DIR, "templates"),
+                os.path.join(fastapi_admin_dir, "templates")
+            ],
             favicon_url="https://raw.githubusercontent.com/fastapi-admin/fastapi-admin/dev/images/favicon.png",
             providers=[
                 LoginProvider(
@@ -114,12 +121,15 @@ def create_app():
     async def shutdown_event():
         pass
 
-    # Mount static files
-    app.mount(
-        "/static",
-        StaticFiles(directory=os.path.join(BASE_DIR, "static")),
-        name="static",
-    )
+    # Mount static files on both apps
+    static_files = StaticFiles(directory=os.path.join(BASE_DIR, "static"))
+    
+    # Mount admin app first
+    admin_app.mount("/static", static_files, name="admin_static")
+    app.mount("/admin", admin_app)
+    
+    # Then mount static files on main app
+    app.mount("/static", static_files, name="static")
 
     @app.get("/")
     async def index(request: Request):
@@ -137,17 +147,6 @@ def create_app():
     admin_app.add_exception_handler(HTTP_403_FORBIDDEN, forbidden_error_exception)
     admin_app.add_exception_handler(HTTP_401_UNAUTHORIZED, unauthorized_error_exception)
 
-    # Mount admin app
-    app.mount("/admin", admin_app)
-
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=["*"],
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-        expose_headers=["*"],
-    )
     # Register Tortoise with FastAPI (but don't generate schemas as we do it in lifespan)
     register_tortoise(
         app,
@@ -161,6 +160,15 @@ def create_app():
             },
         },
         generate_schemas=False,  # We generate schemas in lifespan
+    )
+
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+        expose_headers=["*"],
     )
 
     return app

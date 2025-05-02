@@ -1,0 +1,12 @@
+{% extends "fastapi_admin/templates/layout.html" %} {% block head %} {{ super()
+}}
+<!-- Add Tailwind CSS after Tabler UI -->
+<link rel="stylesheet" href="/static/css/styles.css" />
+<style>
+	/* This ensures Tailwind's preflight styles don't interfere with Tabler UI */
+	body {
+		font-family: inherit;
+		line-height: inherit;
+	}
+</style>
+{% endblock %}

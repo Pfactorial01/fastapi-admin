@@ -72,7 +72,7 @@ async def app_version_management(
             "resources": resources,
             "resource_label": "App Version Management",
             "page_pre_title": "App Version Control",
-            "page_title": "Version Management",
+            "page_title": "App Version Management",
             "versions": versions,
             "current_platform": platform if platform != "None" else None,
             "current_status": status if status != "None" else None,

@@ -1,61 +1,262 @@
 {% extends "base.html" %} {% block body %}
-<div class="wrapper min-vh-100">
-	<aside class="navbar navbar-vertical navbar-expand-lg navbar-dark">
-		<div class="container-fluid">
-			{% if request.app.logo_url %}
-			<h1 class="navbar-brand navbar-brand-autodark">
-				<a href="{{ request.app.admin_path }}"> </a>
-			</h1>
-			{% endif %}
-			<button
-				class="navbar-toggler"
-				type="button"
-				data-bs-toggle="collapse"
-				data-bs-target="#navbar-menu"
+<div class="flex h-screen">
+	<!-- Sidebar -->
+	<aside class="flex flex-col w-72 text-white h-screen sticky top-0">
+		<div
+			class="flex items-center justify-center gap-2 w-full h-20 bg-darkk border-r border-gray-400"
+		>
+			<img
+				src="/static/uploads/AIRE_logo.png"
+				alt="Logo"
+				class="w-10 h-10"
+			/>
+			<h1 class="text-xl font-bold">AiRE BROKERS</h1>
+		</div>
+		<div class="bg-white text-text_darkk flex-1 overflow-hidden">
+			<!-- Navigation Menu -->
+			<nav
+				class="h-[calc(100vh-5rem)] overflow-y-auto px-3 py-4"
+				id="sidebar-nav"
 			>
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbar-menu">
-				<ul class="navbar-nav pt-lg-3">
-					{% for resource in resources %} {% if resource.type ==
-					'link' %} {% include 'components/link.html' %} {% elif
-					resource.type == 'model' %} {% include
-					'components/model.html' %} {% elif resource.type ==
-					'dropdown' %} {% include 'components/dropdown.html' %} {%
-					endif %} {% endfor %}
+				<ul class="space-y-4">
+					<a
+						href="/admin"
+						class="nav-link flex items-center justify-start gap-3 pl-2.5 py-3 rounded-[10px] {% if request.url.path == '/admin/' %}border border-secondary text-secondary active{% else %} *:hover:text-secondary{% endif %} cursor-pointer"
+					>
+						<i
+							class="fas fa-th-large flex items-center justify-center w-6 h-6"
+						></i>
+						<span class="text-base font-medium">Dashboard</span>
+					</a>
+
+					<a
+						href="/admin/user-management"
+						class="nav-link flex items-center justify-start gap-3 pl-2.5 py-3 rounded-[10px] {% if '/admin/user-management' in request.url.path %}border border-secondary text-secondary active{% else %} *:hover:text-secondary{% endif %} cursor-pointer"
+					>
+						<i
+							class="fas fa-users flex items-center justify-center w-6 h-6"
+						></i>
+						<span class="text-base font-medium"
+							>User Management</span
+						>
+					</a>
+					<a
+						href="/admin/app-version-management"
+						class="nav-link flex items-center justify-start gap-3 pl-2.5 py-3 rounded-[10px] {% if '/admin/app-version-management' in request.url.path %}border border-secondary text-secondary active{% else %} *:hover:text-secondary{% endif %} cursor-pointer"
+					>
+						<i
+							class="fas fa-code-branch flex items-center justify-center w-6 h-6"
+						></i>
+						<span class="text-base font-medium"
+							>App Version Management</span
+						>
+					</a>
+
+					<a
+						href="/admin/showing-requests"
+						class="nav-link flex items-center justify-start gap-3 pl-2.5 py-3 rounded-[10px] {% if '/admin/showing-requests' in request.url.path %}border border-secondary text-secondary active{% else %} *:hover:text-secondary{% endif %} cursor-pointer"
+					>
+						<i
+							class="fas fa-eye flex items-center justify-center w-6 h-6"
+						></i>
+						<div class="flex items-center justify-between w-5/6">
+							<span class="text-base font-medium"
+								>Showing Request</span
+							>
+							<span
+								class="flex items-center justify-center w-[30px] h-6 bg-bluee rounded-2xl py-0.5 px-2.5"
+								>0</span
+							>
+						</div>
+					</a>
+
+					<a
+						href="/admin/documents"
+						class="nav-link flex items-center justify-start gap-3 pl-2.5 py-3 rounded-[10px] {% if '/admin/documents' in request.url.path %}border border-secondary text-secondary active{% else %} *:hover:text-secondary{% endif %} cursor-pointer"
+					>
+						<i
+							class="fas fa-file-alt flex items-center justify-center w-6 h-6"
+						></i>
+						<span class="text-base font-medium">Documents</span>
+					</a>
+
+					<a
+						href="/admin/messages"
+						class="nav-link flex items-center justify-start gap-3 pl-2.5 py-3 rounded-[10px] {% if '/admin/messages' in request.url.path %}border border-secondary text-secondary active{% else %} *:hover:text-secondary{% endif %} cursor-pointer"
+					>
+						<i
+							class="fas fa-envelope flex items-center justify-center w-6 h-6"
+						></i>
+						<div class="flex items-center justify-between w-5/6">
+							<span class="text-base font-medium">Messages</span>
+							<span
+								class="flex items-center justify-center w-[30px] h-6 bg-bluee rounded-2xl py-0.5 px-2.5"
+								>0</span
+							>
+						</div>
+					</a>
+
+					<a
+						href="/admin/notifications"
+						class="nav-link flex items-center justify-start gap-3 pl-2.5 py-3 rounded-[10px] {% if '/admin/notifications' in request.url.path %}border border-secondary text-secondary active{% else %} *:hover:text-secondary{% endif %} cursor-pointer"
+					>
+						<i
+							class="fas fa-bell flex items-center justify-center w-6 h-6"
+						></i>
+						<span class="text-base font-medium">Notifications</span>
+					</a>
+
+					<a
+						href="/admin/triggers"
+						class="nav-link flex items-center justify-start gap-3 pl-2.5 py-3 rounded-[10px] {% if '/admin/triggers' in request.url.path %}border border-secondary text-secondary active{% else %} *:hover:text-secondary{% endif %} cursor-pointer"
+					>
+						<i
+							class="fas fa-bolt flex items-center justify-center w-6 h-6"
+						></i>
+						<span class="text-base font-medium">Triggers</span>
+					</a>
+
+					<a
+						href="/admin/service-leads"
+						class="nav-link flex items-center justify-start gap-3 pl-2.5 py-3 rounded-[10px] {% if '/admin/service-leads' in request.url.path %}border border-secondary text-secondary active{% else %} *:hover:text-secondary{% endif %} cursor-pointer"
+					>
+						<i
+							class="fas fa-handshake flex items-center justify-center w-6 h-6"
+						></i>
+						<span class="text-base font-medium"
+							>Services Leads</span
+						>
+					</a>
+
+					<a
+						href="/admin/document-editor"
+						class="nav-link flex items-center justify-start gap-3 pl-2.5 py-3 rounded-[10px] {% if '/admin/document-editor' in request.url.path %}border border-secondary text-secondary active{% else %} *:hover:text-secondary{% endif %} cursor-pointer"
+					>
+						<i
+							class="fas fa-edit flex items-center justify-center w-6 h-6"
+						></i>
+						<span class="text-base font-medium"
+							>Document Editor</span
+						>
+					</a>
+
+					<a
+						href="/admin/revenue-management"
+						class="nav-link flex items-center justify-start gap-3 pl-2.5 py-3 rounded-[10px] {% if '/admin/revenue-management' in request.url.path %}border border-secondary text-secondary active{% else %} *:hover:text-secondary{% endif %} cursor-pointer"
+					>
+						<i
+							class="fas fa-money-bill-wave flex items-center justify-center w-6 h-6"
+						></i>
+						<span class="text-base font-medium"
+							>Revenue Management</span
+						>
+					</a>
+
+					<a
+						href="/admin/id-verification"
+						class="nav-link flex items-center justify-start gap-3 pl-2.5 py-3 rounded-[10px] {% if '/admin/id-verification' in request.url.path %}border border-secondary text-secondary active{% else %} *:hover:text-secondary{% endif %} cursor-pointer"
+					>
+						<i
+							class="fas fa-id-card flex items-center justify-center w-6 h-6"
+						></i>
+						<span class="text-base font-medium"
+							>ID Verification</span
+						>
+					</a>
+					<a
+						href="/admin/property-verification"
+						class="nav-link flex items-center justify-start gap-3 pl-2.5 py-3 rounded-[10px] {% if '/admin/property-verification' in request.url.path %}border border-secondary text-secondary active{% else %} *:hover:text-secondary{% endif %} cursor-pointer"
+					>
+						<i
+							class="fas fa-home flex items-center justify-center w-6 h-6"
+						></i>
+						<span class="text-base font-medium"
+							>Property Verification</span
+						>
+					</a>
+
+					<a
+						href="/admin/settings"
+						class="nav-link flex items-center justify-start gap-3 pl-2.5 py-3 rounded-[10px] {% if '/admin/settings' in request.url.path %}border border-secondary text-secondary active{% else %} *:hover:text-secondary{% endif %} cursor-pointer"
+					>
+						<i
+							class="fas fa-cog flex items-center justify-center w-6 h-6"
+						></i>
+						<span class="text-base font-medium">Settings</span>
+					</a>
 				</ul>
-			</div>
+			</nav>
 		</div>
 	</aside>
-	<div class="page-wrapper min-vh-100">
-		<header
-			class="navbar navbar-expand-md navbar-light d-none d-lg-flex d-print-none"
-		>
-			<div class="container-fluid">
-				<button
-					class="navbar-toggler"
-					type="button"
-					data-bs-toggle="collapse"
-					data-bs-target="#navbar-menu"
+
+	<!-- Main Content -->
+	<div class="flex-1 flex flex-col">
+		<!-- Top Navigation -->
+		<header class="flex p-5 items-center justify-between h-20 bg-darkk">
+			<span class="text-white ml-7 text-[28px] font-bold"
+				>{{ page_title }}</span
+			>
+			<div class="flex items-center gap-10">
+				<div
+					class="flex items-center bg-white p-2 h-10 rounded-[10px] gap-5 text-black"
 				>
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="navbar-nav flex-row order-md-last">
-					{% if request.app.language_switch %} {% include
-					"components/language.html" %} {% endif %} {% if
-					request.app.login_provider %} {% include
-					"providers/login/avatar.html" %} {% endif %}
+					<i class="fas fa-search h-4 w-4"></i>
+
+					<i class="fas fa-bell h-4 w-4"></i>
+				</div>
+				<div class="flex items-center gap-3">
+					<div class="w-10 h-10 bg-black rounded-full"></div>
+					<div class="flex flex-col items-end">
+						<span class="text-white text-sm"
+							>Hi, {{ request.state.admin.username }}</span
+						>
+						<span class="text-[#D0D5DD] text-xs font-normal"
+							>{{ request.state.admin.email }}</span
+						>
+					</div>
 				</div>
 			</div>
 		</header>
-		<div class="page-body flex-grow-1">
-			<div class="container-fluid">
-				<div class="row row-deck row-cards">
-					{% block page_body %} {% endblock %}
+
+		<!-- Main Content Area -->
+		<main class="flex-1 overflow-y-auto p-4">
+			<div class="max-w-7xl mx-auto">
+				<div class="grid gap-6">
+					{% block page_body %}{% endblock %}
 				</div>
 			</div>
-		</div>
-		{% block footer %} {% include "components/footer.html" %} {% endblock %}
+		</main>
 	</div>
 </div>
+
+<script>
+	// Function to scroll active link into view
+	function scrollActiveIntoView() {
+		// Find the active link
+		const activeLink = document.querySelector(".nav-link.active");
+		if (activeLink) {
+			// Get the navigation container
+			const navContainer = document.getElementById("sidebar-nav");
+
+			// Calculate the scroll position
+			const linkRect = activeLink.getBoundingClientRect();
+			const navRect = navContainer.getBoundingClientRect();
+
+			// Check if the active link is outside the visible area
+			if (
+				linkRect.top < navRect.top ||
+				linkRect.bottom > navRect.bottom
+			) {
+				// Scroll the link into view with some padding
+				activeLink.scrollIntoView({
+					block: "center",
+					behavior: "instant",
+				});
+			}
+		}
+	}
+
+	// Run when the page loads
+	document.addEventListener("DOMContentLoaded", scrollActiveIntoView);
+</script>
 {% endblock %}
